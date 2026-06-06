@@ -36,6 +36,7 @@ This design system should stay close to the live website.
 ## Publishing Checklist
 
 - GitHub Pages source is set to GitHub Actions.
+- Pull requests can use the CI workflow to run `mkdocs build --strict` before merge.
 - `mkdocs build --strict` passes.
 - The workflow runs successfully on `main`.
 - The deployed URL resolves at `https://bentilden.github.io/Design-System/`.
