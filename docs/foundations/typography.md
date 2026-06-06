@@ -1,3 +1,31 @@
+---
+title: Typography
+type: foundation
+status: observed
+source_of_truth: observed production code
+audience:
+  - design
+  - development
+  - content
+source:
+  - bentilden.com-css/tailwind.config.js
+  - bentilden.com-css/src/elements/type.css
+  - bentilden.com/templates/_components/entry-header.twig
+classes:
+  - font-sans
+  - font-display
+  - font-micro
+  - text-2xs
+  - bt-dropcap
+accessibility:
+  reviewed: false
+  notes: Heading hierarchy and small metadata contrast need full audit.
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Typography
 
 The site uses Helvetica Now families for text, display, and microcopy.

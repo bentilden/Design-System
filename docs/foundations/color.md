@@ -1,3 +1,29 @@
+---
+title: Color
+type: foundation
+status: observed
+source_of_truth: observed production code
+audience:
+  - design
+  - development
+source:
+  - bentilden.com/templates/_layout.twig
+  - bentilden.com/templates/_components/global-header-nav-primary.twig
+  - bentilden.com/templates/_components/global-header-nav-mobile.twig
+  - bentilden.com-css/tailwind.config.js
+tokens:
+  - slate
+  - orange
+environments:
+  observed:
+    - prod
+    - dev
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Color
 
 The current website leans on Tailwind Slate for most UI and page structure. Orange appears as a focused accent in mobile navigation active states.

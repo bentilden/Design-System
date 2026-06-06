@@ -1,3 +1,26 @@
+---
+title: Layout
+type: foundation
+status: observed
+source_of_truth: observed production code
+audience:
+  - design
+  - development
+source:
+  - bentilden.com-css/src/elements/grid.css
+  - bentilden.com/templates/_layout.twig
+  - bentilden.com/templates/_entry-content/default.twig
+classes:
+  - bt-page-container
+  - bt-grid
+  - container
+  - max-w-prose
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Layout
 
 The site combines Tailwind containers with custom `bt-*` layout utilities.

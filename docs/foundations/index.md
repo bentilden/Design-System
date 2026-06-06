@@ -1,3 +1,21 @@
+---
+title: Foundations
+type: foundation
+status: draft
+source_of_truth: observed production code
+audience:
+  - design
+  - development
+source:
+  - bentilden.com-css/tailwind.config.js
+  - bentilden.com-css/src/elements/type.css
+  - bentilden.com-css/src/elements/grid.css
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Foundations
 
 Foundations describe the smallest reusable decisions in the system: color, typography, spacing, and layout.

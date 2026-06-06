@@ -1,3 +1,18 @@
+---
+title: Ben Tilden Design System
+type: index
+status: draft
+source_of_truth: documentation
+audience:
+  - design
+  - development
+  - content
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Ben Tilden Design System
 
 This design system documents the visual language, reusable patterns, and front-end conventions emerging from `bentilden.com`.

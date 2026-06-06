@@ -1,3 +1,27 @@
+---
+title: Navigation
+type: component
+status: observed
+source_of_truth: observed production code
+audience:
+  - design
+  - development
+  - content
+source:
+  - bentilden.com/templates/_components/global-header-nav-primary.twig
+  - bentilden.com/templates/_components/global-header-nav-mobile.twig
+  - bentilden.com/templates/_components/global-footer.twig
+dependencies:
+  - Alpine.js
+accessibility:
+  reviewed: false
+  notes: Mobile menu keyboard and focus management need rendered audit.
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Navigation
 
 Global navigation uses compact uppercase pills and a large signature mark.
@@ -55,3 +79,12 @@ Mobile navigation uses a full-screen Slate 900 overlay. Top-level active items u
 - Use uppercase tracking for navigation and metadata, not body text.
 - Keep the mobile overlay high contrast.
 - Preserve the signature as the dominant brand mark in the header.
+
+## Audit Notes
+
+| Finding | Status |
+| --- | --- |
+| Desktop navigation has consistent uppercase pill styling and active Slate 900 state. | Observed |
+| Mobile overlay uses `role="dialog"`, `aria-modal="true"`, and `aria-label="Mobile navigation menu"`. | Observed |
+| Icon-only mobile open button lacks an accessible name in the rendered audit. | Needs fix |
+| Focus trap, escape key behavior, and return focus after close still need manual verification. | Needs audit |

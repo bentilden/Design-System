@@ -47,6 +47,10 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Metadata:
+      - meta/index.md
+      - Page Metadata Schema: meta/page-metadata.md
+      - Page Template: meta/page-template.md
   - Foundations:
       - foundations/index.md
       - Color: foundations/color.md
@@ -57,8 +61,20 @@ nav:
       - Buttons: components/buttons.md
       - Navigation: components/navigation.md
       - Article Content: components/article-content.md
+      - Galleries: components/galleries.md
+      - Recipe Content: components/recipe-content.md
+      - Forms: components/forms.md
   - Patterns:
       - patterns/index.md
       - Content Types: patterns/content-types.md
       - Photography: patterns/photography.md
+      - Stream Pages: patterns/stream-pages.md
+  - Content Model:
+      - content-model/index.md
+      - Craft Structure: content-model/craft-structure.md
+  - Audit:
+      - audit/index.md
+      - Source Inventory: audit/source-inventory.md
+      - Render Audit: audit/render-audit.md
+      - Open Questions: audit/open-questions.md
   - Contributing: contributing.md

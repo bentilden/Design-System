@@ -1,3 +1,17 @@
+---
+title: Contributing
+type: guideline
+status: draft
+source_of_truth: documentation
+audience:
+  - design
+  - development
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: active
+---
+
 # Contributing
 
 This design system should stay close to the live website.

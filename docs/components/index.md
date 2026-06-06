@@ -1,3 +1,17 @@
+---
+title: Components
+type: index
+status: draft
+source_of_truth: documentation
+audience:
+  - design
+  - development
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Components
 
 Components document reusable interface and content building blocks.

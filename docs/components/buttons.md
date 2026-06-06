@@ -1,3 +1,25 @@
+---
+title: Buttons
+type: component
+status: observed
+source_of_truth: observed production code
+audience:
+  - design
+  - development
+source:
+  - bentilden.com-css/src/components/button.css
+  - bentilden.com/templates/_matrix/button.twig
+classes:
+  - bt-button
+accessibility:
+  reviewed: false
+  notes: Focus styles exist in source; labels and link semantics need content audit.
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Buttons
 
 Buttons are compact, quiet, and utility-driven.

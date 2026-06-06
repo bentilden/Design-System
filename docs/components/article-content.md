@@ -1,3 +1,30 @@
+---
+title: Article Content
+type: component
+status: observed
+source_of_truth: observed production code
+audience:
+  - design
+  - development
+  - content
+source:
+  - bentilden.com/templates/_entry-content/default.twig
+  - bentilden.com/templates/_components/entry-header.twig
+  - bentilden.com/templates/_matrix/text.twig
+  - bentilden.com-css/src/components/article-icon.css
+classes:
+  - bt-article
+  - bt-article-icon
+  - bt-text
+accessibility:
+  reviewed: false
+  notes: Heading hierarchy, icon semantics, and image alt behavior need rendered audit.
+owner: Ben Tilden
+created: 2026-06-06
+last_reviewed: 2026-06-06
+review_status: needs audit
+---
+
 # Article Content
 
 Article content is the central pattern for the site. It brings together category icons, display titles, metadata, prose, media, and galleries.
@@ -71,3 +98,13 @@ Captions use Slate 600 body text with micro-style details below.
   </div>
 </div>
 ```
+
+## Audit Notes
+
+| Finding | Status |
+| --- | --- |
+| `bt-article` is the dominant shell for posts and content streams. | Observed |
+| Topic and schema hooks are reliable implementation anchors: `bt-article-topic-*`, `bt-article-schema-*`. | Observed |
+| The shared shell is not used by contact/form content. | Needs decision |
+| Image alt text is incomplete in article-adjacent image templates. | Needs accessibility work |
+| Mobile navigation headings appear in DOM on every page and should be checked in the accessibility tree. | Needs accessibility work |
