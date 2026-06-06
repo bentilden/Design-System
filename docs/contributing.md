@@ -32,6 +32,7 @@ This design system should stay close to the live website.
 - Use code snippets from source files when they clarify implementation.
 - Prefer short guidance over long prose.
 - Keep examples accessible and responsive.
+- Apply the design system to the documentation site itself: Slate-first surfaces, compact metadata, readable prose widths, quiet controls, and visible page status.
 
 ## Publishing Checklist
 
