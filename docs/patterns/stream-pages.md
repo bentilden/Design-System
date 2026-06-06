@@ -11,9 +11,12 @@ source:
   - bentilden.com/templates/index.twig
   - bentilden.com/templates/category.twig
   - bentilden.com/templates/_entry-content.twig
+  - bentilden.com/templates/_components/entry-preview-image.twig
   - bentilden.com/templates/_components/pagination.twig
 classes:
   - bt-article
+  - bt-item
+  - bt-item-name
   - bt-control-pagination
 accessibility:
   reviewed: false
@@ -33,8 +36,9 @@ Stream pages are the most important page-level pattern in the current site. They
 | Template | Role |
 | --- | --- |
 | `index.twig` | Homepage stream of posts. |
-| `category.twig` | Content type/category stream. |
+| `category.twig` | Area of Interest stream. |
 | `_entry-content.twig` | Resolves each entry to the correct article preview template. |
+| `_components/entry-preview-image.twig` | Resolves listing preview imagery. |
 | `_components/pagination.twig` | Renders previous/next and page-number navigation. |
 
 ## Structure
@@ -50,16 +54,27 @@ Each item is not a compact card. It is a full-width article section with generou
 ## Visual Rules
 
 - Alternate content is separated by repeated Slate gradient article bands.
-- The category icon appears above each article header unless the entry type overrides it.
+- The Area of Interest icon appears above each article header unless the entry type overrides it.
 - Pagination sits in a Slate 200 band with a top border.
-- Stream pages use content type and entry schema classes to support targeted styling.
+- Stream pages use Area of Interest and entry schema classes to support targeted styling.
+- Preview image fallback coverage matters because stream pages rely on image rhythm.
+
+## Preview Image Fallback
+
+Stream preview imagery should resolve in this order:
+
+1. Preview Image
+2. Recipe Main Image
+3. Featured Image block image
+4. Gallery block first image
+5. First image found in story blocks
 
 ## Render Audit
 
 | Finding | Evidence |
 | --- | --- |
 | Home and category streams rendered without horizontal overflow in desktop and mobile samples. | Playwright audit |
-| Photography stream carries the highest image density. | 74 images on prod desktop `/photography`; 33 images on dev desktop `/photography`. |
+| Photography stream carries the highest image density. | Render sample |
 | Cooking stream differs meaningfully between dev and prod content. | Dev includes recipe intro test content; prod sample includes story/featured-image entries. |
 | Pagination is present when there are more entries. | `bt-control-pagination` observed in stream samples. |
 

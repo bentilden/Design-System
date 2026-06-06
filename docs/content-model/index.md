@@ -17,6 +17,6 @@ review_status: needs audit
 
 # Content Model
 
-The design system needs to document the Craft CMS content model because many visual patterns are driven by entry type, matrix block type, asset metadata, and content type taxonomy.
+The design system needs to document the Craft CMS content model because many visual patterns are driven by entry type, matrix block type, asset metadata, and Area of Interest taxonomy.
 
-The first pass focuses on the structures that most directly shape rendered templates.
+The first pass focuses on the structures that most directly shape rendered templates: entries, matrix blocks, images, transforms, upload paths, and authoring contracts.

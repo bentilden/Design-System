@@ -13,9 +13,10 @@ source:
   - bentilden.com/templates/_components/global-footer.twig
 dependencies:
   - Alpine.js
+  - Alpine focus plugin
 accessibility:
   reviewed: false
-  notes: Mobile menu keyboard and focus management need rendered audit.
+  notes: Mobile controls are labeled in source; focus return, hidden-state exposure, and keyboard behavior need rendered audit.
 owner: Ben Tilden
 created: 2026-06-06
 last_reviewed: 2026-06-06
@@ -55,23 +56,28 @@ The desktop header is fixed, translucent, and blurred:
 </header>
 ```
 
-The scrolled state adds shadow:
-
-```html
-:class="{ 'shadow-md shadow-2xl shadow-slate-500/50' : scrolledFromTop }"
-```
+The scrolled state adds shadow and reduces the signature height.
 
 ## Mobile Navigation
 
 Mobile navigation uses a full-screen Slate 900 overlay. Top-level active items use orange text, while child active pills use orange backgrounds.
 
-```twig
-<li class="border-t border-slate-600">
-  <a class="block px-6 py-8 no-underline text-2xl font-medium">
-    {{ nodeTitle }}
-  </a>
-</li>
-```
+Current source includes:
+
+- open button `aria-label`,
+- `aria-controls`,
+- reactive `aria-expanded`,
+- dialog `id`,
+- `role="dialog"`,
+- `aria-modal="true"`,
+- `aria-label`,
+- escape handling,
+- `x-trap.noscroll.inert`,
+- close button `aria-label`.
+
+## Footer
+
+The footer uses a Slate 900 band, white signature asset, compact navigation links, copyright, Mastodon, and RSS links.
 
 ## Guidance
 
@@ -79,12 +85,14 @@ Mobile navigation uses a full-screen Slate 900 overlay. Top-level active items u
 - Use uppercase tracking for navigation and metadata, not body text.
 - Keep the mobile overlay high contrast.
 - Preserve the signature as the dominant brand mark in the header.
+- Use SVG marks as decorative when the surrounding link or button already has an accessible name.
 
 ## Audit Notes
 
 | Finding | Status |
 | --- | --- |
 | Desktop navigation has consistent uppercase pill styling and active Slate 900 state. | Observed |
-| Mobile overlay uses `role="dialog"`, `aria-modal="true"`, and `aria-label="Mobile navigation menu"`. | Observed |
-| Icon-only mobile open button lacks an accessible name in the rendered audit. | Needs fix |
-| Focus trap, escape key behavior, and return focus after close still need manual verification. | Needs audit |
+| Mobile open and close buttons have accessible labels in current source. | Observed |
+| Mobile overlay uses dialog metadata and Alpine focus trapping in source. | Observed |
+| Focus trap, escape key behavior, hidden-state exposure, and return focus after close still need manual verification. | Needs audit |
+| The mobile menu contains a `Posts` heading; its level should be checked in the page heading structure. | Needs audit |

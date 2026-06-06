@@ -22,35 +22,37 @@ Audit outputs distinguish:
 - what exists in source code,
 - what appears in rendered pages,
 - what is reusable enough to document,
-- what is legacy or needs refactoring,
-- what needs a design decision.
+- what has been fixed since the first snapshot,
+- what needs a design decision,
+- what needs a rendered accessibility or content QA pass.
 
 ## Current Audit Pass
 
-The first deep audit pass reviewed:
+The deep audit reviewed:
 
 | Area | Scope |
 | --- | --- |
-| Templates | 47 Twig templates under `bentilden.com/templates`. |
-| Craft project config | 93 files under `bentilden.com/config/project`. |
+| Templates | Twig templates under `bentilden.com/templates`, including global layout, entries, matrix blocks, recipe views, SVG icons, feed, contact, and category pages. |
+| Craft project config | Sections, entry types, fields, routes, navigation, asset volumes, and image transforms. |
 | CSS source | Tailwind 4 entrypoint, type, grid, button, article icon, and site component CSS. |
-| Rendered pages | 25 page/viewport checks across dev and prod. |
-| Viewports | Desktop `1440x1200`, mobile `390x1200`. |
+| Website docs | Asset handling and Craft authoring standards in the website repo. |
+| Rendered pages | Representative page/viewport checks across dev and prod from the earlier audit pass. |
 
 ## High-Level Findings
 
 1. The strongest reusable system is the article stream: repeated `bt-article` blocks stacked on Slate gradient bands.
 2. Photography and gallery presentation dominate the rendered surface area.
-3. The current CSS source is still small, but `src/components/site.css` now captures important article, recipe, and site component styles.
-4. Recipe pages still use older Foundation-era classes such as `grid-x`, `cell`, `medium-*`, `reveal`, `show-for-print`, and `hide-for-print`.
-5. Rendered pages did not show horizontal overflow in the audited desktop or mobile viewports.
-6. Image alt text is the largest visible accessibility gap in the sample.
-7. The mobile navigation dialog has ARIA dialog metadata, but the icon-only menu button needs an accessible name.
+3. Areas of Interest are the current taxonomy contract; older `contentType` naming is stale.
+4. The current CSS source is still small, but `src/components/site.css` now captures important article, recipe, navigation, and site component styles.
+5. Recipe pages now have a documented Tailwind/Alpine/`bt-*` pattern, including nutrition modal and print behavior.
+6. Template-level image alt fallbacks have improved, but native asset alt coverage remains a major content cleanup task.
+7. Mobile navigation controls now have accessible labels in source; focus behavior still needs rendered verification.
 8. Contact is visually adjacent to the system but not integrated into the `bt-article` component model.
+9. Assets, upload paths, ImageOptimize fields, and content QA need to be treated as design-system contracts.
 
 ## Local Artifacts
 
-The render audit wrote temporary screenshots and JSON to:
+The earlier render audit wrote temporary screenshots and JSON to:
 
 ```text
 /private/tmp/bentilden-design-system-audit

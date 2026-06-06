@@ -19,7 +19,7 @@ dependencies:
   - lazysizes
 accessibility:
   reviewed: false
-  notes: Alt text, lightbox keyboard behavior, and caption association need rendered audit.
+  notes: Native alt coverage, lightbox keyboard behavior, and caption association need rendered audit.
 owner: Ben Tilden
 created: 2026-06-06
 last_reviewed: 2026-06-06
@@ -50,9 +50,11 @@ Images use lazy loading, hover shadow, and lightGallery zoom.
 ```twig
 <img
   class="lazyload bt-image-file transition hover:shadow-2xl shadow-slate-500/70 cursor-zoom-in border-2 border-transparent hover:border-white"
-  alt="{{ image.title }}"
+  alt="{{ imageAlt }}"
 />
 ```
+
+The current templates build `imageAlt` from native asset alt text, then title, then file name.
 
 ## Inline Images
 
@@ -76,7 +78,7 @@ sizes="20vw"
 - Use grids when the set is browsable.
 - Use inline treatment when one image deserves the reader's full attention.
 - Keep captions close to the image and visually secondary.
-- Preserve `alt` text on grid thumbnails.
+- Preserve useful alt text on grid thumbnails and large images.
 - Keep zoom interaction discoverable through hover and cursor treatment.
 
 ## Audit Notes
@@ -86,5 +88,5 @@ sizes="20vw"
 | Photography is the densest and most repeated visual pattern in the current site. | Observed |
 | `gallery2` and `featuredImage2` appear to be the current matrix block variants. | Observed |
 | Legacy `gallery` and `featuredImage` templates still exist. | Needs decision |
-| Gallery thumbnails include `alt="{{ image.title }}"`, but featured and recipe images often omit `alt`. | Needs accessibility work |
+| Templates now include alt fallbacks, but native asset alt coverage remains a content cleanup issue. | Needs content cleanup |
 | lightGallery is used for image zoom behavior; keyboard behavior needs manual confirmation. | Needs audit |

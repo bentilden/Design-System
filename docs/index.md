@@ -22,9 +22,10 @@ The current website is a Craft CMS site rendered with Twig templates and styled 
 ## What This System Covers
 
 - Foundations: color, typography, spacing, and responsive layout.
-- Components: buttons, navigation, article structure, captions, and content blocks.
-- Patterns: content type treatment, galleries, editorial pages, and image-heavy storytelling.
-- Implementation notes: Tailwind classes and source references from the current site.
+- Components: buttons, navigation, article structure, matrix blocks, galleries, recipes, and forms.
+- Patterns: Areas of Interest, photography, stream pages, and image-heavy storytelling.
+- Content model: Craft structure, assets, media metadata, and authoring standards.
+- Accessibility and operations: rendered behavior, content QA, and source references from the current site.
 
 ## Source Context
 
@@ -40,6 +41,8 @@ The first pass is based on these source files:
 | Global layout | `bentilden.com/templates/_layout.twig` |
 | Article layout | `bentilden.com/templates/_entry-content/default.twig` |
 | Matrix content blocks | `bentilden.com/templates/_matrix/*.twig` |
+| Asset and authoring standards | `bentilden.com/docs/assets.md`, `bentilden.com/docs/craft-authoring-standards.md` |
+| Content QA | `bentilden.com/scripts/content-qa.php` |
 
 ## Operating Principles
 

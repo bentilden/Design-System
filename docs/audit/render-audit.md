@@ -17,7 +17,7 @@ review_status: active
 
 # Render Audit
 
-The first render audit used Playwright to inspect representative dev and prod pages.
+The first render audit used Playwright to inspect representative dev and prod pages. Some findings have since been addressed in source; this page now separates rendered observations from current follow-up work.
 
 ## Scope
 
@@ -37,18 +37,18 @@ Initial `curl` checks saw a transient `503` from production, but the subsequent 
 | Failed requests | 0 |
 | Horizontal overflow cases | 0 |
 | Console warning cases | 2 |
-| Missing/empty image alt attributes | 52 |
+| Missing/empty image alt attributes in first snapshot | 52 |
 
 The two console warnings were Chromium GPU `ReadPixels` warnings during screenshots, not site JavaScript errors.
 
 ## Accessibility Findings
 
-| Finding | Evidence | Recommendation |
+| Finding | Current status | Recommendation |
 | --- | --- | --- |
-| Image alt coverage is incomplete. | 52 missing/empty alt attributes across the audit sample. | Add alt behavior to featured-image and recipe image templates, and verify content authors can provide meaningful asset titles/captions. |
-| Mobile menu button has no accessible name. | Render audit found `openButtonHasLabel: false` on every sampled page. | Add `aria-label="Open navigation menu"` or visible sr-only text to the icon button. |
-| Mobile dialog has basic ARIA metadata. | Dialog includes `role="dialog"`, `aria-modal="true"`, and `aria-label="Mobile navigation menu"`. | Verify focus trap, escape handling, return focus, and hidden-state behavior. |
-| Heading counts need accessibility-tree verification. | DOM queries see a `Posts` heading from mobile navigation plus page headings. | Confirm hidden Alpine content is not exposed to assistive technology when closed. |
+| Image alt coverage was incomplete in the first render sample. | Template fallbacks now exist, but native asset alt text is still missing broadly. | Keep fallback logic and clean up native asset alt text. |
+| Mobile menu button had no accessible name in the first render sample. | Current source includes `aria-label`, `aria-controls`, and `aria-expanded`. | Re-run rendered audit to verify browser output and focus behavior. |
+| Mobile dialog has basic ARIA metadata. | Current source also uses Alpine focus trapping. | Verify focus trap, escape handling, return focus, and hidden-state behavior. |
+| Heading counts need accessibility-tree verification. | Still open. | Confirm hidden Alpine content is not exposed to assistive technology when closed. |
 
 ## Responsive Findings
 
@@ -66,7 +66,7 @@ The two console warnings were Chromium GPU `ReadPixels` warnings during screensh
 | Article stream | Home/category pages are stacked sequences of `bt-article` blocks. |
 | Photography galleries | `bt-control-gallery2`, `bt-control-image`, and `bt-image-file` dominate rendered class counts. |
 | Featured image entries | `bt-control-featuredImage2` appears frequently and needs first-class documentation. |
-| Recipe intro pages | Present in dev sample, using `bt-recipe-intro-page` plus legacy Foundation grid classes. |
+| Recipe intro pages | Present in dev sample and now documented as part of the recipe component. |
 | Metadata typography | Dates and image details use micro text, uppercase, wide tracking, and low-contrast Slate. |
 
 ## Page-Level Notes
@@ -77,7 +77,7 @@ The two console warnings were Chromium GPU `ReadPixels` warnings during screensh
 | `/photography` | Highest image density in the sample; strongest candidate for gallery and image-card guidance. |
 | `/cooking` | Dev includes recipe intro pages; prod sample showed story/featured-image entries. |
 | `/design` | Compact gallery stream, visually consistent between dev and prod. |
-| `/about` | Uses article shell without content type icon. |
+| `/about` | Uses article shell without an Area of Interest icon. |
 | `/contact` | Uses a custom form layout and should become a documented form pattern or an explicit exception. |
 
 ## Local Artifacts

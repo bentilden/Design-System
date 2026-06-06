@@ -15,6 +15,6 @@ review_status: needs audit
 
 # Patterns
 
-Patterns describe how components and foundations combine into recognizable page behavior.
+Patterns describe how components, content model, and foundations combine into recognizable page behavior.
 
-The first patterns to document are content types and photography because those are the strongest visual signals in the current site.
+The first patterns to document are Areas of Interest, photography, and stream pages because those are the strongest visual signals in the current site.

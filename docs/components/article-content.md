@@ -10,15 +10,18 @@ audience:
 source:
   - bentilden.com/templates/_entry-content/default.twig
   - bentilden.com/templates/_components/entry-header.twig
+  - bentilden.com/templates/_components/entry-preview-image.twig
   - bentilden.com/templates/_matrix/text.twig
   - bentilden.com-css/src/components/article-icon.css
 classes:
   - bt-article
   - bt-article-icon
+  - bt-title
+  - bt-datePublished
   - bt-text
 accessibility:
   reviewed: false
-  notes: Heading hierarchy, icon semantics, and image alt behavior need rendered audit.
+  notes: Heading hierarchy, icon semantics, mobile hidden content, and rendered image alt behavior need audit.
 owner: Ben Tilden
 created: 2026-06-06
 last_reviewed: 2026-06-06
@@ -27,7 +30,7 @@ review_status: needs audit
 
 # Article Content
 
-Article content is the central pattern for the site. It brings together category icons, display titles, metadata, prose, media, and galleries.
+Article content is the central pattern for the site. It brings together Area of Interest icons, display titles, metadata, prose, media, and galleries.
 
 ## Article Shell
 
@@ -39,12 +42,14 @@ Article content is the central pattern for the site. It brings together category
 </article>
 ```
 
-Article classes include content type and entry type hooks:
+Article classes include Area of Interest and entry type hooks:
 
 - `bt-article-topic-photography`
 - `bt-article-topic-cooking`
 - `bt-article-schema-story`
 - `bt-article-schema-gallery`
+- `bt-article-schema-featuredImage`
+- `bt-article-schema-recipe`
 
 ## Entry Header
 
@@ -56,6 +61,8 @@ Article classes include content type and entry type hooks:
   Posted {{ postDate | date('M d, Y') }}
 </p>
 ```
+
+The CSS source also defines hooks for `bt-title` and `bt-datePublished`, so those should be kept available if templates move more of this styling out of utilities.
 
 ## Article Icons
 
@@ -69,7 +76,7 @@ Article classes include content type and entry type hooks:
 }
 ```
 
-Icons sit above article headers and link back to the category.
+Icons sit above article headers and link back to the Area of Interest route.
 
 ## Prose Blocks
 
@@ -78,6 +85,18 @@ Icons sit above article headers and link back to the category.
   {{ block.text|typogrify }}
 </div>
 ```
+
+## Preview Images
+
+Stream/listing preview images use a fallback chain:
+
+1. Preview Image
+2. Recipe Main Image
+3. Featured Image block image
+4. Gallery block first image
+5. First image found in story blocks
+
+Preview images use `optimizedThumbnails` when present and fall back to native URLs when needed.
 
 ## Captions
 
@@ -91,9 +110,9 @@ Icons sit above article headers and link back to the category.
 Captions use Slate 600 body text with micro-style details below.
 
 ```twig
-<div class="text-slate-600 text-base mt-2.5 max-w-md leading-none">
+<div class="bt-image-caption">
   {{ image.caption }}
-  <div class="font-micro text-2xs uppercase tracking-wide text-slate-400 mt-2">
+  <div class="bt-image-details">
     {{ image.details }}
   </div>
 </div>
@@ -106,5 +125,5 @@ Captions use Slate 600 body text with micro-style details below.
 | `bt-article` is the dominant shell for posts and content streams. | Observed |
 | Topic and schema hooks are reliable implementation anchors: `bt-article-topic-*`, `bt-article-schema-*`. | Observed |
 | The shared shell is not used by contact/form content. | Needs decision |
-| Image alt text is incomplete in article-adjacent image templates. | Needs accessibility work |
+| Templates now include image alt fallbacks, but asset-native alt coverage is still incomplete. | Needs content cleanup |
 | Mobile navigation headings appear in DOM on every page and should be checked in the accessibility tree. | Needs accessibility work |
