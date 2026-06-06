@@ -1,0 +1,64 @@
+site_name: Ben Tilden Design System
+site_description: Design system documentation for bentilden.com.
+site_url: https://bentilden.github.io/Design-System/
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: slate
+      accent: orange
+  font:
+    text: system-ui
+    code: ui-monospace
+  features:
+    - content.code.copy
+    - navigation.indexes
+    - navigation.sections
+    - navigation.tabs
+    - search.highlight
+    - search.suggest
+    - toc.follow
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Foundations:
+      - foundations/index.md
+      - Color: foundations/color.md
+      - Typography: foundations/typography.md
+      - Layout: foundations/layout.md
+  - Components:
+      - components/index.md
+      - Buttons: components/buttons.md
+      - Navigation: components/navigation.md
+      - Article Content: components/article-content.md
+  - Patterns:
+      - patterns/index.md
+      - Content Types: patterns/content-types.md
+      - Photography: patterns/photography.md
+  - Contributing: contributing.md
