@@ -10,7 +10,7 @@ source:
   - bentilden.com/templates/_layout.twig
   - bentilden.com/templates/_components/global-header-nav-primary.twig
   - bentilden.com/templates/_components/global-header-nav-mobile.twig
-  - bentilden.com-css/tailwind.config.js
+  - bentilden.com-css/src/bentilden.css
 tokens:
   - slate
   - orange

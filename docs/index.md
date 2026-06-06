@@ -32,11 +32,11 @@ The first pass is based on these source files:
 
 | Area | Source |
 | --- | --- |
-| Tailwind theme | `bentilden.com-css/tailwind.config.js` |
-| CSS entrypoint | `bentilden.com-css/src/bentilden.css` |
+| Tailwind theme and source detection | `bentilden.com-css/src/bentilden.css` |
 | Typefaces and drop cap | `bentilden.com-css/src/elements/type.css` |
 | Grid utilities | `bentilden.com-css/src/elements/grid.css` |
 | Button utility | `bentilden.com-css/src/components/button.css` |
+| Site and recipe component CSS | `bentilden.com-css/src/components/site.css` |
 | Global layout | `bentilden.com/templates/_layout.twig` |
 | Article layout | `bentilden.com/templates/_entry-content/default.twig` |
 | Matrix content blocks | `bentilden.com/templates/_matrix/*.twig` |

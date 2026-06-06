@@ -10,7 +10,6 @@ source:
   - bentilden.com/templates
   - bentilden.com/config/project
   - bentilden.com-css/src
-  - bentilden.com-css/tailwind.config.js
 owner: Ben Tilden
 created: 2026-06-06
 last_reviewed: 2026-06-06
@@ -27,19 +26,18 @@ The source audit found a small Tailwind source layer sitting above a larger Twig
 | --- | ---: | --- |
 | Twig templates | 47 | Global layout, entries, matrix blocks, recipe views, SVG icons, feed, contact, and category pages. |
 | Craft project config files | 93 | Sections, entry types, fields, routes, navigation, asset volumes, and image transforms. |
-| CSS source files | 5 | Tailwind entrypoint, type, grid, button, and article icon utilities. |
-| Tailwind config | 1 | Extends type families and adds `text-2xs`; otherwise uses Tailwind defaults and plugins. |
+| CSS source files | 6 | Tailwind 4 entrypoint, type, grid, button, article icon, and site component styles. |
 
 ## CSS Source
 
 | File | Role |
 | --- | --- |
-| `bentilden.com-css/src/bentilden.css` | Imports Tailwind layers, elements, and components. |
+| `bentilden.com-css/src/bentilden.css` | Imports Tailwind 4, declares source paths, loads plugins, defines theme tokens, applies base compatibility rules, and imports local CSS. |
 | `bentilden.com-css/src/elements/type.css` | Defines Helvetica Now webfonts and `bt-dropcap`. |
 | `bentilden.com-css/src/elements/grid.css` | Defines `bt-page-container` and `bt-grid`. |
 | `bentilden.com-css/src/components/button.css` | Defines `bt-button`. |
 | `bentilden.com-css/src/components/article-icon.css` | Defines `bt-article-icon`. |
-| `bentilden.com-css/tailwind.config.js` | Adds `font-sans`, `font-display`, `font-micro`, and `text-2xs`; enables typography and forms plugins. |
+| `bentilden.com-css/src/components/site.css` | Defines article, recipe, info bar, and supporting site component styles. |
 
 ## Template System
 
@@ -92,7 +90,7 @@ Across the render sample, these were the most common `bt-*` hooks:
 | Finding | Source | Impact |
 | --- | --- | --- |
 | Gallery template has malformed markup: `class="text-center""`. | `_entry-content/gallery/default.twig` | Browser likely recovers, but this should be fixed before treating gallery layout as approved. |
-| Recipe templates use Foundation-era layout and modal classes. | `_entry-content/recipe/*.twig` | Recipe content is not yet aligned with the newer Tailwind/`bt-*` layer. |
-| Several `bt-*` classes appear in Twig but not in CSS source. | Recipe templates, 404, image route | Some styles may depend on legacy compiled CSS, vendor CSS, or may no longer be styled. |
+| Recipe templates use Foundation-era layout and modal classes. | `_entry-content/recipe/*.twig` | Recipe content is partly styled by `src/components/site.css`, but is not yet fully aligned with the newer Tailwind/`bt-*` layer. |
+| Several `bt-*` classes appear in Twig but not in CSS source. | Recipe templates, 404, image route | Some styles may depend on legacy compiled CSS, vendor CSS, or may no longer be styled. This list should be rechecked after the Tailwind 4 migration. |
 | Contact page uses bespoke form layout. | `contact.twig` | Needs a documented form component or explicit exception. |
 | Gallery and featured-image matrix blocks have duplicate v1/v2 templates. | `_matrix/gallery*.twig`, `_matrix/featuredImage*.twig` | Needs a deprecation decision. |

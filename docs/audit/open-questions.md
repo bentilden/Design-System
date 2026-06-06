@@ -20,7 +20,7 @@ This page captures decisions that should be resolved before observed patterns be
 ## Current Questions
 
 - Which patterns should remain intentionally personal/editorial, and which should become reusable system components?
-- Should older Foundation-era recipe classes be modernized into Tailwind-backed `bt-*` utilities?
+- Should older Foundation-era recipe layout and modal classes be modernized into Tailwind-backed `bt-*` utilities?
 - Should licensed Helvetica Now webfonts be included in the design system site, or should the docs continue using system fallbacks?
 - How should dev, staging, and prod examples be labeled when content differs but templates match?
 - What is the desired accessibility bar for lightbox galleries and mobile navigation?

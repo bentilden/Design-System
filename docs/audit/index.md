@@ -33,7 +33,7 @@ The first deep audit pass reviewed:
 | --- | --- |
 | Templates | 47 Twig templates under `bentilden.com/templates`. |
 | Craft project config | 93 files under `bentilden.com/config/project`. |
-| CSS source | Tailwind entrypoint, type, grid, button, and article icon CSS. |
+| CSS source | Tailwind 4 entrypoint, type, grid, button, article icon, and site component CSS. |
 | Rendered pages | 25 page/viewport checks across dev and prod. |
 | Viewports | Desktop `1440x1200`, mobile `390x1200`. |
 
@@ -41,7 +41,7 @@ The first deep audit pass reviewed:
 
 1. The strongest reusable system is the article stream: repeated `bt-article` blocks stacked on Slate gradient bands.
 2. Photography and gallery presentation dominate the rendered surface area.
-3. The current CSS source is very small; many visible behaviors are composed directly in Twig with Tailwind utilities.
+3. The current CSS source is still small, but `src/components/site.css` now captures important article, recipe, and site component styles.
 4. Recipe pages still use older Foundation-era classes such as `grid-x`, `cell`, `medium-*`, `reveal`, `show-for-print`, and `hide-for-print`.
 5. Rendered pages did not show horizontal overflow in the audited desktop or mobile viewports.
 6. Image alt text is the largest visible accessibility gap in the sample.

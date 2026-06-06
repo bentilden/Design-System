@@ -8,10 +8,11 @@ audience:
   - development
 source:
   - bentilden.com/templates/contact.twig
-  - bentilden.com-css/tailwind.config.js
+  - bentilden.com-css/src/bentilden.css
 classes:
   - rounded-md
   - border-slate-300
+  - shadow-xs
   - focus:border-slate-500
   - focus:ring-slate-500
 dependencies:
@@ -34,10 +35,10 @@ The contact page currently provides the main form pattern.
 Contact fields use explicit labels, Slate borders, subtle shadows, and Slate focus rings:
 
 ```html
-class="block w-full max-w-lg rounded-md border-slate-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:text-sm"
+class="block w-full max-w-lg rounded-md border-slate-300 shadow-xs focus:border-slate-500 focus:ring-slate-500 sm:text-sm"
 ```
 
-The submit button is a local Tailwind composition, not the shared `bt-button` class.
+The submit button is a local Tailwind composition, not the shared `bt-button` class. It uses the same Slate color family, `shadow-xs`, and `focus:outline-hidden` focus-ring pattern as the shared button.
 
 ## Layout
 

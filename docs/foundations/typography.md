@@ -8,7 +8,7 @@ audience:
   - development
   - content
 source:
-  - bentilden.com-css/tailwind.config.js
+  - bentilden.com-css/src/bentilden.css
   - bentilden.com-css/src/elements/type.css
   - bentilden.com/templates/_components/entry-header.twig
 classes:

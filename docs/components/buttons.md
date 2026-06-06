@@ -32,7 +32,7 @@ Buttons are compact, quiet, and utility-driven.
 
 ```css
 .bt-button {
-  @apply inline-flex items-center rounded-lg border border-transparent bg-slate-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
+  @apply inline-flex items-center rounded-lg border border-transparent bg-slate-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-slate-700 focus:outline-hidden focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
 }
 ```
 
@@ -48,9 +48,9 @@ Use primary buttons for explicit content actions in matrix blocks. Avoid using t
 
 | State | Treatment |
 | --- | --- |
-| Default | `bg-slate-600`, white text, subtle shadow |
+| Default | `bg-slate-600`, white text, `shadow-xs` |
 | Hover | `bg-slate-700` |
-| Focus | Slate focus ring with offset |
+| Focus | `focus:outline-hidden`, Slate focus ring with offset |
 
 ## Guidance
 

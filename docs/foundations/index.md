@@ -7,7 +7,7 @@ audience:
   - design
   - development
 source:
-  - bentilden.com-css/tailwind.config.js
+  - bentilden.com-css/src/bentilden.css
   - bentilden.com-css/src/elements/type.css
   - bentilden.com-css/src/elements/grid.css
 owner: Ben Tilden
@@ -27,5 +27,6 @@ The current site is not a large tokenized product interface. It is closer to an 
 - Helvetica Now families for text, display, and microcopy.
 - A responsive 4/8/12 column grid with fixed maximum widths.
 - Generous vertical rhythm around article content.
+- Tailwind 4 CSS-first theme tokens declared in `src/bentilden.css`.
 
 Use these pages as the baseline before creating new components.

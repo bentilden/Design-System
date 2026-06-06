@@ -59,6 +59,8 @@ Recipe detail pages include:
 - notes,
 - print link.
 
+Ingredient quantities are formatted in the template before rendering. Whole numbers remain whole numbers; quarter-step values render as `1/4`, `1/2`, or `3/4`; and units are shown in the quantity column before the ingredient name.
+
 ## Legacy Layer
 
 Recipe templates use Foundation-era classes and behaviors:
