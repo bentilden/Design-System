@@ -1,0 +1,30 @@
+#!/bin/zsh
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT_DIR"
+
+HOST="${DESIGN_SYSTEM_HOST:-127.0.0.1}"
+PORT="${DESIGN_SYSTEM_PORT:-8002}"
+URL="http://${HOST}:${PORT}/"
+PYTHON_BIN="${PYTHON:-python3}"
+
+if curl -fsS --max-time 2 "$URL" >/dev/null 2>&1; then
+  open "$URL" >/dev/null 2>&1 || true
+  echo "Design System is already running at $URL"
+  exit 0
+fi
+
+if [[ ! -x ".venv/bin/mkdocs" ]]; then
+  echo "Preparing local Python environment..."
+  "$PYTHON_BIN" -m venv .venv
+  ".venv/bin/python" -m pip install --upgrade pip
+  ".venv/bin/pip" install -r requirements.txt
+fi
+
+echo "Opening $URL"
+open "$URL" >/dev/null 2>&1 || true
+
+echo "Serving Design System at $URL"
+echo "Press Control-C to stop."
+exec ".venv/bin/mkdocs" serve -a "${HOST}:${PORT}"
