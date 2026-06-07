@@ -1,39 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {{ super() }}
   {% if page and page.meta %}
     {% set status = page.meta.status %}
     {% set page_type = page.meta.type %}
     {% set review_status = page.meta.review_status %}
     {% set source_of_truth = page.meta.source_of_truth %}
     {% if status or page_type or review_status or source_of_truth %}
-      <dl class="bt-doc-meta" aria-label="Page metadata">
-        {% if page_type %}
-          <div class="bt-doc-meta__item">
-            <dt>Type</dt>
-            <dd>{{ page_type | replace("_", " ") }}</dd>
-          </div>
-        {% endif %}
-        {% if status %}
-          <div class="bt-doc-meta__item bt-doc-meta__item--status-{{ status | replace(' ', '-') }}">
-            <dt>Status</dt>
-            <dd>{{ status | replace("_", " ") }}</dd>
-          </div>
-        {% endif %}
-        {% if review_status %}
-          <div class="bt-doc-meta__item">
-            <dt>Review</dt>
-            <dd>{{ review_status | replace("_", " ") }}</dd>
-          </div>
-        {% endif %}
-        {% if source_of_truth %}
-          <div class="bt-doc-meta__item">
-            <dt>Source</dt>
-            <dd>{{ source_of_truth }}</dd>
-          </div>
-        {% endif %}
-      </dl>
+      <aside class="bt-doc-status" aria-label="Document status">
+        <p class="bt-doc-status__title">Document status</p>
+        <dl class="bt-doc-meta">
+          {% if page_type %}
+            <div class="bt-doc-meta__item">
+              <dt>Type</dt>
+              <dd>{{ page_type | replace("_", " ") }}</dd>
+            </div>
+          {% endif %}
+          {% if status %}
+            <div class="bt-doc-meta__item bt-doc-meta__item--status-{{ status | replace(' ', '-') }}">
+              <dt>Status</dt>
+              <dd>{{ status | replace("_", " ") }}</dd>
+            </div>
+          {% endif %}
+          {% if review_status %}
+            <div class="bt-doc-meta__item">
+              <dt>Review</dt>
+              <dd>{{ review_status | replace("_", " ") }}</dd>
+            </div>
+          {% endif %}
+          {% if source_of_truth %}
+            <div class="bt-doc-meta__item">
+              <dt>Source</dt>
+              <dd>{{ source_of_truth }}</dd>
+            </div>
+          {% endif %}
+        </dl>
+      </aside>
     {% endif %}
   {% endif %}
-  {{ super() }}
 {% endblock %}

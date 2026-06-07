@@ -35,7 +35,7 @@ The site uses Helvetica Now families for text, display, and microcopy.
 | Role | Tailwind token | Font family |
 | --- | --- | --- |
 | Body | `font-sans` | `HelveticaNow`, then Helvetica and system sans fallbacks |
-| Display | `font-display` | `HelveticaNowDisplayBlack` |
+| Display | `font-display` | `HelveticaNowDisplayExtraBlack` |
 | Metadata | `font-micro` | `HelveticaNowMicro` |
 | Code | n/a | System monospace stack |
 
