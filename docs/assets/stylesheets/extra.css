@@ -102,27 +102,134 @@ body {
   color: var(--bt-slate-900);
 }
 
+html,
+.md-sidebar__scrollwrap,
+.md-typeset pre > code,
+.md-search__scrollwrap {
+  scrollbar-color: var(--bt-slate-300) transparent;
+  scrollbar-width: thin;
+}
+
+.md-sidebar__scrollwrap:hover,
+.md-typeset pre > code:hover,
+.md-search__scrollwrap:hover {
+  scrollbar-color: var(--bt-slate-400) transparent;
+}
+
+html::-webkit-scrollbar,
+.md-sidebar__scrollwrap::-webkit-scrollbar,
+.md-typeset pre > code::-webkit-scrollbar,
+.md-search__scrollwrap::-webkit-scrollbar {
+  height: 0.45rem;
+  width: 0.45rem;
+}
+
+html::-webkit-scrollbar-track,
+.md-sidebar__scrollwrap::-webkit-scrollbar-track,
+.md-typeset pre > code::-webkit-scrollbar-track,
+.md-search__scrollwrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb,
+.md-typeset pre > code::-webkit-scrollbar-thumb,
+.md-search__scrollwrap::-webkit-scrollbar-thumb {
+  background: var(--bt-slate-300);
+  border: 0;
+  border-radius: 0;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover,
+.md-typeset pre > code::-webkit-scrollbar-thumb:hover,
+.md-search__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background: var(--bt-slate-400);
+}
+
+.md-header__button[for="__search"] {
+  border: 1px solid var(--bt-slate-500);
+  color: var(--bt-slate-900);
+  height: 1.9rem;
+  margin-left: 0.35rem;
+  padding: 0.35rem;
+  width: 1.9rem;
+}
+
+.md-header__button[for="__search"]:is(:focus, :hover) {
+  background: var(--bt-slate-50);
+  border-color: var(--bt-slate-900);
+  color: var(--bt-slate-900);
+}
+
 .md-search__form {
   background: var(--bt-white);
-  border: 1px solid var(--bt-line);
+  border: 1px solid var(--bt-slate-500);
   border-radius: 0;
   box-shadow: none;
 }
 
+.md-search__form:is(:focus-within, :hover) {
+  background: var(--bt-white);
+  border-color: var(--bt-slate-900);
+  box-shadow: none;
+}
+
 .md-search__input {
+  color: var(--bt-slate-900);
   font-size: 0.8rem;
+}
+
+.md-search__input::placeholder {
+  color: var(--bt-slate-600);
+  opacity: 1;
+}
+
+.md-search__icon {
+  color: var(--bt-slate-700) !important;
+}
+
+.md-search__output {
+  border: 1px solid var(--bt-slate-900);
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: 0.35rem;
+}
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background: var(--bt-white);
+  border-color: var(--bt-slate-900);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__output {
+  box-shadow: none;
+}
+
+@media screen and (min-width: 60em) {
+  html:not(.no-js) .md-search {
+    display: block;
+    margin-right: 0.25rem;
+  }
+
+  .md-search__form {
+    height: 1.9rem;
+    width: 11.5rem;
+  }
+
+  .md-search__input {
+    height: 1.9rem;
+    padding-left: 1.8rem;
+  }
 }
 
 .md-main__inner {
   max-width: var(--bt-grid-max);
 }
 
-.md-content {
-  border-inline: 1px solid var(--bt-line);
-}
-
 .md-content__inner {
-  padding: 3rem 2rem 4rem;
+  padding: 1rem 2rem 4rem;
 }
 
 .md-content__inner::before {
@@ -277,12 +384,35 @@ body {
 }
 
 .md-sidebar__scrollwrap {
+  -webkit-mask-image: none !important;
   border-radius: 0;
+  mask-image: none !important;
 }
 
-.md-sidebar--secondary .md-sidebar__scrollwrap {
-  -webkit-mask-image: none;
-  mask-image: none;
+.md-sidebar,
+.md-sidebar__inner,
+.md-sidebar__scrollwrap,
+.md-sidebar .md-nav {
+  background: var(--bt-white) !important;
+  box-shadow: none !important;
+}
+
+.md-sidebar::before,
+.md-sidebar::after,
+.md-sidebar__inner::before,
+.md-sidebar__inner::after,
+.md-sidebar__scrollwrap::before,
+.md-sidebar__scrollwrap::after,
+.md-sidebar .md-nav::before,
+.md-sidebar .md-nav::after,
+.md-sidebar .md-nav__title::before,
+.md-sidebar .md-nav__title::after {
+  background: none !important;
+  box-shadow: none !important;
+  content: none !important;
+  display: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
 }
 
 .md-nav__title,
@@ -292,21 +422,60 @@ body {
 }
 
 .md-nav__title {
-  border-bottom: 1px solid var(--bt-line);
+  background: var(--bt-white) !important;
+  border-bottom: 0;
+  box-shadow: none !important;
   color: var(--bt-slate-900);
   font-weight: 800;
+  margin-bottom: 0.35rem;
+  position: static !important;
+  top: auto !important;
 }
 
 .md-nav__link {
+  line-height: 1.18;
   margin-top: 0;
+  min-height: 0;
+  padding-block: 0.08rem;
 }
 
 .md-nav__item {
-  border-bottom: 1px solid rgb(215 222 232 / 0.65);
+  border-bottom: 0;
 }
 
-.md-nav__item .md-nav__item {
-  border-bottom: 0;
+.md-nav--primary > .md-nav__list > .md-nav__item {
+  margin-top: 1rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:first-child {
+  margin-top: 0;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:first-child > .md-nav__link {
+  margin-top: 0.2rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item + .md-nav__item {
+  border-top: 1px solid rgb(215 222 232 / 0.8);
+  padding-top: 0.7rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__container > .md-nav__link {
+  color: var(--bt-slate-900);
+  font-weight: 800;
+  padding-block: 0.05rem 0.2rem;
+}
+
+.md-nav--primary .md-nav .md-nav__link {
+  color: var(--bt-slate-700);
+  font-weight: 500;
+  padding-block: 0.06rem;
+}
+
+.md-sidebar--primary .md-nav__link:is(:focus, :hover) {
+  color: var(--bt-slate-900);
+  font-weight: 800;
 }
 
 .md-nav__link--active,
@@ -317,11 +486,15 @@ body {
 
 .md-nav__link--active {
   border-left: 2px solid var(--bt-line-strong);
-  padding-left: 0.45rem;
+  padding-left: 0.4rem;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link--active {
+  margin-left: 0;
 }
 
 .md-sidebar--secondary .md-nav__title {
-  border-bottom-color: var(--bt-line-strong);
+  border-bottom: 0;
 }
 
 .md-sidebar--secondary .md-nav__link {
@@ -506,16 +679,6 @@ body {
   letter-spacing: 0;
   margin-top: 0.4rem;
   text-transform: none;
-}
-
-@media screen and (min-width: 76.25em) {
-  .md-sidebar--primary {
-    border-right: 1px solid var(--bt-line);
-  }
-
-  .md-sidebar--secondary {
-    border-left: 1px solid var(--bt-line);
-  }
 }
 
 @media screen and (max-width: 76.1875em) {

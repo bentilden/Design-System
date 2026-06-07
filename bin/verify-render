@@ -1,0 +1,141 @@
+#!/usr/bin/env node
+
+const { spawnSync } = require("node:child_process");
+const fs = require("node:fs");
+const path = require("node:path");
+
+const root = path.resolve(__dirname, "..");
+const args = new Set(process.argv.slice(2));
+const buildFirst = !args.has("--no-build");
+const screenshotDir = process.env.RENDER_SCREENSHOT_DIR || "/private/tmp/interface-field-guide-render";
+
+const pages = [
+  { name: "home-desktop", file: "index.html", viewport: { width: 1440, height: 1100 } },
+  { name: "typography-desktop", file: "foundations/typography/index.html", viewport: { width: 1440, height: 900 } },
+  { name: "article-desktop", file: "components/article-content/index.html", viewport: { width: 1440, height: 1100 } },
+  { name: "home-mobile", file: "index.html", viewport: { width: 390, height: 1000 } },
+];
+
+function run(command, commandArgs) {
+  const result = spawnSync(command, commandArgs, {
+    cwd: root,
+    encoding: "utf8",
+    stdio: "inherit",
+  });
+
+  if (result.status !== 0) {
+    process.exit(result.status || 1);
+  }
+}
+
+function assert(condition, message, failures) {
+  if (!condition) {
+    failures.push(message);
+  }
+}
+
+async function main() {
+  if (buildFirst) {
+    run(".venv/bin/mkdocs", ["build", "--strict"]);
+  }
+
+  fs.mkdirSync(screenshotDir, { recursive: true });
+
+  const { chromium } = require("@playwright/test");
+  const browser = await chromium.launch({ headless: true });
+  const results = [];
+  const failures = [];
+
+  for (const item of pages) {
+    const page = await browser.newPage({ viewport: item.viewport });
+    await page.goto(`file://${path.resolve(root, "site", item.file)}`, { waitUntil: "networkidle" });
+
+    const screenshotPath = path.join(screenshotDir, `${item.name}.png`);
+    await page.screenshot({ path: screenshotPath, fullPage: true });
+
+    const metrics = await page.evaluate(() => {
+      function visible(selector) {
+        const el = document.querySelector(selector);
+        return !!el && getComputedStyle(el).display !== "none" && getComputedStyle(el).visibility !== "hidden";
+      }
+
+      function sidebarStyles(selector) {
+        const el = document.querySelector(selector);
+        if (!el) return null;
+        const styles = getComputedStyle(el);
+        return {
+          backgroundImage: styles.backgroundImage,
+          boxShadow: styles.boxShadow,
+          maskImage: styles.maskImage,
+          position: styles.position,
+          webkitMaskImage: styles.webkitMaskImage,
+        };
+      }
+
+      const articleChildren = Array.from(document.querySelectorAll("article > *"));
+      const h1 = document.querySelector("h1");
+      const status = document.querySelector(".bt-doc-status");
+
+      return {
+        title: document.title,
+        h1: h1?.textContent?.trim(),
+        overflowX: document.documentElement.scrollWidth > document.documentElement.clientWidth,
+        hasVisibleLogo: visible(".md-logo"),
+        visibleStatuses: Array.from(document.querySelectorAll(".md-status")).filter(el => getComputedStyle(el).display !== "none").length,
+        hasTabs: !!document.querySelector(".md-tabs"),
+        footerVisible: visible(".md-footer"),
+        metadataBeforeH1: !!status && !!h1 && articleChildren.indexOf(status) < articleChildren.indexOf(h1),
+        primaryTitle: sidebarStyles(".md-sidebar--primary .md-nav__title"),
+        secondaryTitle: sidebarStyles(".md-sidebar--secondary .md-nav__title"),
+        primaryScroll: sidebarStyles(".md-sidebar--primary .md-sidebar__scrollwrap"),
+        secondaryScroll: sidebarStyles(".md-sidebar--secondary .md-sidebar__scrollwrap"),
+      };
+    });
+
+    assert(!metrics.overflowX, `${item.name}: horizontal overflow`, failures);
+    assert(!metrics.hasVisibleLogo, `${item.name}: visible Material logo`, failures);
+    assert(metrics.visibleStatuses === 0, `${item.name}: visible Material status icons`, failures);
+    assert(!metrics.hasTabs, `${item.name}: duplicate top tabs are visible`, failures);
+    assert(!metrics.footerVisible, `${item.name}: default Material footer is visible`, failures);
+    assert(!metrics.metadataBeforeH1, `${item.name}: document metadata appears before H1`, failures);
+
+    if (item.viewport.width >= 1200) {
+      for (const [label, styles] of Object.entries({
+        primaryTitle: metrics.primaryTitle,
+        secondaryTitle: metrics.secondaryTitle,
+        primaryScroll: metrics.primaryScroll,
+        secondaryScroll: metrics.secondaryScroll,
+      })) {
+        assert(styles, `${item.name}: missing ${label}`, failures);
+        if (styles) {
+          assert(styles.backgroundImage === "none", `${item.name}: ${label} has background image ${styles.backgroundImage}`, failures);
+          assert(styles.boxShadow === "none", `${item.name}: ${label} has box shadow ${styles.boxShadow}`, failures);
+          assert(styles.maskImage === "none", `${item.name}: ${label} has mask ${styles.maskImage}`, failures);
+          assert(styles.webkitMaskImage === "none", `${item.name}: ${label} has webkit mask ${styles.webkitMaskImage}`, failures);
+        }
+      }
+    }
+
+    results.push({ name: item.name, screenshotPath, metrics });
+    await page.close();
+  }
+
+  await browser.close();
+
+  console.log(JSON.stringify(results, null, 2));
+
+  if (failures.length) {
+    console.error("\nRender verification failed:");
+    for (const failure of failures) {
+      console.error(`- ${failure}`);
+    }
+    process.exit(1);
+  }
+
+  console.log(`\nRender verification passed. Screenshots: ${screenshotDir}`);
+}
+
+main().catch(error => {
+  console.error(error);
+  process.exit(1);
+});
