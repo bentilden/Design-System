@@ -40,7 +40,7 @@ The site uses Helvetica Now families for text, display, and microcopy.
 | Code | n/a | System monospace stack |
 
 !!! note "Webfont licensing"
-    The current website serves licensed Helvetica Now webfont files from `https://cdn.bentilden.com/fonts/helvetica-now/`. This documentation records the intended type roles. The Interface Field Guide asks for Helvetica Now in its CSS stack only when the font is locally available; it does not currently ship the licensed webfont files.
+    The current website and the Interface Field Guide serve licensed Helvetica Now webfont files from `https://cdn.bentilden.com/fonts/helvetica-now/`. The documentation uses Text for prose, Display for headings, and Micro for navigation, metadata, and interface labels.
 
 ## Type Roles
 

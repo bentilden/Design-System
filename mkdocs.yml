@@ -10,9 +10,7 @@ theme:
     - scheme: default
       primary: slate
       accent: orange
-  font:
-    text: system-ui
-    code: ui-monospace
+  font: false
   features:
     - content.code.copy
     - navigation.indexes

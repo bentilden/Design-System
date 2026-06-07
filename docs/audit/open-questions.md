@@ -20,7 +20,6 @@ This page captures decisions that should be resolved before observed patterns be
 ## Current Questions
 
 - Which patterns should remain intentionally personal/editorial, and which should become reusable system components?
-- Should licensed Helvetica Now webfonts be included in the Interface Field Guide, or should the docs continue using local/system fallbacks?
 - How should dev, staging, and prod examples be labeled when content differs but templates match?
 - What is the desired accessibility bar for lightbox galleries and mobile navigation?
 - Should the design system document v1 and v2 matrix blocks separately, or declare v1 blocks deprecated?

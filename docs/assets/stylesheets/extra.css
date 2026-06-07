@@ -1,3 +1,118 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3746750, 2019-04-12T21:16:17-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * This stylesheet uses the CDN-served Helvetica Now Text, Micro, and Display
+ * WOFF2 family files that are available to the site.
+ *
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3746750
+ * Licensed pageviews: 250,000
+ * Webfonts copyright: Copyright (c) 2019 Monotype Imaging Inc. All rights reserved.
+ *
+ * (c) 2019 MyFonts Inc
+*/
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowTextRegular/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowTextItalic/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowTextMedium/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowTextBold/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNow";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowTextExtraBold/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNowMicro";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowMicroRegular/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNowMicro";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowMicroMedium/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNowMicro";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowMicroBold/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNowMicro";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowMicroExtraBold/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNowDisplay";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowDisplayBold/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNowDisplay";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowDisplayExtraBold/font.woff2?v=20260607") format("woff2");
+}
+
+@font-face {
+  font-family: "HelveticaNowDisplay";
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+  src: url("https://cdn.bentilden.com/fonts/helvetica-now/HelveticaNowDisplayExtraBlack/font.woff2?v=20260607") format("woff2");
+}
+
 :root {
   --bt-white: #ffffff;
   --bt-slate-50: #f8fafc;
@@ -13,6 +128,10 @@
   --bt-orange-700: #c2410c;
   --bt-line: #d7dee8;
   --bt-line-strong: #0f172a;
+  --bt-font-sans: "HelveticaNow", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --bt-font-display: "HelveticaNowDisplay", "HelveticaNow", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --bt-font-micro: "HelveticaNowMicro", "HelveticaNow", "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --bt-font-code: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --bt-grid-max: 96rem;
   --bt-prose-max: 43rem;
 }
@@ -25,6 +144,8 @@
   --md-default-fg-color: var(--bt-slate-800);
   --md-default-fg-color--light: var(--bt-slate-600);
   --md-default-bg-color: var(--bt-white);
+  --md-text-font-family: var(--bt-font-sans);
+  --md-code-font-family: var(--bt-font-code);
   --md-typeset-a-color: var(--bt-slate-900);
   --md-code-bg-color: var(--bt-slate-100);
   --md-code-fg-color: var(--bt-slate-800);
@@ -33,9 +154,8 @@
 }
 
 body {
-  /* Uses Helvetica Now only when installed locally; this docs site does not ship licensed webfonts. */
   background: var(--bt-white);
-  font-family: "Helvetica Now", HelveticaNow, "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-family: var(--bt-font-sans);
 }
 
 .md-container {
@@ -74,6 +194,7 @@ body {
 
 .md-header__title,
 .md-header__topic:first-child {
+  font-family: var(--bt-font-micro);
   font-weight: 700;
 }
 
@@ -90,6 +211,7 @@ body {
 }
 
 .md-tabs__link {
+  font-family: var(--bt-font-micro);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -177,6 +299,7 @@ html::-webkit-scrollbar-thumb:hover,
 
 .md-search__input {
   color: var(--bt-slate-900);
+  font-family: var(--bt-font-micro);
   font-size: 0.8rem;
 }
 
@@ -246,6 +369,7 @@ html::-webkit-scrollbar-thumb:hover,
 .md-typeset h2,
 .md-typeset h3 {
   color: var(--bt-slate-900);
+  font-family: var(--bt-font-display);
   font-weight: 800;
   letter-spacing: 0;
 }
@@ -253,6 +377,7 @@ html::-webkit-scrollbar-thumb:hover,
 .md-typeset h1 {
   border-top: 2px solid var(--bt-line-strong);
   font-size: 2.4rem;
+  font-weight: 950;
   line-height: 1;
   margin: 0 0 1.2rem;
   max-width: 48rem;
@@ -357,6 +482,7 @@ html::-webkit-scrollbar-thumb:hover,
   background: transparent;
   border-bottom-color: var(--bt-line-strong);
   color: var(--bt-slate-900);
+  font-family: var(--bt-font-micro);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -366,6 +492,7 @@ html::-webkit-scrollbar-thumb:hover,
 .md-button,
 .md-typeset .md-button {
   border-radius: 0;
+  font-family: var(--bt-font-micro);
   font-weight: 700;
   padding: 0.7em 1.25em;
 }
@@ -418,7 +545,9 @@ html::-webkit-scrollbar-thumb:hover,
 .md-nav__title,
 .md-nav__link {
   color: var(--bt-slate-700);
+  font-family: var(--bt-font-sans);
   font-size: 0.72rem;
+  letter-spacing: 0;
 }
 
 .md-nav__title {
@@ -530,6 +659,7 @@ html::-webkit-scrollbar-thumb:hover,
 
 .bt-doc-status__title {
   color: var(--bt-slate-600);
+  font-family: var(--bt-font-micro);
   font-size: 0.68rem;
   font-weight: 800;
   line-height: 1.2;
@@ -539,6 +669,7 @@ html::-webkit-scrollbar-thumb:hover,
 .bt-doc-meta {
   align-items: baseline;
   display: flex;
+  font-family: var(--bt-font-micro);
   flex-wrap: wrap;
   gap: 0.2rem 0;
   margin: 0;
@@ -646,6 +777,7 @@ html::-webkit-scrollbar-thumb:hover,
   border-right: 1px solid var(--bt-line);
   color: var(--bt-slate-600);
   display: block;
+  font-family: var(--bt-font-micro);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0;
