@@ -14,7 +14,7 @@ source:
   - bentilden.com/templates/_matrix/gallery2.twig
   - bentilden.com/templates/image.twig
   - bentilden.com/scripts/content-qa.php
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs cleanup

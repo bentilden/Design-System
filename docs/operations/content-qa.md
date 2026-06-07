@@ -11,7 +11,7 @@ source:
   - bentilden.com/scripts/content-qa.php
   - bentilden.com/docs/craft-authoring-standards.md
   - bentilden.com/docs/assets.md
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: active

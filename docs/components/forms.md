@@ -22,7 +22,7 @@ dependencies:
 accessibility:
   reviewed: false
   notes: Current source includes labels, field errors, aria-invalid, aria-describedby, and form-level alert; rendered states still need testing.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

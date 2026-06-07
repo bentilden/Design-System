@@ -21,7 +21,7 @@ classes:
 accessibility:
   reviewed: false
   notes: Pagination is labelled; heading hierarchy and repeated article navigation need review.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

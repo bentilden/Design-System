@@ -1,5 +1,5 @@
-site_name: Ben Tilden Design System
-site_description: Design system documentation for bentilden.com.
+site_name: Interface Field Guide
+site_description: A working reference for site patterns, components, content models, and front-end conventions.
 site_url: https://bentilden.github.io/Design-System/
 
 theme:
@@ -17,10 +17,12 @@ theme:
     - content.code.copy
     - navigation.indexes
     - navigation.sections
-    - navigation.tabs
     - search.highlight
     - search.suggest
     - toc.follow
+
+extra:
+  generator: false
 
 extra_css:
   - assets/stylesheets/extra.css

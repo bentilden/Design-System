@@ -20,7 +20,7 @@ classes:
 accessibility:
   reviewed: false
   notes: Heading hierarchy and small metadata contrast need full audit.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit
@@ -40,7 +40,7 @@ The site uses Helvetica Now families for text, display, and microcopy.
 | Code | n/a | System monospace stack |
 
 !!! note "Webfont licensing"
-    The current site includes licensed MyFonts webfont files. This documentation records the intended type roles, but the docs site itself should not copy those font files unless the license allows that use.
+    The current website includes licensed MyFonts webfont files. This documentation records the intended type roles. The Interface Field Guide asks for Helvetica Now in its CSS stack only when the font is locally available; it does not currently ship the licensed webfont files.
 
 ## Type Roles
 

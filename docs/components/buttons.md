@@ -14,7 +14,7 @@ classes:
 accessibility:
   reviewed: false
   notes: Focus styles exist in source; labels and link semantics need content audit.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

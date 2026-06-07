@@ -32,7 +32,7 @@ dependencies:
 accessibility:
   reviewed: false
   notes: Text, heading, button, image, gallery, and raw HTML blocks need block-by-block rendered audit.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

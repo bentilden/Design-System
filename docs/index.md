@@ -1,5 +1,5 @@
 ---
-title: Ben Tilden Design System
+title: Home
 type: index
 status: draft
 source_of_truth: documentation
@@ -7,15 +7,17 @@ audience:
   - design
   - development
   - content
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit
 ---
 
-# Ben Tilden Design System
+# Interface Field Guide
 
-This design system documents the visual language, reusable patterns, and front-end conventions emerging from `bentilden.com`.
+A working reference for site patterns, components, content models, and front-end conventions.
+
+This field guide documents the visual language, reusable patterns, and front-end conventions emerging from `bentilden.com`.
 
 The current website is a Craft CMS site rendered with Twig templates and styled with Tailwind CSS. The design language is editorial, image-forward, and restrained: large expressive titles, compact uppercase metadata, Slate neutrals, quiet interaction states, and flexible image presentation for photography, cooking, design, and blog content.
 

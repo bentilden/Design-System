@@ -20,7 +20,7 @@ dependencies:
 accessibility:
   reviewed: false
   notes: Native alt coverage, lightbox keyboard behavior, and caption association need rendered audit.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

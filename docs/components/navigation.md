@@ -17,7 +17,7 @@ dependencies:
 accessibility:
   reviewed: false
   notes: Mobile controls are labeled in source; focus return, hidden-state exposure, and keyboard behavior need rendered audit.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

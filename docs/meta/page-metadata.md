@@ -7,7 +7,7 @@ audience:
   - design
   - development
   - governance
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: active
@@ -26,7 +26,7 @@ Every design system page should begin with YAML front matter.
 | `status` | Maturity of the documented item. | `observed` |
 | `source_of_truth` | Where the claim comes from. | `observed production code` |
 | `audience` | Primary users of the page. | `design`, `development` |
-| `owner` | Person accountable for review. | `Ben Tilden` |
+| `owner` | Person or role accountable for review. | `Documentation owner` |
 | `created` | Date first documented. | `2026-06-06` |
 | `last_reviewed` | Date last checked. | `2026-06-06` |
 | `review_status` | Current review state. | `needs audit` |

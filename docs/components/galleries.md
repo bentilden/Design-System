@@ -25,7 +25,7 @@ dependencies:
 accessibility:
   reviewed: false
   notes: Alt fallbacks are present in source; lightbox keyboard behavior and caption association need review.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

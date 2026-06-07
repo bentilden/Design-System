@@ -22,7 +22,7 @@ classes:
 accessibility:
   reviewed: false
   notes: Heading hierarchy, icon semantics, mobile hidden content, and rendered image alt behavior need audit.
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit

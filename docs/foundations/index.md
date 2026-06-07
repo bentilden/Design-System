@@ -10,7 +10,7 @@ source:
   - bentilden.com-css/src/bentilden.css
   - bentilden.com-css/src/elements/type.css
   - bentilden.com-css/src/elements/grid.css
-owner: Ben Tilden
+owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
 review_status: needs audit
