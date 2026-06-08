@@ -63,10 +63,11 @@ Inline galleries and single-image galleries remove the grid column class:
 
 ## Behavior
 
-- Images render native `srcset`, `sizes`, `width`, `height`, `loading`, and `decoding` attributes through the shared responsive-image component.
+- Images render native `srcset`, `sizes`, `width`, `height`, `loading`, `decoding`, and priority attributes through the shared responsive-image component.
 - Images open through lightGallery zoom behavior loaded from the site JavaScript bundle.
-- Multi-image galleries use optimized thumbnails and `sizes="20vw"`.
+- Multi-image galleries use optimized thumbnails and `sizes="(min-width: 1024px) 28vw, 50vw"`.
 - Inline or single-image galleries use larger optimized images and `sizes="90vw"`.
+- The first image in the first priority-eligible gallery block may render eager with `fetchpriority="high"`; later gallery images remain lazy.
 - Caption and details render under featured/inline media when provided.
 - Lightbox captions come from asset caption/details through `data-sub-html`; alt text is not used as the visible caption fallback.
 

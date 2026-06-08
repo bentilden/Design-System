@@ -99,6 +99,18 @@ The Photos volume carries two ImageOptimize fields:
 
 Keep these fields attached to Photos while the current templates rely on them.
 
+Render frontend images through the shared `templates/_components/responsive-image.twig` component when possible.
+
+The component owns the common delivery contract:
+
+- `width` and `height` are always emitted when Craft or ImageOptimize can provide dimensions.
+- Named Craft transform fallbacks use transform dimensions, not original asset dimensions, so cropped fallbacks do not create layout shift.
+- Images are lazy-loaded by default with `decoding="async"`.
+- Templates can pass `priority: true` for the likely LCP image; this switches the image to eager loading and emits `fetchpriority="high"`.
+- Listing pages should prioritize only the first entry image that is intentionally treated as above-the-fold content. Later stream images should remain lazy.
+
+Do not hand-roll `loading`, `fetchpriority`, `width`, or `height` behavior in feature templates unless the shared component cannot represent the needed behavior.
+
 ## Standalone Image Route
 
 The route `post/<slug>/<asset-id>` renders a single image with image-aware SEO metadata. It currently limits lookups to image assets in the Photos volume.

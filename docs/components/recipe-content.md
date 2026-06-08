@@ -72,7 +72,7 @@ Recipe detail pages include:
 - notes,
 - print action.
 
-Recipe images use the shared responsive-image component and native lazy loading. Captions/details remain visible editorial metadata beneath the image.
+Recipe images use the shared responsive-image component. The main recipe image may use the shared `priority` path for likely LCP delivery; optional step images should stay lazy. Captions/details remain visible editorial metadata beneath the image.
 
 ## Information Bar
 
