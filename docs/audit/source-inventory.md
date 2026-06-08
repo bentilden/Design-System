@@ -36,7 +36,7 @@ The source audit found a small Tailwind source layer sitting above a larger Twig
 
 | Pattern | Source | Notes |
 | --- | --- | --- |
-| Global layout | `_layout.twig` | Loads SEO, CSS, lightGallery, lazysizes, Alpine, global header, main offset, and footer. |
+| Global layout | `_layout.twig` | Loads SEO, compiled CSS, bundled JavaScript, global header, main offset, and footer. |
 | Entry resolver | `_entry-content.twig` | Chooses `_entry-content/{entry.type}/{section}`, then `_entry-content/{entry.type}/default`, then `_entry-content/default`. |
 | Matrix resolver | `_matrix.twig` | Chooses `_matrix/{block.type}`, then `_matrix/default`. |
 | Stream pages | `index.twig`, `category.twig` | Paginated entry loops using `_entry-content`. |
@@ -77,7 +77,6 @@ These hooks should be considered part of the current documentation backlog:
 
 | Finding | Source | Impact |
 | --- | --- | --- |
-| Gallery template has reported malformed markup: `class="text-center""`. | `_entry-content/gallery/default.twig` | Browser likely recovers, but this should be fixed before treating gallery layout as approved. |
 | Gallery and featured-image matrix blocks have duplicate v1/v2 templates. | `_matrix/gallery*.twig`, `_matrix/featuredImage*.twig` | Needs a deprecation decision. |
 | Contact page uses bespoke form layout. | `contact.twig` | Needs a documented form component or explicit exception. |
 | Native asset alt text is missing across much of the library. | Photos and Site Images volumes | Templates can fall back, but content quality still depends on authored alt text. |

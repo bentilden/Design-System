@@ -16,7 +16,7 @@ source:
   - bentilden.com/scripts/content-qa.php
 owner: Documentation owner
 created: 2026-06-06
-last_reviewed: 2026-06-06
+last_reviewed: 2026-06-08
 review_status: needs audit
 ---
 
@@ -30,6 +30,7 @@ Accessibility is a component contract, not a separate polish pass. These are the
 - Templates should render native alt text first, then a safe title or file-name fallback.
 - Decorative SVGs inside labeled links or buttons should use `aria-hidden="true"`.
 - Visible captions and details do not replace alt text.
+- AI-generated alt text should be treated as editable draft content, not as a reason to skip author review.
 
 ## Navigation And Dialogs
 
@@ -55,7 +56,8 @@ Accessibility is a component contract, not a separate polish pass. These are the
 ## Media And Lightboxes
 
 - Gallery thumbnails need useful alt text.
-- Lightbox keyboard behavior, focus movement, and caption exposure need rendered verification.
+- Lightbox visible captions should come from caption/details, not alt text.
+- Lightbox keyboard behavior and focus movement still need rendered verification.
 - Image links that open larger media should not hide the existence of the destination from assistive technology.
 
 ## Print

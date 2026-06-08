@@ -16,7 +16,7 @@ source:
   - bentilden.com/scripts/content-qa.php
 owner: Documentation owner
 created: 2026-06-06
-last_reviewed: 2026-06-06
+last_reviewed: 2026-06-08
 review_status: needs cleanup
 ---
 
@@ -72,6 +72,8 @@ Entry-related media should upload into folders named from the owning entry URI.
 
 Use `{owner.uri}` for nested entries and `{uri}` for fields owned directly by the post.
 
+When one image is related to multiple entries, duplicate the source into each owning entry folder. The current operational preference is clear ownership over de-duplicated shared folders.
+
 ## Image Metadata
 
 Public images should have useful native Craft alt text. Templates now use fallback logic, but the fallback is a rendering safety net:
@@ -81,6 +83,10 @@ Public images should have useful native Craft alt text. Templates now use fallba
 3. File name
 
 Captions and details remain separate editorial metadata. Use them for visible context, location, credit, or descriptive details that benefit all readers.
+
+AI-generated alt text may be used as a starting point when the AI Alt Text plugin is configured, but the durable value is the native Craft alt field. Authors should still review and edit generated text.
+
+Lightbox-visible captions should use caption/details. Alt text should remain focused on accessibility and should not be treated as the visible caption source.
 
 ## Responsive Images
 
@@ -101,12 +107,9 @@ Remaining decision: whether the route should enforce that the requested asset is
 
 ## Current Cleanup Backlog
 
-The asset library works, but the current QA snapshot still shows cleanup needs:
+The asset library works, but content QA can still surface cleanup needs:
 
-- Many Photos assets are stored at the volume root.
 - Some Photos assets have no relation rows.
-- Several active assets sit in test folders.
 - Photos and Site Images are missing native alt text.
-- Soft-deleted test volumes still have folder records.
 
 Do not bulk-delete assets from the database. Review them in Craft first, then decide whether to relate, move, archive, or delete each asset and remote file.

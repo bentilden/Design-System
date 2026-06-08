@@ -28,13 +28,12 @@ classes:
 dependencies:
   - Tailwind typography plugin
   - lightGallery
-  - lazysizes
 accessibility:
   reviewed: false
-  notes: Text, heading, button, image, gallery, and raw HTML blocks need block-by-block rendered audit.
+  notes: Text, heading, button, image, gallery, and raw HTML blocks need block-by-block rendered audit; image blocks include native responsive markup and alt fallbacks.
 owner: Documentation owner
 created: 2026-06-06
-last_reviewed: 2026-06-06
+last_reviewed: 2026-06-08
 review_status: needs audit
 ---
 
@@ -89,6 +88,7 @@ Legacy `featuredImage.twig` and `gallery.twig` templates still exist. Treat the 
 - Heading blocks should not skip levels within the rendered article.
 - Image blocks should render native asset alt text first, then title or file-name fallback.
 - Gallery and featured-image blocks should keep caption/detail text visually adjacent to the image.
+- Lightbox captions should use asset caption/details, not alt text fallback.
 - Raw HTML blocks must be manually reviewed before a page can be treated as accessibility-clean.
 
 ## QA Notes

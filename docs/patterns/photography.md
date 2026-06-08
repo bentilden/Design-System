@@ -16,13 +16,12 @@ source:
   - bentilden.com/config/project/imageTransforms/largeImage--d5f7dfc1-b45f-4111-8871-6e4160757b4e.yaml
 dependencies:
   - lightGallery
-  - lazysizes
 accessibility:
   reviewed: false
-  notes: Native alt coverage, lightbox keyboard behavior, and caption association need rendered audit.
+  notes: Native alt coverage and lightbox keyboard behavior need rendered audit; lightbox captions now use asset caption/details rather than alt text.
 owner: Documentation owner
 created: 2026-06-06
-last_reviewed: 2026-06-06
+last_reviewed: 2026-06-08
 review_status: needs audit
 ---
 
@@ -45,16 +44,20 @@ Photography pages need to support both immersive single images and scannable gri
 
 ## Image Interaction
 
-Images use lazy loading, hover shadow, and lightGallery zoom.
+Images use native responsive-image markup, hover shadow, and lightGallery zoom.
 
 ```twig
 <img
-  class="lazyload bt-image-file transition hover:shadow-2xl shadow-slate-500/70 cursor-zoom-in border-2 border-transparent hover:border-white"
+  class="bt-image-file transition hover:shadow-2xl shadow-slate-500/70 cursor-zoom-in border-2 border-transparent hover:border-white"
   alt="{{ imageAlt }}"
+  loading="lazy"
+  decoding="async"
 />
 ```
 
 The current templates build `imageAlt` from native asset alt text, then title, then file name.
+
+Lightbox-visible text is separate: matrix image wrappers provide `data-sub-html` from asset caption/details when those fields exist.
 
 ## Inline Images
 
@@ -89,4 +92,5 @@ sizes="20vw"
 | `gallery2` and `featuredImage2` appear to be the current matrix block variants. | Observed |
 | Legacy `gallery` and `featuredImage` templates still exist. | Needs decision |
 | Templates now include alt fallbacks, but native asset alt coverage remains a content cleanup issue. | Needs content cleanup |
+| Lightbox captions now use caption/details instead of alt fallback text. | Implemented |
 | lightGallery is used for image zoom behavior; keyboard behavior needs manual confirmation. | Needs audit |

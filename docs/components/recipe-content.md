@@ -34,13 +34,12 @@ classes:
 dependencies:
   - Alpine.js
   - Alpine focus plugin
-  - lazysizes
 accessibility:
   reviewed: false
   notes: Current source includes dialog, trap, captions, and table captions; rendered keyboard/screen-reader behavior still needs audit.
 owner: Documentation owner
 created: 2026-06-06
-last_reviewed: 2026-06-06
+last_reviewed: 2026-06-08
 review_status: needs audit
 ---
 
@@ -72,6 +71,8 @@ Recipe detail pages include:
 - optional process images for steps,
 - notes,
 - print action.
+
+Recipe images use the shared responsive-image component and native lazy loading. Captions/details remain visible editorial metadata beneath the image.
 
 ## Information Bar
 
