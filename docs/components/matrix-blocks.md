@@ -94,3 +94,10 @@ Legacy `featuredImage.twig` and `gallery.twig` templates still exist. Treat the 
 ## QA Notes
 
 Raw HTML blocks remain a known content risk. The current content QA script reports raw HTML block counts so that escape-hatch usage stays visible.
+
+## Related Pages
+
+- [Article Content](article-content.md) provides the shell around matrix blocks.
+- [Craft Structure](../content-model/craft-structure.md) documents the fields and nested entry types behind the resolver.
+- [Galleries](galleries.md) and [Buttons](buttons.md) expand on individual block behavior.
+- [Open Questions](../audit/open-questions.md) tracks the unresolved v1/v2 support decision.

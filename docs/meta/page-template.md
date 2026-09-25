@@ -76,4 +76,17 @@ Record requirements and known gaps.
 ## Open Questions
 
 List decisions needed before this becomes approved guidance.
+
+## Review Evidence
+
+Record the review date, source repository and commit, inspected sections, environment,
+and any uncommitted changes. Link retained evidence. Distinguish a partial source
+check from a full page review or a rendered test.
+
+## Related Pages
+
+Add relative Markdown links to the relevant foundations, components, patterns,
+content model, and audits. Explain why each linked page is useful.
 ```
+
+Follow the [metadata schema](page-metadata.md) and [contribution workflow](../contributing.md). Replace the example dates and environment values with what was actually reviewed; remove observations that were not made.

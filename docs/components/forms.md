@@ -70,3 +70,9 @@ The current source includes:
 | Contact does not use `bt-article` or the shared article shell. | Needs decision |
 | Submit button should either use `bt-button` or become a documented form-specific variant. | Needs decision |
 | Success, validation, spam, and keyboard states need rendered testing. | Needs audit |
+
+## Related Pages
+
+- [Buttons](buttons.md) and [Article Content](article-content.md) describe the shared patterns that the contact page may adopt.
+- [Accessibility](../accessibility/index.md) lists requirements for labels and error feedback.
+- [Open Questions](../audit/open-questions.md) tracks the decision about integrating form styling.

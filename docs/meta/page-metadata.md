@@ -28,7 +28,7 @@ Every design system page should begin with YAML front matter.
 | `audience` | Primary users of the page. | `design`, `development` |
 | `owner` | Person or role accountable for review. | `Documentation owner` |
 | `created` | Date first documented. | `2026-06-06` |
-| `last_reviewed` | Date last checked. | `2026-06-06` |
+| `last_reviewed` | Date the page's substantive claims were last reviewed together. Record partial checks separately in the body. | `2026-06-06` |
 | `review_status` | Current review state. | `needs audit` |
 
 ## Recommended Fields
@@ -36,7 +36,7 @@ Every design system page should begin with YAML front matter.
 | Field | Purpose |
 | --- | --- |
 | `source` | Source files, URLs, screenshots, or design files that back the page. |
-| `related` | Related docs pages. |
+| `related` | Related docs pages, using paths relative to `docs/`. Also link them in the body so readers can follow the relationship. |
 | `classes` | CSS classes, Tailwind utilities, or component hooks. |
 | `tokens` | Design tokens or token families referenced by the page. |
 | `dependencies` | JavaScript, Craft plugins, CSS plugins, or rendering dependencies. |
@@ -59,6 +59,7 @@ Use one of these values:
 | `asset` | Icons, images, fonts, transforms, media rules. |
 | `decision` | Governance or design direction. |
 | `guideline` | Process or usage guidance. |
+| `operation` | Repeatable commands, checks, and maintenance procedures. |
 | `audit` | Inventory, findings, and review output. |
 | `index` | Navigation/landing page for a section. |
 
@@ -94,3 +95,13 @@ Use plain language. Common values:
 | `needs decision` | Requires a design or implementation decision. |
 | `blocked` | Cannot move forward without missing input or dependency. |
 | `retired` | Kept for history only. |
+
+Content cleanup belongs in the page's findings or backlog. Use `needs audit` when the documentation requires verification; do not invent a review status for every implementation issue.
+
+## Review Evidence
+
+For implementation reviews, record the source repository, commit, inspected file or section, environment, and review date in the page body. Say whether the checkout contained uncommitted changes. A source inspection supports claims about that checkout; only a rendered check supports claims about the tested environment.
+
+Keep a partial review scoped to the claims actually checked. Adding links, correcting one section, or finding a missing artifact does not refresh the whole page's `last_reviewed` date.
+
+See [Contributing](../contributing.md) for the review workflow and the [Page Template](page-template.md) for a starting structure.

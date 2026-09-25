@@ -81,3 +81,10 @@ These hooks should be considered part of the current documentation backlog:
 | Contact page uses bespoke form layout. | `contact.twig` | Needs a documented form component or explicit exception. |
 | Native asset alt text is missing across much of the library. | Photos and Site Images volumes | Templates can fall back, but content quality still depends on authored alt text. |
 | Standalone image route does not yet enforce relation to the post. | `image.twig` | Needs legacy asset review before tightening. |
+
+## Related Pages
+
+- [Audit](index.md) records the scope and limits of the June 2026 review.
+- [Matrix Blocks](../components/matrix-blocks.md) and [Craft Structure](../content-model/craft-structure.md) explain how template and content-model contracts fit together.
+- [Assets & Media](../content-model/assets-media.md#standalone-image-route) contains the later, scoped check of the image lookup.
+- [Open Questions](open-questions.md) records the decisions needed to resolve the implementation debt.

@@ -111,3 +111,10 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Photogr
 - The content model is tightly coupled to template naming conventions.
 - Matrix block v2 names (`gallery2`, `featuredImage2`) appear to be current even though display names remain "Gallery" and "Featured Image".
 - Asset metadata fields are important design-system inputs because captions, details, alt behavior, and responsive image output depend on them.
+
+## Related Pages
+
+- [Matrix Blocks](../components/matrix-blocks.md) connects entry types with template resolution.
+- [Areas of Interest](../patterns/areas-of-interest.md) explains the taxonomy contract.
+- [Assets & Media](assets-media.md) expands on image metadata, ownership, and delivery.
+- [Content QA](../operations/content-qa.md) describes repeatable checks for content-model drift.

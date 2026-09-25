@@ -10,7 +10,7 @@ audience:
 owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
-review_status: active
+review_status: needs audit
 ---
 
 # Audit
@@ -26,9 +26,9 @@ Audit outputs distinguish:
 - what needs a design decision,
 - what needs a rendered accessibility or content QA pass.
 
-## Current Audit Pass
+## June 2026 Audit Pass
 
-The deep audit reviewed:
+The findings below summarize the June 2026 audit. They have not been refreshed by a new full source or browser audit. The deep audit reviewed:
 
 | Area | Scope |
 | --- | --- |
@@ -58,4 +58,12 @@ The earlier render audit wrote temporary screenshots and JSON to:
 /private/tmp/bentilden-design-system-audit
 ```
 
-Those artifacts are not committed to this repo.
+Those artifacts were not committed to this repo. On 2026-09-25, the recorded directory was absent from the current workspace. The historical findings remain useful context, but the screenshots and JSON at that path cannot currently be inspected.
+
+A future audit should retain sanitized evidence in a durable location and record the tested source revision and environment, following [Contributing](../contributing.md#evidence-and-review-dates).
+
+## Related Pages
+
+- [Source Inventory](source-inventory.md) maps the implementation surface covered by the original pass.
+- [Render Audit](render-audit.md) records the historical browser observations and their evidence limits.
+- [Open Questions](open-questions.md) tracks decisions carried forward from the audit.

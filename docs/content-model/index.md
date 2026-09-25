@@ -20,3 +20,5 @@ review_status: needs audit
 The design system needs to document the Craft CMS content model because many visual patterns are driven by entry type, matrix block type, asset metadata, and Area of Interest taxonomy.
 
 The first pass focuses on the structures that most directly shape rendered templates: entries, matrix blocks, images, transforms, upload paths, and authoring contracts.
+
+Start with [Craft Structure](craft-structure.md) for fields and entry types, then [Assets & Media](assets-media.md) for media ownership and delivery. [Content QA](../operations/content-qa.md) connects those contracts to repeatable checks.

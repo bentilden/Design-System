@@ -87,3 +87,10 @@ Lightbox behavior still needs keyboard and screen-reader review.
 
 - Decide whether `gallery.twig` and `gallery2.twig` are both supported or whether `gallery.twig` is deprecated.
 - Decide whether gallery style names should be documented for authors in Craft field instructions.
+
+## Related Pages
+
+- [Matrix Blocks](matrix-blocks.md) explains how galleries are resolved and wrapped.
+- [Assets & Media](../content-model/assets-media.md) owns the shared image delivery and metadata guidance.
+- [Photography](../patterns/photography.md) describes the broader presentation pattern.
+- [Accessibility](../accessibility/index.md) and the [Render Audit](../audit/render-audit.md) identify the verification still needed.

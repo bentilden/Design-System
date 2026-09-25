@@ -17,7 +17,7 @@ source:
 owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-08
-review_status: needs cleanup
+review_status: needs audit
 ---
 
 # Assets & Media
@@ -113,9 +113,17 @@ Do not hand-roll `loading`, `fetchpriority`, `width`, or `height` behavior in fe
 
 ## Standalone Image Route
 
-The route `post/<slug>/<asset-id>` renders a single image with image-aware SEO metadata. It currently limits lookups to image assets in the Photos volume.
+The route `post/<slug>/<asset-id>` renders a single image with image-aware SEO metadata. In the inspected local checkout, `templates/image.twig` looks up an image by asset ID and kind:
 
-Remaining decision: whether the route should enforce that the requested asset is related to the post. The source notes intentionally postpone that until legacy assets are reviewed.
+```twig
+{% set image = craft.assets.kind('image').id(assetID).one() %}
+```
+
+This query does not restrict the asset to the Photos volume or require a relation to the post. The route's actual lookup behavior must not be confused with the intended media ownership rules above.
+
+The [open question](../audit/open-questions.md) is whether to restrict the volume and enforce post-asset relations after reviewing legacy assets.
+
+Partial source review, 2026-09-25: the lookup above was checked in `bentilden.com` at commit `e2c8c1bea88d205bdf1e1a26f13c170705bddfc2`, with a clean working tree. This verifies the query in that checkout only; the route was not exercised in a browser, and the other sections of this page were not re-audited.
 
 ## Current Cleanup Backlog
 
@@ -125,3 +133,9 @@ The asset library works, but content QA can still surface cleanup needs:
 - Photos and Site Images are missing native alt text.
 
 Do not bulk-delete assets from the database. Review them in Craft first, then decide whether to relate, move, archive, or delete each asset and remote file.
+
+## Related Pages
+
+- [Craft Structure](craft-structure.md) defines the asset fields and image transforms.
+- [Galleries](../components/galleries.md) and [Recipe Content](../components/recipe-content.md) describe how media appears in components.
+- [Content QA](../operations/content-qa.md) describes checks for missing alt text, relations, and configuration drift.

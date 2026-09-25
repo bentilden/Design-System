@@ -74,3 +74,9 @@ A documented pattern is not ready to become `approved` while the QA script flags
 - Gallery docs depend on meaningful alt text and clean media relations.
 - Recipe docs depend on ingredients, steps, timing, and image fallback behavior.
 - Stream page docs depend on preview image fallback coverage.
+
+## Related Pages
+
+- [Assets & Media](../content-model/assets-media.md) and [Craft Structure](../content-model/craft-structure.md) define the authoring contracts being checked.
+- [Galleries](../components/galleries.md), [Recipe Content](../components/recipe-content.md), and [Stream Pages](../patterns/stream-pages.md) describe the affected presentation patterns.
+- [Contributing](../contributing.md) explains how to retain findings and update related documentation after a check.

@@ -74,3 +74,9 @@ A component can move from `observed` to `approved` only after these checks are k
 - Image alt behavior
 - Mobile and desktop heading structure
 - Reduced-motion or animation impact where relevant
+
+## Related Pages
+
+- [Navigation](../components/navigation.md), [Galleries](../components/galleries.md), [Forms](../components/forms.md), and [Recipe Content](../components/recipe-content.md) record component-specific requirements and open checks.
+- [Render Audit](../audit/render-audit.md) contains historical browser findings; its missing temporary artifacts limit what can be verified from that pass.
+- [Content QA](../operations/content-qa.md) covers authored content checks that complement interaction testing.

@@ -12,12 +12,15 @@ source:
 owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
-review_status: active
+review_status: needs audit
 ---
 
 # Render Audit
 
 The first render audit used Playwright to inspect representative dev and prod pages. Some findings have since been addressed in source; this page now separates rendered observations from current follow-up work.
+
+!!! note "Historical results"
+    The results and follow-up status below describe the June 2026 audit. No new browser audit is recorded here. A check on 2026-09-25 found that the original temporary artifact directory was absent, so its screenshots and JSON are currently unavailable for review.
 
 ## Scope
 
@@ -82,8 +85,16 @@ The two console warnings were Chromium GPU `ReadPixels` warnings during screensh
 
 ## Local Artifacts
 
-Temporary screenshots and `results.json` are available locally at:
+The original pass recorded temporary screenshots and `results.json` at:
 
 ```text
 /private/tmp/bentilden-design-system-audit
 ```
+
+That directory was absent from the current workspace on 2026-09-25. Re-run the relevant checks and preserve sanitized reports in a durable location before treating the historical findings as current verification. See the [evidence guidance](../contributing.md#evidence-and-review-dates).
+
+## Related Pages
+
+- [Accessibility](../accessibility/index.md) defines the review bar for components.
+- [Navigation](../components/navigation.md), [Galleries](../components/galleries.md), and [Forms](../components/forms.md) describe the behaviors that still need rendered checks.
+- [Open Questions](open-questions.md) records unresolved design and implementation decisions.

@@ -96,3 +96,9 @@ The footer uses a Slate 900 band, white signature asset, compact navigation link
 | Mobile overlay uses dialog metadata and Alpine focus trapping in source. | Observed |
 | Focus trap, escape key behavior, hidden-state exposure, and return focus after close still need manual verification. | Needs audit |
 | The mobile menu contains a `Posts` heading; its level should be checked in the page heading structure. | Needs audit |
+
+## Related Pages
+
+- [Areas of Interest](../patterns/areas-of-interest.md) explains the taxonomy behind navigation labels and icons.
+- [Accessibility](../accessibility/index.md) covers dialog semantics and focus behavior.
+- [Render Audit](../audit/render-audit.md) preserves the earlier browser findings and identifies their evidence limits.

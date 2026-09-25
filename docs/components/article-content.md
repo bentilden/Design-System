@@ -127,3 +127,9 @@ Captions use Slate 600 body text with micro-style details below.
 | The shared shell is not used by contact/form content. | Needs decision |
 | Templates now include image alt fallbacks, but asset-native alt coverage is still incomplete. | Needs content cleanup |
 | Mobile navigation headings appear in DOM on every page and should be checked in the accessibility tree. | Needs accessibility work |
+
+## Related Pages
+
+- [Matrix Blocks](matrix-blocks.md) describes the content assembled inside the article shell.
+- [Stream Pages](../patterns/stream-pages.md) shows how articles form listing pages.
+- [Assets & Media](../content-model/assets-media.md) and [Content QA](../operations/content-qa.md) cover image metadata and preview fallback checks.

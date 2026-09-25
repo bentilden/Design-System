@@ -14,7 +14,7 @@ source:
   - bentilden.com/templates/svg/cooking.twig
   - bentilden.com/templates/svg/design.twig
   - bentilden.com/templates/svg/blog.twig
-  - bentilden.com/config/project/categoryGroups/areasOfInterest--b00f82d7-12d9-4a67-9e3c-bb7be7d7eae1.yaml
+  - bentilden.com/config/project/categoryGroups/areasOfInterest--6880db45-0db6-4ee0-99de-1599392237bd.yaml
   - bentilden.com/config/project/fields/areaOfInterest--fca4117f-c2a9-4d87-8c39-31d385b36c3e.yaml
 classes:
   - bt-article-topic-*

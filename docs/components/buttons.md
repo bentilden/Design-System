@@ -58,3 +58,9 @@ Use primary buttons for explicit content actions in matrix blocks. Avoid using t
 - Use links styled as buttons when the action navigates.
 - Preserve visible focus styling.
 - Do not introduce decorative color variants until there is a repeated content need.
+
+## Related Pages
+
+- [Matrix Blocks](matrix-blocks.md) describes authored button content.
+- [Forms](forms.md) documents the separate submit-button treatment and its open design decision.
+- [Accessibility](../accessibility/index.md) supplies the interaction review bar.
