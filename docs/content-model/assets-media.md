@@ -92,6 +92,8 @@ AI-generated alt text may be used as a starting point when the AI Alt Text plugi
 
 Lightbox-visible captions should use caption/details. Alt text should remain focused on accessibility and should not be treated as the visible caption source.
 
+Scoped viewer update, 2026-09-28: `PhotoViewerMedia.php` in website `fcfbf500678f6c156155234846eac75e3c1bb232` supplies the same plain caption/details fields, 1800 px `largeImage` source, actual source dimensions, and existing optimized fallback to post galleries, featured images, Map, and Mosaic. Missing transforms are requested lazily instead of queued for every photo during page rendering. The [unified viewer](../components/galleries.md#unified-photo-viewer) uses a Details disclosure and reserves no caption area for empty metadata. Eleven media-contract checks and the dedicated 15-check shared-viewer Chromium suite passed locally; [Galleries verification](../components/galleries.md#accessibility-and-verification) records broader regression coverage and its limits. Production verification is recorded with the viewer.
+
 ## Photo Locations
 
 The Photos asset layout has a Location tab with a Location source selector (`photoLocationSource`), read-only embedded-GPS status, a custom coordinate picker (`photoLocation`), and a public place name (`placeName`). The picker appears for Custom location; the asset place-name field is hidden for Gallery location. Gallery blocks have `galleryLocation` and `placeName` inline alongside their images. Maps by Ether Creative supplies explicit place search, coordinate inputs, and Clear address. Opening the picker's default camera does not assign a point.

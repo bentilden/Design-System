@@ -68,10 +68,10 @@ That means every block type can be targeted for styling, audits, and QA even whe
 | Callout | `_matrix/callout.twig` | Highlighted editorial aside with optional author-supplied class. |
 | Button | `_matrix/button.twig` | Centered call to action using the shared `bt-button` class. |
 | HTML | `_matrix/html.twig` | Raw HTML escape hatch. Use sparingly. |
-| Featured Image | `_matrix/featuredImage2.twig` | Single editorial image with optional link, caption, details, and lightbox behavior. |
-| Gallery | `_matrix/gallery2.twig` | Multi-image or inline gallery with responsive optimized images and lightbox behavior. |
+| Featured Image | `_matrix/featuredImage2.twig` | Single editorial image with caption, details, and the shared photo viewer. |
+| Gallery | `_matrix/gallery2.twig` | Multi-image or inline gallery with responsive optimized images and the shared photo viewer. |
 
-Legacy `featuredImage.twig` and `gallery.twig` templates still exist. Treat the `*2` templates as current unless the content model explicitly routes older entries to the v1 templates.
+Scoped update, 2026-09-28: both block names remain supported. The `featuredImage2.twig` and `gallery2.twig` templates now extend their corresponding shared `featuredImage.twig` and `gallery.twig` implementations. Source inspected in website `fcfbf500678f6c156155234846eac75e3c1bb232`; this consolidates identical presentation without changing the content model. Production verification is recorded with the viewer. All use the [shared viewer](galleries.md#unified-photo-viewer).
 
 ## Authoring Contract
 
