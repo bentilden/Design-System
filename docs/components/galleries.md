@@ -2,7 +2,7 @@
 title: Galleries
 type: component
 status: observed
-source_of_truth: observed production code
+source_of_truth: observed dev code
 audience:
   - design
   - development
@@ -41,6 +41,8 @@ Galleries support both browsable grids and inline photographs. The same full-ima
 
 Scope: reviewed on 2026-09-28 in website `fcfbf500678f6c156155234846eac75e3c1bb232` and frontend `ddf33f7506eca4513b0755574ccfcb1e35d73ae0`. Production release `20260928174248` contains those verified source files; independent production checks are recorded below. Earlier released viewers and their checks remain historical evidence in [Places](../patterns/places.md#photo-viewer-and-recovery).
 
+Desktop zoom follow-up, 2026-09-28: the zoom treatment below is committed locally in website `b8af3d11a26eb6293591eb5e41fd429d6465cee7` and frontend `3443b68d9fd53629112cff7b96779a23667b45f1`, covering `src/photo-viewer.js` and `_components/photo-viewer.twig`. It replaces the released single zoom/fit toggle; this follow-up has not been deployed.
+
 ## Page Layout
 
 Gallery blocks default to two columns, becoming three at large viewports. Inline galleries and single-image galleries remove those column classes. Both `gallery` block types share one template implementation; both featured-image block types also share one implementation.
@@ -57,13 +59,21 @@ Each photograph is a native link to its full source, with an accessible image de
 | Photograph | Full proportions fitted into the available area, against a dark opaque backdrop. |
 | Desktop navigation | Plain side chevrons with subtle hover surfaces; absent for a single photograph. |
 | Mobile navigation | Swipe between photographs, swipe down to dismiss, and pinch/double-tap to zoom; side arrows are hidden. Close remains available. |
-| Zoom | A single desktop toggle switches between zoom and fit; mobile uses gestures. |
+| Zoom | Desktop has minus, a quiet percentage readout, plus, and **Fit** beside Close. Mobile continues to use gestures. |
 | Caption | Quiet, left-aligned editorial text below the photograph. No caption area is reserved when both metadata fields are empty. |
 | Details | A compact disclosure reveals additional editorial text; the complete metadata region is capped at 35dvh and scrolls when necessary. |
 
 Previous/next navigation wraps through the active collection. The collection retains its context: each post gallery block is independent, a featured-image block opens one photo, Map uses its current filtered collection, and Mosaic follows its color order. The viewer retains the appropriate post association; **View post** is omitted when the visitor is already on that post.
 
 LightGallery supplies transitions, gestures, image rendering, and zoom. Alpine owns the shared shell, collection context, control state, and focus behavior. New interface styling uses inline Tailwind utilities. The same shared component replaces the former separate Places and article interfaces.
+
+### Desktop Zoom
+
+Plus and minus multiply or divide the current scale by 1.25, with smooth transitions between the fitted image and its actual size. **Fit** immediately restores the complete photograph to the available space. Each newly selected photograph starts fitted. The percentage describes the rendered image relative to the delivered source: **100%** means one CSS pixel per source pixel, while Fit varies with the photograph and available space. It does not describe the original upload's resolution when the viewer receives a smaller rendition.
+
+The relevant controls appear muted and use guarded `aria-disabled` states at their limits and while the image is unavailable. They remain in the keyboard order so focus is not lost during image changes. The readout uses tabular figures and announces changes politely; loading shows a dash rather than the preceding photo's value. Desktop drag-to-pan remains available while enlarged, and stepped changes preserve the point at the viewport centre within the image's pan bounds. Native mobile swipe, pinch, double-tap, and dismissal behavior remains unchanged.
+
+Local follow-up verification, 2026-09-28: all 18 shared-viewer Chromium checks passed with no runtime errors, including intermediate levels and percentages, limits/focus, native actual-size handoff, panning/resizing, new-photo Fit, all entry points, and existing mobile gestures. A focused mobile run passed five checks. Scoped release QA also passed the build, content/asset checks, and five browser routes with all 48 font faces loaded per route. Desktop screenshots at 1440 and 768 px were visually reviewed; the header remains opaque over an enlarged photo. These results apply to the locally committed follow-up, not to a new deployment, and use emulated touch rather than physical devices.
 
 ## Metadata And Image Delivery
 
