@@ -40,6 +40,8 @@ Contact fields use explicit labels, Slate borders, subtle shadows, and Slate foc
 class="block w-full max-w-lg rounded-md border-slate-300 shadow-xs focus:border-slate-500 focus:ring-slate-500 sm:text-sm"
 ```
 
+Scoped first-release review, 2026-09-28: field focus rings at website `b1cf61e` follow the global [Focus Appearance](../accessibility/index.md#focus-appearance) rule: Tab or Shift+Tab enables them, and pointer interaction hides them. The existing focus border treatment remains.
+
 The submit button is still a local Tailwind composition, not the shared `bt-button` class. It should either adopt `bt-button` or become a documented form-specific variant.
 
 ## Layout

@@ -70,6 +70,7 @@ nav:
       - patterns/index.md
       - Areas of Interest: patterns/areas-of-interest.md
       - Photography: patterns/photography.md
+      - Places: patterns/places.md
       - Stream Pages: patterns/stream-pages.md
   - Content Model:
       - content-model/index.md

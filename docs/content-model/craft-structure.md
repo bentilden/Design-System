@@ -39,7 +39,7 @@ Craft structure is a design-system input. Entry type controls content shape, Are
 | `globalHeader` | Navigation | Primary header and mobile navigation. |
 | `globalFooter` | Navigation | Footer links. |
 
-Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Photography. Use tags for narrower cross-cutting subjects.
+Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places (the `photography` identity). Use tags for narrower cross-cutting subjects.
 
 ## Entry Types
 
@@ -58,7 +58,7 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Photogr
 
 | Field | Entry types | Notes |
 | --- | --- | --- |
-| `story` | Text, Button, HTML, Heading, Callout, Featured Image, Gallery | Main article composition field. |
+| `story` | Text, Button, HTML | Main article composition field; configured authoring options are narrower than the available legacy templates. |
 | `gallery` | Gallery | One gallery block for gallery entry type layouts. |
 | `featuredImage` | Featured Image | One featured-image block for featured-image entry type layouts. |
 | `ingredients` | Ingredient | Recipe ingredient rows. |
@@ -85,6 +85,21 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Photogr
 | `details` | Plain text | Micro metadata shown below captions. |
 | `optimizedImages` | ImageOptimize | Responsive editorial image source set. |
 | `optimizedThumbnails` | ImageOptimize | Responsive thumbnail source set. |
+
+## Location Fields
+
+| Field | Type | Placement |
+| --- | --- | --- |
+| `galleryLocation` | Maps | Gallery block; inherited when the photo uses Gallery location or Automatic without GPS. |
+| `photoLocationSource` | Dropdown | Photos asset Location tab; Automatic, Embedded GPS, Gallery location, or Custom location. |
+| `photoLocation` | Maps | Photos asset Location tab; shown and used for Custom location, applying to every use of that asset. |
+| `placeName` | Plain text | Gallery and Photos layouts; public label independent of coordinates, hidden on the asset when Gallery location is selected. |
+
+The Photos Location tab also displays read-only embedded-GPS status. This status comes from the GPS index; it is not an editable location field.
+
+See [Photo Locations](assets-media.md#photo-locations) and [Places](../patterns/places.md) for precedence, shared assets, and public eligibility.
+
+Scoped source review, 2026-09-28: the location fields/layouts, category label, and Story block list were checked against the first-release `bentilden.com` source at `b1cf61ef358dc56cce21402f973740ca5d6ad174`. Story permits Text, Button, and HTML; older templates alone do not establish authoring availability. Other tables retain their prior review scope.
 
 ## Image Transforms
 

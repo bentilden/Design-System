@@ -31,7 +31,7 @@ Global navigation uses compact uppercase pills and a large signature mark.
 
 <div class="bt-example" markdown>
 <nav class="bt-nav-demo" aria-label="Demo navigation">
-  <a aria-current="page" href="#">Photography</a>
+  <a aria-current="page" href="#">Places</a>
   <a href="#">Cooking</a>
   <a href="#">Design</a>
   <a href="#">About</a>
@@ -74,6 +74,10 @@ Current source includes:
 - escape handling,
 - `x-trap.noscroll.inert`,
 - close button `aria-label`.
+
+## Places Destination
+
+Scoped first-release review, 2026-09-28: the existing photography destination is presented as Places at `/photography`, opening Map by default. The category retains its `photography` identity and topic hooks. A separate centered Map | Posts control selects the map browser or complete chronological stream. Checked at website `b1cf61e` and frontend `99af237`; see [Places](../patterns/places.md) for the released behavior. Other navigation observations retain their earlier review scope.
 
 ## Footer
 

@@ -27,7 +27,7 @@ review_status: needs audit
 
 # Photography
 
-Photography pages need to support both immersive single images and scannable grids.
+Photography pages need to support both immersive single images and scannable grids. The [Places browser](places.md) adds map-based discovery; the patterns below describe photographs within posts.
 
 ## Gallery Grid
 

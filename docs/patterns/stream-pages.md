@@ -36,7 +36,7 @@ Stream pages are the most important page-level pattern in the current site. They
 | Template | Role |
 | --- | --- |
 | `index.twig` | Homepage stream of posts. |
-| `category.twig` | Area of Interest stream. |
+| `category.twig` | Area of Interest stream; Places adds Map and Posts views. |
 | `_entry-content.twig` | Resolves each entry to the correct article preview template. |
 | `_components/entry-preview-image.twig` | Resolves listing preview imagery. |
 | `_components/pagination.twig` | Renders previous/next and page-number navigation. |
@@ -50,6 +50,12 @@ Stream pages are the most important page-level pattern in the current site. They
 ```
 
 Each item is not a compact card. It is a full-width article section with generous vertical rhythm and, often, media large enough to feel like the primary content.
+
+## Places Posts View
+
+The photography category defaults to [Places Map + Gallery](places.md). Its Posts view retains the full chronological stream, including entries without located photographs. Map viewport changes do not filter these posts. Pagination links retain `view=posts`; paginated category routes also select Posts by default.
+
+Scoped source review, 2026-09-28: checked `bentilden.com/templates/category.twig`, `_places/index.twig`, and `_components/pagination.twig` at first-release commit `b1cf61ef358dc56cce21402f973740ca5d6ad174`. See [Places verification](places.md#implementation-and-verification) for its release checks; the earlier render observations below retain their historical scope.
 
 ## Visual Rules
 

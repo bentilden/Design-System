@@ -52,6 +52,8 @@ Use primary buttons for explicit content actions in matrix blocks. Avoid using t
 | Hover | `bg-slate-700` |
 | Focus | `focus:outline-hidden`, Slate focus ring with offset |
 
+Scoped first-release review, 2026-09-28: the global layout at website `b1cf61e` displays these outlines/rings after Tab or Shift+Tab and hides them after pointer interaction. See [Focus Appearance](../accessibility/index.md#focus-appearance) for the input-mode rule and no-Alpine fallback.
+
 ## Guidance
 
 - Keep labels short and verb-led.

@@ -39,6 +39,10 @@ Accessibility is a component contract, not a separate polish pass. These are the
 - Closed navigation content should not be exposed as active page structure.
 - Return focus after closing the mobile menu still needs rendered/manual verification.
 
+## Focus Appearance
+
+Scoped first-release review, 2026-09-28: `bentilden.com/templates/_layout.twig` at released website `b1cf61e` tracks input mode in the existing body Alpine state. With Alpine active, focus outlines and Tailwind rings are suppressed until Tab or Shift+Tab is pressed; pointer interaction suppresses them again. Keyboard mode permits the existing native/component focus treatment rather than replacing it. The suppression selector requires the Alpine-bound attribute, so existing focus styling remains when JavaScript or Alpine is unavailable. Focus itself, navigation order, and focus return are unchanged. This is an implementation observation, not a completed assistive-technology audit.
+
 ## Forms
 
 - Every input needs an explicit label.

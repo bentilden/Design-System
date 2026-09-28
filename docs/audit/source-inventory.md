@@ -47,6 +47,10 @@ The source audit found a small Tailwind source layer sitting above a larger Twig
 | Recipe branch | `_entry-content/recipe/*.twig`, `_entry/recipe/*.twig` | Intro, story, and recipe detail views with Tailwind, Alpine, and `bt-*` hooks. |
 | Contact | `contact.twig` | Form-specific layout with labels, error wiring, honeypot, and reCAPTCHA. |
 
+## Places Addition
+
+Scoped first-release inventory, 2026-09-28: website `b1cf61e` and frontend `99af237` include `bentilden.com/templates/_places/index.twig` and `modules/places/` for the public photo browser, with `bentilden.com-css/src/places.js` and `src/places-geometry.js` owning Alpine and map behavior. `category.twig` selects this interface for the existing photography category; other category streams retain their loop. The new interface uses inline Tailwind utilities and MapLibre library styles. See [Places](../patterns/places.md) for the implementation contract and source-review limits.
+
 ## Rendered `bt-*` Surface
 
 These hooks should be considered part of the current documentation backlog:

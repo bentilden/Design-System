@@ -14,6 +14,10 @@ source:
   - bentilden.com/templates/_matrix/gallery2.twig
   - bentilden.com/templates/image.twig
   - bentilden.com/scripts/content-qa.php
+  - bentilden.com/modules/places/LocationResolver.php
+  - bentilden.com/modules/places/Payload.php
+  - bentilden.com/modules/places/EmbeddedGps.php
+  - bentilden.com/modules/places/GpsExif.php
 owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-08
@@ -88,6 +92,35 @@ AI-generated alt text may be used as a starting point when the AI Alt Text plugi
 
 Lightbox-visible captions should use caption/details. Alt text should remain focused on accessibility and should not be treated as the visible caption source.
 
+## Photo Locations
+
+The Photos asset layout has a Location tab with a Location source selector (`photoLocationSource`), read-only embedded-GPS status, a custom coordinate picker (`photoLocation`), and a public place name (`placeName`). The picker appears for Custom location; the asset place-name field is hidden for Gallery location. Gallery blocks have `galleryLocation` and `placeName` inline alongside their images. Maps by Ether Creative supplies explicit place search, coordinate inputs, and Clear address. Opening the picker's default camera does not assign a point.
+
+| Location source | Authoring meaning |
+| --- | --- |
+| Automatic | Use available embedded GPS; otherwise use each gallery's location for that appearance. |
+| Embedded GPS | Use GPS everywhere this asset appears. If coordinates are unavailable, the photo stays off the map. |
+| Gallery location | Use each gallery's location, ignoring GPS and retained custom coordinates. |
+| Custom location | Use one assigned position everywhere this asset appears. A blank custom position keeps it off the map. |
+
+Clearing the picker while Custom location remains selected does not restore inheritance. Choose Gallery location to inherit directly, or Automatic for GPS with gallery fallback. Changing the source preserves stored custom coordinates for later reuse; they are ignored until Custom location is selected. The first-release migration preserves prior individual assignments as Custom location.
+
+The source choice and individual custom position belong to the shared asset. Custom and GPS positions apply everywhere; gallery inheritance belongs to each use. Asset saves are independent of the gallery entry's save/publish lifecycle, so editing a shared photo can affect already-published uses.
+
+The [Places browser](../patterns/places.md#which-photos-appear) preserves each asset's inherited map appearances. A photo shared by galleries at different locations appears at each place, with its post link supplied by that use. Repeated uses at one place count once. The gallery, viewer, and overall photo total count each asset once within their current context; place counts can overlap. Duplicated files are separate assets, and their image contents are not compared. A public place name should reflect whether the coordinates represent a precise shooting position or a general gallery location.
+
+### Embedded GPS And Older Uploads
+
+Extraction supports JPEG and TIFF originals. New uploads and replacements have coordinates captured before Craft sanitizes image metadata. The captured result survives the same upload moving from temporary storage into Photos; background scans can index existing originals. Public map and authoring requests read the stored coordinates/status without fetching those originals. Replacement updates or clears GPS, including when the new file has none; an older queued scan cannot overwrite the replacement.
+
+A background scan can only read metadata that remains in the stored original. Older uploads may already have lost GPS during sanitization, even if the photographer's local original still contains it. Rescanning cannot recover removed coordinates. To recover them, use **Replace file** on the existing asset and select the GPS-bearing original, then choose Automatic or Embedded GPS. This keeps the asset identity and gallery references. Uploading a separate duplicate creates a different asset. Gallery or custom locations remain alternatives when the original is unavailable.
+
+Pending or unavailable GPS makes Automatic use gallery fallback; Embedded GPS stays off the map until coordinates are available. Unsupported formats can use gallery or custom locations. Check the read-only GPS status to distinguish available coordinates, absent metadata, unsupported formats, and an original that could not be checked.
+
+Scoped source review, 2026-09-28: these location rules were checked against website `b1cf61ef358dc56cce21402f973740ca5d6ad174`, including Photos/Gallery layouts and fields under `config/project/`, `modules/mapsauthoring/LocationStatus.php`, `modules/places/`, and the source-preservation migration. That first release is deployed to staging and production. Other content-model sections and the page's overall review date are unchanged.
+
+Historical verification, 2026-09-28: local checks covered real upload, delayed temporary-to-Photos relocation, replacement, deletion, and source conditions; the final GPS integration suite passed 43 checks. CP source visibility and save/reload passed locally and on staging. Production CP checks were read-only; native image/canvas warnings occurred, and rapid-transition timing remains unverified. A separate isolated investigation reproduced historical GPS stripping and confirmed that replacing a stripped asset with its GPS-bearing original restores map lookup without changing its ID. Production was inspected without changes. See [Places verification](../patterns/places.md#implementation-and-verification) for the release's browser coverage and accessibility limits.
+
 ## Responsive Images
 
 The Photos volume carries two ImageOptimize fields:
@@ -110,6 +143,8 @@ The component owns the common delivery contract:
 - Listing pages should prioritize only the first entry image that is intentionally treated as above-the-fold content. Later stream images should remain lazy.
 
 Do not hand-roll `loading`, `fetchpriority`, `width`, or `height` behavior in feature templates unless the shared component cannot represent the needed behavior.
+
+Scoped source review, 2026-09-28: Places renders its Posts markup alongside Map and passes `useExistingImageUrls` to gallery/featured-image templates. Their lightbox sources use the largest existing optimized image or the original URL, avoiding new `largeImage` transform jobs for hidden markup. The ordinary template path retains its named transform. The map payload likewise uses existing variants without generating transforms during assembly. Checked in `bentilden.com` at `b1cf61ef358dc56cce21402f973740ca5d6ad174`.
 
 ## Standalone Image Route
 

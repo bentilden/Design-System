@@ -37,7 +37,9 @@ Current areas:
 - Blog
 - Cooking
 - Design
-- Photography
+- Places (the existing `photography` identity)
+
+Scoped source review, 2026-09-28: `category.twig` and `_entry-content/default.twig` present the photography category as Places while retaining its slug, icon template, and topic CSS hooks. The category opens the [Places map](places.md), with the full stream available in Posts. Checked against the first-release `bentilden.com` source at `b1cf61ef358dc56cce21402f973740ca5d6ad174`; the rest of this page retains its earlier review scope.
 
 ## Template Contract
 
