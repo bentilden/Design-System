@@ -35,12 +35,12 @@ Accessibility is a component contract, not a separate polish pass. These are the
 
 ## Navigation And Dialogs
 
-- Navigation controls need an accessible name; the mobile disclosure uses a visible Menu label.
-- The compact navigation direction accepted on 2026-09-28 uses a nonmodal disclosure beneath the mobile header. Its control exposes `aria-expanded` and `aria-controls`; the disclosed navigation is part of normal page navigation.
-- Closed disclosure links must leave the keyboard sequence. Opening navigation must keep the page available, without a focus trap, scroll lock, inert background, or dialog role.
+- Navigation controls need an accessible name; mobile navigation uses visible Menu and Close labels.
+- The Personal Index follow-up accepted on 2026-09-28 replaces the inline disclosure with a named modal overlay. Menu exposes `aria-haspopup="dialog"`, `aria-expanded`, and `aria-controls`; the overlay uses `role="dialog"` and `aria-modal="true"`.
+- Closed overlay links must leave the keyboard sequence. When open, focus remains inside the overlay, the background is excluded, and page scrolling is locked. Close/Escape returns focus to Menu without moving the underlying page. The 24 px Close icon sits within a target at least 44 px high.
 - Preserve a meaningful current-page state and the same CMS destinations across desktop and mobile. The former mobile `Posts` heading is not part of this pattern.
-- Source inspected on 2026-09-28 provides Escape dismissal with focus return, outside-click/focus dismissal without focus theft, reset on desktop resize and page restoration, and equivalent `noscript` links. Local Chromium checks passed disclosure focus/Escape, outside dismissal, normal Tab exit, breakpoint reset, current states, scrolling, and no-JavaScript reachability. See [Navigation](../components/navigation.md#review-evidence) for scope and remaining assistive-technology limits.
-- Actual dialogs, including the photo viewer and recipe nutrition, retain their own focus and modal contracts.
+- Source inspected on 2026-09-28 uses Alpine teleport and `x-trap.inert.noscroll.noreturn`, with explicit focus return. The `.inert` modifier applies `aria-hidden` background isolation, not the native `inert` attribute. Desktop resize closes the overlay and focuses the visible home link; page restoration resets it without requesting focus. Equivalent inline `noscript` links remain available. All 27 updated local navigation checks passed; see [Navigation](../components/navigation.md#review-evidence) for scope and assistive-technology limits. Historical disclosure checks remain separate.
+- The photo viewer and recipe nutrition retain their own focus and modal contracts.
 
 ## Focus Appearance
 

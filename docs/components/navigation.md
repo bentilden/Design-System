@@ -21,7 +21,7 @@ dependencies:
   - Alpine.js
 accessibility:
   reviewed: false
-  notes: The approved mobile pattern is a nonmodal disclosure; source and rendered checks are recorded below.
+  notes: The approved Personal Index mobile overlay uses modal semantics and Alpine focus trapping; source and rendered checks are recorded below.
 owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-09-28
@@ -30,7 +30,7 @@ review_status: needs audit
 
 # Navigation
 
-Global navigation pairs a compact signature with ordinary links. The accepted direction on 2026-09-28 gives the site a stable header and keeps mobile navigation in the page context. This replaces the large centered signature, scroll-driven resizing, uppercase pills, and full-screen mobile overlay.
+Global navigation pairs a compact signature with ordinary links and stable header dimensions. The Personal Index mobile follow-up approved on 2026-09-28 opens a full-screen overlay above the stationary page. It supersedes the initial compact inline disclosure; its local implementation and verification are separate from the released desktop header and earlier navigation history.
 
 ## Desktop Header
 
@@ -42,19 +42,19 @@ The Craft `globalHeader` navigation nodes own labels, order, and destinations. T
 
 Preserve navigation URLs while normalizing the existing photography destination to **Places** at `/photography`, which opens Map by default. The shared header builds the primary and secondary link groups once, using each node’s `current` state for `aria-current="page"` rather than marking a current ancestor as the destination. Use the same ordered destinations on desktop and mobile.
 
-## Mobile Disclosure
+## Mobile Personal Index
 
-The closed mobile header is 80 px high, including its 1 px lower rule. A 79 px identity row holds a 144 px signature and a visible **Menu** control. Opening Menu reveals ordinary navigation links beneath that row while keeping the page visible. It is a nonmodal disclosure: the navigation does not trap focus, make the page inert, or declare dialog semantics. It does not introduce a navigation heading into the document outline.
+The mobile header remains 80 px high, including its 1 px `border-slate-300/70` lower rule. Its identity row uses 24 px gutters, a 135 px signature, and a visible **Menu** control. Opening Menu places a Slate 50 overlay above the stationary page. The overlay repeats the signature in an 80 px header and provides a visible **Close** control. Menu and Close use 16 px medium-weight labels, with a 20 px Menu icon and a 24 px Close X; both targets remain at least 44 px high. It contains no avatar, bottom tagline, or additional navigation heading.
 
-Use one 1 px `border-slate-300/70` outer rule below the complete header: beneath the signature/Menu row when closed and beneath the disclosed navigation when open. The row and menu share a surface with no internal boundary. The inset Slate 200 rule above About/Contact remains to group those destinations.
+Primary links use 25 px labels in ruled rows at least 58 px high with 24 px side gutters. About/Contact form a smaller 17 px group below. Ordinary labels use regular weight; the current destination uses medium weight and a solid dot, 7 px for primary links and 5 px for secondary links, alongside `aria-current="page"`. Both dots sit immediately after their label with an 8 px gap; the primary dot moves 2 px below vertical center for optical alignment, while the secondary dot stays centered. Hover can darken and underline the text but adds no background fill. The mockup's alternative Current label and filled active row are not part of this implementation.
 
-Alpine exposes `aria-expanded` and the region relationship through `aria-controls`. Native `hidden` attributes prevent a flash before Alpine initializes and keep closed links out of the keyboard sequence. The toggle changes its visible label between Menu and Close. Escape within the header closes the disclosure and returns focus to the toggle; moving focus or clicking outside closes it without moving focus back. Crossing into the desktop breakpoint and the browser’s `pageshow` event reset the open state.
+Alpine teleports the named `role="dialog"`, `aria-modal="true"` overlay to the body. Menu exposes `aria-haspopup="dialog"`, `aria-expanded`, and `aria-controls`. The closed overlay stays hidden; opening focuses Close and uses `x-trap.inert.noscroll.noreturn` to contain focus, isolate the background with `aria-hidden`, and lock page scrolling. Alpine's `.inert` modifier here does not set the native `inert` attribute. Explicit Close/Escape dismissal restores Menu focus without scrolling. Crossing into the desktop breakpoint closes the overlay and returns focus to the visible desktop home link; `pageshow` resets it without requesting focus. Following a destination closes without restoring the old trigger.
 
-The disclosed region uses `max-height: calc(100dvh - 6.5rem)` through an inline Tailwind utility and can scroll internally on short screens. This leaves page context visible. A `noscript` copy of the same links keeps navigation available when JavaScript is disabled, and the inactive toggle stays hidden. The local Places header-switcher trial uses `calc(100dvh - 8.5rem)` for that page’s no-JavaScript region to reserve the extra 32 px below it. These are source observations; browser verification is recorded below.
+The overlay's links scroll internally on short screens while its header remains available. A `noscript` copy keeps the same destinations available as inline navigation, with the inactive Menu toggle hidden. Its scrollable fallback uses `calc(100dvh - 6.5rem)`, or `calc(100dvh - 8.5rem)` on Places to reserve the extra 32 px below it. These source observations require the rendered verification recorded below.
 
 ## Page Boundary
 
-A shared `sticky top-0` wrapper is a direct child of the body’s flex column, before the growing main-content container. The header occupies its natural height in page flow, so the former artificial main-content top offset is removed. Opening mobile navigation expands the header in flow. The old `scrolledFromTop` state and window-scroll listener are removed.
+A shared `sticky top-0` wrapper is a direct child of the body’s flex column, before the growing main-content container. The header occupies its natural height in page flow, so the former artificial main-content top offset is removed. The mobile overlay is outside this flow and preserves the underlying content position and header height. The old `scrolledFromTop` state and window-scroll listener remain removed.
 
 ## Places Destination
 
@@ -62,11 +62,11 @@ Production update, 2026-09-28: the three-view Places header and associated toolb
 
 The category retains its existing `photography` identity and topic hooks. Posts is the complete chronological category stream. In the current integration, Map | Mosaic | Posts straddles the global header’s lower rule and remains visible during page scrolling. It retains its own “Places views” navigation label and real links, separate from the CMS destination list. The old in-page row and long Slate 200 line are removed. The switcher outline and map/gallery structure retain Slate 300. See [Places](../patterns/places.md#navigation-and-views) for the trial’s source and verification status.
 
-The trial keeps the desktop/mobile identity bars at 96/80 px and adds 24/32 px below them on Places, yielding occupied stacks of 120/112 px. The slimmer mobile refinement retains actual 44 px links while using 32 px colored fills inside a separate 38 px visual shell. From `md`, links/fills remain 28 px and the shell is 34 px. The shell ignores pointer input; focus belongs to the full link target. The shared wrapper owns the Alpine mobile disclosure state and hides the Places slot while Menu is open. The same view-link partial supplies the Alpine-teleported control and the no-JavaScript fallback beneath the expanded header. Other destinations do not receive this slot or its extra height.
+The desktop/mobile identity bars remain 96/80 px with 24/32 px below them on Places, yielding occupied stacks of 120/112 px. The slimmer mobile refinement retains actual 44 px links while using 32 px colored fills inside a separate 38 px visual shell. From `md`, links/fills remain 28 px and the shell is 34 px. The shell ignores pointer input; focus belongs to the full link target. The shared wrapper owns the Alpine menu state. In the Personal Index follow-up, the Places slot retains its space beneath the modal; it no longer collapses when Menu opens. The same view-link partial supplies the Alpine-teleported control and the no-JavaScript fallback beneath the expanded header. Other destinations do not receive this slot or its extra height.
 
-On Places only, `pb-4` within the fixed-height mobile identity row moves its contents up 8 px to separate the signature/Menu hit areas from the view links crossing the rule. This keeps the bar at 80 px; spacing must be checked using link bounds, not text appearance alone. The mobile signature and Menu controls use `relative focus-visible:z-10` so their keyboard outlines draw above the adjacent switcher surround.
+On Places only, `pb-4` within the fixed-height mobile identity row moves its contents up 8 px to separate the signature/Menu hit areas from the view links crossing the rule. The overlay header repeats this inset so the signature stays in the same position when Menu opens. This keeps the bar at 80 px; spacing must be checked using link bounds, not text appearance alone. The mobile signature and Menu controls use `relative focus-visible:z-10` so their keyboard outlines draw above the adjacent switcher surround.
 
-From `lg`, the shared map/gallery toolbar sticks directly beneath the measured whole header stack, initially at 120 px. The map sticks below its 56 px row, initially at 176 px, and the canvas fills the remaining viewport. The trial’s initial desktop reserve is 120 px; mobile disclosure height cannot carry into it. Below `lg`, the map and separate location-chip/summary rows remain nonsticky; zoom and Expand/Collapse sit over the map itself. Header changes must still be checked with map canvas sizing, result-scroll targets, and camera stability during ordinary scrolling.
+From `lg`, the shared map/gallery toolbar sticks directly beneath the measured whole header stack, initially at 120 px. The map sticks below its 56 px row, initially at 176 px, and the canvas fills the remaining viewport. The desktop reserve starts at 120 px; the mobile overlay does not contribute to it. Below `lg`, the map and separate location-chip/summary rows remain nonsticky; zoom and Expand/Collapse sit over the map itself. Header changes must still be checked with map canvas sizing, result-scroll targets, and camera stability during ordinary scrolling.
 
 ## Footer
 
@@ -78,7 +78,11 @@ Implement new behavior with Alpine.js and new styling with inline Tailwind utili
 
 ## Review Evidence
 
-Source reviewed on 2026-09-28 in uncommitted `bentilden.com` changes above `b1cf61ef358dc56cce21402f973740ca5d6ad174` and frontend changes above `f3f709f178c9df6a67c823353d381aa994b09a2b`: the files listed in this page’s metadata, including the shared header, both responsive variants, layout, and Places measurements. The new behavior uses Alpine directives and the new styling uses inline Tailwind utilities. Local Chromium verification on 2026-09-28 passed 18 navigation checks: 16 interactive/layout checks plus two no-JavaScript checks, with no page runtime errors. Coverage includes widths 320, 390, 767, 768, 1024, and 1440 px, short 667 × 375 px reachability, focus/Escape and outside dismissal, page scrolling, breakpoint reset, and current destinations. All six fallback links remain reachable at 390 × 844 and 667 × 375; the short-screen case retains 24 px of page context.
+Personal Index source review, 2026-09-28: uncommitted website changes above `fcfbf500678f6c156155234846eac75e3c1bb232` update `global-header.twig`, `global-header-nav-mobile.twig`, and the desktop home focus reference in `global-header-nav-primary.twig`. The approved overlay uses Alpine behavior and inline Tailwind styling. All 27 updated local Chromium navigation checks passed with zero runtime errors: responsive header fit, stationary underlying content, trapped focus and return, background scroll lock, breakpoint reset, actual destination/current states, preserved Places geometry, and no-JavaScript reachability. Tested widths include 320, 390, 767, 768, 1024, 1280, and 1440 px, with 667 × 375 px short-screen coverage. Visual review covered the 390 px menu, active Places/About states, and short landscape state. These checks do not establish Safari, physical-device, or screen-reader coverage; no deployment is claimed.
+
+The required seven-route release run passed content, asset environment, frontend build, and font QA, loading all 48 faces on each route. Browser QA passed `/about`, `/contact`, `/photography`, `/photography?view=mosaic`, `/photography?view=posts`, and `/kyoto-in-fall`, but the overall run failed on `/` because an external Google ad-traffic-quality request returned `net::ERR_NAME_NOT_RESOLVED`. No overall release-QA pass is claimed. Earlier results below describe the preceding disclosure and do not verify the overlay.
+
+Initial disclosure source reviewed on 2026-09-28 in uncommitted `bentilden.com` changes above `b1cf61ef358dc56cce21402f973740ca5d6ad174` and frontend changes above `f3f709f178c9df6a67c823353d381aa994b09a2b`: the files listed in this page’s metadata, including the shared header, both responsive variants, layout, and Places measurements. The new behavior uses Alpine directives and the new styling uses inline Tailwind utilities. Local Chromium verification on 2026-09-28 passed 18 navigation checks: 16 interactive/layout checks plus two no-JavaScript checks, with no page runtime errors. Coverage includes widths 320, 390, 767, 768, 1024, and 1440 px, short 667 × 375 px reachability, focus/Escape and outside dismissal, page scrolling, breakpoint reset, and current destinations. All six fallback links remain reachable at 390 × 844 and 667 × 375; the short-screen case retains 24 px of page context.
 
 All 22 Places browser checks passed after the header change, including a stable 96 px header with zero map-canvas mutations across 185 sampled frames. Scoped release QA passed content, asset-environment, build, fonts, and browser checks on `/about`, `/contact`, `/kyoto-in-fall`, `/kyoto-guard-tower`, `/photography`, and `/photography?view=posts`; all 48 declared font faces loaded on each route. The browser font check now requires Micro typography only when the page contains a Micro target.
 
@@ -90,7 +94,7 @@ The refinement’s scoped release QA passed on `/about`, `/contact`, `/kyoto-in-
 
 ## Related Pages
 
-- [Accessibility](../accessibility/index.md) covers disclosure state, focus, and the review bar.
+- [Accessibility](../accessibility/index.md) covers modal state, focus, and the review bar.
 - [Layout](../foundations/layout.md) covers header/content boundaries.
 - [Areas of Interest](../patterns/areas-of-interest.md) explains the category identities behind the authored navigation labels.
 - [Render Audit](../audit/render-audit.md) preserves historical findings from the previous navigation.

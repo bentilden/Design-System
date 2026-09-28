@@ -116,7 +116,7 @@ Scoped source review, 2026-09-28: the date, SVG, caption/detail, and rich-text c
 | Topic and schema hooks are reliable implementation anchors: `bt-article-topic-*`, `bt-article-schema-*`. | Observed |
 | The shared shell is not used by contact/form content. | Needs decision |
 | Templates now include image alt fallbacks, but asset-native alt coverage is still incomplete. | Needs content cleanup |
-| The compact [mobile navigation](navigation.md) is a disclosure and adds no navigation heading; the previous `Posts` heading is removed. | Scoped source update, 2026-09-28 |
+| The [Personal Index mobile navigation](navigation.md) is a named modal and adds no navigation heading; the previous `Posts` heading remains removed. | Scoped source update, 2026-09-28 |
 
 ## Related Pages
 

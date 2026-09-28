@@ -38,7 +38,7 @@ Scoped contrast inventory, 2026-09-28: uncommitted frontend changes above `f3f70
 | Pattern | Source | Notes |
 | --- | --- | --- |
 | Global layout | `_layout.twig` | Loads SEO, compiled CSS, bundled JavaScript, the shared sticky header, growing main-content container, and footer. The compact-header update removes the old main top offset. |
-| Global navigation | `_components/global-header.twig`, `global-header-nav-primary.twig`, `global-header-nav-mobile.twig` | Shared CMS links, stable desktop header, and nonmodal mobile disclosure. |
+| Global navigation | `_components/global-header.twig`, `global-header-nav-primary.twig`, `global-header-nav-mobile.twig` | Shared CMS links, stable desktop header, and Personal Index mobile modal with inline no-JavaScript fallback. |
 | Entry resolver | `_entry-content.twig` | Chooses `_entry-content/{entry.type}/{section}`, then `_entry-content/{entry.type}/default`, then `_entry-content/default`. |
 | Matrix resolver | `_matrix.twig` | Chooses `_matrix/{block.type}`, then `_matrix/default`. |
 | Stream pages | `index.twig`, `category.twig` | Paginated entry loops using `_entry-content`. |
