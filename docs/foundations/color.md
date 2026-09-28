@@ -94,7 +94,9 @@ Scoped palette audit, 2026-09-28: these swatches reflect the current website’s
 
 Source and computed-style refinement review, 2026-09-28: use a 1 px `border-slate-300/70` outer header boundary on desktop and mobile. Desktop link groups use spacing in place of a vertical separator. Mobile has one outer rule under the complete header and retains the inset Slate 200 rule above About/Contact.
 
-The long line behind Places Map | Posts is Slate 200. The switcher outline and map/gallery structural borders remain Slate 300; toolbar dividers remain Slate 200. The different strengths identify the global boundary, component structure, and local grouping without making every rule equally prominent. See [Navigation](../components/navigation.md#review-evidence) for the refinement’s source and verification status.
+The earlier Places treatment used a Slate 200 long line behind Map | Posts. The local 2026-09-28 [header-switcher trial](../patterns/places.md#navigation-and-views) removes that separate line and centers the control on the global header’s Slate 300/70 boundary, with a Slate 50 surround clearing the rule behind it. The switcher outline and map/gallery structural borders remain Slate 300; toolbar dividers remain Slate 200. The different strengths identify the global boundary, component structure, and local grouping without making every rule equally prominent. See [Navigation](../components/navigation.md#review-evidence) for the earlier divider refinement’s source and verification status.
+
+The later shared-toolbar follow-up removes the extra explorer top rule and the desktop divider between the toolbar’s two cells. A continuous Slate 200 bottom rule spans the controls and gallery summary; the Slate 300 map/gallery divider starts below it. The slimmer mobile view control keeps the same selected and hover palette on inner fills while its decorative shell becomes 38 px high around actual 44 px links. See [Places](../patterns/places.md#map-and-gallery) for this local source stage and its check status.
 
 ## Guidance
 

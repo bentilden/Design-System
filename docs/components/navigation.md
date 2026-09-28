@@ -14,6 +14,8 @@ source:
   - bentilden.com/templates/_components/global-header-nav-mobile.twig
   - bentilden.com/templates/_components/global-footer.twig
   - bentilden.com/templates/_places/index.twig
+  - bentilden.com/templates/_places/view-navigation.twig
+  - bentilden.com/templates/category.twig
   - bentilden.com-css/src/places.js
 dependencies:
   - Alpine.js
@@ -48,7 +50,7 @@ Use one 1 px `border-slate-300/70` outer rule below the complete header: beneath
 
 Alpine exposes `aria-expanded` and the region relationship through `aria-controls`. Native `hidden` attributes prevent a flash before Alpine initializes and keep closed links out of the keyboard sequence. The toggle changes its visible label between Menu and Close. Escape within the header closes the disclosure and returns focus to the toggle; moving focus or clicking outside closes it without moving focus back. Crossing into the desktop breakpoint and the browser’s `pageshow` event reset the open state.
 
-The disclosed region uses `max-height: calc(100dvh - 6.5rem)` through an inline Tailwind utility and can scroll internally on short screens. This leaves page context visible. A `noscript` copy of the same links keeps navigation available when JavaScript is disabled, and the inactive toggle stays hidden. These are source observations; browser verification is recorded below.
+The disclosed region uses `max-height: calc(100dvh - 6.5rem)` through an inline Tailwind utility and can scroll internally on short screens. This leaves page context visible. A `noscript` copy of the same links keeps navigation available when JavaScript is disabled, and the inactive toggle stays hidden. The local Places header-switcher trial uses `calc(100dvh - 8.5rem)` for that page’s no-JavaScript region to reserve the extra 32 px below it. These are source observations; browser verification is recorded below.
 
 ## Page Boundary
 
@@ -56,9 +58,13 @@ A shared `sticky top-0` wrapper is a direct child of the body’s flex column, b
 
 ## Places Destination
 
-The category retains its existing `photography` identity and topic hooks. Its centered Map | Posts switcher remains separate from global navigation; Posts is the complete chronological category stream. The long line behind the switcher is Slate 200, while the switcher outline and map/gallery structure use Slate 300. See [Places](../patterns/places.md) for map, gallery, and view-restoration behavior.
+The category retains its existing `photography` identity and topic hooks. Posts is the complete chronological category stream. In the local 2026-09-28 header-switcher trial, Map | Posts straddles the global header’s lower rule and remains visible during page scrolling. It retains its own “Places views” navigation label and real links, separate from the CMS destination list. The old in-page row and long Slate 200 line are removed. The switcher outline and map/gallery structure retain Slate 300. See [Places](../patterns/places.md#navigation-and-views) for the trial’s source and verification status.
 
-The later Places scroll-alignment refinement removes the extra 16 px offset so the map sticks directly beneath the measured header. Its canvas fills the remaining desktop viewport below that header and the 56 px toolbar. The initial desktop reserve is 96 px and tracks the measured desktop header. Mobile disclosure height cannot carry into that desktop reserve. Header changes must still be checked with map canvas sizing, result-scroll targets, and camera stability during ordinary scrolling.
+The trial keeps the desktop/mobile identity bars at 96/80 px and adds 24/32 px below them on Places, yielding occupied stacks of 120/112 px. The slimmer mobile refinement retains actual 44 px links while using 32 px colored fills inside a separate 38 px visual shell. From `md`, links/fills remain 28 px and the shell is 34 px. The shell ignores pointer input; focus belongs to the full link target. The shared wrapper owns the Alpine mobile disclosure state and hides the Places slot while Menu is open. The same view-link partial supplies the Alpine-teleported control and the no-JavaScript fallback beneath the expanded header. Other destinations do not receive this slot or its extra height.
+
+On Places only, `pb-4` within the fixed-height mobile identity row moves its contents up 8 px to separate the signature/Menu hit areas from the view links crossing the rule. This keeps the bar at 80 px; spacing must be checked using link bounds, not text appearance alone. The mobile signature and Menu controls use `relative focus-visible:z-10` so their keyboard outlines draw above the adjacent switcher surround.
+
+From `lg`, the shared map/gallery toolbar sticks directly beneath the measured whole header stack, initially at 120 px. The map sticks below its 56 px row, initially at 176 px, and the canvas fills the remaining viewport. The trial’s initial desktop reserve is 120 px; mobile disclosure height cannot carry into it. Below `lg`, the map and separate control/summary rows remain nonsticky. Header changes must still be checked with map canvas sizing, result-scroll targets, and camera stability during ordinary scrolling.
 
 ## Footer
 
