@@ -11,6 +11,8 @@ source:
   - bentilden.com/templates/_matrix/gallery.twig
   - bentilden.com/templates/_matrix/gallery2.twig
   - bentilden.com/templates/_entry-content/gallery/default.twig
+  - bentilden.com-css/src/bentilden.js
+  - bentilden.com-css/src/bentilden.css
   - bentilden.com/config/project/fields/gallery--0f8358cb-9ab0-459e-a181-895cfb47b4b4.yaml
   - bentilden.com/config/project/fields/images--c9d009ca-ef9b-4d3f-bcbe-1fc2f034e5f6.yaml
 classes:
@@ -64,6 +66,7 @@ Inline galleries and single-image galleries remove the grid column class:
 
 - Images render native `srcset`, `sizes`, `width`, `height`, `loading`, `decoding`, and priority attributes through the shared responsive-image component.
 - Images open through lightGallery zoom behavior loaded from the site JavaScript bundle.
+- Article lightGallery hides the previous/next arrows when the gallery contains only one image. Multi-image navigation follows the library’s existing controls. The separate [Places viewer](../patterns/places.md#photo-viewer-and-recovery) uses the same single-item visibility rule through Alpine.
 - Multi-image galleries use optimized thumbnails and `sizes="(min-width: 1024px) 28vw, 50vw"`.
 - Inline or single-image galleries use larger optimized images and `sizes="90vw"`.
 - The first image in the first priority-eligible gallery block may render eager with `fetchpriority="high"`; later gallery images remain lazy.
@@ -71,6 +74,8 @@ Inline galleries and single-image galleries remove the grid column class:
 - Lightbox captions come from asset caption/details through `data-sub-html`; alt text is not used as the visible caption fallback.
 
 Scoped caption/detail update, 2026-09-28: gallery and featured-image templates use Slate 600 for visible captions and 12 px `font-micro text-xs` Slate 600 for details. Details are styled with inline utilities in both legacy and current template variants; the unused `.bt-image-details` CSS definition is removed. Source inspected in uncommitted website changes above `b1cf61e`. Image/recipe detail typography remains source-only verification because matching metadata was absent from the sampled live fields. The separate Places gallery-caption checks passed at 390/1440 px with approximately 7.25:1 contrast; they do not establish coverage of every editorial gallery variant. See [Article Content](article-content.md#captions) for the current snippet.
+
+Scoped source check, 2026-09-28: installed lightGallery 2.9.0 adds `lg-single-item` for fewer than two items; its bundled CSS hides `.lg-next` and `.lg-prev` beneath that class. The site imports that bundle and has no override of the single-item rule. This existing article behavior requires no runtime change; it is a source observation, separate from the Places follow-up’s rendered verification.
 
 ## Accessibility
 
