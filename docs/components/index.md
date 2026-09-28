@@ -16,10 +16,12 @@ review_status: needs audit
 
 Components document reusable interface and content building blocks.
 
-The current site mixes Tailwind utility composition with a few named `bt-*` classes. This system should keep that balance:
+The current site mixes Tailwind utility composition with existing named `bt-*` classes. The implementation rule accepted on 2026-09-28 governs new work:
 
-- Use named components for patterns that repeat across Areas of Interest or entry types.
-- Keep one-off layout decisions local to Twig templates.
+- Implement new styling with inline Tailwind utilities and new behavior with Alpine.js; ask the site owner before introducing an exception.
+- Reuse Twig components where patterns repeat while keeping styling inline. Existing named classes remain documented observations rather than permission to create new ones.
 - Prefer clear source references so future refactors can move from documentation to implementation without guesswork.
+
+See [Contributing](../contributing.md#frontend-implementation-rule) for the durable implementation rule.
 
 The highest-priority components are the ones with both visual impact and source coupling: article content, matrix blocks, galleries, recipe content, navigation, and forms.

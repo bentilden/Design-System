@@ -11,15 +11,17 @@ source:
   - bentilden.com-css/src/bentilden.css
   - bentilden.com-css/src/elements/type.css
   - bentilden.com/templates/_components/entry-header.twig
+  - bentilden.com/templates/_matrix/text.twig
+  - bentilden.com/templates/_matrix/featuredImage2.twig
 classes:
   - font-sans
   - font-display
   - font-micro
-  - text-2xs
+  - text-xs
   - bt-dropcap
 accessibility:
   reviewed: false
-  notes: Heading hierarchy and small metadata contrast need full audit.
+  notes: Metadata and drop-cap source changes are recorded below; broader heading and assistive-technology review remains separate.
 owner: Documentation owner
 created: 2026-06-06
 last_reviewed: 2026-06-06
@@ -57,12 +59,12 @@ Use the display face for entry titles and major editorial headings. Keep line-he
 ### Metadata
 
 ```html
-<p class="font-micro text-2xs uppercase tracking-widest text-slate-400 mt-4 mb-8">
+<p class="font-micro text-xs uppercase tracking-widest text-slate-600 mt-4 mb-8">
   Posted {{ postDate | date('M d, Y') }}
 </p>
 ```
 
-Use micro typography for dates, details, photo metadata, and small labels. It should be uppercase, tracked out, and quiet.
+Use the Micro family at 12 px (`text-xs`) with Slate 600 for editorial dates and image details. Uppercase tracking provides the quiet metadata treatment without relying on a very small size or pale foreground.
 
 ### Prose
 
@@ -76,12 +78,16 @@ Long-form content uses Tailwind Typography with `max-w-prose` to keep line lengt
 
 ## Drop Cap
 
-The `bt-dropcap` utility creates a large first letter for editorial openings.
+The author-supplied `bt-dropcap` class remains a content hook in stored rich text. Its styling is applied by inline descendant utilities on the `_matrix/text.twig` wrapper, so existing content needs no migration.
 
-```css
-.bt-dropcap {
-  @apply first-letter:text-[90px] first-letter:-mb-3 first-letter:leading-none first-letter:font-bold first-letter:text-slate-300 first-letter:mr-3 first-letter:float-left;
-}
+```html
+<div class="bt-text max-w-prose prose [&_.bt-dropcap]:first-letter:text-[5.25em] [&_.bt-dropcap]:first-letter:-mb-3 [&_.bt-dropcap]:first-letter:leading-[0.9] [&_.bt-dropcap]:first-letter:font-bold [&_.bt-dropcap]:first-letter:text-slate-500 [&_.bt-dropcap]:first-letter:mr-3 [&_.bt-dropcap]:first-letter:float-left">
+  ...
+</div>
 ```
 
-Use it only on narrative text blocks where the first paragraph needs an editorial lead-in.
+Use the hook only on narrative openings. The bold Slate 500 letter uses `5.25em` with `0.9` line-height, scaling to the surrounding prose. With the sampled 16 px body text, this computes to 84 px type and a 75.6 px line box. The float, 12 px right spacing, and negative 12 px bottom margin preserve the wrap around the three-line initial.
+
+Scoped source review, 2026-09-28: uncommitted changes above website `b1cf61e` and frontend `f3f709f` update shared/listing dates, matrix/recipe image details, and the rich-text wrapper. The unused `.bt-datePublished`, `.bt-image-details`, and `.bt-dropcap` CSS definitions are removed; stored `bt-dropcap` content hooks remain supported by the template. Local Chromium checks at 320/390/1280 px verified the 12 px dates and large drop caps. Date contrast is 6.15–7.25:1 across the article gradient endpoints; actual drop-cap background samples measured 4.21–4.40:1. Image/recipe details remain source-only verification because the sampled live fields had no matching metadata. The earlier page review date is retained because unrelated type and heading behavior was not re-audited.
+
+Scoped alignment refinement, 2026-09-28: the inline rich-text wrapper replaces the earlier fixed 90 px / unit line-height treatment with the relative size and tighter line-height above. Local Chromium checks at 320/390/1280 px found no overflow; visual inspection at 390 px showed the glyph top aligned with the first text line and its bottom at the third-line baseline. The earlier contrast checks retain their original scope. The implementation agent also reviewed before/after crops at all three widths, and the coordinating agent inspected the 320/390 px results. These checks do not establish cross-browser, physical-device, or assistive-technology coverage.

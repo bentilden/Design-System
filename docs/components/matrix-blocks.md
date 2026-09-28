@@ -24,7 +24,6 @@ classes:
   - bt-button
   - bt-control-image
   - bt-image-caption
-  - bt-image-details
 dependencies:
   - Tailwind typography plugin
   - lightGallery
@@ -87,7 +86,7 @@ Legacy `featuredImage.twig` and `gallery.twig` templates still exist. Treat the 
 - Text blocks should preserve semantic rich text from authors.
 - Heading blocks should not skip levels within the rendered article.
 - Image blocks should render native asset alt text first, then title or file-name fallback.
-- Gallery and featured-image blocks should keep caption/detail text visually adjacent to the image.
+- Gallery and featured-image blocks should keep caption/detail text visually adjacent to the image. The 2026-09-28 contrast update uses Slate 600, with 12 px Micro text for details; see [Article Content](article-content.md#captions) for source and verification scope.
 - Lightbox captions should use asset caption/details, not alt text fallback.
 - Raw HTML blocks must be manually reviewed before a page can be treated as accessibility-clean.
 

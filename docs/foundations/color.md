@@ -13,7 +13,6 @@ source:
   - bentilden.com-css/src/bentilden.css
 tokens:
   - slate
-  - orange
 environments:
   observed:
     - prod
@@ -26,7 +25,7 @@ review_status: needs audit
 
 # Color
 
-The current website leans on Tailwind Slate for most UI and page structure. Orange appears as a focused accent in mobile navigation active states.
+The website uses Tailwind Slate for UI and page structure. The compact navigation direction accepted on 2026-09-28 uses Slate links and subtle rule/underline states on desktop and mobile. The previous orange mobile-navigation accent belongs to the superseded overlay.
 
 ## Core Palette
 
@@ -46,34 +45,36 @@ The current website leans on Tailwind Slate for most UI and page structure. Oran
   </div>
 </div>
 <div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#94a3b8"></div>
+  <div class="bt-swatch__color" style="background:#90a1b9"></div>
   <div class="bt-swatch__meta">
     <span class="bt-swatch__name">Slate 400</span>
-    <span class="bt-swatch__value">#94a3b8</span>
+    <span class="bt-swatch__value">#90a1b9</span>
   </div>
 </div>
 <div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#475569"></div>
+  <div class="bt-swatch__color" style="background:#62748e"></div>
+  <div class="bt-swatch__meta">
+    <span class="bt-swatch__name">Slate 500</span>
+    <span class="bt-swatch__value">#62748e</span>
+  </div>
+</div>
+<div class="bt-swatch">
+  <div class="bt-swatch__color" style="background:#45556c"></div>
   <div class="bt-swatch__meta">
     <span class="bt-swatch__name">Slate 600</span>
-    <span class="bt-swatch__value">#475569</span>
+    <span class="bt-swatch__value">#45556c</span>
   </div>
 </div>
 <div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#0f172a"></div>
+  <div class="bt-swatch__color" style="background:#0f172b"></div>
   <div class="bt-swatch__meta">
     <span class="bt-swatch__name">Slate 900</span>
-    <span class="bt-swatch__value">#0f172a</span>
-  </div>
-</div>
-<div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#fdba74"></div>
-  <div class="bt-swatch__meta">
-    <span class="bt-swatch__name">Orange 300</span>
-    <span class="bt-swatch__value">#fdba74</span>
+    <span class="bt-swatch__value">#0f172b</span>
   </div>
 </div>
 </div>
+
+Scoped palette audit, 2026-09-28: these swatches reflect the current website’s computed Tailwind palette. The sampled RGB values correct the older Slate 400, 600, and 900 hex labels and add Slate 500. The documentation theme has its own existing stylesheet; these are website palette values, not a claim that every documentation-theme token was changed.
 
 ## Usage
 
@@ -81,15 +82,31 @@ The current website leans on Tailwind Slate for most UI and page structure. Oran
 | --- | --- | --- |
 | Page shell | `bg-slate-200`, `bg-slate-50` | Creates the soft gray page frame and content body. |
 | Article background | `bg-gradient-to-b from-slate-50 to-slate-200` | Used to let long articles fade into the page footer area. |
-| Primary text | `text-slate-900` | Used for high-emphasis text and active navigation pills. |
-| Secondary text | `text-slate-500`, `text-slate-600` | Used for captions and lower-emphasis links. |
-| Metadata | `text-slate-400` | Used with micro typography and uppercase tracking. |
-| Footer | `bg-slate-900`, `text-white` | Strong ending band for global navigation. |
-| Mobile active state | `text-orange-300`, `bg-orange-200 text-orange-700` | Used sparingly in mobile navigation. |
+| Primary text | `text-slate-900` | Used for high-emphasis editorial text. |
+| Small secondary text | `text-slate-600` | Captions, counts, instructions, and other small text on light surfaces. Avoid opacity reductions. |
+| Metadata | `font-micro text-xs text-slate-600` | Editorial dates and image details use 12 px type with uppercase tracking. |
+| Footer | `bg-slate-900`, `text-slate-400` | Dark ending band; copyright uses Slate 400 while primary footer links retain their existing light colors. |
+| Functional boundaries | `border-slate-500`, `focus:border-slate-700`, `focus:ring-slate-700` | Contact fields remain identifiable before and during focus. |
+| Category icons and drop caps | `fill-slate-500`, `hover:fill-slate-700`, `first-letter:text-slate-500` | Solid functional SVG icons; large drop caps use Slate 500. |
+| Navigation state | `text-slate-600`, `text-slate-700`, `text-slate-950` | Compact header: quiet links, darker current/hover state, and underline. See [Navigation](../components/navigation.md). |
+
+## Divider Hierarchy
+
+Source and computed-style refinement review, 2026-09-28: use a 1 px `border-slate-300/70` outer header boundary on desktop and mobile. Desktop link groups use spacing in place of a vertical separator. Mobile has one outer rule under the complete header and retains the inset Slate 200 rule above About/Contact.
+
+The long line behind Places Map | Posts is Slate 200. The switcher outline and map/gallery structural borders remain Slate 300; toolbar dividers remain Slate 200. The different strengths identify the global boundary, component structure, and local grouping without making every rule equally prominent. See [Navigation](../components/navigation.md#review-evidence) for the refinement’s source and verification status.
 
 ## Guidance
 
 - Start with Slate unless a pattern needs semantic color.
-- Keep orange as a navigational accent, not a broad brand wash.
-- Use `slate-400` for metadata only when the text remains legible at small sizes.
+- Use the shared Slate treatment for global navigation. Do not reintroduce the former orange mobile-overlay state as current guidance.
+- Use Slate 600 for small text on light surfaces. Slate 400 is suitable for the dark-footer copyright role, not light-surface metadata.
 - Use `slate-900` for active states and deep surfaces.
+
+Scoped source review, 2026-09-28: the compact-header palette was inspected in uncommitted website header changes above `b1cf61e`. That initial treatment used Slate 50 surfaces, Slate 200 rules, and Slate 950 current/hover links; no orange state remained in the new header. The later accepted divider refinement above supersedes the outer-rule color. This local source check does not refresh the earlier review of other palette uses or establish deployment. See [Navigation](../components/navigation.md#review-evidence).
+
+## Contrast Follow-Up
+
+Approved and inspected in local source on 2026-09-28: the text, metadata, footer, field, icon, and drop-cap roles above replace the weaker sampled treatments. The changes are uncommitted above website `b1cf61e` / frontend `f3f709f`. Following the user’s correction, the Places view switcher uses a reversed selected state: Slate 900 with white text and no underline. The latest user-selected hover treatment uses Slate 200 with Slate 600 text for inactive hover. Decorative divider strengths remain unchanged.
+
+The computed palette gives Slate 600 approximately 7.25:1 against Slate 50 and 6.15:1 against Slate 200; Slate 400 on Slate 900 is approximately 6.78:1. Local Chromium checks on 2026-09-28 confirmed these ratios in the sampled Places counts/captions and footer, with stronger contact boundaries. Those checks preceded the switcher’s reversed-color correction; its earlier underline result is historical. The correction passed targeted checks at 390/1440 px and without JavaScript, measuring 17.83:1 for selected white text on Slate 900. These are scoped measurements, not a claim about every rendered element. Gradients, opacity, images, and interaction states must be reviewed in context. See [Accessibility](../accessibility/index.md#color-and-contrast) for verification scope and limits.

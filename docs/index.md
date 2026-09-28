@@ -36,7 +36,8 @@ The first pass is based on these source files:
 | Area | Source |
 | --- | --- |
 | Tailwind theme and source detection | `bentilden.com-css/src/bentilden.css` |
-| Typefaces and drop cap | `bentilden.com-css/src/elements/type.css` |
+| Typefaces | `bentilden.com-css/src/elements/type.css` |
+| Authored drop cap | `bentilden.com/templates/_matrix/text.twig` |
 | Grid utilities | `bentilden.com-css/src/elements/grid.css` |
 | Button utility | `bentilden.com-css/src/components/button.css` |
 | Site and recipe component CSS | `bentilden.com-css/src/components/site.css` |
@@ -49,7 +50,7 @@ The first pass is based on these source files:
 ## Operating Principles
 
 1. Document what exists before inventing what is missing.
-2. Prefer composable Tailwind utilities when a pattern is local to one template.
-3. Promote a utility to a named `bt-*` class when it repeats or carries design intent.
+2. Implement new styling with inline Tailwind utilities.
+3. Implement new behavior with Alpine.js; ask the site owner before making an exception to either implementation rule. Existing `bt-*` classes remain documented as current source, not a recommendation to add more. See [Contributing](contributing.md#frontend-implementation-rule) for the rule accepted on 2026-09-28.
 4. Keep the system editorial first: content and images should lead, interface chrome should recede.
 5. Treat accessibility and responsive behavior as part of the component, not an afterthought.

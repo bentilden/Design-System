@@ -26,17 +26,19 @@ The source audit found a small Tailwind source layer sitting above a larger Twig
 | File | Role |
 | --- | --- |
 | `bentilden.com-css/src/bentilden.css` | Imports Tailwind 4, declares source paths, loads plugins, defines theme tokens, applies base compatibility rules, and imports local CSS. |
-| `bentilden.com-css/src/elements/type.css` | Defines Helvetica Now webfonts and `bt-dropcap`. |
+| `bentilden.com-css/src/elements/type.css` | Defines Helvetica Now webfonts. The 2026-09-28 contrast update moves drop-cap styling into inline rich-text wrapper utilities. |
 | `bentilden.com-css/src/elements/grid.css` | Defines `bt-page-container` and `bt-grid`. |
 | `bentilden.com-css/src/components/button.css` | Defines `bt-button`. |
-| `bentilden.com-css/src/components/article-icon.css` | Defines `bt-article-icon`. |
-| `bentilden.com-css/src/components/site.css` | Defines article, image, callout, nav, pagination, recipe, info bar, and supporting site component styles. |
+| `bentilden.com-css/src/components/site.css` | Defines article, image, callout, nav, recipe, info bar, and supporting site component styles. Pagination styling moves into inline template utilities in the 2026-09-28 refinement. |
+
+Scoped contrast inventory, 2026-09-28: uncommitted frontend changes above `f3f709f` remove `components/article-icon.css` and its import, plus unused date/detail/drop-cap definitions from `site.css` and `type.css`. Website SVG, date, and details templates use inline utilities. The stored `bt-dropcap` rich-text class remains a content hook targeted by inline descendant utilities on `_matrix/text.twig`. This is a source observation; see [Typography](../foundations/typography.md) and [Article Content](../components/article-content.md) for rendered verification status.
 
 ## Template System
 
 | Pattern | Source | Notes |
 | --- | --- | --- |
-| Global layout | `_layout.twig` | Loads SEO, compiled CSS, bundled JavaScript, global header, main offset, and footer. |
+| Global layout | `_layout.twig` | Loads SEO, compiled CSS, bundled JavaScript, the shared sticky header, growing main-content container, and footer. The compact-header update removes the old main top offset. |
+| Global navigation | `_components/global-header.twig`, `global-header-nav-primary.twig`, `global-header-nav-mobile.twig` | Shared CMS links, stable desktop header, and nonmodal mobile disclosure. |
 | Entry resolver | `_entry-content.twig` | Chooses `_entry-content/{entry.type}/{section}`, then `_entry-content/{entry.type}/default`, then `_entry-content/default`. |
 | Matrix resolver | `_matrix.twig` | Chooses `_matrix/{block.type}`, then `_matrix/default`. |
 | Stream pages | `index.twig`, `category.twig` | Paginated entry loops using `_entry-content`. |
@@ -46,6 +48,8 @@ The source audit found a small Tailwind source layer sitting above a larger Twig
 | Gallery layout | `_entry-content/gallery/default.twig` | Dynamically composes gallery/text widths based on alignment and gallery style. |
 | Recipe branch | `_entry-content/recipe/*.twig`, `_entry/recipe/*.twig` | Intro, story, and recipe detail views with Tailwind, Alpine, and `bt-*` hooks. |
 | Contact | `contact.twig` | Form-specific layout with labels, error wiring, honeypot, and reCAPTCHA. |
+
+Scoped header review, 2026-09-28: the shared wrapper and responsive templates above were inspected in uncommitted website changes above `b1cf61e`. Behavior uses Alpine directives and styling uses inline Tailwind utilities. See [Navigation](../components/navigation.md#review-evidence) for sources and verification limits.
 
 ## Places Addition
 
@@ -59,7 +63,7 @@ These hooks should be considered part of the current documentation backlog:
 | --- | --- |
 | `bt-article`, `bt-article-topic-*`, `bt-article-schema-*` | Article shell and source-aware styling hooks. |
 | `bt-control-*` | Matrix block wrapper hooks. |
-| `bt-control-image`, `bt-image-file`, `bt-image-caption`, `bt-image-details` | Media presentation hooks. |
+| `bt-control-image`, `bt-image-file`, `bt-image-caption` | Media presentation hooks. Image details now use inline typography utilities. |
 | `bt-item`, `bt-item-name` | Entry/item listing hooks. |
 | `bt-nav-menu`, `bt-nav-bigLink`, `bt-icon` | Navigation support hooks. |
 | `bt-recipe-*`, `bt-infoBar`, `bt-servings`, `bt-times` | Recipe detail hooks. |

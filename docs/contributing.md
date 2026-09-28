@@ -26,6 +26,12 @@ This design system should stay close to the live website.
 6. Check metadata against the [schema](meta/page-metadata.md), review source references and related pages, and run `mkdocs build --strict`.
 7. Review the documentation diff and commit it with a message that describes the knowledge changed.
 
+## Frontend Implementation Rule
+
+Accepted on 2026-09-28: implement new website behavior with Alpine.js and new styling with inline Tailwind utilities. Ask the site owner before implementing an exception, with a concrete explanation of why it is needed. Existing custom classes and third-party library internals document the current system; they do not authorize new exceptions or require unrelated legacy code to be rewritten.
+
+This rule applies to implementation examples and future website changes. Keep documentation grounded in the source while distinguishing existing implementation from the approach required for new work.
+
 ## Documentation Standards
 
 - Document current behavior first.

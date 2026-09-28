@@ -74,3 +74,7 @@ Use `max-w-prose` for story text. Use wider columns for media and gallery blocks
   ...
 </div>
 ```
+
+## Header And Content Boundary
+
+Scoped source review, 2026-09-28: the compact global header uses a shared sticky wrapper in normal flow. Desktop is 96 px high at 768 px and above; the mobile bar is 80 px high, with an inline disclosure beneath it. `_layout.twig` places the wrapper before the growing main-content container and removes the old fixed-header offset. The header does not resize on scroll. The initial Places integration added 16 px to the measured header offset; the later [Places scroll-alignment refinement](../patterns/places.md#map-and-gallery) removes that gap and fills the available desktop viewport. Its desktop reserve still starts at 96 px. These uncommitted changes were inspected above website `b1cf61e` / frontend `f3f709f`; see [Navigation](../components/navigation.md#review-evidence) for the full sources and check status. The earlier grid/article review date remains unchanged.

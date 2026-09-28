@@ -17,7 +17,6 @@ classes:
   - bt-article
   - bt-item
   - bt-item-name
-  - bt-control-pagination
 accessibility:
   reviewed: false
   notes: Pagination is labelled; heading hierarchy and repeated article navigation need review.
@@ -61,9 +60,17 @@ Scoped source review, 2026-09-28: checked `bentilden.com/templates/category.twig
 
 - Alternate content is separated by repeated Slate gradient article bands.
 - The Area of Interest icon appears above each article header unless the entry type overrides it.
-- Pagination sits in a Slate 200 band with a top border.
+- Pagination sits in a Slate 200 band below the preceding rule and meets the global footer directly. Equal vertical padding centers its controls between these boundaries.
 - Stream pages use Area of Interest and entry schema classes to support targeted styling.
 - Preview image fallback coverage matters because stream pages rely on image rhythm.
+
+## Pagination
+
+The 2026-09-28 refinement styles `_components/pagination.twig` with inline Tailwind utilities. Its Slate 200 navigation band uses `py-12` for 48 px above and below the controls; the list uses flex alignment without its former vertical padding. Extra horizontal padding starts at `md`, and page-number gaps are 4 px below `sm` and 16 px from `sm`, preserving control padding while fitting narrow screens. The former `bt-control-pagination` class and its descendant-list definitions are removed from `site.css`, including the outer vertical margins that exposed a pale strip before the footer.
+
+Source inspected in uncommitted website changes above `b1cf61e` and frontend changes above `f3f709f`. All 13 targeted Chromium cases passed after the narrow-screen refinement: Home and Places first/middle/last pages at 320/390 px, plus Home at 1280 px. Pagination controls remained inside the viewport and centered, with 48 px above and below and no gap between the content wrapper and footer. The earlier 18 samples independently confirmed the same vertical spacing. Places pagination retains `view=posts` through navigation.
+
+This verifies pagination fit, not every page’s content width: long headline words still cause existing 320 px document overflow on Home page 3 and Places Posts pages 2 and 4. A combined three-route release run passed content, asset/environment, build, and font checks but browser QA encountered external Google DNS failures on Home and the sampled recipe page. The final responsive build passed after the spacing refinement. The historical render observation below records the former class rather than a current styling dependency.
 
 ## Preview Image Fallback
 

@@ -18,7 +18,6 @@ classes:
   - bt-control-image
   - bt-image-file
   - bt-image-caption
-  - bt-image-details
 dependencies:
   - lightGallery
 accessibility:
@@ -70,6 +69,8 @@ Inline galleries and single-image galleries remove the grid column class:
 - The first image in the first priority-eligible gallery block may render eager with `fetchpriority="high"`; later gallery images remain lazy.
 - Caption and details render under featured/inline media when provided.
 - Lightbox captions come from asset caption/details through `data-sub-html`; alt text is not used as the visible caption fallback.
+
+Scoped caption/detail update, 2026-09-28: gallery and featured-image templates use Slate 600 for visible captions and 12 px `font-micro text-xs` Slate 600 for details. Details are styled with inline utilities in both legacy and current template variants; the unused `.bt-image-details` CSS definition is removed. Source inspected in uncommitted website changes above `b1cf61e`. Image/recipe detail typography remains source-only verification because matching metadata was absent from the sampled live fields. The separate Places gallery-caption checks passed at 390/1440 px with approximately 7.25:1 contrast; they do not establish coverage of every editorial gallery variant. See [Article Content](article-content.md#captions) for the current snippet.
 
 ## Accessibility
 
