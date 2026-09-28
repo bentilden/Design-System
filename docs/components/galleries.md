@@ -41,7 +41,7 @@ Galleries support both browsable grids and inline photographs. The same full-ima
 
 Scope: reviewed on 2026-09-28 in website `fcfbf500678f6c156155234846eac75e3c1bb232` and frontend `ddf33f7506eca4513b0755574ccfcb1e35d73ae0`. Production release `20260928174248` contains those verified source files; independent production checks are recorded below. Earlier released viewers and their checks remain historical evidence in [Places](../patterns/places.md#photo-viewer-and-recovery).
 
-Desktop zoom follow-up, 2026-09-28: the zoom treatment below is committed locally in website `b8af3d11a26eb6293591eb5e41fd429d6465cee7` and frontend `3443b68d9fd53629112cff7b96779a23667b45f1`, covering `src/photo-viewer.js` and `_components/photo-viewer.twig`. It replaces the released single zoom/fit toggle; this follow-up has not been deployed.
+Desktop zoom follow-up, 2026-09-28: the zoom treatment below was saved in website `b8af3d11a26eb6293591eb5e41fd429d6465cee7` and frontend `3443b68d9fd53629112cff7b96779a23667b45f1`, covering `src/photo-viewer.js` and `_components/photo-viewer.twig`. It replaces the single zoom/fit toggle and is now deployed in website `48f6249f626c0ef78d32a6cdbf0a4a339df6661e` / frontend `6f981f56bdac73fe90b39dceed832bb5a4fadf62`. Runtime template and generated-asset hashes, plus publicly served CSS/JavaScript hashes, match the released source; the local interaction checks below remain separately scoped.
 
 ## Page Layout
 
@@ -73,7 +73,7 @@ Plus and minus multiply or divide the current scale by 1.25, with smooth transit
 
 The relevant controls appear muted and use guarded `aria-disabled` states at their limits and while the image is unavailable. They remain in the keyboard order so focus is not lost during image changes. The readout uses tabular figures and announces changes politely; loading shows a dash rather than the preceding photo's value. Desktop drag-to-pan remains available while enlarged, and stepped changes preserve the point at the viewport centre within the image's pan bounds. Native mobile swipe, pinch, double-tap, and dismissal behavior remains unchanged.
 
-Local follow-up verification, 2026-09-28: all 18 shared-viewer Chromium checks passed with no runtime errors, including intermediate levels and percentages, limits/focus, native actual-size handoff, panning/resizing, new-photo Fit, all entry points, and existing mobile gestures. A focused mobile run passed five checks. Scoped release QA also passed the build, content/asset checks, and five browser routes with all 48 font faces loaded per route. Desktop screenshots at 1440 and 768 px were visually reviewed; the header remains opaque over an enlarged photo. These results apply to the locally committed follow-up, not to a new deployment, and use emulated touch rather than physical devices.
+Local follow-up verification, 2026-09-28: all 18 shared-viewer Chromium checks passed with no runtime errors, including intermediate levels and percentages, limits/focus, native actual-size handoff, panning/resizing, new-photo Fit, all entry points, and existing mobile gestures. A focused mobile run passed five checks. Scoped release QA also passed the build, content/asset checks, and five browser routes with all 48 font faces loaded per route. Desktop screenshots at 1440 and 768 px were visually reviewed; the header remains opaque over an enlarged photo. These results describe local interaction verification before the source deployment recorded above and use emulated touch rather than physical devices.
 
 ## Metadata And Image Delivery
 

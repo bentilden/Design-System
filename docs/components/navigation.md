@@ -30,7 +30,7 @@ review_status: needs audit
 
 # Navigation
 
-Global navigation pairs a compact signature with ordinary links and stable header dimensions. The Personal Index mobile follow-up approved on 2026-09-28 opens a full-screen overlay above the stationary page. It supersedes the initial compact inline disclosure; its local implementation and verification are separate from the released desktop header and earlier navigation history.
+Global navigation pairs a compact signature with ordinary links and stable header dimensions. The Personal Index mobile follow-up approved and deployed on 2026-09-28 opens a full-screen overlay above the stationary page. It supersedes the initial compact inline disclosure; earlier implementation and verification records retain their historical scope.
 
 ## Desktop Header
 
@@ -77,6 +77,8 @@ The footer uses a Slate 900 band, white signature asset, compact navigation link
 Implement new behavior with Alpine.js and new styling with inline Tailwind utilities. Ask the site owner before introducing an exception. See [Contributing](../contributing.md#frontend-implementation-rule) for the durable rule accepted on 2026-09-28.
 
 ## Review Evidence
+
+Production verification, 2026-09-28: website `48f6249f626c0ef78d32a6cdbf0a4a339df6661e` and frontend `6f981f56bdac73fe90b39dceed832bb5a4fadf62` are deployed, including the final adjacent-dot alignment and Menu/Close sizing. All six changed runtime paths matched the committed source by SHA-256, and the publicly served CSS and JavaScript matched as well. All 27 production navigation checks passed with zero runtime errors; the deployed 390 px Places menu was also visually reviewed. Local browser results below retain their separate scope, and this navigation result does not establish a passing full-site browser audit.
 
 Personal Index source review, 2026-09-28: uncommitted website changes above `fcfbf500678f6c156155234846eac75e3c1bb232` update `global-header.twig`, `global-header-nav-mobile.twig`, and the desktop home focus reference in `global-header-nav-primary.twig`. The approved overlay uses Alpine behavior and inline Tailwind styling. All 27 updated local Chromium navigation checks passed with zero runtime errors: responsive header fit, stationary underlying content, trapped focus and return, background scroll lock, breakpoint reset, actual destination/current states, preserved Places geometry, and no-JavaScript reachability. Tested widths include 320, 390, 767, 768, 1024, 1280, and 1440 px, with 667 × 375 px short-screen coverage. Visual review covered the 390 px menu, active Places/About states, and short landscape state. These checks do not establish Safari, physical-device, or screen-reader coverage; no deployment is claimed.
 
