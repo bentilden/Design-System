@@ -17,6 +17,6 @@ review_status: needs audit
 
 Patterns describe how components, content model, and foundations combine into recognizable page behavior.
 
-The first patterns to document are Areas of Interest, photography, and stream pages because those are the strongest visual signals in the current site.
+The [Homepage](homepage.md) combines curated Photography, Work, and Cooking features with a compact recent-post list. Its content controls and responsive composition are documented separately from full article streams.
 
 [Places](places.md) documents the map and gallery browser, alongside the chronological [Stream Pages](stream-pages.md) view.

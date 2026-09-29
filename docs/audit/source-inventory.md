@@ -51,6 +51,8 @@ Scoped contrast inventory, 2026-09-28: uncommitted frontend changes above `f3f70
 
 Scoped header review, 2026-09-28: the shared wrapper and responsive templates above were inspected in uncommitted website changes above `b1cf61e`. Behavior uses Alpine directives and styling uses inline Tailwind utilities. See [Navigation](../components/navigation.md#review-evidence) for sources and verification limits.
 
+Homepage launch update, 2026-09-29: the Stream pages row records the earlier source map. Release `5871297` uses `index.twig` and `_home/` for the curated [Homepage](../patterns/homepage.md), with `_archive/index.twig` owning the chronological archive. See [Stream Pages](../patterns/stream-pages.md#homepage-and-archive-addresses) for the new routes and production verification; the rest of this inventory retains its prior scope.
+
 ## Places Addition
 
 Scoped first-release inventory, 2026-09-28: website `b1cf61e` and frontend `99af237` include `bentilden.com/templates/_places/index.twig` and `modules/places/` for the public photo browser, with `bentilden.com-css/src/places.js` and `src/places-geometry.js` owning Alpine and map behavior. `category.twig` selects this interface for the existing photography category; other category streams retain their loop. The new interface uses inline Tailwind utilities and MapLibre library styles. See [Places](../patterns/places.md) for the implementation contract and source-review limits.

@@ -1,0 +1,61 @@
+{
+  "date": "2026-09-29",
+  "websiteRevision": "5871297",
+  "frontendRevision": "cc7347b",
+  "environment": "production",
+  "baseUrl": "https://www.bentilden.com",
+  "browser": "Playwright Chromium, headless",
+  "conditions": {
+    "indexingRequired": true,
+    "ordinaryPreviewAccess": "404",
+    "unsignedPreviewFlagAccess": "404"
+  },
+  "suites": [
+    {
+      "command": "npm run qa:homepage",
+      "passed": 98,
+      "failed": 0,
+      "widths": [
+        320,
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "scope": "Responsive structure, typography, image loading and geometry, reading order, runtime exceptions, keyboard access, visitor links, and no-JavaScript content."
+    },
+    {
+      "command": "npm run qa:homepage-launch",
+      "passed": 38,
+      "failed": 0,
+      "scope": "Homepage/archive HTTP responses, canonical and Open Graph URLs, indexable robots, chronological pagination, exact legacy 301 redirects, unavailable-page 404s, and preview access."
+    },
+    {
+      "command": "npm run qa:navigation",
+      "passed": 27,
+      "failed": 0,
+      "pageErrors": 0,
+      "scope": "Responsive header, mobile overlay and focus behavior, scroll stability, current destinations, archive navigation, Places controls, and no-JavaScript access."
+    }
+  ],
+  "visualReview": {
+    "route": "/",
+    "widths": [
+      390,
+      1440
+    ],
+    "result": "No presentation regressions observed; reviewed mosaic, complete Work artwork, section order, and mobile archive link."
+  },
+  "reproduction": {
+    "workingDirectory": "bentilden.com-css",
+    "environmentVariables": {
+      "QA_BASE_URL": "https://www.bentilden.com",
+      "QA_EXPECT_INDEXABLE": "1",
+      "QA_PREVIEW_ACCESS": "restricted"
+    }
+  },
+  "limits": [
+    "Emulated viewports; physical devices, Safari, and screen-reader behavior were not tested.",
+    "This receipt covers the named launch suites and does not claim every third-party request succeeds."
+  ]
+}

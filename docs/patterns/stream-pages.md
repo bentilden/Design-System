@@ -8,7 +8,7 @@ audience:
   - development
   - content
 source:
-  - bentilden.com/templates/index.twig
+  - bentilden.com/templates/_archive/index.twig
   - bentilden.com/templates/category.twig
   - bentilden.com/templates/_entry-content.twig
   - bentilden.com/templates/_components/entry-preview-image.twig
@@ -28,17 +28,25 @@ review_status: needs audit
 
 # Stream Pages
 
-Stream pages are the most important page-level pattern in the current site. They render a paginated vertical sequence of full article previews.
+Stream pages render a paginated vertical sequence of full article previews. The chronological stream lives at `/archive`; the [homepage](homepage.md) at `/` presents curated features and a compact recent-post list.
 
 ## Sources
 
 | Template | Role |
 | --- | --- |
-| `index.twig` | Homepage stream of posts. |
+| `_archive/index.twig` | Chronological archive at `/archive`, ten visible posts per page. |
 | `category.twig` | Area of Interest stream; Places adds Map and Posts views. |
 | `_entry-content.twig` | Resolves each entry to the correct article preview template. |
 | `_components/entry-preview-image.twig` | Resolves listing preview imagery. |
 | `_components/pagination.twig` | Renders previous/next and page-number navigation. |
+
+## Homepage And Archive Addresses
+
+`index.twig` selects the curated homepage. Archive pagination uses `/archive/p2`, `/archive/p3`, and later pages. Legacy `/pN` URLs redirect permanently to the matching archive page; `/p1` and `/archive/p1` redirect to `/archive`. Out-of-range archive pages return 404. Header and footer “All posts” links lead to the archive; the signature returns to the homepage.
+
+Archive metadata identifies the archive and page number, with page-specific canonicals when indexing is enabled and previous/next links in the document head. Category streams keep their existing destinations.
+
+Scoped review, 2026-09-29: these route and template mappings were checked in deployed `bentilden.com` release `5871297`, with frontend QA at `cc7347b`. `qa:homepage-launch` passed all 38 HTTP/metadata checks on `https://www.bentilden.com`, including correct indexable canonicals, distinct chronological archive pages, exact 301 redirects, and 404 boundaries. Earlier Home stream observations below describe the former root route.
 
 ## Structure
 

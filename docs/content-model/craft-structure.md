@@ -50,7 +50,9 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `featuredImage` | Single-image entry with text alongside media. |
 | `recipe` | Cooking entry with intro, story, and recipe-detail views. |
 | `about` | Static about page content. |
-| `homepage` | Stream-style home page. |
+| `homepage` | Curated homepage statement, introduction, and ordered sections. |
+| `homePhotography`, `homeWork`, `homeCooking`, `homeRecent` | Nested homepage sections, at most one of each kind. |
+| `homeFeature` | Selected post and overrides scoped to a homepage placement. |
 | `text`, `button`, `html`, `heading`, `callout` | Nested Matrix block entries. |
 | `ingredient`, `step` | Nested recipe detail entries. |
 
@@ -63,6 +65,16 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `featuredImage` | Featured Image | One featured-image block for featured-image entry type layouts. |
 | `ingredients` | Ingredient | Recipe ingredient rows. |
 | `steps` | Step | Recipe instruction rows, with optional process image. |
+| `homeSections` | Homepage section types | Ordered, independently enabled sections on the Homepage single. |
+| `homeFeatures` | Homepage feature | Ordered post placements inside Photography, Work, and Cooking sections. |
+
+## Homepage Composition
+
+The Homepage single keeps its root URI and `index` template. Its Introduction tab contains `homeStatement` and `homeIntroduction`; Sections contains `homeComposition` and `homeSections`. The composition choice pairs adjacent Photography and Work sections on desktop or keeps them stacked. Section order is also the mobile reading order. Duplicate section kinds must be removed before publishing; disabling one does not make the duplicate valid.
+
+Each curated placement selects an existing published post through `homePost`. Optional copy, image, crop, alt text, and destination overrides affect this placement only. Photography and Cooking expose layout presets; Work preserves complete artwork. Recently Added derives a chronological list with count, area, date, and featured-post controls. See [Homepage](../patterns/homepage.md) for layout rules and renderer sources.
+
+Scoped source review, 2026-09-29: the Homepage and nested-type rows above were checked against deployed `bentilden.com` release `5871297`, including `modules/homepage/Schema.php`, `Validation.php`, `ViewModel.php`, and the corresponding project configuration. The public homepage renders this model; see [Homepage verification](../patterns/homepage.md#implementation-and-verification). Other content-model tables retain their earlier review scope.
 
 ## Layout And Classification Fields
 

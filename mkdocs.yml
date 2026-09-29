@@ -68,6 +68,7 @@ nav:
       - Forms: components/forms.md
   - Patterns:
       - patterns/index.md
+      - Homepage: patterns/homepage.md
       - Areas of Interest: patterns/areas-of-interest.md
       - Photography: patterns/photography.md
       - Places: patterns/places.md
