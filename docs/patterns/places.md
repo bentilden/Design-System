@@ -14,6 +14,7 @@ source:
   - bentilden.com/templates/_places/view-navigation.twig
   - bentilden.com/templates/_components/global-header.twig
   - bentilden.com/modules/places/Payload.php
+  - bentilden.com/modules/places/GalleryGroups.php
   - bentilden.com/modules/places/MosaicPhotos.php
   - bentilden.com/modules/places/PhotoColors.php
   - bentilden.com/modules/places/ColorProfile.php
@@ -76,6 +77,14 @@ Posts includes unlocated content and is independent of the map viewport. Alpine 
 
 ## Map And Gallery
 
+Gallery-chip correction, 2026-09-29: the deployed implementation groups shortcuts by eligible gallery block, independently of the photos' positions. A gallery's public place name supplies its label, falling back to the post title. Different blocks retain different identities even when their labels match; featured-image uses in one post share a post shortcut. The count is the group's unique located photos with public media. Selecting it fits all member appearances and filters the photo grid to that gallery, without replacing individual GPS positions with one representative coordinate. **All places** continues to count each asset once across the map.
+
+The gallery identity is separate from geographic marker identity. A shared asset with GPS or a custom location retains one map appearance but may belong to several eligible gallery shortcuts. Selecting a gallery supplies that group's post title and **View post** destination. Inherited appearances belong only to galleries supplying their position. A chip remains visible while any member thumbnail intersects the map, including partial thumbnails and members of visible clusters. All places stays available, and loading/error fallbacks keep all gallery choices accessible. Geographic clustering, marker labels, and multi-location drill-down retain their existing meaning.
+
+Scoped local evidence: initially inspected uncommitted website `modules/places/Payload.php`, `GalleryGroups.php`, and frontend `src/places.js` above website `48f6249` / frontend `6f981f5` on 2026-09-29. All 60 local PHP checks, 21 JavaScript checks, 17 focused chip browser checks, and 23 Places browser regressions passed. Coverage includes two galleries containing the identical single-photo appearance: switching refreshes the card and viewer's post link even though the photo IDs stay unchanged. No runtime errors or road-shield warnings occurred. The build and scoped Map/Mosaic/Posts/post release QA passed, including all 48 fonts per route; existing content warnings remain. Chromium/emulated viewport checks do not establish physical-device, Safari, or screen-reader coverage; dated visibility/style checks below describe earlier source stages.
+
+Production release, 2026-09-29: website `f51e74d2fed5d7579179fd02ac00f9f6109fa106` and frontend `6833c8527c0afc1b658439b7f4fd4ee42ec5536f` are deployed in release `20260929064421`. Both CI runs, release/public-asset hashes, 17 focused chip browser cases, and two real-content desktop/mobile checks passed. Alhambra shows one chip for nine photographs at nine distinct GPS positions, with all members represented in the map/gallery and the correct viewer post link. Production PHP integration, server release/asset/smoke checks, and separate four-route browser/font QA passed. Existing content warnings and the Chromium/emulated-device coverage limits remain; the earlier local results above retain their separate scope.
+
 The view control belongs to the header boundary; the page does not repeat it or add a visible introductory title or summary. Page and gallery headings remain available to screen readers.
 
 From `lg` (1024 px), a sticky map sits left of a natural-height gallery. Both use ordinary page scrolling; there is no inner gallery scroller. A shared 56 px toolbar spans both columns: location chips have the full map-side width, while group context and the count align over the gallery. Its two cells stick at the same measured header-stack boundary, initially 120 px. There is no extra top rule or vertical divider inside the toolbar; its continuous bottom rule is Slate 200. The Slate 300 vertical divider begins below it between the map and gallery.
@@ -103,7 +112,7 @@ All 23 local Places Chromium checks passed for the refinement, with no runtime e
 | Interaction | Result |
 | --- | --- |
 | Move the map | The gallery follows the visible area. |
-| Choose a place | Fit that place and show its photos. |
+| Choose a gallery chip | Fit its photo positions and show that gallery's located photos. |
 | Choose All places | Clear the selection and fit the collection. |
 | Click a thumbnail spanning multiple coordinates | Zoom to those coordinates, even if they represent one shared photo. |
 | Click several photos at one coordinate | Select that group in the gallery. |
@@ -160,7 +169,7 @@ The map reads enabled images from the Photos volume that appear in rendered gall
 
 Custom and GPS positions produce one map appearance per asset. Gallery inheritance can produce several: a photo shared by galleries in different places appears at each place, with its post link supplied by that use. Repeated uses at the same place produce one appearance. Separate duplicate asset files remain separate identities.
 
-Markers retain every location appearance. After applying the current place, group, or viewport filter, the gallery and viewer show each asset once. All places, gallery, and thumbnail-stack counts use distinct assets; place counts can overlap when one photo appears in several places. A changed context updates the card's label and post link even if its asset ID stays the same. Opening a marker preserves that appearance's post link in the viewer.
+Markers retain every location appearance. After applying the current gallery, thumbnail-group, or viewport filter, the gallery and viewer show each asset once. All places, gallery, and thumbnail-stack counts use distinct assets; gallery counts can overlap when an asset belongs to several galleries. Gallery selection supplies its own post title/link even if the chosen asset or appearance ID stays the same. An unfiltered marker retains its appearance's default post association; a matching single-photo marker opened from a selected gallery retains that selected context.
 
 A place name is independent of coordinates; without one, the linked public post title is the fallback. Place identity uses normalized coordinates at nine decimal places. JPEG/TIFF GPS is captured before upload sanitization or read from an existing original by a background scan. The map reads stored results without downloading originals. Replacing a file refreshes or clears that GPS result, and an older queued scan cannot overwrite the replacement.
 
