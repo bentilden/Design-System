@@ -8,6 +8,9 @@ audience:
   - development
   - content
 source:
+  - bentilden.com/config/project/fields/story--82df7a16-b54f-44fd-a55c-53b1b578e478.yaml
+  - bentilden.com/config/project/fields/text--446b3f75-5307-4018-a570-55c1023929f8.yaml
+  - bentilden.com/config/project/entryTypes
   - bentilden.com/templates/_matrix.twig
   - bentilden.com/templates/_matrix/default.twig
   - bentilden.com/templates/_matrix/text.twig
@@ -38,7 +41,7 @@ review_status: needs audit
 
 # Matrix Blocks
 
-Matrix blocks are the main article composition system. They let entries combine prose, headings, calls to action, raw HTML, callouts, featured images, and galleries inside the shared article shell.
+Matrix blocks are the main article composition system. The Story field currently offers Text, Button, and HTML entries. Separate Featured Image and Gallery fields compose media entries, while the template directory also retains older Heading and Callout renderers.
 
 ## Resolver Contract
 
@@ -59,21 +62,25 @@ bt-control-{{ block.type }}
 
 That means every block type can be targeted for styling, audits, and QA even when most of the visual styling lives inside the block-specific template.
 
-## Current Block Types
+## Template Inventory And Authoring Availability
 
-| Block | Template | Role |
-| --- | --- | --- |
-| Text | `_matrix/text.twig` | Main prose, using `bt-text` plus Tailwind typography utilities. |
-| Heading | `_matrix/heading.twig` | Section heading with optional divider. |
-| Callout | `_matrix/callout.twig` | Highlighted editorial aside with optional author-supplied class. |
-| Button | `_matrix/button.twig` | Centered call to action using the shared `bt-button` class. |
-| HTML | `_matrix/html.twig` | Raw HTML escape hatch. Use sparingly. |
-| Featured Image | `_matrix/featuredImage2.twig` | Single editorial image with caption, details, and the shared photo viewer. |
-| Gallery | `_matrix/gallery2.twig` | Multi-image or inline gallery with responsive optimized images and the shared photo viewer. |
+| Block | Template | Authoring availability | Role |
+| --- | --- | --- | --- |
+| Text | `_matrix/text.twig` | Story | Main prose, using `bt-text` plus Tailwind typography utilities. |
+| Heading | `_matrix/heading.twig` | Legacy template; no current entry type | Section heading with optional divider. |
+| Callout | `_matrix/callout.twig` | Legacy template; no current entry type | Highlighted editorial aside with optional author-supplied class. |
+| Button | `_matrix/button.twig` | Story | Centered call to action using the shared `bt-button` class. |
+| HTML | `_matrix/html.twig` | Story | Raw HTML escape hatch. Use sparingly. |
+| Featured Image | `_matrix/featuredImage2.twig` | Separate Featured Image field | Single editorial image with caption, details, and the shared photo viewer. |
+| Gallery | `_matrix/gallery2.twig` | Separate Gallery field | Multi-image or inline gallery with responsive optimized images and the shared photo viewer. |
+
+Scoped source observation, 2026-10-03: website `5871297`, `config/project/fields/story--82df7a16-b54f-44fd-a55c-53b1b578e478.yaml`, and `config/project/entryTypes` confirm that Story enables Text, Button, and HTML only. Heading and Callout have template files but no corresponding current entry-type YAML. Template presence alone does not establish an available authoring option. The inspected configuration and templates were committed; the checkout contained unrelated changes. No rendered check was performed for this observation.
 
 Scoped update, 2026-09-28: both block names remain supported. The `featuredImage2.twig` and `gallery2.twig` templates now extend their corresponding shared `featuredImage.twig` and `gallery.twig` implementations. Source inspected in website `fcfbf500678f6c156155234846eac75e3c1bb232`; this consolidates identical presentation without changing the content model. Production verification is recorded with the viewer. All use the [shared viewer](galleries.md#unified-photo-viewer).
 
 ## Authoring Contract
+
+Scoped configuration update, 2026-10-03: the Text field toolbar adds Fullscreen and Tables, groups related writing controls, and uses native overflow at narrow widths. Tables have caption controls and a header row by default; numbered lists support a custom starting number. Link controls offer URL suffix and optional new-tab targeting. H2/H3/H4, Drop cap, purification, and prior toolbar capabilities are retained. This configuration was first applied locally against website `5871297` and is now committed in the production release `1698f62`; authenticated production editor settings and save/reopen behavior were not independently verified. Embedded-entry components remain disabled.
 
 - Matrix blocks should be readable when collapsed in Craft.
 - Every nested entry type needs a useful title format.
@@ -100,3 +107,9 @@ Raw HTML blocks remain a known content risk. The current content QA script repor
 - [Craft Structure](../content-model/craft-structure.md) documents the fields and nested entry types behind the resolver.
 - [Galleries](galleries.md) and [Buttons](buttons.md) expand on individual block behavior.
 - [Open Questions](../audit/open-questions.md) tracks the unresolved v1/v2 support decision.
+
+## Story Table Rendering
+
+Scoped implementation, 2026-10-04: runtime `1698f62` and frontend `6045175` add contained horizontal scrolling to shared Text-block tables. Twig owns the wrapper, fades, hint, inline Tailwind classes, and Alpine bindings; JavaScript clones the template around stored rich text and manages overflow state. Overflowing tables display edge fades and “Scroll to see more →”; captions remain outside the scroller. Keyboard focus and region descriptions apply only while overflowing.
+
+Table figures use normal text margins and block layout. Table content disables hyphenation, uses 1.375 line-height, and gives header/body cells 10 px vertical padding from 768 px. Mobile padding and paragraph typography retain their existing treatment. Local Chromium checks passed across 320/390/767/768/1280 px for applicable containment, spacing, word wrapping, and cues. Safari and physical devices were not verified. Production CI/deployment workflow succeeded. Public story markup contains the enhancement, live CSS/JavaScript SHA-256 hashes match the release, and production fixtures return 404. Public smoke checks passed; the local air-fryer URL returns 404 on production, so that specific content was not verified there.
