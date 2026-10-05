@@ -14,6 +14,8 @@ source:
   - bentilden.com/templates/_matrix.twig
   - bentilden.com/templates/_matrix/default.twig
   - bentilden.com/templates/_matrix/text.twig
+  - bentilden.com/templates/_components/text-content.twig
+  - bentilden.com/templates/_partials/entry/captionedImage.twig
   - bentilden.com/templates/_matrix/heading.twig
   - bentilden.com/templates/_matrix/callout.twig
   - bentilden.com/templates/_matrix/button.twig
@@ -28,6 +30,8 @@ classes:
   - bt-control-image
   - bt-image-caption
 dependencies:
+  - Craft CKEditor
+  - Alpine.js
   - Tailwind typography plugin
   - lightGallery
 accessibility:
@@ -66,7 +70,7 @@ That means every block type can be targeted for styling, audits, and QA even whe
 
 | Block | Template | Authoring availability | Role |
 | --- | --- | --- | --- |
-| Text | `_matrix/text.twig` | Story | Main prose, using `bt-text` plus Tailwind typography utilities. |
+| Text | `_matrix/text.twig` | Story | Main prose with `bt-text` and Tailwind typography; local Captioned image inserts render within the text flow. |
 | Heading | `_matrix/heading.twig` | Legacy template; no current entry type | Section heading with optional divider. |
 | Callout | `_matrix/callout.twig` | Legacy template; no current entry type | Highlighted editorial aside with optional author-supplied class. |
 | Button | `_matrix/button.twig` | Story | Centered call to action using the shared `bt-button` class. |
@@ -80,7 +84,7 @@ Scoped update, 2026-09-28: both block names remain supported. The `featuredImage
 
 ## Authoring Contract
 
-Scoped configuration update, 2026-10-03: the Text field toolbar adds Fullscreen and Tables, groups related writing controls, and uses native overflow at narrow widths. Tables have caption controls and a header row by default; numbered lists support a custom starting number. Link controls offer URL suffix and optional new-tab targeting. H2/H3/H4, Drop cap, purification, and prior toolbar capabilities are retained. This configuration was first applied locally against website `5871297` and is now committed in the production release `1698f62`; authenticated production editor settings and save/reopen behavior were not independently verified. Embedded-entry components remain disabled.
+Scoped configuration update, 2026-10-03: the Text field toolbar adds Fullscreen and Tables, groups related writing controls, and uses native overflow at narrow widths. Tables have caption controls and a header row by default; numbered lists support a custom starting number. Link controls offer URL suffix and optional new-tab targeting. H2/H3/H4, Drop cap, purification, and prior toolbar capabilities are retained. This configuration was first applied locally against website `5871297` and is now committed in the production release `1698f62`; authenticated production editor settings and save/reopen behavior were not independently verified. Embedded-entry components were disabled in that release.
 
 - Matrix blocks should be readable when collapsed in Craft.
 - Every nested entry type needs a useful title format.
@@ -88,13 +92,21 @@ Scoped configuration update, 2026-10-03: the Text field toolbar adds Fullscreen 
 - Raw HTML blocks should be rare and clearly labeled.
 - Calls to action should use the Button block unless a template needs a bespoke link treatment.
 
+## Embedded Captioned Images
+
+Scoped local implementation, 2026-10-04: Text keeps its existing **Image** button and uses Craft CKEditor's native nested-entry image mode. Each selected Content Images asset creates one [Captioned image](captioned-image.md) placement; selecting multiple assets produces separate placements in order. There is no second insertion menu. This adds a component inside Text without changing the outer Story types: Text, Button, and HTML remain the enabled Matrix types, and recipe-step `text2` is unchanged.
+
+`_components/text-content.twig` preserves FieldData markup and entry order. It processes complete rich-text markup through Typogrify once with collision-safe placeholders, then inserts separately rendered component HTML. This keeps images within their authored blockquote, list-item, or table-cell wrappers without applying typography to placement captions. `_partials/entry/captionedImage.twig` renders the structured figure. The existing prose wrapper, Drop cap, lists/code, and one `storyTables` controller/template per Text block remain. Ordinary legacy image markup remains supported by the markup path; no bulk conversion is performed.
+
+Source inspected in website `cad9448` on branch `codex/ckeditor-captioned-image`, checked locally on 2026-10-04; native configuration is applied locally. Authenticated local save/reopen and draft Preview passed with legacy markup and new entries. Unsaved native rendering fixtures verify blockquote/list/table wrappers in article and feed output. This does not establish staging or production behavior and does not refresh the page's overall review date.
+
 ## Accessibility Contract
 
 - Text blocks should preserve semantic rich text from authors.
 - Heading blocks should not skip levels within the rendered article.
 - Image blocks should render native asset alt text first, then title or file-name fallback.
 - Gallery and featured-image blocks should keep caption/detail text visually adjacent to the image. The 2026-09-28 contrast update uses Slate 600, with 12 px Micro text for details; see [Article Content](article-content.md#captions) for source and verification scope.
-- Lightbox captions should use asset caption/details, not alt text fallback.
+- Viewer captions use editorial caption/details, never alt text fallback. Captioned image resolves placement overrides for its article viewer; global Places views retain asset metadata.
 - Raw HTML blocks must be manually reviewed before a page can be treated as accessibility-clean.
 
 ## QA Notes
@@ -106,6 +118,7 @@ Raw HTML blocks remain a known content risk. The current content QA script repor
 - [Article Content](article-content.md) provides the shell around matrix blocks.
 - [Craft Structure](../content-model/craft-structure.md) documents the fields and nested entry types behind the resolver.
 - [Galleries](galleries.md) and [Buttons](buttons.md) expand on individual block behavior.
+- [Captioned Image](captioned-image.md) describes the local nested component available through Text's Image button.
 - [Open Questions](../audit/open-questions.md) tracks the unresolved v1/v2 support decision.
 
 ## Story Table Rendering

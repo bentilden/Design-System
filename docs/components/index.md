@@ -25,3 +25,5 @@ The current site mixes Tailwind utility composition with existing named `bt-*` c
 See [Contributing](../contributing.md#frontend-implementation-rule) for the durable implementation rule.
 
 The highest-priority components are the ones with both visual impact and source coupling: article content, matrix blocks, galleries, recipe content, navigation, and forms.
+
+Local component addition, 2026-10-04: [Captioned Image](captioned-image.md) documents the one-image placement inserted through Story Text's existing Image button, including caption/credit inheritance, responsive rendering, the shared viewer, and feeds. Its staging and production release status is separate from this source observation.

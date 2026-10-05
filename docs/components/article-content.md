@@ -12,6 +12,9 @@ source:
   - bentilden.com/templates/_components/entry-header.twig
   - bentilden.com/templates/_components/entry-preview-image.twig
   - bentilden.com/templates/_matrix/text.twig
+  - bentilden.com/templates/_components/text-content.twig
+  - bentilden.com/templates/_partials/entry/captionedImage.twig
+  - bentilden.com/modules/content/Images.php
   - bentilden.com/templates/svg/photography.twig
   - bentilden.com/templates/svg/cooking.twig
   - bentilden.com/templates/_matrix/featuredImage2.twig
@@ -73,11 +76,18 @@ Icons sit above article headers and link back to the Area of Interest route. The
 
 ## Prose Blocks
 
+The Text renderer retains one `bt-text` prose wrapper and its existing table controller/template. Inside that wrapper, the local Captioned image implementation renders markup and nested entries deliberately:
+
 ```twig
-<div class="bt-text max-w-prose prose prose-p:leading-relaxed prose-li:my-1 prose-blockquote:not-italic prose-blockquote:leading-relaxed prose-figure:-mx-8 prose-figure:md:mx-auto">
-  {{ block.text|typogrify }}
-</div>
+{% include '_components/text-content' with {
+  textValue: block.text,
+  ownerEntry: ownerEntry ?? entry ?? null,
+  isListing: isListing ?? false,
+  prioritizeFirstImage: isFirstBlock ?? false,
+} only %}
 ```
+
+Scoped local source update, 2026-10-04: website `cad9448` on `codex/ckeditor-captioned-image` processes complete rich-text markup through Typogrify once using collision-safe placeholders for embedded entries. Independently rendered [Captioned image](captioned-image.md) HTML is inserted afterward. This preserves authored order and blockquote, list-item, and table-cell structure, alongside existing Drop cap, table, list, and code treatment. The owner page and listing context are explicit viewer inputs. This observation does not establish a staging or production release; the overall review date remains unchanged.
 
 ## Preview Images
 
@@ -91,9 +101,11 @@ Stream/listing preview images use a fallback chain:
 
 Preview images use `optimizedThumbnails` when present and fall back to native URLs when needed.
 
+Local discovery update, 2026-10-04: `modules/content/Images.php` includes enabled Captioned image entries within Text in the existing Story fallback, after the explicit sources above. It follows referenced entries in authored order rather than traversing arbitrary nested fields.
+
 ## Captions
 
-Captions use Slate 600 body text. Their details use 12 px Micro type in Slate 600, with uppercase tracking and spacing below the caption.
+Existing gallery, featured-image, and recipe captions use Slate 600 body text. Their details use 12 px Micro type in Slate 600, with uppercase tracking and spacing below the caption.
 
 ```twig
 <div class="text-slate-600 text-base mt-2.5 max-w-md leading-none px-8 md:px-0">
@@ -105,6 +117,8 @@ Captions use Slate 600 body text. Their details use 12 px Micro type in Slate 60
 ```
 
 The matrix and recipe templates use inline utilities for details; the unused `bt-image-details` definition is removed. Visible caption/detail text remains separate from image alt text.
+
+Local Captioned image figures use standard article width, natural image proportions, Slate 600 captions, and smaller normal-case credit/details text. Both placement fields preserve line breaks and wrap long words. Blank overrides inherit asset caption/details; Hide caption deliberately suppresses the caption while credit/details can remain. The article viewer receives those same resolved values. This scoped 2026-10-04 implementation does not change the legacy detail typography shown above.
 
 Scoped source review, 2026-09-28: the date, SVG, caption/detail, and rich-text changes were inspected in uncommitted website changes above `b1cf61e` and frontend changes above `f3f709f`. The stored drop-cap content hook is retained and styled by inline wrapper utilities; see [Typography](../foundations/typography.md#drop-cap). Local Chromium checks at 320/390/1280 px verified 12 px dates, solid photography/cooking icons, hover fills, and actual drop caps. Image/recipe details and the other three SVG variants remain source-only verification; matching detail metadata was absent from the sampled live fields. See [Accessibility](../accessibility/index.md#color-and-contrast) for the scoped result. Broader article audit questions below remain open.
 

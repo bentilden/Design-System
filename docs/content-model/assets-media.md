@@ -9,6 +9,12 @@ audience:
   - governance
 source:
   - bentilden.com/docs/assets.md
+  - bentilden.com/config/project/volumes/photos--93bd7970-e85b-43bd-9316-34ea316396b5.yaml
+  - bentilden.com/config/project/volumes/siteImages--5e1f1aaf-69d1-4a05-b29d-dedf8ea97196.yaml
+  - bentilden.com/config/project/fields/homeCover--ad9509f2-7cd7-462f-8d73-9513be5eb6ad.yaml
+  - bentilden.com/config/project/fields/captionedImageAsset--a8b3744c-5b0e-4c7f-b363-6b2d539954ec.yaml
+  - bentilden.com/templates/_partials/entry/captionedImage.twig
+  - bentilden.com/modules/content/Images.php
   - bentilden.com/templates/_components/entry-preview-image.twig
   - bentilden.com/templates/_matrix/featuredImage2.twig
   - bentilden.com/templates/_matrix/gallery2.twig
@@ -32,9 +38,13 @@ Assets are part of the design system because the site is image-forward and many 
 
 | Volume | Role |
 | --- | --- |
-| Photos | Public editorial media for posts, galleries, recipes, and story blocks. |
-| Site Images | Public reusable site-level assets, including avatars and brand/social images. |
+| Content Images (`photos`, formerly Photos) | All public webpage-content images, including photographs, design illustrations, and other editorial artwork in posts, galleries, recipes, story blocks, and homepage features. |
+| Site Images (`siteImages`) | Website presentation and chrome only, such as signatures, avatars, and default brand imagery. Never use for editorial content. |
 | User Photos | Local or private user assets. Do not use for public entry imagery without a specific feature reason. |
+
+Scoped volume-policy update, 2026-10-04: the owner confirmed this content/chrome boundary. Source inspection of the volume definitions and `homeCover` field listed above in clean website `03356500caa9e8fd6908737d955b5ba3691f08fd` confirmed that the homepage cover selector still exposes Photos and Site Images. Choose Photos for editorial covers; narrowing that selector is a separate proposed follow-up. This check did not change asset storage or verify runtime behavior, and the page's overall review date is unchanged.
+
+Scoped local implementation, 2026-10-04: the `codex/ckeditor-captioned-image` feature branch renames the Photos volume's display label to **Content Images** and applies that configuration locally. The `photos` handle, volume UID, filesystem, folders, asset identities/relations, and URLs remain unchanged; this does not move stored files. The source is committed in website `cad9448`, and this observation does not establish a staging or production release. Older observations below use Photos for this same volume. The Homepage cover selector still exposes the content and Site Images volumes; choose Content Images for editorial covers.
 
 Avoid adding more public volumes unless the authoring boundary is genuinely different.
 
@@ -63,7 +73,7 @@ Templates and content should use Craft asset fields and `asset.getUrl()`. Do not
 
 ## Upload Paths
 
-Entry-related media should upload into folders named from the owning entry URI.
+Existing entry-owned media fields use folders named from the owning entry URI. The local Captioned image field uses the dedicated static path below.
 
 | Field | Upload path |
 | --- | --- |
@@ -72,9 +82,10 @@ Entry-related media should upload into folders named from the owning entry URI.
 | Featured image block `image` | `{owner.uri}` |
 | Gallery block `images` | `{owner.uri}` |
 | Recipe step `image2` | `{owner.uri}` |
+| Captioned image `captionedImageAsset` (local implementation) | Editor/direct-field default: `rich-text/story/`; toolbar library modal: selected Content Images folder |
 | `avatar` | `avatars/` |
 
-Use `{owner.uri}` for nested entries and `{uri}` for fields owned directly by the post.
+Use `{owner.uri}` for the existing Matrix media fields and `{uri}` for fields owned directly by the post. CKEditor's editor uploader resolves the selected Assets field path before a nested owner exists, so Captioned image uses `rich-text/story/` rather than a deeper owner URI for that default. The toolbar library modal retains native browsing and uploads into its selected folder. Both paths select and upload only to Content Images.
 
 When one image is related to multiple entries, duplicate the source into each owning entry folder. The current operational preference is clear ownership over de-duplicated shared folders.
 
@@ -91,6 +102,8 @@ Captions and details remain separate editorial metadata. Use them for visible co
 AI-generated alt text may be used as a starting point when the AI Alt Text plugin is configured, but the durable value is the native Craft alt field. Authors should still review and edit generated text.
 
 Lightbox-visible captions should use caption/details. Alt text should remain focused on accessibility and should not be treated as the visible caption source.
+
+Local [Captioned image](../components/captioned-image.md) placements can override the caption and credit/details or deliberately hide the caption. Blank overrides inherit asset metadata. Article and article-viewer text resolve the same placement values; the native asset alt text remains the accessibility source, and placement changes do not alter shared asset metadata. Global Places captions/details remain asset-based when deduplicating repeated uses.
 
 Scoped viewer update, 2026-09-28: `PhotoViewerMedia.php` in website `fcfbf500678f6c156155234846eac75e3c1bb232` supplies the same plain caption/details fields, 1800 px `largeImage` source, actual source dimensions, and existing optimized fallback to post galleries, featured images, Map, and Mosaic. Missing transforms are requested lazily instead of queued for every photo during page rendering. The [unified viewer](../components/galleries.md#unified-photo-viewer) uses a Details disclosure and reserves no caption area for empty metadata. Eleven media-contract checks and the dedicated 15-check shared-viewer Chromium suite passed locally; [Galleries verification](../components/galleries.md#accessibility-and-verification) records broader regression coverage and its limits. Production verification is recorded with the viewer.
 
@@ -162,6 +175,12 @@ The [open question](../audit/open-questions.md) is whether to restrict the volum
 
 Partial source review, 2026-09-25: the lookup above was checked in `bentilden.com` at commit `e2c8c1bea88d205bdf1e1a26f13c170705bddfc2`, with a clean working tree. This verifies the query in that checkout only; the route was not exercised in a browser, and the other sections of this page were not re-audited.
 
+## Embedded Image Discovery
+
+Scoped local source review, 2026-10-04: `modules/content/Images.php` on `codex/ckeditor-captioned-image` provides one bounded traversal of enabled Story Text entries and their referenced Captioned image entries. Listing previews, Homepage image inheritance, social-image fallback, and content QA use this helper. Explicit Preview Image, recipe Main Image, Featured Image, and Gallery precedence remain ahead of Story fallback; embedded images participate in source order within that fallback. Disabled, trashed, unreferenced, and missing images are excluded.
+
+Places retains its live, visible photography-Post/category rules and public `photos` image-volume check. Volume membership alone does not make an image photography content: design-only Posts remain excluded, while an illustration placed in an eligible photography Post is treated as content from that Post. Unlocated eligible images can appear in Mosaic; Map requires a location allowed by the asset's existing location-source rules. A Captioned image placement does not supply a gallery location or a new placement-location control. These are local observations of website `cad9448`, with staging and production verification pending.
+
 ## Current Cleanup Backlog
 
 The asset library works, but content QA can still surface cleanup needs:
@@ -175,4 +194,5 @@ Do not bulk-delete assets from the database. Review them in Craft first, then de
 
 - [Craft Structure](craft-structure.md) defines the asset fields and image transforms.
 - [Galleries](../components/galleries.md) and [Recipe Content](../components/recipe-content.md) describe how media appears in components.
+- [Captioned Image](../components/captioned-image.md) documents the local nested-image placement and its viewer/feed behavior.
 - [Content QA](../operations/content-qa.md) describes checks for missing alt text, relations, and configuration drift.

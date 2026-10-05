@@ -63,6 +63,7 @@ nav:
       - Navigation: components/navigation.md
       - Article Content: components/article-content.md
       - Matrix Blocks: components/matrix-blocks.md
+      - Captioned Image: components/captioned-image.md
       - Galleries: components/galleries.md
       - Recipe Content: components/recipe-content.md
       - Forms: components/forms.md
