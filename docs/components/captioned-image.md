@@ -2,7 +2,7 @@
 title: Captioned Image
 type: component
 status: observed
-source_of_truth: observed dev code
+source_of_truth: observed production code
 audience:
   - design
   - development
@@ -34,6 +34,8 @@ accessibility:
 environments:
   observed:
     - dev
+    - staging
+    - production
 owner: Documentation owner
 created: 2026-10-04
 last_reviewed: 2026-10-04
@@ -42,7 +44,7 @@ review_status: needs audit
 
 # Captioned Image
 
-Captioned image inserts one editorial image into [Story Text](matrix-blocks.md#embedded-captioned-images). The Text editor retains its existing **Image** button. Native nested-entry image mode creates one placement per selected asset; multiple selected images become separate entries in order, rather than a gallery. It is implemented in development and staging; production remains unchanged.
+Captioned image inserts one editorial image into [Story Text](matrix-blocks.md#embedded-captioned-images). The Text editor retains its existing **Image** button. Native nested-entry image mode creates one placement per selected asset; multiple selected images become separate entries in order, rather than a gallery. It is implemented in development, staging, and production.
 
 ## Authoring Contract
 
@@ -85,6 +87,10 @@ Credit/staging follow-up, 2026-10-05: website `bdb5b4f` adds the independent Hid
 Staging browser verification, 2026-10-05: public rendering passed 10 Chromium assertions and targeted keyboard/link behavior passed five, including desktop and 320/390 px containment, caption wrapping, focus return, modified clicks, and usable image links without JavaScript. All four visibility combinations passed 16 native save/reopen, actual Preview, viewer UI/data, and feed functional assertions. Six additional native editor functional assertions passed for the Content Images selector, single/batch insertion, save/reopen identity/order, new-placement defaults, and deletion. Disposable entries were removed and existing content/asset/native-alt fingerprints remained unchanged.
 
 The same native sidebar/parent overlapping-submit warnings occurred; a warning-free CP pass is not claimed. Staging uploads/automatic-alt generation, restricted roles, physical drag/drop, Safari, physical devices, and assistive technology remain unverified; earlier native upload evidence is local. Production remains unchanged.
+
+Production release verification, 2026-10-05: website `bdb5b4f` is active in production release `20261005152908`. All 33 changed source hashes match the staged implementation; fresh native field/layout settings passed 7/7 with no pending configuration or migrations. The production-safe unsaved rendering/discovery suite passed 48/48, and actual RSS XML, desktop/320/390 px public routes, existing shared-viewer focus return, asset delivery, and route/header checks passed. Existing production content, image relations, native alt text, and storage/volume identity remained unchanged apart from the Content Images display name. Production CMS content was not saved, imported, uploaded, or deleted.
+
+The four-route browser/font run loaded all 48 declared Helvetica Now faces per route, but its console audit and a focused Archive rerun reported a third-party Google advertising-quality request blocked by loopback address-space/CORS policy. This remains an explicit browser limitation. Production editor interactions were not repeated; staging is the functional authoring evidence with native save warnings. Broader accessibility/device/upload limits above remain.
 
 ## Related Pages
 

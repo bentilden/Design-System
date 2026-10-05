@@ -76,7 +76,7 @@ Icons sit above article headers and link back to the Area of Interest route. The
 
 ## Prose Blocks
 
-The Text renderer retains one `bt-text` prose wrapper and its existing table controller/template. Inside that wrapper, the local Captioned image implementation renders markup and nested entries deliberately:
+The Text renderer retains one `bt-text` prose wrapper and its existing table controller/template. Inside that wrapper, the Captioned image implementation renders markup and nested entries deliberately:
 
 ```twig
 {% include '_components/text-content' with {
@@ -118,9 +118,11 @@ Existing gallery, featured-image, and recipe captions use Slate 600 body text. T
 
 The matrix and recipe templates use inline utilities for details; the unused `bt-image-details` definition is removed. Visible caption/detail text remains separate from image alt text.
 
-Local Captioned image figures use standard article width, natural image proportions, Slate 600 captions, and smaller normal-case credit/details text. Both placement fields preserve line breaks and wrap long words. Blank overrides inherit asset caption/details; independent Hide caption and Hide credit / details switches suppress either value for this placement. The article viewer receives those same resolved values. The 2026-10-05 credit switch extends the scoped 2026-10-04 implementation without changing the legacy detail typography shown above.
+Captioned image figures use standard article width, natural image proportions, Slate 600 captions, and smaller normal-case credit/details text. Both placement fields preserve line breaks and wrap long words. Blank overrides inherit asset caption/details; independent Hide caption and Hide credit / details switches suppress either value for this placement. The article viewer receives those same resolved values. The 2026-10-05 credit switch extends the scoped 2026-10-04 implementation without changing the legacy detail typography shown above.
 
 Scoped source review, 2026-09-28: the date, SVG, caption/detail, and rich-text changes were inspected in uncommitted website changes above `b1cf61e` and frontend changes above `f3f709f`. The stored drop-cap content hook is retained and styled by inline wrapper utilities; see [Typography](../foundations/typography.md#drop-cap). Local Chromium checks at 320/390/1280 px verified 12 px dates, solid photography/cooking icons, hover fills, and actual drop caps. Image/recipe details and the other three SVG variants remain source-only verification; matching detail metadata was absent from the sampled live fields. See [Accessibility](../accessibility/index.md#color-and-contrast) for the scoped result. Broader article audit questions below remain open.
+
+Captioned image production follow-up, 2026-10-05: website `bdb5b4f` is active in release `20261005152908`, including this Text renderer, bounded media discovery, and independent caption/credit hiding. Fresh native configuration and 48 production-safe unsaved rendering/discovery assertions passed. Public RSS, responsive routes, existing viewer focus return, and delivery checks passed; broader browser/editor warning limits are retained in [Captioned Image verification](captioned-image.md#review-evidence). This is a scoped update; the page's overall review date remains unchanged.
 
 ## Audit Notes
 

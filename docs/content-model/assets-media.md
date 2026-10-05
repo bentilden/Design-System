@@ -46,6 +46,8 @@ Scoped volume-policy update, 2026-10-04: the owner confirmed this content/chrome
 
 Scoped local implementation, 2026-10-04: the `codex/ckeditor-captioned-image` feature branch renames the Photos volume's display label to **Content Images** and applies that configuration locally. The `photos` handle, volume UID, filesystem, folders, asset identities/relations, and URLs remain unchanged; this does not move stored files. The source is committed in website `cad9448`, and this observation does not establish a staging or production release. Older observations below use Photos for this same volume. The Homepage cover selector still exposes the content and Site Images volumes; choose Content Images for editorial covers.
 
+Production naming verification, 2026-10-05: website `bdb5b4f` / production release `20261005152908` applies **Content Images**. Fresh native configuration confirms the original volume identity, single-image source, and default folder. Before/after fingerprints preserve all 285 production assets and native-alt rows, relations/URLs, and storage identity. Temporary filesystem write/read/delete probes and public URLs passed; no production CMS assets moved, uploaded, or deleted. See [Captioned Image](../components/captioned-image.md#review-evidence) for the precise source, rendering, and browser limits.
+
 Avoid adding more public volumes unless the authoring boundary is genuinely different.
 
 ## Environment Contract
@@ -73,7 +75,7 @@ Templates and content should use Craft asset fields and `asset.getUrl()`. Do not
 
 ## Upload Paths
 
-Existing entry-owned media fields use folders named from the owning entry URI. The local Captioned image field uses the dedicated static path below.
+Existing entry-owned media fields use folders named from the owning entry URI. The Captioned image field uses the dedicated static path below.
 
 | Field | Upload path |
 | --- | --- |
@@ -82,7 +84,7 @@ Existing entry-owned media fields use folders named from the owning entry URI. T
 | Featured image block `image` | `{owner.uri}` |
 | Gallery block `images` | `{owner.uri}` |
 | Recipe step `image2` | `{owner.uri}` |
-| Captioned image `captionedImageAsset` (local implementation) | Editor/direct-field default: `rich-text/story/`; toolbar library modal: selected Content Images folder |
+| Captioned image `captionedImageAsset` | Editor/direct-field default: `rich-text/story/`; toolbar library modal: selected Content Images folder |
 | `avatar` | `avatars/` |
 
 Use `{owner.uri}` for the existing Matrix media fields and `{uri}` for fields owned directly by the post. CKEditor's editor uploader resolves the selected Assets field path before a nested owner exists, so Captioned image uses `rich-text/story/` rather than a deeper owner URI for that default. The toolbar library modal retains native browsing and uploads into its selected folder. Both paths select and upload only to Content Images.

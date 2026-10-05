@@ -70,7 +70,7 @@ That means every block type can be targeted for styling, audits, and QA even whe
 
 | Block | Template | Authoring availability | Role |
 | --- | --- | --- | --- |
-| Text | `_matrix/text.twig` | Story | Main prose with `bt-text` and Tailwind typography; local Captioned image inserts render within the text flow. |
+| Text | `_matrix/text.twig` | Story | Main prose with `bt-text` and Tailwind typography; Captioned image inserts render within the text flow. |
 | Heading | `_matrix/heading.twig` | Legacy template; no current entry type | Section heading with optional divider. |
 | Callout | `_matrix/callout.twig` | Legacy template; no current entry type | Highlighted editorial aside with optional author-supplied class. |
 | Button | `_matrix/button.twig` | Story | Centered call to action using the shared `bt-button` class. |
@@ -100,6 +100,8 @@ Scoped local implementation, 2026-10-04: Text keeps its existing **Image** butto
 
 Source inspected in website `cad9448` on branch `codex/ckeditor-captioned-image`, checked locally on 2026-10-04; native configuration is applied locally. Authenticated local save/reopen and draft Preview passed with legacy markup and new entries. Unsaved native rendering fixtures verify blockquote/list/table wrappers in article and feed output. This does not establish staging or production behavior and does not refresh the page's overall review date.
 
+Production configuration follow-up, 2026-10-05: website `bdb5b4f` is active in production release `20261005152908`. Fresh native configuration confirms Text entry-image mode, the required single-image field and safe folder default, and independent hide controls. Unsaved production rendering/discovery passed 48 checks. [Captioned Image](captioned-image.md#review-evidence) retains the staged editing/Preview evidence and browser/editor warning limits; production native saves were not repeated.
+
 ## Accessibility Contract
 
 - Text blocks should preserve semantic rich text from authors.
@@ -118,7 +120,7 @@ Raw HTML blocks remain a known content risk. The current content QA script repor
 - [Article Content](article-content.md) provides the shell around matrix blocks.
 - [Craft Structure](../content-model/craft-structure.md) documents the fields and nested entry types behind the resolver.
 - [Galleries](galleries.md) and [Buttons](buttons.md) expand on individual block behavior.
-- [Captioned Image](captioned-image.md) describes the local nested component available through Text's Image button.
+- [Captioned Image](captioned-image.md) describes the nested component available through Text's Image button.
 - [Open Questions](../audit/open-questions.md) tracks the unresolved v1/v2 support decision.
 
 ## Story Table Rendering
