@@ -47,6 +47,10 @@ Mosaic production release, 2026-09-28: website `acacd8adf66f2651b086411d63588b7a
 
 ## Navigation And Views
 
+Connected-rule trial, 2026-10-17: the latest local Places adapter removes the 6 px clearance on each side of the selector so the horizontal header rule meets its shell. The light selected state and joined-segment geometry remain. Earlier surround-gap observations below describe previous versions.
+
+Phone-review correction, 2026-10-17: the latest local switcher preview uses a light Slate 200 selected fill with Slate 900 text and a distinct Slate 100 inactive hover. This follows the owner's report that the deployed dark selection was too strong on a phone; the horizontal rules, geometry, and joined borders remain. Earlier release/style descriptions below retain their historical scope. See [Navigation](../components/navigation.md#reusable-segmented-control).
+
 Local component extraction, 2026-10-17: `_places/view-navigation.twig` now passes Places destinations, placement, and Alpine bindings to the reusable [`_components/segmented-control.twig`](../components/navigation.md#reusable-segmented-control). The shared component owns the visual treatment and native-link selection markup. The existing header teleport and no-JavaScript fallback continue to use the Places adapter. This is uncommitted local work; the release evidence below retains its original scope.
 
 Local style follow-up, 2026-10-17: the owner's supplied reference replaces the inset fills and gaps with adjoining segments, thin Slate 300 vertical dividers, square internal corners, and rounded outside corners. Existing Helvetica Now typography, Slate colors, and the horizontal header rule on either side remain. This supersedes the separated-background treatment described in the earlier released observation below; see [Navigation](../components/navigation.md#reusable-segmented-control) for current local geometry.
