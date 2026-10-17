@@ -11,6 +11,7 @@ source:
   - bentilden.com/templates/_components/global-header-nav-primary.twig
   - bentilden.com/templates/_components/global-header-nav-mobile.twig
   - bentilden.com-css/src/bentilden.css
+  - bentilden.com-css/src/places-map-style.js
 tokens:
   - slate
 environments:
@@ -89,6 +90,14 @@ Scoped palette audit, 2026-09-28: these swatches reflect the current website’s
 | Functional boundaries | `border-slate-500`, `focus:border-slate-700`, `focus:ring-slate-700` | Contact fields remain identifiable before and during focus. |
 | Category icons and drop caps | `fill-slate-500`, `hover:fill-slate-700`, `first-letter:text-slate-500` | Solid functional SVG icons; large drop caps use Slate 500. |
 | Navigation state | `text-slate-600`, `text-slate-700`, `text-slate-950` | Compact header: quiet links, darker current/hover state, and underline. See [Navigation](../components/navigation.md). |
+
+## Map Palette
+
+Approved alignment, 2026-10-17: the photo map derives its cartographic colors from the same Slate tokens as the surrounding interface. Land and label halos use Slate 50; parks and residential areas use Slate 100; woodland, buildings, and minor roads use Slate 200. Water, outlines, road casings, and rail use Slate 300, with Slate 400 boundaries and Slate 600/700/900 text. White remains for ice, bright road interiors, and photo frames. Provider sprite images retain their original appearance.
+
+Photo markers use Slate 950 text, Slate 200 placeholders, Slate 900 count badges, Slate 50/95 label surfaces, and Slate 700 keyboard outlines. Native map scale and attribution surfaces/text also use Slate. The [Places pattern](../patterns/places.md#map-colors) explains the adaptation and its verification scope.
+
+Scoped source review: frontend `cb2daf1` (`src/places-map-style.js`, `src/places.js`) and website `122b231` (`templates/_places/index.twig`). The browser converts existing CSS tokens from OKLCH to RGB for MapLibre; there is no second hardcoded hex palette. Production release `20261017153000` matches the committed runtime, and desktop/mobile overview, city, and street checks passed. This scoped review does not refresh the other palette observations on this page.
 
 ## Divider Hierarchy
 

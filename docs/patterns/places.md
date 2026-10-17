@@ -23,6 +23,7 @@ source:
   - bentilden.com/modules/places/GpsExif.php
   - bentilden.com-css/src/places.js
   - bentilden.com-css/src/places-geometry.js
+  - bentilden.com-css/src/places-map-style.js
   - bentilden.com-css/src/mosaic-layout.js
 dependencies:
   - Alpine.js
@@ -121,6 +122,16 @@ All 23 local Places Chromium checks passed for the refinement, with no runtime e
 Map thumbnails and gallery tiles are square; gallery images use centered `object-cover` crops. The gallery summary displays **N photos** at the right, in the shared toolbar on desktop or its separate row below the map on mobile. A selected thumbnail group adds a plain, truncating name at the left with a separate × control immediately beside it, separated by 2 px. The name retains its full text in a title attribute, and the control is named “Remove [name] filter.” Removing that filter restores the current map area's photos. This plain heading keeps selected context visually distinct from the map's location chips.
 
 A deliberate geographic action that changes the photo set brings its start into view if the visitor was already farther down the gallery. On desktop, the gallery begins below the header stack and shared 56 px toolbar; below `lg`, the separate gallery summary is brought beneath the header so its context remains visible. The gallery body then fades from 0.5 to 1 opacity over 200 ms; its summary stays steady. Reduced motion skips the fade. Unchanged photos, passive layout updates, and state restoration trigger neither the scroll reset nor the fade. Replacing an update cancels its prior animation.
+
+## Map Colors
+
+Approved refinement, 2026-10-17: the cartographic canvas, photo markers, and native scale/attribution surfaces use the site's [Slate palette](../foundations/color.md#map-palette). The map reads the existing Tailwind tokens and converts their OKLCH values to RGB before MapLibre renders them. The adapter replaces known Positron color literals while preserving source data, layout, width, opacity, and zoom transitions. It composes with the existing road-shield filter guard; unknown future provider colors remain unchanged for deliberate review.
+
+Light Slate land/terrain surfaces remain distinct from Slate 300 water and Slate 600/700/900 labels. White photo frames, bright road interiors, and ice remain; provider sprite images are unchanged. Markers use Slate text, placeholders, badges, label surfaces, and keyboard outlines. Inline Tailwind selectors style the native scale and attribution controls without changing their behavior.
+
+Source is committed and published in frontend `cb2daf1` (`src/places-map-style.js`, `src/places.js`) and website `122b231` (`templates/_places/index.twig`). All 24 Places unit checks, 17 gallery-chip browser checks, and the full build/scoped Map, Mosaic, and Posts release QA passed locally. Six Chromium scenes covered overview, city zoom 11, and street zoom 16 at 1440 × 1000 and 390 × 844. All 55 provider layers and 67 color properties were checked, with existing expressions/alpha preserved; marker/control colors and attribution interactions passed without runtime or network errors.
+
+Production release `20261017153000` matches all 346 immutable tracked runtime files, and five public assets match the committed hashes. The same six cartographic scenes and attribution checks independently passed against production, with all 69 literal color values mapped to Slate or white. Server release QA and public Map/Mosaic/Posts browser checks also passed, with 48 font faces on each route and no runtime/network errors. This is not an all-zoom, Safari, physical-device, or complete accessibility audit; historical release verification elsewhere on this page remains separate.
 
 ## Photo Viewer And Recovery
 
