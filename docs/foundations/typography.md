@@ -49,12 +49,14 @@ The site uses Helvetica Now families for text, display, and microcopy.
 ### Article Title
 
 ```html
-<h1 class="font-display text-5xl mb-3 leading-none">
+<h1 class="font-display font-black text-5xl mb-3 leading-none">
   <a href="{{ url }}">{{ title }}</a>
 </h1>
 ```
 
 Use the display face for entry titles and major editorial headings. Keep line-height tight.
+
+The [post-title weight chosen on 2026-10-17](../components/article-content.md#entry-header) uses `font-black` (900) in the shared entry header; the `font-display` default remains 950. This change is undeployed.
 
 ### Metadata
 

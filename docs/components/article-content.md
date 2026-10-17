@@ -60,13 +60,15 @@ Article classes include Area of Interest and entry type hooks:
 ## Entry Header
 
 ```twig
-<h1 class="font-display text-5xl mb-3 leading-none">
+<h1 class="font-display font-black text-5xl mb-3 leading-none">
   <a href="{{ url }}">{{ title }}</a>
 </h1>
 <p class="font-micro text-xs uppercase tracking-widest text-slate-600 mt-4 mb-8">
   Posted {{ postDate | date('M d, Y') }}
 </p>
 ```
+
+Post-title weight chosen on 2026-10-17: the owner selected Helvetica Now Display Black (900) for shared post titles. Website commit `0221ddc` adds `font-black` to `templates/_components/entry-header.twig`. Local browser checks on `/alhambra-in-september` at 390 and 1440 px confirmed the loaded font, 900 weight, unchanged 48 px size/line-height, and no page errors. The `font-display` default remains 950; homepage card titles remain 500. The runtime checkout is clean; this change is committed locally and undeployed. The page's overall review date is unchanged.
 
 Dates use 12 px Micro type and Slate 600 in inline Tailwind utilities. The old unused `bt-datePublished` definition is removed; new styling follows the [inline utility rule](../contributing.md#frontend-implementation-rule). The existing `bt-title` hook remains separate.
 
