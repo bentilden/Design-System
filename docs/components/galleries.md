@@ -37,6 +37,8 @@ review_status: needs audit
 
 # Galleries
 
+Local interface-icon standardization, 2026-10-17: the touched icons now use the shared [Lucide 1.5-stroke component](icons.md). The development/staging context fixture preserves previous glyphs for review; this change has not been deployed.
+
 Galleries support both browsable grids and inline photographs. The same full-image viewer now serves gallery blocks, featured images, [Places Map and Mosaic](../patterns/places.md), and the Posts stream.
 
 Scope: reviewed on 2026-09-28 in website `fcfbf500678f6c156155234846eac75e3c1bb232` and frontend `ddf33f7506eca4513b0755574ccfcb1e35d73ae0`. Production release `20260928174248` contains those verified source files; independent production checks are recorded below. Earlier released viewers and their checks remain historical evidence in [Places](../patterns/places.md#photo-viewer-and-recovery).

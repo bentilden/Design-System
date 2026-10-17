@@ -61,6 +61,7 @@ nav:
       - components/index.md
       - Buttons: components/buttons.md
       - Navigation: components/navigation.md
+      - Icons: components/icons.md
       - Article Content: components/article-content.md
       - Matrix Blocks: components/matrix-blocks.md
       - Captioned Image: components/captioned-image.md

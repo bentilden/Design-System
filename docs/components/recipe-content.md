@@ -11,6 +11,8 @@ source:
   - bentilden.com/templates/_entry-content/recipe/default.twig
   - bentilden.com/templates/_entry-content/recipe/story.twig
   - bentilden.com/templates/_entry-content/recipe/recipe.twig
+  - bentilden.com/templates/_components/recipe-info.twig
+  - bentilden.com/templates/_components/icon.twig
   - bentilden.com/config/project/entryTypes/recipe--d5580cc9-9d66-469b-988e-6d4a8996364c.yaml
   - bentilden.com/config/project/fields/ingredients--8eb75052-cb0c-4c0e-a2a7-93f7347d5cd6.yaml
   - bentilden.com/config/project/fields/steps--c0209d19-1f58-4b15-9d71-1b844c1a8db5.yaml
@@ -20,10 +22,6 @@ classes:
   - bt-recipe-label
   - bt-introduction
   - bt-infoBar
-  - bt-servings
-  - bt-times
-  - bt-link--nutritionalInformation
-  - bt-link--print
   - bt-recipe-ingredients-and-instructions
   - bt-ingredients
   - bt-instructions
@@ -76,16 +74,9 @@ Recipe images use the shared responsive-image component. The main recipe image m
 
 ## Information Bar
 
-The recipe info bar uses semantic list content with icon-backed visual hooks:
+Local update, 2026-10-17: `_components/recipe-info.twig` renders a semantic list using native `entry.servings`, `entry.prepTime`, `entry.activeTime`, and `entry.totalTime` beside [Lucide icons](icons.md). `utensils` marks servings, `clock-3` marks times, `slash` separates times, `printer` marks Print, and nutrition uses `heart-pulse`, selected by the owner on 2026-10-17. The fixture marks Heart Pulse as selected and retains the other reviewed options for comparison. The nutrition dialog's Close and the story-to-recipe pot also use the shared 1.5-stroke helper.
 
-| Hook | Role |
-| --- | --- |
-| `bt-servings` | Servings count. |
-| `bt-times` | Prep, active, and total time list. |
-| `bt-link--nutritionalInformation` | Opens the nutrition dialog. |
-| `bt-link--print` | Triggers print behavior. |
-
-Icon pseudo-elements come from `/assets/images/inline-icon-*.svg`.
+This replaces the old `bt-servings`/`bt-times`/nutrition/print icon pseudo-elements with inline SVG and Tailwind utilities. Their original SVG files remain comparison sources for the guarded review fixture. The information bar uses a wide row when its container reaches 56 rem; narrower containers stack naturally. Nutrition and print handlers, conditional metadata, and visible native field handles are preserved. This is a local implementation, not a production release.
 
 ## Ingredients And Instructions
 

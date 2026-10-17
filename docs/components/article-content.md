@@ -34,6 +34,8 @@ review_status: needs audit
 
 # Article Content
 
+Local interface-icon review, 2026-10-17: article category symbols retain their previous filled artwork by owner request. Other interface controls use the shared [Lucide 1.5-stroke component](icons.md). The development/staging fixture labels the retained article symbols explicitly; this change has not been deployed.
+
 Article content is the central pattern for the site. It brings together Area of Interest icons, display titles, metadata, prose, media, and galleries.
 
 ## Article Shell

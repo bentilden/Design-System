@@ -31,6 +31,8 @@ review_status: needs audit
 
 # Navigation
 
+Local interface-icon standardization, 2026-10-17: the touched icons now use the shared [Lucide 1.5-stroke component](icons.md). The development/staging context fixture preserves previous glyphs for review; this change has not been deployed.
+
 Global navigation pairs a compact signature with ordinary links and stable header dimensions. The Personal Index mobile follow-up approved and deployed on 2026-09-28 opens a full-screen overlay above the stationary page. It supersedes the initial compact inline disclosure; earlier implementation and verification records retain their historical scope.
 
 ## Reusable Segmented Control

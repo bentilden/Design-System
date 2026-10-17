@@ -29,3 +29,6 @@ The highest-priority components are the ones with both visual impact and source 
 Local component addition, 2026-10-04: [Captioned Image](captioned-image.md) documents the one-image placement inserted through Story Text's existing Image button, including caption/credit inheritance, responsive rendering, the shared viewer, and feeds. Its staging and production release status is separate from this source observation.
 
 Captioned image production follow-up, 2026-10-05: the component is now deployed to production at website `bdb5b4f`; its [source and verification record](captioned-image.md#review-evidence) distinguishes native settings/rendering/public checks from staged editor coverage and retained warning limits.
+
+
+Local standardization, 2026-10-17: [Icons](icons.md) documents the accepted Lucide outline family, shared 1.5-stroke Twig helper, curated generation pipeline, and guarded old/new context fixture. This implementation is not yet deployed.
