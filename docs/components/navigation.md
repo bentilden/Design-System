@@ -15,6 +15,7 @@ source:
   - bentilden.com/templates/_components/global-footer.twig
   - bentilden.com/templates/_places/index.twig
   - bentilden.com/templates/_places/view-navigation.twig
+  - bentilden.com/templates/_components/segmented-control.twig
   - bentilden.com/templates/category.twig
   - bentilden.com-css/src/places.js
 dependencies:
@@ -31,6 +32,29 @@ review_status: needs audit
 # Navigation
 
 Global navigation pairs a compact signature with ordinary links and stable header dimensions. The Personal Index mobile follow-up approved and deployed on 2026-09-28 opens a full-screen overlay above the stationary page. It supersedes the initial compact inline disclosure; earlier implementation and verification records retain their historical scope.
+
+## Reusable Segmented Control
+
+Local extraction, 2026-10-17: `_components/segmented-control.twig` owns the link-based segmented control used by [Places](../patterns/places.md#navigation-and-views). Pass an accessible `label`, ordered `options` with `value`, `label`, and `url`, and a `currentValue`. Each option remains a native link; the selected link receives `aria-current="page"`. Use it for navigation between views with real destinations.
+
+```twig
+{% include '_components/segmented-control' with {
+    label: 'Collection views',
+    options: [
+        { value: 'grid', label: 'Grid', url: url('collection') },
+        { value: 'list', label: 'List', url: url('collection', {view: 'list'}) }
+    ],
+    currentValue: 'grid'
+} only %}
+```
+
+The default outer placement is `inline-block`. Optional `controlClass` supplies placement classes. The component uses a shared rounded Slate 300 outline, adjoining segments with square internal edges and Slate 300 dividers, Slate 900/white selection, Slate 200 inactive hover, and focus outlines. Only the outside corners are rounded; fills reach the outline without an inset gap. Helvetica Now and the existing Slate palette remain. `shellAttributes` can add a hook to the decorative shell. An option's optional `attributes` map supports template-authored Alpine bindings within an ancestor's `x-data`; the component owns its `href`, static `aria-current`, and link classes. Attribute values and labels are escaped through Craft/Twig. Keep executable bindings and attribute names in trusted templates.
+
+`_places/view-navigation.twig` supplies the Map/Mosaic/Posts URLs, header placement, shell hook, and existing Alpine `setView()`/current-state bindings. Both the teleported interface and the no-JavaScript header fallback use this adapter. Local uncommitted source above website `cf236e0` was checked at 390/1280 px: rendered element trees, attributes, geometry, and control screenshots matched the pre-extraction baseline exactly. These checks describe the local refactor, not a deployment.
+
+Style follow-up, 2026-10-17: the owner supplied a joined Today/7d/30d/calendar reference and requested its visual treatment with the site's existing typography/colors and horizontal rules on both sides. The shared control now uses the adjoining treatment described above; the Places adapter keeps its header placement and rule clearance. Mobile links remain 44 px high with 36 px fills within a 38 px shell; desktop links/fills are 32 px within a 34 px shell. This supersedes the earlier inset-segment geometry below. The calendar icon is specific to the reference's date function and is not part of the Places view options. Initial verification was local; production publication is recorded below.
+
+Production publication, 2026-10-17: website `afdb26e` contains the extracted control, Places adapter, and CSS generated in isolation from frontend `71265a1`; frontend `9cd9d62` updates the existing navigation geometry checks. Both CI runs succeeded. All 11 focused production navigation checks passed in the final run, covering keyboard switching, hover, target sizes, scrolling, overlay geometry, and no-JavaScript links. The first case in an earlier run encountered the old fill height during cutover; the full rerun passed. Public CSS and main JavaScript hashes match the runtime commit. This is Chromium/emulated viewport evidence, not Safari, physical-device, or screen-reader verification.
 
 ## Desktop Header
 
@@ -62,7 +86,7 @@ Production update, 2026-09-28: the three-view Places header and associated toolb
 
 The category retains its existing `photography` identity and topic hooks. Posts is the complete chronological category stream. In the current integration, Map | Mosaic | Posts straddles the global header’s lower rule and remains visible during page scrolling. It retains its own “Places views” navigation label and real links, separate from the CMS destination list. The old in-page row and long Slate 200 line are removed. The switcher outline and map/gallery structure retain Slate 300. See [Places](../patterns/places.md#navigation-and-views) for the trial’s source and verification status.
 
-The desktop/mobile identity bars remain 96/80 px with 24/32 px below them on Places, yielding occupied stacks of 120/112 px. The slimmer mobile refinement retains actual 44 px links while using 32 px colored fills inside a separate 38 px visual shell. From `md`, links/fills remain 28 px and the shell is 34 px. The shell ignores pointer input; focus belongs to the full link target. The shared wrapper owns the Alpine menu state. In the Personal Index follow-up, the Places slot retains its space beneath the modal; it no longer collapses when Menu opens. The same view-link partial supplies the Alpine-teleported control and the no-JavaScript fallback beneath the expanded header. Other destinations do not receive this slot or its extra height.
+The desktop/mobile identity bars remain 96/80 px with 24/32 px below them on Places, yielding occupied stacks of 120/112 px. The joined-style follow-up retains actual 44 px mobile links while using 36 px colored fills inside a separate 38 px visual shell. From `md`, links/fills are 32 px and the shell is 34 px. The shell ignores pointer input; focus belongs to the full link target. The shared wrapper owns the Alpine menu state. In the Personal Index follow-up, the Places slot retains its space beneath the modal; it no longer collapses when Menu opens. The same view-link partial supplies the Alpine-teleported control and the no-JavaScript fallback beneath the expanded header. Other destinations do not receive this slot or its extra height.
 
 On Places only, `pb-4` within the fixed-height mobile identity row moves its contents up 8 px to separate the signature/Menu hit areas from the view links crossing the rule. The overlay header repeats this inset so the signature stays in the same position when Menu opens. This keeps the bar at 80 px; spacing must be checked using link bounds, not text appearance alone. The mobile signature and Menu controls use `relative focus-visible:z-10` so their keyboard outlines draw above the adjacent switcher surround.
 
