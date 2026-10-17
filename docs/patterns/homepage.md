@@ -51,7 +51,9 @@ Mobile follows the authored section order. Pairing never moves sections past int
 
 ## Typography And Interaction
 
-The statement uses Helvetica Now Display Light: this project's `font-light` is **325**, at 44 px, 60 px from `md`, and 72 px from `lg`. Section headings use Display Black (**900**) at 30 px. The heading-to-content gap is 12 px, increasing to 24 px from `md`; major sections are 48 px apart, increasing to 64 px.
+Typography release, 2026-10-17: the statement uses Helvetica Now Display Thin (`font-thin`, **275**) at **44 px**, **66 px** from `md`, and **88 px** from `lg`, with **1.06** line height and **−0.0125 em** letter spacing. Statement and introduction use Slate 500 (`text-slate-500`). The introduction has a **50ch** maximum width (`max-w-[50ch]`) at every breakpoint, constrained by the available width. Section headings use Display ExtraBold (`font-extrabold`, **800**) at 30 px. The heading-to-content gap remains 12 px, increasing to 24 px from `md`; major sections remain 48 px apart, increasing to 64 px.
+
+Scoped evidence: runtime `cf236e0` updates `templates/_home/preview.twig` and `templates/_home/heading.twig`, with generated CSS; frontend `8776744` includes the updated homepage browser checks. The existing faces are declared in `bentilden.com-css/src/elements/type.css`. Local and production browser checks at 390/768/1024/1440 px verified the final typography without horizontal overflow, and production deployment matches the committed template and CSS files. The desktop header was visually reviewed, and all 98 production homepage browser checks passed, including navigation without JavaScript. This is a partial typography review; the page-wide review date remains unchanged.
 
 Keep links native, with visible keyboard focus. The first keyboard link skips to homepage content. Browse links have a 44 px minimum height. Underlines belong to text-only spans so arrows remain plain; decorative arrows are hidden from assistive technology. New-tab destinations announce that behavior. The page content and destinations remain available without JavaScript.
 
