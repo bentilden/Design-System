@@ -11,7 +11,8 @@ source:
   - bentilden.com/templates/index.twig
   - bentilden.com/templates/_home
   - bentilden.com/modules/homepage/Schema.php
-  - bentilden.com/modules/homepage/ViewModel.php
+  - bentilden.com/modules/homepage/Rules.php
+  - bentilden.com/modules/homepage/HomepageVariable.php
   - bentilden.com-css/src/bentilden.css
   - bentilden.com-css/scripts/qa-homepage-preview-browser.mjs
 owner: Documentation owner
@@ -59,7 +60,13 @@ Keep links native, with visible keyboard focus. The first keyboard link skips to
 
 ## Where To Edit
 
-Presentation stays in readable Twig partials with literal inline Tailwind utilities. Keep content queries and eligibility decisions in `modules/homepage/ViewModel.php`. New website behavior follows the [Alpine.js implementation rule](../contributing.md#frontend-implementation-rule).
+Presentation stays in readable Twig partials with literal inline Tailwind utilities. Keep actual Craft handles visible at their output, following the [field traceability rule](../contributing.md#craft-field-traceability). New website behavior follows the [Alpine.js implementation rule](../contributing.md#frontend-implementation-rule).
+
+Rendering release, 2026-10-17, runtime `ad8ae26`: the homepage refactor passes native Craft entries into Twig and removes the `ViewModel.php` page-data normalization. Searching `homeIntroduction` and `homeStatement` leads directly to `_home/preview.twig`. Display queries and simple placement overrides belong in Twig; narrow `craft.homepage` helpers retain draft-aware relations, enabled/public eligibility checks, and native Link validity. The existing `craft.contentImages.previewImage()` retains shared image fallback. Validation and CP editing controls remain in PHP. The refactor is deployed and verified through runtime `816d084` in production release `20261017153152`; the homepage renderer remains identical to `ad8ae26`. The typography evidence above records the preceding separate release.
+
+`preview.twig` resolves each feature's native Post and displayed Asset once, then passes render-local collections to section partials. Layout checks and card markup reuse those objects; scalar fields retain their real handles beside the output. This preserves query reuse without introducing another normalized page-data model.
+
+Local refactor verification passed 95 public-homepage and 90 preview browser checks, 35 isolated renderer checks, and 37 native homepage checks. The isolated cases cover relation/image lookup reuse; desktop and mobile screenshots were visually reviewed. These were predeployment checks of the source later committed as `ad8ae26`. Production subsequently passed all 98 public homepage browser checks at 320/390/768/1024/1440 px, with desktop visual review; native homepage, authoring, and isolated renderer checks passed 37/37, 24/24, and 35/35. Exact deployed source and unchanged authored content were verified. This is not a new full accessibility or authenticated CP editing audit.
 
 | Source under `bentilden.com/templates/` | Owns |
 | --- | --- |

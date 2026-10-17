@@ -76,6 +76,8 @@ Each curated placement selects an existing published post through `homePost`. Op
 
 Scoped source review, 2026-09-29: the Homepage and nested-type rows above were checked against deployed `bentilden.com` release `5871297`, including `modules/homepage/Schema.php`, `Validation.php`, `ViewModel.php`, and the corresponding project configuration. The public homepage renders this model; see [Homepage verification](../patterns/homepage.md#implementation-and-verification). Other content-model tables retain their earlier review scope.
 
+Rendering update, 2026-10-17: the homepage refactor in runtime `ad8ae26`, verified in deployed `816d084`, removes the historical `ViewModel.php` layer while retaining the native content model. Twig uses the actual field handles; PHP retains validation, CP controls, and narrow shared rules. See [Where To Edit](../patterns/homepage.md#where-to-edit) and the [field traceability rule](../contributing.md#craft-field-traceability). This preserves the existing native field handles and schema.
+
 ## Layout And Classification Fields
 
 | Field | Type | Notes |

@@ -32,6 +32,14 @@ Accepted on 2026-09-28: implement new website behavior with Alpine.js and new st
 
 This rule applies to implementation examples and future website changes. Keep documentation grounded in the source while distinguishing existing implementation from the approach required for new work.
 
+## Craft Field Traceability
+
+Accepted on 2026-10-17: keep actual Craft field handles visible where Twig renders their content. Searching a field such as `homeIntroduction` should lead to its markup and inline styling. Prefer native elements, direct field access, and ordinary Twig queries for page composition; avoid a page-wide data object whose main purpose is renaming fields.
+
+Useful aliases and generic components remain appropriate. Keep the original handle in the nearby assignment or document its origin at the rendering partial when the connection would otherwise disappear. PHP remains appropriate for validation, CP editing controls, shared content rules, and nonpresentation integrations. Preserve draft/Live Preview behavior and efficient relation loading when moving display logic. Apply this to new and touched work; it does not require unrelated templates or integration payloads to be rewritten.
+
+Use the handle exposed by the element's field layout, including intentional contextual overrides. If it differs from the global field record, document that mapping instead of changing correct native access.
+
 ## Documentation Standards
 
 - Document current behavior first.
