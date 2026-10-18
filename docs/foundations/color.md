@@ -40,8 +40,8 @@ The following values were read from compiled CSS tokens and converted to sRGB in
 
 | Shade | Hex | Main role |
 | --- | --- | --- |
-| Neutral 50 | `#fafafa` | Article/content surface |
-| Neutral 100 | `#f5f5f5` | Quiet hover fill |
+| Neutral 50 | `#fafafa` | Content surfaces outside the post gradient |
+| Neutral 100 | `#f5f5f5` | Post gradient endpoint, quiet hover fill |
 | Neutral 200 | `#e5e5e5` | Page frame, topic circle, subtle dividers/selected fills |
 | Neutral 300 | `#d4d4d4` | Structural boundaries and circle hover |
 | Neutral 400 | `#a1a1a1` | Owner-selected light topic label and dark-footer copyright |
@@ -56,7 +56,7 @@ The following values were read from compiled CSS tokens and converted to sRGB in
 | Use | Current treatment |
 | --- | --- |
 | Page shell | Neutral 200 frame and Neutral 50 content |
-| Post boundaries | Flat Neutral 50 posts with a 1 px Neutral 200 divider only between adjacent articles |
+| Post boundaries | Full-post white-to-Neutral-100 vertical gradient with a 1 px Neutral 200 divider only between adjacent articles |
 | Topic identity | Neutral 200 circle / 300 hover; Neutral 950 thin icon; Neutral 400 label / 500 hover |
 | Post dates | Owner-edited normal body text in Neutral 600; image details retain their own metadata typography |
 | Prose | `prose-neutral` on the shared Story Text renderer, plus existing explicit Neutral utilities |
@@ -82,3 +82,5 @@ The owner-selected **Neutral 400 topic label measures approximately 2.48:1 again
 Earlier navigation and color work used Slate: the 2026-09-28 audit measured Slate 600 at approximately 7.25:1 on Slate 50 and 6.15:1 on Slate 200, with Slate 400 copyright on Slate 900 at approximately 6.78:1. These are historical measurements of different colors, not Neutral trial results. Later segmented-control reviews changed selection from a dark reversed fill to shade 200 with dark text. See [Navigation](../components/navigation.md) and [Places](../patterns/places.md) for their dated observations; their older Slate names identify the palette at those revisions.
 
 Use this page for the current local palette and the dated component evidence for earlier releases. No production palette state was reverified for this trial.
+
+Scoped gradient refinement, 2026-10-18: runtime changes committed locally at `f4b25ec` restore a white-to-Neutral-100 vertical gradient on posts and topic-layout samples. Each article restarts at white; stream borders remain between adjacent posts. About retains its separate Neutral 50-to-200 gradient. The earlier topic-label contrast measurement above was taken against the previous flat Neutral 50 background and is historical; final label contrast remains a review item.

@@ -51,7 +51,7 @@ Article content is the central pattern for the site. It brings together Area of 
 </article>
 ```
 
-The post shell remains flat Neutral 50 during the [Neutral palette trial](../foundations/color.md). Listing containers add a 1 px Neutral 200 divider only between adjacent articles, as described in [Stream Pages](../patterns/stream-pages.md#visual-rules). The shared post template does not add top/bottom borders to individual posts. About retains its separate gradient surface, now using Neutral shades.
+The post shell uses a vertical white-to-Neutral-100 gradient during the [Neutral palette trial](../foundations/color.md), spanning the full height of each post. Listing containers add a 1 px Neutral 200 divider only between adjacent articles, as described in [Stream Pages](../patterns/stream-pages.md#visual-rules). The shared post template does not add top/bottom borders to individual posts. About retains its separate Neutral 50-to-200 gradient surface.
 
 Article classes include Area of Interest and entry type hooks:
 

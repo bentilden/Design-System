@@ -66,7 +66,7 @@ Scoped source review, 2026-09-28: checked `bentilden.com/templates/category.twig
 
 ## Visual Rules
 
-- Posts use a flat Neutral 50 surface during the [local palette trial](../foundations/color.md). A subtle 1 px Neutral 200 border separates adjacent articles only; there is no stream border before the first article or after the last.
+- Posts use a vertical white-to-Neutral-100 gradient during the [local palette trial](../foundations/color.md). A subtle 1 px Neutral 200 border separates adjacent articles only; there is no stream border before the first article or after the last.
 - The Area of Interest icon appears above each article header unless the entry type overrides it.
 - Pagination sits in a Slate 200 band below the preceding rule and meets the global footer directly. Equal vertical padding centers its controls between these boundaries.
 - Stream pages use Area of Interest and entry schema classes to support targeted styling.
@@ -106,3 +106,5 @@ Stream preview imagery should resolve in this order:
 - Should stream entries be documented as article previews, cards, or full articles?
 - Should stream pages expose a compact index mode in the future?
 - Should content differences between dev and prod be excluded from visual regression checks?
+
+Scoped refinement, 2026-10-18: the owner subsequently restored the full-post gradient with white at the top and Neutral 100 at the bottom, while retaining adjacent-post borders. The shared post shell and topic-layout fixture reflect this trial committed locally in runtime `f4b25ec`; the earlier border-only observation above remains historical.
