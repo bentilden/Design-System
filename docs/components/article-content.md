@@ -83,7 +83,7 @@ Gallery conditions render the title/date once, including a left/right gallery se
 
 ## Article Icons
 
-`_components/topic-identity.twig` sits above the entry-specific content layout and receives the native related category's `identityIcon`, title, and URL. The icon is 32 px mobile / 36 px desktop inside a 56/64 px Neutral 200 circle. Its Neutral 950 linework uses a fixed 1.5 px visual stroke via non-scaling geometry. The owner-selected 24 px Neutral 400 label begins 10 px below the circle. The group is centered, with 40/48 px below it before the entry-specific content layout.
+`_components/topic-identity.twig` sits above the entry-specific content layout and receives the native related category's `identityIcon`, title, and URL. The icon is 24 px mobile / 28 px desktop inside a 48/56 px Neutral 200 circle. Its Neutral 950 linework uses a fixed 1.5 px visual stroke via non-scaling geometry. The 20 px Neutral 400 label begins 10 px below the circle. The group is centered, with 40/48 px below it before the entry-specific content layout.
 
 Icon and visible label form one topic link with a keyboard focus outline. The SVG is decorative and hidden from assistive technology. Hover darkens the label and changes the circle to Neutral 300; the label moves to Neutral 500. If no icon is selected, the visible topic link still renders. The identity group is hidden for print. The default Places icon is plain `map`, matching the supplied reference.
 
@@ -162,3 +162,5 @@ Captioned image production follow-up, 2026-10-05: website `bdb5b4f` is active in
 - [Matrix Blocks](matrix-blocks.md) describes the content assembled inside the article shell.
 - [Stream Pages](../patterns/stream-pages.md) shows how articles form listing pages.
 - [Assets & Media](../content-model/assets-media.md) and [Content QA](../operations/content-qa.md) cover image metadata and preview fallback checks.
+
+Scoped size refinement, 2026-10-18: the owner requested a smaller topic identity. Runtime changes committed locally at `5199269` reduce circle, glyph, and label together; the fixed 1.5 px stroke, 10 px internal gap, 40/48 px following space, colors, entry-specific title/date layouts, gradient, and between-post borders are retained. The shared component supplies public posts and both review fixtures.
