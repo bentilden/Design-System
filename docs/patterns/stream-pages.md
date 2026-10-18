@@ -68,13 +68,17 @@ Scoped source review, 2026-09-28: checked `bentilden.com/templates/category.twig
 
 - Posts use a vertical white-to-Neutral-100 gradient during the [local palette trial](../foundations/color.md). A subtle 1 px Neutral 200 border separates adjacent articles only; there is no stream border before the first article or after the last.
 - The Area of Interest icon appears above each article header unless the entry type overrides it.
-- Pagination sits in a Slate 200 band below the preceding rule and meets the global footer directly. Equal vertical padding centers its controls between these boundaries.
+- Pagination sits in a Neutral 200 band without a border separating it from the final post, and meets the global footer directly. Equal vertical padding centers its controls within the band.
 - Stream pages use Area of Interest and entry schema classes to support targeted styling.
 - Preview image fallback coverage matters because stream pages rely on image rhythm.
 
-Scoped local update, 2026-10-18: the owner chose subtle borders between posts instead of restoring the former gradient. Archive, category, and Places Posts containers use inline Tailwind adjacent-sibling selectors (`[&>article+article]:border-t` and `border-slate-200`). Only an article immediately following another article receives the divider. A single-item stream has no divider, and standalone posts do not receive the container styling. Pagination retains its separate existing rule. Sources: uncommitted `_archive/index.twig`, `category.twig`, and `_places/index.twig` above runtime `0221ddc`; no deployment claimed.
+Historical local update, 2026-10-18: the owner initially chose subtle borders between posts instead of restoring the former gradient. Archive, category, and Places Posts containers use inline Tailwind adjacent-sibling selectors (`[&>article+article]:border-t` and, now, `[&>article+article]:border-neutral-200`). Only an article immediately following another article receives the divider. A single-item stream has no divider, and standalone posts do not receive the container styling. The gradient was subsequently restored; see the current visual rule above. The pagination border retained during that initial change was subsequently removed as described below.
 
 ## Pagination
+
+Production verification, 2026-10-18: runtime `91d4df0` removes pagination's separate top border on Archive, topic streams and Places Posts. Chromium checks on deployed Archive and Places Posts at 390/1280 px confirm no line after the final article, retained 1 px Neutral 200 dividers between posts, unchanged 48 px pagination padding and working page-two links with Places view parameters.
+
+Scoped local update, 2026-10-18: removed the separate top border from pagination wrappers in `_archive/index.twig`, `category.twig`, and `_places/index.twig`, in uncommitted runtime changes above `325a94f`. Dividers remain only between adjacent posts. Pagination background, width, spacing, and links are unchanged. Local Chromium checks at 390/1280 px on `/archive` and `/photography?view=posts` verified the border boundary and preserved 48 px padding and Places query parameters. The ordinary category wrapper was source-checked; local Food and Work currently have fewer than 16 visible posts, so their pagination branch is not rendered. No deployment claimed.
 
 The 2026-09-28 refinement styles `_components/pagination.twig` with inline Tailwind utilities. Its Slate 200 navigation band uses `py-12` for 48 px above and below the controls; the list uses flex alignment without its former vertical padding. Extra horizontal padding starts at `md`, and page-number gaps are 4 px below `sm` and 16 px from `sm`, preserving control padding while fitting narrow screens. The former `bt-control-pagination` class and its descendant-list definitions are removed from `site.css`, including the outer vertical margins that exposed a pale strip before the footer.
 
