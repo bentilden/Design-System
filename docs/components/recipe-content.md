@@ -53,6 +53,8 @@ Recipe content is now a first-class site pattern, not just a legacy plugin remna
 | Recipe story | `_entry-content/recipe/story.twig` | Narrative story view with a recipe link. |
 | Recipe detail | `_entry-content/recipe/recipe.twig` | Ingredients, instructions, times, nutrition, notes, image, and print behavior. |
 
+Local header refinement, 2026-10-18: the centered [topic identity](article-content.md#article-icons) sits above the recipe layout. Recipe landing/detail titles and dates are restored to their existing five-column introduction/header area beside the image; the story view retains its centered prose-width header. The detail title retains its recipe URL; introduction, metadata, image, nutrition, instructions, and print controls remain in their existing body layout. Uncommitted source above runtime `0221ddc`; no deployment claimed.
+
 ## Detail Anatomy
 
 Recipe detail pages include:

@@ -21,6 +21,8 @@ This field guide documents the visual language, reusable patterns, and front-end
 
 The current website is a Craft CMS site rendered with Twig templates and styled with Tailwind CSS. The design language is editorial, image-forward, and restrained: large expressive titles, compact uppercase metadata, Slate neutrals, quiet interaction states, and flexible image presentation for photography, cooking, design, and blog content.
 
+Local website trial, 2026-10-18: the site now previews [Neutral instead of Slate](foundations/color.md). The same shade levels and layouts remain. Older dated component observations describe their earlier Slate revisions; the documentation theme itself is unchanged.
+
 ## What This System Covers
 
 - Foundations: color, typography, spacing, and responsive layout.
@@ -54,3 +56,5 @@ The first pass is based on these source files:
 3. Implement new behavior with Alpine.js; ask the site owner before making an exception to either implementation rule. Existing `bt-*` classes remain documented as current source, not a recommendation to add more. See [Contributing](contributing.md#frontend-implementation-rule) for the rule accepted on 2026-09-28.
 4. Keep the system editorial first: content and images should lead, interface chrome should recede.
 5. Treat accessibility and responsive behavior as part of the component, not an afterthought.
+
+Commit record, 2026-10-18: CMS-managed Lucide identities, topic-layout previews, restored entry-specific title/date placement, between-post dividers, owner template refinements, and the Neutral palette trial are committed locally in `bentilden.com` at `4a339ef` and `bentilden.com-css` at `76ec360`. Dated verification notes that describe uncommitted source refer to the checkout at test time. No push or deployment was performed; CMS content selections and navigation links remain database values.

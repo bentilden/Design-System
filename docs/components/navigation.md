@@ -35,6 +35,14 @@ Local interface-icon standardization, 2026-10-17: the touched icons now use the 
 
 Global navigation pairs a compact signature with ordinary links and stable header dimensions. The Personal Index mobile follow-up approved and deployed on 2026-09-28 opens a full-screen overlay above the stationary page. It supersedes the initial compact inline disclosure; earlier implementation and verification records retain their historical scope.
 
+## Destination Icons
+
+Approved local update, 2026-10-18: the four main section links show small Lucide icons from the linked content record's optional `identityIcon`. Initial choices are Home `house`, Places `map`, Food `cooking-pot`, and Work `pen-tool`. About and Contact remain text-only. Desktop icons are 18 px; primary mobile icons are 22 px. Shared stroke is 1.5, with the existing text color, labels, current-state treatment, and hit targets retained.
+
+The existing four custom-URL nodes are linked to their Homepage/category records during explicit content setup; their IDs, labels, order, custom attributes, and enabled states remain. Twig batch-loads linked elements and children and reads `node.element.identityIcon`; it does not infer an icon from a URL or menu label. See [Icons](icons.md) for CP ownership and lightweight delivery.
+
+Source: uncommitted `_components/global-header*.twig` and `modules/identityicons/Seed.php` above runtime `0221ddc`. All 27 existing local navigation checks passed, including responsive fit, current states, focus, no-JavaScript links, and Places geometry. No production deployment of this change is claimed.
+
 ## Reusable Segmented Control
 
 Local extraction, 2026-10-17: `_components/segmented-control.twig` owns the link-based segmented control used by [Places](../patterns/places.md#navigation-and-views). Pass an accessible `label`, ordered `options` with `value`, `label`, and `url`, and a `currentValue`. Each option remains a native link; the selected link receives `aria-current="page"`. Use it for navigation between views with real destinations.

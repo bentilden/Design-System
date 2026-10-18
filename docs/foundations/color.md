@@ -2,124 +2,83 @@
 title: Color
 type: foundation
 status: observed
-source_of_truth: observed production code
+source_of_truth: observed dev code
 audience:
   - design
   - development
 source:
   - bentilden.com/templates/_layout.twig
+  - bentilden.com/templates/_components/topic-identity.twig
+  - bentilden.com/templates/_matrix/text.twig
   - bentilden.com/templates/_components/global-header-nav-primary.twig
   - bentilden.com/templates/_components/global-header-nav-mobile.twig
   - bentilden.com-css/src/bentilden.css
   - bentilden.com-css/src/places-map-style.js
+  - bentilden.com-css/scripts/qa-palette-browser.mjs
 tokens:
-  - slate
+  - neutral
 environments:
   observed:
-    - prod
     - dev
 owner: Documentation owner
 created: 2026-06-06
-last_reviewed: 2026-06-06
+last_reviewed: 2026-10-18
 review_status: needs audit
 ---
 
 # Color
 
-The website uses Tailwind Slate for UI and page structure. The compact navigation direction accepted on 2026-09-28 uses Slate links and subtle rule/underline states on desktop and mobile. The previous orange mobile-navigation accent belongs to the superseded overlay.
+## Current Local Trial: Neutral
+
+The owner requested a trial switch from Tailwind Slate to **Neutral** on 2026-10-18. The current local website uses Neutral for interface text, page surfaces, rules, controls, and map theming. Existing shade numbers and opacity values are retained. This visual trial is committed locally in runtime `4a339ef` and frontend `76ec360`; no production deployment or permanent palette decision is claimed. The documentation site's own theme is separate and remains unchanged.
+
+Tailwind utilities name the actual palette (`text-neutral-600`, `bg-neutral-50`, etc.). Slate has not been remapped behind its old class names. Existing inline styling and native Craft field access remain. Frozen pre-migration icon comparison artwork retains its historical colors.
 
 ## Core Palette
 
-<div class="bt-token-grid" markdown>
-<div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#f8fafc"></div>
-  <div class="bt-swatch__meta">
-    <span class="bt-swatch__name">Slate 50</span>
-    <span class="bt-swatch__value">#f8fafc</span>
-  </div>
-</div>
-<div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#e2e8f0"></div>
-  <div class="bt-swatch__meta">
-    <span class="bt-swatch__name">Slate 200</span>
-    <span class="bt-swatch__value">#e2e8f0</span>
-  </div>
-</div>
-<div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#90a1b9"></div>
-  <div class="bt-swatch__meta">
-    <span class="bt-swatch__name">Slate 400</span>
-    <span class="bt-swatch__value">#90a1b9</span>
-  </div>
-</div>
-<div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#62748e"></div>
-  <div class="bt-swatch__meta">
-    <span class="bt-swatch__name">Slate 500</span>
-    <span class="bt-swatch__value">#62748e</span>
-  </div>
-</div>
-<div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#45556c"></div>
-  <div class="bt-swatch__meta">
-    <span class="bt-swatch__name">Slate 600</span>
-    <span class="bt-swatch__value">#45556c</span>
-  </div>
-</div>
-<div class="bt-swatch">
-  <div class="bt-swatch__color" style="background:#0f172b"></div>
-  <div class="bt-swatch__meta">
-    <span class="bt-swatch__name">Slate 900</span>
-    <span class="bt-swatch__value">#0f172b</span>
-  </div>
-</div>
-</div>
+The following values were read from compiled CSS tokens and converted to sRGB in local Chromium at 390 and 1440 px:
 
-Scoped palette audit, 2026-09-28: these swatches reflect the current website’s computed Tailwind palette. The sampled RGB values correct the older Slate 400, 600, and 900 hex labels and add Slate 500. The documentation theme has its own existing stylesheet; these are website palette values, not a claim that every documentation-theme token was changed.
+| Shade | Hex | Main role |
+| --- | --- | --- |
+| Neutral 50 | `#fafafa` | Article/content surface |
+| Neutral 100 | `#f5f5f5` | Quiet hover fill |
+| Neutral 200 | `#e5e5e5` | Page frame, topic circle, subtle dividers/selected fills |
+| Neutral 300 | `#d4d4d4` | Structural boundaries and circle hover |
+| Neutral 400 | `#a1a1a1` | Owner-selected light topic label and dark-footer copyright |
+| Neutral 500 | `#737373` | Topic-label hover, medium details/controls |
+| Neutral 600 | `#525252` | Secondary text, captions, dates |
+| Neutral 700 | `#404040` | Prose, stronger hover/focus treatment |
+| Neutral 900 | `#171717` | Dark footer, primary control fill |
+| Neutral 950 | `#0a0a0a` | Strongest text, outline icons, current navigation |
 
 ## Usage
 
-| Use | Tailwind classes | Notes |
-| --- | --- | --- |
-| Page shell | `bg-slate-200`, `bg-slate-50` | Creates the soft gray page frame and content body. |
-| Article background | `bg-gradient-to-b from-slate-50 to-slate-200` | Used to let long articles fade into the page footer area. |
-| Primary text | `text-slate-900` | Used for high-emphasis editorial text. |
-| Small secondary text | `text-slate-600` | Captions, counts, instructions, and other small text on light surfaces. Avoid opacity reductions. |
-| Metadata | `font-micro text-xs text-slate-600` | Editorial dates and image details use 12 px type with uppercase tracking. |
-| Footer | `bg-slate-900`, `text-slate-400` | Dark ending band; copyright uses Slate 400 while primary footer links retain their existing light colors. |
-| Functional boundaries | `border-slate-500`, `focus:border-slate-700`, `focus:ring-slate-700` | Contact fields remain identifiable before and during focus. |
-| Category icons and drop caps | `fill-slate-500`, `hover:fill-slate-700`, `first-letter:text-slate-500` | Solid functional SVG icons; large drop caps use Slate 500. |
-| Navigation state | `text-slate-600`, `text-slate-700`, `text-slate-950` | Compact header: quiet links, darker current/hover state, and underline. See [Navigation](../components/navigation.md). |
+| Use | Current treatment |
+| --- | --- |
+| Page shell | Neutral 200 frame and Neutral 50 content |
+| Post boundaries | Flat Neutral 50 posts with a 1 px Neutral 200 divider only between adjacent articles |
+| Topic identity | Neutral 200 circle / 300 hover; Neutral 950 thin icon; Neutral 400 label / 500 hover |
+| Post dates | Owner-edited normal body text in Neutral 600; image details retain their own metadata typography |
+| Prose | `prose-neutral` on the shared Story Text renderer, plus existing explicit Neutral utilities |
+| Navigation | Neutral 600 links with stronger Neutral 950 current/hover states and existing underline/dot treatments |
+| Footer | Neutral 900 surface; existing white primary links and Neutral 400 copyright |
+| Forms | Neutral borders, text, focus, and placeholder defaults; fixture selects use shared Neutral Lucide chevrons |
+| Map | `readMapPalette()` reads `--color-neutral-*`; `themeMapStyle()` maps known provider color literals while preserving filters, geometry, expressions, alpha, and zoom behavior |
+
+Semantic colors, photographs, signature/favicons, upstream map input literals, and third-party branding retain their existing identities. The map's output palette follows Neutral; its provider-color lookup keys remain the original strings needed for matching.
 
 ## Map Palette
 
-Approved alignment, 2026-10-17: the photo map derives its cartographic colors from the same Slate tokens as the surrounding interface. Land and label halos use Slate 50; parks and residential areas use Slate 100; woodland, buildings, and minor roads use Slate 200. Water, outlines, road casings, and rail use Slate 300, with Slate 400 boundaries and Slate 600/700/900 text. White remains for ice, bright road interiors, and photo frames. Provider sprite images retain their original appearance.
+The [Places map](../patterns/places.md) reads its Neutral shades from compiled CSS through `readMapPalette()`. The browser converts those tokens to RGB for MapLibre, so map styling and interface styling use the same source. `themeMapStyle()` changes known color paint values while retaining provider layer filters, geometry, alpha, label rules, and zoom expressions. Unknown future provider colors remain available for deliberate review.
 
-Photo markers use Slate 950 text, Slate 200 placeholders, Slate 900 count badges, Slate 50/95 label surfaces, and Slate 700 keyboard outlines. Native map scale and attribution surfaces/text also use Slate. The [Places pattern](../patterns/places.md#map-colors) explains the adaptation and its verification scope.
+## Verification And Open Review
 
-Scoped source review: frontend `cb2daf1` (`src/places-map-style.js`, `src/places.js`) and website `122b231` (`templates/_places/index.twig`). The browser converts existing CSS tokens from OKLCH to RGB for MapLibre; there is no second hardcoded hex palette. Production release `20261017153000` matches the committed runtime, and desktop/mobile overview, city, and street checks passed. This scoped review does not refresh the other palette observations on this page.
+`qa:palette` samples page surfaces, header/footer, topic identity, post date, prose, forms, fixture, and generated map markers on the local site. Compiled Neutral tokens and sampled interface colors have equal RGB channels. It also checks the owner's current 10 px icon/label gap and 20/40 px date margins. The related layout suites cover responsive placement, form choices, and navigation separately.
 
-## Divider Hierarchy
+The owner-selected **Neutral 400 topic label measures approximately 2.48:1 against Neutral 50**, below the 3:1 large-text criterion used in earlier reviews. Its lighter shade was retained for this trial; the identity browser report records the contrast result separately from rendering/layout success. This does not establish accessibility conformance. Final label contrast and palette acceptance remain design-review items.
 
-Source and computed-style refinement review, 2026-09-28: use a 1 px `border-slate-300/70` outer header boundary on desktop and mobile. Desktop link groups use spacing in place of a vertical separator. Mobile has one outer rule under the complete header and retains the inset Slate 200 rule above About/Contact.
+## Earlier Slate Evidence
 
-The earlier Places treatment used a Slate 200 long line behind Map | Posts. The local 2026-09-28 [header-switcher trial](../patterns/places.md#navigation-and-views) removes that separate line and centers the control on the global header’s Slate 300/70 boundary, with a Slate 50 surround clearing the rule behind it. The switcher outline and map/gallery structural borders remain Slate 300; toolbar dividers remain Slate 200. The different strengths identify the global boundary, component structure, and local grouping without making every rule equally prominent. See [Navigation](../components/navigation.md#review-evidence) for the earlier divider refinement’s source and verification status.
+Earlier navigation and color work used Slate: the 2026-09-28 audit measured Slate 600 at approximately 7.25:1 on Slate 50 and 6.15:1 on Slate 200, with Slate 400 copyright on Slate 900 at approximately 6.78:1. These are historical measurements of different colors, not Neutral trial results. Later segmented-control reviews changed selection from a dark reversed fill to shade 200 with dark text. See [Navigation](../components/navigation.md) and [Places](../patterns/places.md) for their dated observations; their older Slate names identify the palette at those revisions.
 
-The later shared-toolbar follow-up removes the extra explorer top rule and the desktop divider between the toolbar’s two cells. A continuous Slate 200 bottom rule spans the location chips and gallery summary; the Slate 300 map/gallery divider starts below it. The slimmer mobile view control keeps the same selected and hover palette on inner fills while its decorative shell becomes 38 px high around actual 44 px links. See [Places](../patterns/places.md#map-and-gallery) for this local source stage and its check status.
-
-## Guidance
-
-- Start with Slate unless a pattern needs semantic color.
-- Use the shared Slate treatment for global navigation. Do not reintroduce the former orange mobile-overlay state as current guidance.
-- Use Slate 600 for small text on light surfaces. Slate 400 is suitable for the dark-footer copyright role, not light-surface metadata.
-- Use `slate-900` for active states and deep surfaces.
-
-Scoped source review, 2026-09-28: the compact-header palette was inspected in uncommitted website header changes above `b1cf61e`. That initial treatment used Slate 50 surfaces, Slate 200 rules, and Slate 950 current/hover links; no orange state remained in the new header. The later accepted divider refinement above supersedes the outer-rule color. This local source check does not refresh the earlier review of other palette uses or establish deployment. See [Navigation](../components/navigation.md#review-evidence).
-
-## Contrast Follow-Up
-
-Local phone-review correction, 2026-10-17: the shared Places segmented control now previews a Slate 200 selected fill with Slate 900 text, replacing the reversed dark selection at the owner's request. Inactive hover moves to Slate 100 so it remains distinct from selection; outlines and dividers retain Slate 300. This is uncommitted local styling, verified through computed colors at 390/1280 px and 11 passing navigation cases. The dated reversed-color observations below describe earlier releases. See [Navigation](../components/navigation.md#reusable-segmented-control).
-
-Approved and inspected in local source on 2026-09-28: the text, metadata, footer, field, icon, and drop-cap roles above replace the weaker sampled treatments. The changes are uncommitted above website `b1cf61e` / frontend `f3f709f`. Following the user’s correction, the Places view switcher uses a reversed selected state: Slate 900 with white text and no underline. The latest user-selected hover treatment uses Slate 200 with Slate 600 text for inactive hover. Decorative divider strengths remain unchanged.
-
-The computed palette gives Slate 600 approximately 7.25:1 against Slate 50 and 6.15:1 against Slate 200; Slate 400 on Slate 900 is approximately 6.78:1. Local Chromium checks on 2026-09-28 confirmed these ratios in the sampled Places counts/captions and footer, with stronger contact boundaries. Those checks preceded the switcher’s reversed-color correction; its earlier underline result is historical. The correction passed targeted checks at 390/1440 px and without JavaScript, measuring 17.83:1 for selected white text on Slate 900. These are scoped measurements, not a claim about every rendered element. Gradients, opacity, images, and interaction states must be reviewed in context. See [Accessibility](../accessibility/index.md#color-and-contrast) for verification scope and limits.
+Use this page for the current local palette and the dated component evidence for earlier releases. No production palette state was reverified for this trial.

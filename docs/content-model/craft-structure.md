@@ -147,3 +147,7 @@ Scoped source review, 2026-09-28: the location fields/layouts, category label, a
 - [Areas of Interest](../patterns/areas-of-interest.md) explains the taxonomy contract.
 - [Assets & Media](assets-media.md) expands on image metadata, ownership, and delivery.
 - [Content QA](../operations/content-qa.md) describes repeatable checks for content-model drift.
+
+## Identity Icon Field
+
+Local approved implementation, 2026-10-18: optional `identityIcon` is a Verbb Icon Picker field on the Areas of Interest category layout and Homepage entry type, in an Identity tab. It is restricted to the complete local Lucide SVG set. Each category/page stores its own selection. Navigation reads its linked destination's selection; posts read their native `areaOfInterest` category. About and Contact layouts are unchanged. Schema and set definitions travel through Project Config; icon selections and navigation-node links are content values. See [Areas of Interest](../patterns/areas-of-interest.md) and [Icons](../components/icons.md). Sources: local uncommitted `modules/identityicons/Schema.php`, `Seed.php`, and corresponding Project Config above runtime `0221ddc`.

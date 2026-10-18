@@ -48,7 +48,7 @@ Scoped first-release review, 2026-09-28: `bentilden.com/templates/_layout.twig` 
 
 ## Color And Contrast
 
-The contrast follow-up approved on 2026-09-28 uses Slate 600 for small text on light surfaces, 12 px Micro type for editorial dates/image details, and Slate 400 copyright text on the dark footer. Counts inherit their parent text color without reduced opacity. Functional category icons use solid Slate 500 with Slate 700 hover, and large drop caps use Slate 500.
+The contrast follow-up approved on 2026-09-28 uses Slate 600 for small text on light surfaces, 12 px Micro type for editorial dates/image details, and Slate 400 copyright text on the dark footer. Counts inherit their parent text color without reduced opacity. The historical filled category icons used solid Slate 500 with Slate 700 hover; large drop caps use Slate 500. The current local [Neutral trial](../foundations/color.md) uses thin Neutral 950 topic linework and the owner-selected 24 px Neutral 400 label with a 10 px gap. The label measures about 2.48:1 against Neutral 50, below the earlier large-text target. That result is reported separately from rendering/layout checks; conformance is not claimed. Post dates use the owner's normal 16 px body Text in Neutral 600. Historical Slate measurements below refer to their inspected revisions.
 
 Contact fields use Slate 500 resting borders and Slate 700 focus borders/rings. The Places Map | Posts switcher uses a reversed selected state—white text on Slate 900, without an underline—distinct from inactive Slate 600 text and Slate 200 hover. Decorative section rules retain their accepted visual hierarchy; they are not substitutes for visible functional control boundaries.
 

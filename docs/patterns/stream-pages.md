@@ -66,11 +66,13 @@ Scoped source review, 2026-09-28: checked `bentilden.com/templates/category.twig
 
 ## Visual Rules
 
-- Alternate content is separated by repeated Slate gradient article bands.
+- Posts use a flat Neutral 50 surface during the [local palette trial](../foundations/color.md). A subtle 1 px Neutral 200 border separates adjacent articles only; there is no stream border before the first article or after the last.
 - The Area of Interest icon appears above each article header unless the entry type overrides it.
 - Pagination sits in a Slate 200 band below the preceding rule and meets the global footer directly. Equal vertical padding centers its controls between these boundaries.
 - Stream pages use Area of Interest and entry schema classes to support targeted styling.
 - Preview image fallback coverage matters because stream pages rely on image rhythm.
+
+Scoped local update, 2026-10-18: the owner chose subtle borders between posts instead of restoring the former gradient. Archive, category, and Places Posts containers use inline Tailwind adjacent-sibling selectors (`[&>article+article]:border-t` and `border-slate-200`). Only an article immediately following another article receives the divider. A single-item stream has no divider, and standalone posts do not receive the container styling. Pagination retains its separate existing rule. Sources: uncommitted `_archive/index.twig`, `category.twig`, and `_places/index.twig` above runtime `0221ddc`; no deployment claimed.
 
 ## Pagination
 

@@ -66,7 +66,9 @@ The [post-title weight chosen on 2026-10-17](../components/article-content.md#en
 </p>
 ```
 
-Use the Micro family at 12 px (`text-xs`) with Slate 600 for editorial dates and image details. Uppercase tracking provides the quiet metadata treatment without relying on a very small size or pale foreground.
+Local refinement, 2026-10-18: the owner restored entry-specific title/date placement. The Micro date example above records the preceding styling. Post titles use Display Black 900 at 48 px with inherited letter spacing. Subsequent manual edits changed publication dates to normal body Text at 16 px with the Posted prefix, 20 px top margin, and 40 px bottom margin. The current local palette trial uses Neutral 600 for these dates. The intervening 60/72 px title, tightened tracking, and normal-case date experiment is superseded. Placement follows the entry layout; only the topic icon/label stays centered above it. See [Entry Header](../components/article-content.md#entry-header).
+
+Use the Micro family at 12 px (`text-xs`) with Slate 600 for compact metadata and image details; shared post dates use the Text exception above. Uppercase tracking provides the quiet metadata treatment without relying on a very small size or pale foreground.
 
 ### Prose
 
