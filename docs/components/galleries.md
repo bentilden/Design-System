@@ -47,6 +47,12 @@ Desktop zoom follow-up, 2026-09-28: the zoom treatment below was saved in websit
 
 ## Page Layout
 
+Scoped local refinement, 2026-10-18: Gallery posts show topic identity, centered headline/date, photos, then story text below 768 px, in both source and visual order. The shared Gallery entry template renders one headline/date and uses responsive grid placement for side-by-side desktop layouts. From 768 px, native `alignment` and `galleryStyle` retain the previous left/right columns, widths, title/body positions, and centered/inline arrangements. Existing viewer behavior and photo-grid column counts are unchanged.
+
+Mobile galleries have one 32 px bottom margin before story text. The former 48 px gallery margin plus 40 px text-column padding no longer accumulate; centered layouts also avoid an extra outer mobile margin. Desktop gallery margins remain 48 px, with the existing additional 32 px for centered layouts.
+
+Local Chromium comparison on Malaga, Kinkaku-ji, and Kyoto in Fall at 768/1024/1440 px found desktop header, gallery, body, and article geometry unchanged within 0.02 px rounding. `qa:gallery-layouts` covers those posts at 320/390/767/768/1024/1440 px; native unsaved tests cover all six alignment/style combinations. Malaga's long title already overflows 10 px at 768 px in the original desktop layout; that baseline is recorded rather than changed by this mobile-order refinement. Sources: locally committed runtime `be1a8a2` and frontend `8f4da56`, `_entry-content/gallery/default.twig`, `scripts/post-header-layout-qa.php`, and `scripts/qa-gallery-layouts-browser.mjs`. No deployment is claimed.
+
 Gallery blocks default to two columns, becoming three at large viewports. Inline galleries and single-image galleries remove those column classes. Both `gallery` block types share one template implementation; both featured-image block types also share one implementation.
 
 Images use the shared responsive-image component with native `srcset`, `sizes`, dimensions, loading, decoding, and priority attributes. Grid galleries use square optimized thumbnails with `sizes="(min-width: 1024px) 28vw, 50vw"`; inline and single-image galleries use full-proportion optimized images with `sizes="90vw"`. The first priority-eligible image may load eagerly; later images remain lazy.

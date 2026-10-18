@@ -44,7 +44,7 @@ Article content is the central pattern for the site. It brings together Area of 
 ## Article Shell
 
 ```twig
-<article class="bg-neutral-50 pt-8 pb-14 md:pt-12 bt-article bt-article-topic-{{ entryCategory.slug }} bt-article-schema-{{ entry.type }}">
+<article class="bg-white bg-gradient-to-b from-white to-neutral-100 pt-8 pb-14 md:pt-12 bt-article bt-article-topic-{{ entryCategory.slug }} bt-article-schema-{{ entry.type }}">
   <div class="px-8 lg:container mx-auto">
     ...
   </div>
@@ -64,22 +64,22 @@ Article classes include Area of Interest and entry type hooks:
 
 ## Entry Header
 
-Local refinement, 2026-10-18: the owner restored the previous title/date presentation and placement. The new centered treatment applies only to the topic icon and label, independently of the title layout.
+Local refinement, 2026-10-18: the owner restored the previous title/date presentation and placement. Desktop title/date placement remains entry-specific. A subsequent mobile refinement centers every post title/date below 768 px, independently of its entry type or listing context.
 
 `_components/entry-header.twig` supplies a Display Black 900 title at 48 px with line-height 1 and the former inherited letter spacing, followed by the owner-edited normal body date (`Posted` plus `M d, Y`) in Neutral 600 with 20 px above and 40 px below. The later manual edits supersede the restored Micro date styling, while placement remains entry-specific. It keeps a semantic `time` and keyboard focus treatment. The earlier 60/72 px title sizing, tightened tracking, and normal-case 16/18 px date experiment are superseded. No reading time is added.
 
-Placement belongs to the entry template and its native settings:
+Every post title and date is centered below 768 px through the shared `_components/entry-header.twig` component. At `md` and above, `text-align: inherit` preserves each template’s existing alignment. This applies to standalone posts, archives, category/Places streams, and the layout fixture; body text retains its layout’s alignment. Placement belongs to the entry template and its native settings:
 
 | Entry view | Title/date placement |
 | --- | --- |
 | Story | Centered within the prose-width column |
 | Featured image | Centered above its media/content layout, as before |
-| Gallery | Above a centered or inline gallery; within the accompanying text column for left/right thumbnail grids |
+| Gallery | Mobile: centered above photos, followed by body text. From 768 px: above centered/inline galleries, beside photos in the text column for left/right thumbnail grids |
 | Recipe landing/detail | In the existing five-column introduction/header area beside the image |
 | Default | Within its body header |
 | About | Retains its own separate heading |
 
-Gallery conditions render the title/date once, including a left/right gallery set to Inline. Recipe detail title links preserve their recipe URL. Category selection, body layouts, and authored alignment values remain native Craft fields.
+Gallery headers render once in source order before photos and story text. Responsive grid placement preserves authored desktop columns; centered and inline desktop layouts retain their existing flow. Gallery-to-story spacing is 32 px on mobile, with the previous desktop margins retained. Recipe detail title links preserve their recipe URL. Category selection, body layouts, and authored alignment values remain native Craft fields.
 
 ## Article Icons
 
@@ -164,3 +164,5 @@ Captioned image production follow-up, 2026-10-05: website `bdb5b4f` is active in
 - [Assets & Media](../content-model/assets-media.md) and [Content QA](../operations/content-qa.md) cover image metadata and preview fallback checks.
 
 Scoped size refinement, 2026-10-18: the owner requested a smaller topic identity. Runtime changes committed locally at `5199269` reduce circle, glyph, and label together; the fixed 1.5 px stroke, 10 px internal gap, 40/48 px following space, colors, entry-specific title/date layouts, gradient, and between-post borders are retained. The shared component supplies public posts and both review fixtures.
+
+Commit record, 2026-10-18: the responsive Gallery reading-order/spacing changes and shared mobile title/date centering are committed locally in runtime `be1a8a2`, with browser checks in frontend `8f4da56`. Earlier dated uncommitted descriptions refer to verification time. No push or deployment was performed.
