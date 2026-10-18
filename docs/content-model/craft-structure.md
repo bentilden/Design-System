@@ -30,12 +30,14 @@ Craft structure is a design-system input. Entry type controls content shape, Are
 | `homepage` | Single | `__home__` | `index` |
 | `about` | Single | `about` | `_entry.twig` |
 | `posts` | Channel | `{slug}` | `_entry.twig` |
+| `areasOfInterest` | Structure, one level | `{slug}` | `category` |
+| `siteSettings` | Single | No public URL | None |
 
 ## Taxonomy And Navigation
 
 | Handle | Type | Role |
 | --- | --- | --- |
-| `areasOfInterest` | Category group | Drives topic pages, article icons, broad navigation, and `bt-article-topic-*` classes. |
+| `areasOfInterest` | Structure entries | Drives topic pages, article icons, broad navigation, and `bt-article-topic-*` classes. |
 | `globalHeader` | Navigation | Primary header and mobile navigation. |
 | `globalFooter` | Navigation | Footer links. |
 
@@ -50,6 +52,8 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `featuredImage` | Single-image entry with text alongside media. |
 | `recipe` | Cooking entry with intro, story, and recipe-detail views. |
 | `about` | Static about page content. |
+| `areaOfInterest` | Topic identity, label, URL, and optional Lucide icon. |
+| `siteSettings` | Shared site description, avatar, signatures, and footer wording. |
 | `homepage` | Curated homepage statement, introduction, and ordered sections. |
 | `homePhotography`, `homeWork`, `homeCooking`, `homeRecent` | Nested homepage sections, at most one of each kind. |
 | `homeFeature` | Selected post and overrides scoped to a homepage placement. |
@@ -83,7 +87,7 @@ Rendering update, 2026-10-17: the homepage refactor in runtime `ad8ae26`, verifi
 | Field | Type | Notes |
 | --- | --- | --- |
 | `alignment` | Position field | Enables `center`, `left`, and `right`; inactive options include `drop-left`, `drop-right`, and `full`. |
-| `areaOfInterest` | Categories | Maps posts to broad subject lane and icon treatment. |
+| `areaOfInterest` | Entries | Maps posts to broad subject lane and icon treatment. |
 | `hideFromStream` | Lightswitch | Excludes posts from stream pages. |
 | `previewImage` | Assets | Optional listing/share override before template fallback logic runs. |
 
@@ -150,4 +154,13 @@ Scoped source review, 2026-09-28: the location fields/layouts, category label, a
 
 ## Identity Icon Field
 
-Local approved implementation, 2026-10-18: optional `identityIcon` is a Verbb Icon Picker field on the Areas of Interest category layout and Homepage entry type, in an Identity tab. It is restricted to the complete local Lucide SVG set. Each category/page stores its own selection. Navigation reads its linked destination's selection; posts read their native `areaOfInterest` category. About and Contact layouts are unchanged. Schema and set definitions travel through Project Config; icon selections and navigation-node links are content values. See [Areas of Interest](../patterns/areas-of-interest.md) and [Icons](../components/icons.md). Sources: local uncommitted `modules/identityicons/Schema.php`, `Seed.php`, and corresponding Project Config above runtime `0221ddc`.
+Local approved implementation, 2026-10-18: optional `identityIcon` is a Verbb Icon Picker field on the Areas of Interest entry layout and Homepage entry type, in an Identity tab. It is restricted to the complete local Lucide SVG set. Each topic/page stores its own selection. Navigation reads its linked destination's selection; posts read their native `areaOfInterest` topic entry. About and Contact layouts are unchanged. Schema and set definitions travel through Project Config; icon selections and navigation-node links are content values. See [Areas of Interest](../patterns/areas-of-interest.md) and [Icons](../components/icons.md). Sources: local uncommitted `modules/identityicons/Schema.php`, `Seed.php`, and corresponding Project Config above runtime `0221ddc`.
+
+
+## Entrification
+
+Scoped local review, 2026-10-18: uncommitted runtime changes above `9df63e7` convert the four existing Areas of Interest categories into Structure entries and Site Settings into a URL-less Single, using Craft 5.11.5.1 native entrify commands through a content migration. This supersedes the category/global model in earlier dated evidence. The Single hides title/status controls; `preloadSingles` keeps direct `siteSettings` Twig access. Both topic relation fields are Entries fields, retaining their handles and field identities.
+
+Editors use **Entries → Areas of Interest** and **Entries → Site Settings**. Topic icon ownership and rendering stay the same. Navigation nodes link to the topic entries; existing topic IDs, UIDs, URLs, fields, post relations, and saved homepage links are preserved. No styling changes accompany this conversion. Craft's [entrify commands](https://craftcms.com/docs/5.x/reference/cli.html#entrify) perform the native element conversion; `modules/content/Entrification.php` preserves plugin references and typed content links. Deployment requires the matching content migration as well as Project Config. These observations establish local behavior, not deployment.
+
+Commit update, 2026-10-18: runtime `325a94f` contains the entrification implementation described above. The earlier uncommitted wording records the verification point. Staging deployment is separately authorized; production promotion is not.

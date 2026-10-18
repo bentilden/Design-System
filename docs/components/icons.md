@@ -64,7 +64,7 @@ The frontend pins `lucide-static` **1.59.0** as a development dependency. `npm r
 
 The CP can select any icon from this pinned catalog. The public renderer validates the selection against the generated manifest and inlines only that icon's geometry through the shared helper. It does not load the catalog, preview files, icon font, sprite sheet, or browser-side Lucide library. Choosing another included icon requires no frontend rebuild.
 
-`identityIcon` is an optional, single-choice field on Areas of Interest categories and the Homepage single. Navigation reads the linked destination's value; a post reads `entry.areaOfInterest.one().identityIcon`. About and Contact have no picker. Navigation retains authored labels, ordering, grouping, and current states. See [Areas of Interest](../patterns/areas-of-interest.md) and [Article Content](article-content.md#article-icons).
+`identityIcon` is an optional, single-choice field on Areas of Interest topic entries and the Homepage single. Navigation reads the linked destination's value; a post reads `entry.areaOfInterest.one().identityIcon`. About and Contact have no picker. Navigation retains authored labels, ordering, grouping, and current states. See [Areas of Interest](../patterns/areas-of-interest.md) and [Article Content](article-content.md#article-icons).
 
 To update the available collection, deliberately update the pinned package, regenerate, and review selections before removing deprecated identifiers. `npm run qa:icons` checks the entire catalog, metadata, previews, geometry, and licenses for drift. Do not hand-edit generated geometry. Upstream documentation: [Lucide static assets](https://lucide.dev/guide/static), [license](https://lucide.dev/license).
 
