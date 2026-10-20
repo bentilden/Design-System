@@ -46,6 +46,18 @@ Places combines a photo map with a synchronized gallery. The first release was a
 
 Mosaic production release, 2026-09-28: website `acacd8adf66f2651b086411d63588b7a9e3ee962` and frontend `8fae64919e3e29f3f1b68bd6e1576f3c9fd7d78d` are deployed in release `20260928151023`. Places offers **Map | Mosaic | Posts**, retaining Map as the default. Both color-ordered Mosaic layouts, the shared header/toolbar, map overlay controls, and final chip visibility/dividers/padding are included. Release-file hashes, server checks, public assets, and 27 navigation/23 Places/10 chip browser cases passed. Generic checks passed on all four release routes, including 48 fonts per route and no missing image dimensions. The final 23-case Mosaic run also passed, completing 83 production browser cases with no runtime errors or road-shield warnings. Desktop Square and mobile Justified were visually reviewed. The [Mosaic section](#mosaic) describes the interface; historical local/two-view results below retain their original scope.
 
+## Animated Thumbnail Stacks
+
+Released 2026-10-20: frontend `a138344` and runtime `c6d4684` group overlapping map controls into photo stacks that zoom to separate where useful, with animated expansion as a fallback. This is a screen-space presentation layer; canonical Locations, geographic clusters, counts and grid membership remain separate.
+
+Follow-up, 2026-10-20: clicking a stack first tries a calculated zoom that separates its controls while keeping the group in view. The planner respects thumbnail/label/badge dimensions, the available map area and the existing maximum zoom of 18. Mixed stacks may split into smaller stacks and individual thumbnails. Zooming clears the active filter and lets the grid follow the new viewport.
+
+When no useful fitting zoom exists, a stack expands without moving the camera or filtering the grid. Thumbnails spread with a short stagger, slight lift and settling motion; lines connect them to their map positions. Closing reverses the motion. Each revealed thumbnail retains its existing drill-down or filter action. Filtering leaves the stack open. Other map thumbnails temporarily hide to prevent overlap with the expanded cards; pills and the grid still follow the underlying geographic positions.
+
+Use the close control, a blank-map click, or Escape to collapse. Camera movement, resize and view/pill changes clear the expansion. Slots remain inside the map and leave room for controls. Compact paging handles more thumbnails than fit in the available area. Reduced-motion preferences skip movement; collapsed/hidden controls are inert, and explicit dismissal returns focus to the stack button.
+
+Implementation: `places-stack-layout.js` and `places-stacks.js`, invoked by the Places Alpine component, with native Tailwind utilities and existing icons in `_places/index.twig`. This release supersedes the earlier overlap limitation below. Production release `20261020205430` matches all three changed runtime files.
+
 ## Local Hierarchical Locations Revision
 
 Released 2026-10-20 in runtime `e00d55e`, built from frontend `015757c`. This revision replaces the text-matched grouping and always-filter marker behavior described in the production history below.
