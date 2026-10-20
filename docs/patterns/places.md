@@ -46,6 +46,19 @@ Places combines a photo map with a synchronized gallery. The first release was a
 
 Mosaic production release, 2026-09-28: website `acacd8adf66f2651b086411d63588b7a9e3ee962` and frontend `8fae64919e3e29f3f1b68bd6e1576f3c9fd7d78d` are deployed in release `20260928151023`. Places offers **Map | Mosaic | Posts**, retaining Map as the default. Both color-ordered Mosaic layouts, the shared header/toolbar, map overlay controls, and final chip visibility/dividers/padding are included. Release-file hashes, server checks, public assets, and 27 navigation/23 Places/10 chip browser cases passed. Generic checks passed on all four release routes, including 48 fonts per route and no missing image dimensions. The final 23-case Mosaic run also passed, completing 83 production browser cases with no runtime errors or road-shield warnings. Desktop Square and mobile Justified were visually reviewed. The [Mosaic section](#mosaic) describes the interface; historical local/two-view results below retain their original scope.
 
+## Local Hierarchical Locations Revision
+
+Released 2026-10-20 in runtime `e00d55e`, built from frontend `015757c`. This revision replaces the text-matched grouping and always-filter marker behavior described in the production history below.
+
+- Native Locations Structure entries define names, ancestry and representative map points. Asset `photoPlace` overrides the gallery block's `photoPlace`; a blank asset relation inherits separately for each published use.
+- Map position is independent: Automatic uses embedded GPS then the assigned/inherited Location point; Use location’s map position ignores GPS; Set custom position uses the asset's manual point globally.
+- Overview shows roots. Activating a parent frames its photos and reveals children; activating a leaf filters the grid without moving the camera. A small trailing chevron identifies parent marker labels. Photos assigned directly to parents remain represented at deeper scales and included in the ordinary grid.
+- Map gestures clear leaf selection. Scale determines the visible hierarchy, with no breadcrumbs or persistent branch restriction. All places restores the overview. Unclassified GPS photos remain visible as geographic markers.
+- Pills follow the visible named markers, on desktop and mobile. Grid captions and viewer Details use the effective Location entry title. Viewer links use stable entry UUIDs; renaming does not change identity. A parent destination drills down; a leaf destination frames and selects that place on initial load, zooming far enough to reveal it beneath its ancestors. Resize framing preserves that visibility; ordinary leaf clicks remain filter-only.
+- `placeName` is retired from authoring; hidden legacy values remain for migration recovery. Unnamed historical gallery points remain visible pending an authored Location assignment. Existing names initially migrate as roots; no geographic parentage is inferred from text. Names without any usable position migrate as disabled entries for author review. Obsolete source choices require migration review rather than silent defaulting. A small Maps field adapter preserves valid zero coordinates.
+
+Source: runtime `Locations.php`, `LocationMigration.php`, `LocationResolver.php`, `Payload.php`, Maps authoring controls, location Project Config and viewer/gallery Twig; frontend `places.js` and `places-hierarchy.js`. Verification includes local PHP rollback fixtures, native CP rendering, desktop/mobile browser fixtures and scoped release QA. Production release `20261020152404` matches all 30 changed runtime files; no pending Project Config remains.
+
 ## Navigation And Views
 
 Connected-rule trial, 2026-10-17: the latest local Places adapter removes the 6 px clearance on each side of the selector so the horizontal header rule meets its shell. The light selected state and joined-segment geometry remain. Earlier surround-gap observations below describe previous versions.

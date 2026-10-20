@@ -111,6 +111,8 @@ Scoped viewer update, 2026-09-28: `PhotoViewerMedia.php` in website `fcfbf500678
 
 ## Photo Locations
 
+Released revision, 2026-10-20 (runtime `e00d55e`): [hierarchical Locations](../patterns/places.md#local-hierarchical-locations-revision) replace free-text place names with one optional `photoPlace` relation. The photo's explicit relation wins everywhere; blank inherits per gallery use. Map position has three choices: Automatic (GPS then Location point), Use location’s map position, and Set custom position. A missing custom point produces validation feedback. The read-only status describes the saved source and available GPS. Legacy GPS-only choices require migration review; they do not silently gain fallback. The following four-mode guidance is retained as the superseded baseline.
+
 The Photos asset layout has a Location tab with a Location source selector (`photoLocationSource`), read-only embedded-GPS status, a custom coordinate picker (`photoLocation`), and a public place name (`placeName`). The picker appears for Custom location; the asset place-name field is hidden for Gallery location. Gallery blocks have `galleryLocation` and `placeName` inline alongside their images. Maps by Ether Creative supplies explicit place search, coordinate inputs, and Clear address. Opening the picker's default camera does not assign a point.
 
 | Location source | Authoring meaning |

@@ -106,6 +106,8 @@ Rendering update, 2026-10-17: the homepage refactor in runtime `ad8ae26`, verifi
 
 ## Location Fields
 
+Released revision, 2026-10-20 (runtime `e00d55e`): `locations` is a Structure with native titles and `locationPosition` (Maps). `photoPlace` is a single Entries relation on gallery blocks and photo assets; the gallery labels it Default location. Asset `photoLocationSource` now exposes Automatic / Use location’s map position / Set custom position. `photoLocation` appears only for custom mode. `placeName` and `galleryLocation` remain hidden migration storage, not editing controls. Location selectors show ancestry to distinguish repeated names. See [hierarchy behavior](../patterns/places.md#local-hierarchical-locations-revision). The table below describes the preceding production model.
+
 | Field | Type | Placement |
 | --- | --- | --- |
 | `galleryLocation` | Maps | Gallery block; inherited when the photo uses Gallery location or Automatic without GPS. |
