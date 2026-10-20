@@ -83,7 +83,7 @@ Existing entry-owned media fields use folders named from the owning entry URI. T
 | `mainImage` | `{uri}` |
 | Featured image block `image` | `{owner.uri}` |
 | Gallery block `images` | `{owner.uri}` |
-| Recipe step `image2` | `{owner.uri}` |
+| Legacy recipe step `image2` | `{owner.uri}` |
 | Captioned image `captionedImageAsset` | Editor/direct-field default: `rich-text/story/`; toolbar library modal: selected Content Images folder |
 | `avatar` | `avatars/` |
 
@@ -197,6 +197,8 @@ The asset library works, but content QA can still surface cleanup needs:
 Do not bulk-delete assets from the database. Review them in Craft first, then decide whether to relate, move, archive, or delete each asset and remote file.
 
 Scoped viewer-information trial, 2026-10-19 (runtime `b18e67a`, frontend `884e87a`, verified on staging and production release `20261019213436`): the owner selected the Caption strip direction. A separate display index retains selected technical values independently of private archive Trash, updates on replacement and clears when the working asset is hard-deleted. It contains camera/lens, exposure and a calendar capture date; image dimensions/format come from the working master. It does not publish raw EXIF, exact GPS/time, embedded identities or private storage references. This supersedes the earlier statement that no camera metadata is supplied to the public viewer for this deployed release. Existing production photos without captured metadata retain only available master-image specifications; enabling new-upload capture does not backfill older originals. See [Photo info caption strip](../components/galleries.md#photo-info-caption-strip) for behavior, sources and verification. Existing manual location-source and editorial-caption rules remain intact.
+
+Scoped dev addition, 2026-10-20: Recipe Step Instructions (`text2`, exposed as `text`) now reuse native Captioned image placements and the shared renderer/viewer. Multiple images can appear between paragraphs; new inline uploads use `rich-text/recipe-steps/`. The old `image2` relation remains a trailing-image fallback. Recipe/Places eligibility and existing preview-image precedence are unchanged. See [Recipe Content](../components/recipe-content.md#step-anatomy-and-authoring).
 
 ## Related Pages
 

@@ -32,6 +32,8 @@ Accepted on 2026-09-28: implement new website behavior with Alpine.js and new st
 
 This rule applies to implementation examples and future website changes. Keep documentation grounded in the source while distinguishing existing implementation from the approach required for new work.
 
+For new or touched borders and dividers, follow the [border roles](foundations/color.md#border-and-divider-rules): Neutral 300 by default, Neutral 200 for deliberately subtle separators, and Neutral 700 for keyboard focus outlines. Use explicit Tailwind color utilities.
+
 ## Craft Field Traceability
 
 Accepted on 2026-10-17: keep actual Craft field handles visible where Twig renders their content. Searching a field such as `homeIntroduction` should lead to its markup and inline styling. Prefer native elements, direct field access, and ordinary Twig queries for page composition; avoid a page-wide data object whose main purpose is renaming fields.
