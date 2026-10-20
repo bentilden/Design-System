@@ -44,6 +44,25 @@ The site uses Helvetica Now families for text, display, and microcopy.
 !!! note "Webfont licensing"
     The current website and the Interface Field Guide serve licensed Helvetica Now webfont files from `https://cdn.bentilden.com/fonts/helvetica-now/`. The documentation uses Text for prose, Display for headings, and Micro for navigation, metadata, and interface labels.
 
+## Available Weights
+
+Scoped source verification, 2026-10-20: `bentilden.com-css/src/elements/type.css` declares all 48 supplied WOFF2 faces, each with its own upright or italic file. The current weight mappings are:
+
+| Weight | Name | Text | Display | Micro |
+| ---: | --- | :---: | :---: | :---: |
+| 250 | Hairline | — | Yes | — |
+| 275 | Thin | Yes | Yes | — |
+| 300 | Extra Light | Yes | Yes | Yes |
+| 325 | Light | Yes | Yes | Yes |
+| 400 | Regular | Yes | Yes | Yes |
+| 500 | Medium | Yes | Yes | Yes |
+| 700 | Bold | Yes | Yes | Yes |
+| 800 | Extra Bold | Yes | Yes | Yes |
+| 900 | Black | Yes | Yes | — |
+| 950 | Extra Black | — | Yes | — |
+
+Every available weight has a matching true italic. There is no supplied 600/Semibold face. The lighter values reflect this site's explicit CSS mappings: `font-hairline` 250, `font-thin` 275, `font-extralight` 300 and `font-light` 325. `font-normal`, `font-medium`, `font-bold`, `font-extrabold` and `font-black` select 400/500/700/800/900; `font-extrablack` selects 950. Pair a family utility with an explicit available weight when overriding the family default (`font-display` sets 950; `font-micro` sets 500). This is a local source inventory, not a change to the font files or runtime typography.
+
 ## Type Roles
 
 ### Article Title

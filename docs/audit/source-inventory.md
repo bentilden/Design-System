@@ -46,7 +46,7 @@ Scoped contrast inventory, 2026-09-28: uncommitted frontend changes above `f3f70
 | Entry preview image | `_components/entry-preview-image.twig` | Preview image fallback chain for listings. |
 | Featured image layout | `_entry-content/featuredImage/default.twig` | Dynamically composes image/text widths based on orientation and alignment. |
 | Gallery layout | `_entry-content/gallery/default.twig` | Dynamically composes gallery/text widths based on alignment and gallery style. |
-| Recipe branch | `_entry-content/recipe/*.twig`, `_entry/recipe/*.twig` | Intro, story, and recipe detail views with Tailwind, Alpine, and `bt-*` hooks. |
+| Recipe branch | `_entry-content/recipe/*.twig`, `_entry/recipe/*.twig` | Locally unified recipe sections, teaser and legacy-route adapters; shared segmented control, inline Tailwind and Alpine (`src/recipe.js`), October 20. |
 | Contact | `contact.twig` | Form-specific layout with labels, error wiring, honeypot, and reCAPTCHA. |
 
 Scoped header review, 2026-09-28: the shared wrapper and responsive templates above were inspected in uncommitted website changes above `b1cf61e`. Behavior uses Alpine directives and styling uses inline Tailwind utilities. See [Navigation](../components/navigation.md#review-evidence) for sources and verification limits.

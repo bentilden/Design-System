@@ -22,8 +22,8 @@ Foundations describe the smallest reusable decisions in the system: color, typog
 
 The current site is not a large tokenized product interface. It is closer to an editorial system with a handful of reliable ingredients:
 
-- Slate neutrals for page structure, borders, metadata, and strong contrast.
-- Slate link and underline states for the compact navigation accepted on 2026-09-28; the old orange mobile-overlay treatment is superseded.
+- The current local [Neutral palette and border roles](color.md), with Neutral 300 as the standard component border/divider and Neutral 200 for subtle separators.
+- Link and underline states for compact navigation, using the current palette; the old orange mobile-overlay treatment is superseded.
 - Helvetica Now families for text, display, and microcopy.
 - A responsive 4/8/12 column grid with fixed maximum widths.
 - Generous vertical rhythm around article content.

@@ -7,6 +7,9 @@ audience:
   - design
   - development
 source:
+  - bentilden.com/templates/_components/segmented-control.twig
+  - bentilden.com/templates/_components/recipe-info.twig
+  - bentilden.com/templates/_entry-content/recipe/page.twig
   - bentilden.com/templates/_layout.twig
   - bentilden.com/templates/_components/topic-identity.twig
   - bentilden.com/templates/_matrix/text.twig
@@ -42,7 +45,7 @@ The following values were read from compiled CSS tokens and converted to sRGB in
 | --- | --- | --- |
 | Neutral 50 | `#fafafa` | Content surfaces outside the post gradient |
 | Neutral 100 | `#f5f5f5` | Post gradient endpoint, quiet hover fill |
-| Neutral 200 | `#e5e5e5` | Page frame, topic circle, subtle dividers/selected fills |
+| Neutral 200 | `#e5e5e5` | Page frame, topic circle, subtle separators/selected fills |
 | Neutral 300 | `#d4d4d4` | Structural boundaries and circle hover |
 | Neutral 400 | `#a1a1a1` | Owner-selected light topic label and dark-footer copyright |
 | Neutral 500 | `#737373` | Topic-label hover, medium details/controls |
@@ -66,6 +69,22 @@ The following values were read from compiled CSS tokens and converted to sRGB in
 | Map | `readMapPalette()` reads `--color-neutral-*`; `themeMapStyle()` maps known provider color literals while preserving filters, geometry, expressions, alpha, and zoom behavior |
 
 Semantic colors, photographs, signature/favicons, upstream map input literals, and third-party branding retain their existing identities. The map's output palette follows Neutral; its provider-color lookup keys remain the original strings needed for matching.
+
+## Border And Divider Rules
+
+Established at the owner's request, 2026-10-20, using the shared segmented control as the reference. Use this small set for new and touched interface work within the current Neutral palette:
+
+| Role | Color | Tailwind utilities | Use |
+| --- | --- | --- | --- |
+| Standard border/divider | Neutral 300, `#d4d4d4` | `border-neutral-300`, `divide-neutral-300`, `bg-neutral-300` for drawn rules | Component outlines, table/box row dividers, segmented-control outlines and separators, structural rules. Use this by default. |
+| Subtle separator | Neutral 200, `#e5e5e5` | `border-neutral-200`, `divide-neutral-200`, `bg-neutral-200` for drawn rules | Deliberately quieter decoration, such as page framing or low-emphasis repeated-content separators. Use only where the separation should recede. |
+| Keyboard focus | Neutral 700, `#404040` | `focus-visible:outline-neutral-700` | Strong visible focus feedback, separate from the resting border. Retain the control's focus geometry. |
+
+Within a component, use the same standard color for its outer border and internal dividers unless a documented interaction or semantic state calls for another treatment. Establish hierarchy through thickness and spacing before adding more shades. The recipe Nutrition label uses Neutral 300 throughout, with a 6 px outline, 2 px summary-header rule and 1 px internal dividers. Its introduction facts box uses Neutral 300 for both its 1 px outline and row dividers. See [Recipe Content](../components/recipe-content.md#nutrition) and [Navigation](../components/navigation.md#reusable-segmented-control).
+
+Use the existing Tailwind Neutral tokens explicitly in markup; do not hard-code the hex values or introduce duplicate color tokens. The stylesheet's existing base border fallback remains Neutral 200, so an unqualified `border` does not implement the standard component role. These rules do not change selected fills, text, icons, or semantic states. Existing header rules at Neutral 300/70 remain a scoped treatment; avoid creating further opacity variants without a component-specific reason. Unrelated existing components have not been migrated wholesale.
+
+Evidence: local runtime `174f9f9` and frontend `0e18382`, 2026-10-20. The segmented control supplies the reference; Nutrition and introduction facts adopt it. This establishes a reusable border rule within the current palette, not a production release or a final decision on the entire Neutral palette.
 
 ## Map Palette
 

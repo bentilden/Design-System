@@ -50,7 +50,7 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `story` | Prose-led article composed from Matrix blocks. |
 | `gallery` | Image-led entry that can render dense gallery layouts. |
 | `featuredImage` | Single-image entry with text alongside media. |
-| `recipe` | Cooking entry with intro, story, and recipe-detail views. |
+| `recipe` | Cooking entry with shared introduction and locally implemented Overview/Ingredients/Steps/Notes/Nutrition sections. |
 | `about` | Static about page content. |
 | `areaOfInterest` | Topic identity, label, URL, and optional Lucide icon. |
 | `siteSettings` | Shared site description, avatar, signatures, and footer wording. |
@@ -58,7 +58,7 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `homePhotography`, `homeWork`, `homeCooking`, `homeRecent` | Nested homepage sections, at most one of each kind. |
 | `homeFeature` | Selected post and overrides scoped to a homepage placement. |
 | `text`, `button`, `html`, `heading`, `callout` | Nested Matrix block entries. |
-| `ingredient`, `step` | Nested recipe detail entries. |
+| `ingredient`, `step`, `stepIngredient` | Native recipe rows, steps and linked per-step ingredient usages (local addition, October 20). |
 
 ## Matrix Fields
 
@@ -68,7 +68,7 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `gallery` | Gallery | One gallery block for gallery entry type layouts. |
 | `featuredImage` | Featured Image | One featured-image block for featured-image entry type layouts. |
 | `ingredients` | Ingredient | Recipe ingredient rows. |
-| `steps` | Step | Recipe instruction rows, with optional process image. |
+| `steps` | Step | Recipe instruction rows with optional heading, ingredient references and inline Captioned images; legacy process image retained. |
 | `homeSections` | Homepage section types | Ordered, independently enabled sections on the Homepage single. |
 | `homeFeatures` | Homepage feature | Ordered post placements inside Photography, Work, and Cooking sections. |
 
@@ -166,3 +166,8 @@ Scoped local review, 2026-10-18: uncommitted runtime changes above `9df63e7` con
 Editors use **Entries → Areas of Interest** and **Entries → Site Settings**. Topic icon ownership and rendering stay the same. Navigation nodes link to the topic entries; existing topic IDs, UIDs, URLs, fields, post relations, and saved homepage links are preserved. No styling changes accompany this conversion. Craft's [entrify commands](https://craftcms.com/docs/5.x/reference/cli.html#entrify) perform the native element conversion; `modules/content/Entrification.php` preserves plugin references and typed content links. Deployment requires the matching content migration as well as Project Config. These observations establish local behavior, not deployment.
 
 Commit update, 2026-10-18: runtime `325a94f` contains the entrification implementation described above. The earlier uncommitted wording records the verification point. Staging deployment is separately authorized; production promotion is not.
+
+
+### Recipe model update, October 20
+
+Uncommitted local Project Config and `modules/recipes/` above runtime `73e495d` add `stepHeading`, `stepIngredients`, `recipeIngredient` and `stepIngredientQuantity`. The existing optional `story` field is labeled Overview only in the Recipe layout. Step's existing contextual `text` (`text2` globally) gains native CKEditor Captioned image entries; `image` (`image2` globally) remains a legacy fallback. [Recipe Content](../components/recipe-content.md#step-anatomy-and-authoring) documents ownership constraints, quantities, authoring order and rendering. The existing Recipe requirements remain. This is a dev implementation; no production application is claimed.

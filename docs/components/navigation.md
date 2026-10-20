@@ -47,6 +47,9 @@ Source: uncommitted `_components/global-header*.twig` and `modules/identityicons
 
 Local extraction, 2026-10-17: `_components/segmented-control.twig` owns the link-based segmented control used by [Places](../patterns/places.md#navigation-and-views). Pass an accessible `label`, ordered `options` with `value`, `label`, and `url`, and a `currentValue`. Each option remains a native link; the selected link receives `aria-current="page"`. Use it for navigation between views with real destinations.
 
+Local reuse, 2026-10-20: [Recipe content](recipe-content.md) uses this same component for navigation within one article. Its optional `compact: true` setting reduces label padding below `md` (6 px per side below 375 px; 8 px from 375 px), retains 20 px desktop padding, and keeps labels on one line. Defaults for Places are unchanged. Caller-provided Alpine actions and `aria-current` bindings manage local section state; real link destinations remain usable without JavaScript. This is uncommitted dev work, not a production release.
+
+
 ```twig
 {% include '_components/segmented-control' with {
     label: 'Collection views',
@@ -58,7 +61,7 @@ Local extraction, 2026-10-17: `_components/segmented-control.twig` owns the link
 } only %}
 ```
 
-The default outer placement is `inline-block`. Optional `controlClass` supplies placement classes. The component uses a shared rounded Slate 300 outline, adjoining segments with square internal edges and Slate 300 dividers, a light Slate 200 selected fill with Slate 900 text, Slate 100 inactive hover, and focus outlines (local phone-review correction below). Only the outside corners are rounded; fills reach the outline without an inset gap. Helvetica Now and the existing Slate palette remain. `shellAttributes` can add a hook to the decorative shell. An option's optional `attributes` map supports template-authored Alpine bindings within an ancestor's `x-data`; the component owns its `href`, static `aria-current`, and link classes. Attribute values and labels are escaped through Craft/Twig. Keep executable bindings and attribute names in trusted templates.
+The default outer placement is `inline-block`. Optional `controlClass` supplies placement classes. The component uses a shared rounded Neutral 300 outline, adjoining segments with square internal edges and Neutral 300 dividers, a light Neutral 200 selected fill with Neutral 900 text, Neutral 100 inactive hover, and focus outlines (local phone-review correction below). Only the outside corners are rounded; fills reach the outline without an inset gap. Helvetica Now remains; the current local Neutral palette is documented in [Color](../foundations/color.md). The outline and separators establish the [standard border role](../foundations/color.md#border-and-divider-rules), recorded on 2026-10-20; focus uses Neutral 700. `shellAttributes` can add a hook to the decorative shell. An option's optional `attributes` map supports template-authored Alpine bindings within an ancestor's `x-data`; the component owns its `href`, static `aria-current`, and link classes. Attribute values and labels are escaped through Craft/Twig. Keep executable bindings and attribute names in trusted templates.
 
 `_places/view-navigation.twig` supplies the Map/Mosaic/Posts URLs, header placement, shell hook, and existing Alpine `setView()`/current-state bindings. Both the teleported interface and the no-JavaScript header fallback use this adapter. Local uncommitted source above website `cf236e0` was checked at 390/1280 px: rendered element trees, attributes, geometry, and control screenshots matched the pre-extraction baseline exactly. These checks describe the local refactor, not a deployment.
 

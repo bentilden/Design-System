@@ -40,7 +40,7 @@ Accessibility is a component contract, not a separate polish pass. These are the
 - Closed overlay links must leave the keyboard sequence. When open, focus remains inside the overlay, the background is excluded, and page scrolling is locked. Close/Escape returns focus to Menu without moving the underlying page. The 24 px Close icon sits within a target at least 44 px high.
 - Preserve a meaningful current-page state and the same CMS destinations across desktop and mobile. The former mobile `Posts` heading is not part of this pattern.
 - Source inspected on 2026-09-28 uses Alpine teleport and `x-trap.inert.noscroll.noreturn`, with explicit focus return. The `.inert` modifier applies `aria-hidden` background isolation, not the native `inert` attribute. Desktop resize closes the overlay and focuses the visible home link; page restoration resets it without requesting focus. Equivalent inline `noscript` links remain available. All 27 updated local navigation checks passed; see [Navigation](../components/navigation.md#review-evidence) for scope and assistive-technology limits. Historical disclosure checks remain separate.
-- The photo viewer and recipe nutrition retain their own focus and modal contracts.
+- The photo viewer retains its own focus and modal contract. Scoped local recipe update, 2026-10-20: [Nutrition is now an ordinary recipe section](../components/recipe-content.md#navigation-and-accessibility), reached through the shared link-based segmented control; the earlier nutrition modal is historical. Recipe keyboard, history, no-JavaScript and print checks pass locally; a broader assistive-technology audit remains outstanding.
 
 ## Focus Appearance
 

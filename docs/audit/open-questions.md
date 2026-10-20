@@ -27,7 +27,7 @@ This page captures decisions carried forward from the June 2026 audit that shoul
 - Should image alt text be required before publish, or handled as a [content QA](../operations/content-qa.md) warning?
 - Should the [standalone image route](../content-model/assets-media.md#standalone-image-route) restrict assets to Photos and enforce post-asset relations after legacy asset cleanup? A partial source check on 2026-09-25 confirmed neither constraint in the inspected lookup.
 - Should malformed gallery markup be fixed before the gallery pattern can move from `observed` to `approved`?
-- Should [recipe nutrition information](../components/recipe-content.md#nutrition-modal) remain modal-only, or should there be an inline fallback?
+- Locally resolved, 2026-10-20: [recipe nutrition](../components/recipe-content.md#nutrition) now uses an ordinary section in the unified recipe interface. Cross-browser and screen-reader review remains open; this does not establish a production release.
 
 ## Resolved Navigation Direction
 
