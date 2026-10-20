@@ -61,6 +61,8 @@ Each photograph is a native link to its full source, with an accessible image de
 
 ## Unified Photo Viewer
 
+Production release, 2026-10-20: runtime `f28f89b574fa39b76de3f7a2f72c7668c111c409` and frontend `3aab0118dfbb5edb16197eb7ac3aa7df5aa3ac02` are deployed in release `20261020132221`. All seven changed runtime files match committed hashes. Production passed 18 location-pill browser cases, 21 shared-viewer browser cases (including persistent Details choices), 59 Places PHP integration checks, and server release/asset/header checks. Existing content warnings remain; browser evidence uses Chromium and emulated touch. This supersedes the uncommitted/undeployed status of the October 20 refinements recorded below.
+
 | Part | Treatment |
 | --- | --- |
 | Header | Quiet `n / n` count, post title, contextual **View post →**, and an icon-only Close control. The title truncates with its full value available as a title attribute. |
@@ -68,12 +70,14 @@ Each photograph is a native link to its full source, with an accessible image de
 | Desktop navigation | Plain side chevrons with subtle hover surfaces; absent for a single photograph. |
 | Mobile navigation | Swipe between photographs, swipe down to dismiss, and pinch/double-tap to zoom; side arrows are hidden. Close remains available. |
 | Zoom | Desktop has minus, a quiet percentage readout, plus, and **Fit** beside Close. Mobile continues to use gestures. |
-| Caption | Quiet, left-aligned editorial text below the photograph. No caption area is reserved when both metadata fields are empty. |
-| Details | A compact disclosure reveals additional editorial text; the complete metadata region is capped at 35dvh and scrolls when necessary. |
+| Caption | Quiet, left-aligned editorial text below the photograph. No footer area is reserved when caption, editorial details, and photo information are all absent. |
+| Details | One footer disclosure reveals editorial text and photo information together. It appears when either is available, even without a caption. The region scrolls within 45dvh with photo information, otherwise 35dvh. |
 
 Previous/next navigation wraps through the active collection. The collection retains its context: each post gallery block is independent, a featured-image block opens one photo, Map uses its current filtered collection, and Mosaic follows its color order. The viewer retains the appropriate post association; **View post** is omitted when the visitor is already on that post.
 
 LightGallery supplies transitions, gestures, image rendering, and zoom. Alpine owns the shared shell, collection context, control state, and focus behavior. New interface styling uses inline Tailwind utilities. The same shared component replaces the former separate Places and article interfaces.
+
+Header refinement, released 2026-10-20: equal side columns center the title/link against the full viewer. After moving Photo info into the footer Details disclosure, mobile uses equal 64 px columns and desktop uses equal 228 px columns for the counter and remaining controls. Long titles continue to truncate within the center column. Source: `templates/_components/photo-viewer.twig` at runtime `f28f89b`, deployed 2026-10-20.
 
 ### Desktop Zoom
 
@@ -90,6 +94,8 @@ Editorial captions and details come only from their real asset fields, as plain 
 Every entry point requests the same `largeImage` rendition, currently 1800 px wide, and its actual transformed dimensions. Existing optimized media remains a fallback. Missing large renditions are generated only when requested by the viewer; rendering a collection does not synchronously process its full archive or enqueue a transform for every photo. Original dimensions remain available for Mosaic layout.
 
 ## Photo Info Caption Strip
+
+Released follow-up, 2026-10-20: a single **Details** button beside the caption controls both editorial details and photo information below the image. The header no longer has an info button. The footer control remains available for metadata-only photos, disappears when there is nothing to expand, and reports its state through `aria-expanded` and `aria-controls`. One Alpine disclosure state replaces the separate info state. Details defaults to closed for a new browser; explicit show/hide choices persist in local storage across photos, viewer reopenings, reloads, and navigation between Map, Mosaic and posts. Photos without details do not clear that choice. If storage is blocked, toggling and reopening still retain the choice on the current page. The preference is specific to that browser and site origin. This supersedes the two-toggle interface in the production record below; metadata extraction and delivery are unchanged. Source: viewer Twig/JavaScript at runtime `f28f89b` / frontend `3aab011`, deployed 2026-10-20.
 
 Scoped production implementation, 2026-10-19 (runtime `b18e67a`, frontend `884e87a`): the shared viewer adds an icon-only **Photo info** control beside Close. It toggles a quiet strip below the photograph and existing editorial caption. Camera/lens sit beside compact Aperture, Shutter, Focal and ISO values, with master-image megapixels, dimensions and format. Capture date and an already available public map place label appear below a fine divider. Missing fields disappear; no “unknown” tiles or empty metric slots are added. Actual focal length is not relabeled as a 35mm equivalent.
 
@@ -116,3 +122,5 @@ The earlier 2026-09-28 caption/detail refinement remains the page-media treatmen
 - [Photography](../patterns/photography.md) describes photographic presentation.
 - [Places](../patterns/places.md) describes collection and post-link context.
 - [Accessibility](../accessibility/index.md) and the [Render Audit](../audit/render-audit.md) identify broader verification needs.
+
+Combined disclosure verification, local 2026-10-20: all 19 shared-viewer Chromium cases passed, including editorial and technical details together, metadata-only/empty photos, bounded footers, image fitting, collection updates, post entry points, focus, desktop zoom and emulated mobile gestures. Desktop 1440 px and mobile 390/320 px metadata layouts were visually reviewed. Map/Mosaic release QA and strict documentation builds passed. These changes remain uncommitted and undeployed; physical-device/Safari coverage is not established by these checks.
