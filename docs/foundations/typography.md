@@ -75,6 +75,12 @@ The homepage statement uses `font-home-statement`, backed by `--font-weight-home
 
 Local Chromium verified 24 route/width comparisons at 320/390/1440 px, allowing only statement 275 → 100 and ExtraBlack 950 → 900 weight differences. Both full served-font hashes, native intermediate weights/italics, tabular figures and viewer inheritance passed. All 95 homepage checks and generic font/browser checks passed. Desktop/phone specimens were compared with the live Helvetica treatment. Previous trial checks cover navigation, recipes and viewer interactions; those suites were not repeated for the default/statement follow-up. This does not establish improved page speed, universal reading quality or new cross-browser/accessibility coverage. Production verification additionally passed twelve route/width observations, both complete WOFF2 hashes/MIME/cache headers, native variable italics, viewer inheritance, four generic browser routes, and all 99 homepage checks. The whole-page review date is retained.
 
+### Font Loading Cost
+
+[Measurement receipt and method](../assets/reports/inter-font-loading-2026-10-20.json). Scoped measurement, 2026-10-20: full deployed Inter files reduce naturally used WOFF2 requests but increase cold payload versus the preceding Helvetica setup. Homepage is 267,100 → 352,240 bytes (5 → 1 files); an italic-using article is 253,472 → 740,216 bytes (5 → 2); settled Places is 145,948 → 352,240 bytes (3 → 1). These are the complete vendor files, preserving the original features and variable axes. Inter also uses a small face-declaration stylesheet.
+
+A controlled Chromium comparison restored the preceding runtime `fa04576` CSS/font selection inside the browser against Inter `deb1475` / frontend `9abf647`, retaining normal font origins and browser caching. Five alternating samples per page/profile/network/cache state cover 80 Homepage/article visits. At simulated 4 Mbps / 150 ms / 4× CPU, median cold font-download windows were 1.14 → 1.36 seconds on Homepage and 0.89 → 2.12 seconds on the article. Unthrottled desktop differences were 8/16 ms. All warm visits transferred zero font bytes in both profiles. Whole-page/field speed, physical-device, other-browser, LCP and CLS results are not established; the map is a separate settled-payload observation. No font optimization or site change was applied during this measurement.
+
 ## Type Roles
 
 ### Article Title

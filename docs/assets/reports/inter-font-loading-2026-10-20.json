@@ -1,0 +1,1679 @@
+{
+  "datePacific": "2026-10-20",
+  "browser": "148.0.7778.96",
+  "sourceProfiles": {
+    "helveticaRuntime": "fa04576",
+    "interRuntime": "deb1475",
+    "frontend": "9abf647"
+  },
+  "cssSha256": {
+    "inter": "e9130017f48ecc604b037067aed88acb596aa037ab30e52f744dfd76fe1096d3",
+    "helvetica": "7f0cb9c8d5ae87b3623fe15be17f2be819f5fb6554045d1d8cab92612893e2d0"
+  },
+  "method": {
+    "timedRoutes": [
+      "/",
+      "/recipe-search-engine"
+    ],
+    "samplesPerCell": 5,
+    "timedNavigations": 80,
+    "order": "Profiles alternate by replicate, sequential runs; fresh isolated browser context per profile/route pair, followed by normal navigation to the same page after about:blank.",
+    "presets": {
+      "desktop": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "network": "unthrottled",
+        "cpuRate": 1
+      },
+      "4g": {
+        "viewport": [
+          390,
+          1000
+        ],
+        "downloadBytesPerSecond": 500000,
+        "uploadBytesPerSecond": 125000,
+        "latencyMs": 150,
+        "cpuRate": 4
+      }
+    },
+    "baseline": "Current live HTML and normal remote font URLs; restore the exact preceding compiled CSS in the browser, remove the Inter stylesheet link and restore the old homepage font-thin utility. Both profiles use the same CDP response interception for HTML/main CSS; neither production source nor content is changed.",
+    "network": "Fonts and the Inter face stylesheet are requested normally from their real production/CDN origins. CDP cache remains enabled; every warm font was observed as a cache hit with zero encoded bytes.",
+    "payload": "Decoded WOFF2 bytes; every cold font hash matches the original repository-owned binary. Transferred bytes include protocol headers and are recorded separately.",
+    "fontWindow": "First font request start to last recorded font download completion.",
+    "fontReadiness": "document.fonts.ready after DOMContentLoaded; post-HTML value subtracts navigation responseEnd.",
+    "limits": [
+      "Controlled comparison with reconstructed previous CSS/HTML, not historical field monitoring.",
+      "Main CSS network transport uses the current response before body replacement; absolute end-to-end page-speed comparisons are not established.",
+      "Font readiness concerns the initial laid-out text and used font faces, not all site faces or all interactions.",
+      "Simulated Chromium mobile conditions do not establish physical-device, other-browser, regional CDN, LCP, CLS or reading-quality results.",
+      "The asynchronously initialized map is measured separately for settled payload only."
+    ],
+    "preliminaryCorrections": "Early map capture preceded client initialization and saw only two Helvetica faces; the settled payload probe sees three. An initial map wait selected an intentionally hidden marker; the final probe targets a visible marker. Preliminary observations are excluded from the retained timing sample."
+  },
+  "coldWoff2Payloads": [
+    {
+      "route": "/",
+      "helvetica": {
+        "bytes": 267100,
+        "files": 5
+      },
+      "inter": {
+        "bytes": 352240,
+        "files": 1
+      }
+    },
+    {
+      "route": "/recipe-search-engine",
+      "helvetica": {
+        "bytes": 253472,
+        "files": 5
+      },
+      "inter": {
+        "bytes": 740216,
+        "files": 2
+      }
+    },
+    {
+      "route": "/photography",
+      "helvetica": {
+        "bytes": 145948,
+        "files": 3
+      },
+      "inter": {
+        "bytes": 352240,
+        "files": 1
+      },
+      "scope": "one settled payload sample per profile, plus warm cache check; excluded from repeated timing"
+    }
+  ],
+  "summary": [
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 267100,
+      "fontTransferBytes": {
+        "median": 269626,
+        "min": 269617,
+        "q1": 269618,
+        "q3": 269627,
+        "max": 269632
+      },
+      "fontReadyMs": {
+        "median": 782.5,
+        "min": 688,
+        "q1": 738,
+        "q3": 787.1999999880791,
+        "max": 794.8999999761581
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 132.69999998807907,
+        "min": 123.90000003576279,
+        "q1": 129.5,
+        "q3": 149,
+        "max": 189.80000001192093
+      },
+      "fontWindowMs": {
+        "median": 75.82699996419251,
+        "min": 67.01599998632446,
+        "q1": 75.33399999374524,
+        "q3": 84.21299996552989,
+        "max": 94.37000000616536
+      },
+      "fontFirstRequestMs": {
+        "median": 702.5680000078864,
+        "min": 589.4449999905191,
+        "q1": 659.9649999989197,
+        "q3": 708.0340000102296,
+        "max": 716.9930000090972
+      }
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 596.0999999642372,
+        "min": 513.3999999761581,
+        "q1": 560.6999999880791,
+        "q3": 604.5,
+        "max": 622.5
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 21.399999976158142,
+        "min": 14,
+        "q1": 19.19999998807907,
+        "q3": 22.899999976158142,
+        "max": 26.80000001192093
+      },
+      "fontWindowMs": {
+        "median": 0.31999999191612005,
+        "min": 0.2109999768435955,
+        "q1": 0.2300000051036477,
+        "q3": 0.3730000462383032,
+        "max": 0.4540000227279961
+      },
+      "fontFirstRequestMs": {
+        "median": 584.8550000227988,
+        "min": 507.30399996973574,
+        "q1": 555.3420000360347,
+        "q3": 587.178000016138,
+        "max": 616.5990000008605
+      }
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 1,
+      "fontPayloadBytes": 352240,
+      "fontTransferBytes": {
+        "median": 353013,
+        "min": 353013,
+        "q1": 353013,
+        "q3": 353013,
+        "max": 353013
+      },
+      "fontReadyMs": {
+        "median": 841.1000000238419,
+        "min": 821.7000000476837,
+        "q1": 832.9000000357628,
+        "q3": 856.3000000119209,
+        "max": 865.6000000238419
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 173.5,
+        "min": 150,
+        "q1": 158.19999998807907,
+        "q3": 183.89999997615814,
+        "max": 237.10000002384186
+      },
+      "fontWindowMs": {
+        "median": 83.92199996160343,
+        "min": 73.14599998062477,
+        "q1": 80.64800000283867,
+        "q3": 91.83500002836809,
+        "max": 151.54900000197813
+      },
+      "fontFirstRequestMs": {
+        "median": 736.8610000121407,
+        "min": 678.9819999830797,
+        "q1": 731.6310000023805,
+        "q3": 753.8109999732114,
+        "max": 780.2680000313558
+      }
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 1,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 550.8000000119209,
+        "min": 541.1999999880791,
+        "q1": 545.8000000119209,
+        "q3": 553.3000000119209,
+        "max": 581.8999999761581
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 20.69999998807907,
+        "min": 11.800000011920929,
+        "q1": 15.100000023841858,
+        "q3": 31.399999976158142,
+        "max": 35.10000002384186
+      },
+      "fontWindowMs": {
+        "median": 0.04700000863522291,
+        "min": 0.031999952625483274,
+        "q1": 0.04600000102072954,
+        "q3": 0.04999997327104211,
+        "max": 0.07100001676008105
+      },
+      "fontFirstRequestMs": {
+        "median": 527.8839999809861,
+        "min": 525.9899999946356,
+        "q1": 526.5789999975823,
+        "q3": 546.9530000118539,
+        "max": 577.0509999711066
+      }
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 253472,
+      "fontTransferBytes": {
+        "median": 255993,
+        "min": 255987,
+        "q1": 255992,
+        "q3": 255998,
+        "max": 256006
+      },
+      "fontReadyMs": {
+        "median": 758.6000000238419,
+        "min": 708.2999999523163,
+        "q1": 721.4000000357628,
+        "q3": 826.5,
+        "max": 848
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 144.10000002384186,
+        "min": 116.5,
+        "q1": 128.89999997615814,
+        "q3": 146.89999997615814,
+        "max": 177.10000002384186
+      },
+      "fontWindowMs": {
+        "median": 85.583999985829,
+        "min": 66.82200002251193,
+        "q1": 80.72899997932836,
+        "q3": 91.91800002008677,
+        "max": 123.17700003040954
+      },
+      "fontFirstRequestMs": {
+        "median": 689.5890000159852,
+        "min": 595.6770000047982,
+        "q1": 623.2549999840558,
+        "q3": 731.9659999920987,
+        "max": 760.0789999705739
+      }
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 599.5999999642372,
+        "min": 507.39999997615814,
+        "q1": 535.3000000119209,
+        "q3": 619.5,
+        "max": 637.6000000238419
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 18.30000001192093,
+        "min": 11.300000011920929,
+        "q1": 12.699999988079071,
+        "q3": 22.69999998807907,
+        "max": 23.30000001192093
+      },
+      "fontWindowMs": {
+        "median": 0.408999971114099,
+        "min": 0.24200003826990724,
+        "q1": 0.2610000083222985,
+        "q3": 0.417000032030046,
+        "max": 0.5039999959990382
+      },
+      "fontFirstRequestMs": {
+        "median": 596.2479999870993,
+        "min": 500.9550000540912,
+        "q1": 531.7659999709576,
+        "q3": 605.2849999978207,
+        "max": 632.8349999967031
+      }
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 2,
+      "fontPayloadBytes": 740216,
+      "fontTransferBytes": {
+        "median": 741807,
+        "min": 741807,
+        "q1": 741807,
+        "q3": 741807,
+        "max": 741807
+      },
+      "fontReadyMs": {
+        "median": 843.8000000119209,
+        "min": 766.8000000119209,
+        "q1": 777,
+        "q3": 851.0999999642372,
+        "max": 1004.7999999523163
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 190.9000000357628,
+        "min": 171.4000000357628,
+        "q1": 189.79999995231628,
+        "q3": 227.80000001192093,
+        "max": 410.5999999642372
+      },
+      "fontWindowMs": {
+        "median": 102.29800001252443,
+        "min": 87.9589999676682,
+        "q1": 90.23700002580881,
+        "q3": 113.84299997007474,
+        "max": 319.3609999725595
+      },
+      "fontFirstRequestMs": {
+        "median": 680.5939999758266,
+        "min": 671.0109999985434,
+        "q1": 677.7069999952801,
+        "q3": 723.4900000039488,
+        "max": 740.8649999997579
+      }
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 2,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 547.3999999761581,
+        "min": 489.60000002384186,
+        "q1": 540.2000000476837,
+        "q3": 548.9000000357628,
+        "max": 560.8000000119209
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 21.100000023841858,
+        "min": 11.199999988079071,
+        "q1": 20.600000023841858,
+        "q3": 23.69999998807907,
+        "max": 25.69999998807907
+      },
+      "fontWindowMs": {
+        "median": 0.1449999981559813,
+        "min": 0.09700004011392593,
+        "q1": 0.10300002759322524,
+        "q3": 0.1509999856352806,
+        "max": 0.172999978531152
+      },
+      "fontFirstRequestMs": {
+        "median": 540.7709999708459,
+        "min": 481.6620000055991,
+        "q1": 530.5010000010952,
+        "q3": 542.9819999844767,
+        "max": 544.2909999983385
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 267100,
+      "fontTransferBytes": {
+        "median": 269626,
+        "min": 269614,
+        "q1": 269614,
+        "q3": 269629,
+        "max": 269634
+      },
+      "fontReadyMs": {
+        "median": 1978.0999999642372,
+        "min": 1959.300000011921,
+        "q1": 1962.3999999761581,
+        "q3": 1992.300000011921,
+        "max": 2031.6000000238419
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 1333.7000000476837,
+        "min": 1323.699999988079,
+        "q1": 1328,
+        "q3": 1339.5,
+        "max": 1346.199999988079
+      },
+      "fontWindowMs": {
+        "median": 1138.491999998223,
+        "min": 1131.6430000006221,
+        "q1": 1133.4979999810457,
+        "q3": 1143.09799997136,
+        "max": 1143.8119999947958
+      },
+      "fontFirstRequestMs": {
+        "median": 830.3010000381619,
+        "min": 809.4339999952354,
+        "q1": 827.3130000452511,
+        "q3": 850.0980000244454,
+        "max": 894.5700000040233
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 632.1999999880791,
+        "min": 586.5999999642372,
+        "q1": 610.8000000119209,
+        "q3": 652.7000000476837,
+        "max": 806.4000000357628
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 44.19999998807907,
+        "min": 35.09999996423721,
+        "q1": 40.60000002384186,
+        "q3": 44.799999952316284,
+        "max": 46.90000003576279
+      },
+      "fontWindowMs": {
+        "median": 0.20300003234297037,
+        "min": 0.1700000138953328,
+        "q1": 0.18700002692639828,
+        "q3": 0.5249999812804163,
+        "max": 0.7639999967068434
+      },
+      "fontFirstRequestMs": {
+        "median": 618.4049999574199,
+        "min": 555.5149999563582,
+        "q1": 598.5069999587722,
+        "q3": 621.1050000274554,
+        "max": 776.2259999872185
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 1,
+      "fontPayloadBytes": 352240,
+      "fontTransferBytes": {
+        "median": 353013,
+        "min": 353013,
+        "q1": 353013,
+        "q3": 353013,
+        "max": 353013
+      },
+      "fontReadyMs": {
+        "median": 2272.300000011921,
+        "min": 2191.800000011921,
+        "q1": 2257.399999976158,
+        "q3": 2274.899999976158,
+        "max": 2309.699999988079
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 1573.5,
+        "min": 1571.6000000238419,
+        "q1": 1571.699999988079,
+        "q3": 1574.300000011921,
+        "max": 1582
+      },
+      "fontWindowMs": {
+        "median": 1355.612999992445,
+        "min": 1351.6259999596514,
+        "q1": 1351.9630000228062,
+        "q3": 1355.7930000242777,
+        "max": 1356.08699999284
+      },
+      "fontFirstRequestMs": {
+        "median": 891.4259999874048,
+        "min": 813.436999975238,
+        "q1": 875.6230000290088,
+        "q3": 895.3820000169799,
+        "max": 924.1589999874122
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 1,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 658.1999999880791,
+        "min": 602.1000000238419,
+        "q1": 641.2999999523163,
+        "q3": 660.7000000476837,
+        "max": 720.3000000119209
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 55.40000003576279,
+        "min": 49.39999997615814,
+        "q1": 52.89999997615814,
+        "q3": 57.30000001192093,
+        "max": 61.799999952316284
+      },
+      "fontWindowMs": {
+        "median": 0.05100003909319639,
+        "min": 0.026999972760677338,
+        "q1": 0.034999975468963385,
+        "q3": 0.05199998850002885,
+        "max": 0.2959999837912619
+      },
+      "fontFirstRequestMs": {
+        "median": 620.2790000243112,
+        "min": 579.3769999872893,
+        "q1": 595.7819999894127,
+        "q3": 620.3620000160299,
+        "max": 678.1350000528619
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 253472,
+      "fontTransferBytes": {
+        "median": 255998,
+        "min": 255983,
+        "q1": 255992,
+        "q3": 256001,
+        "max": 256010
+      },
+      "fontReadyMs": {
+        "median": 1686.199999988079,
+        "min": 1637.9000000357628,
+        "q1": 1679.6000000238419,
+        "q3": 1697.699999988079,
+        "max": 1698.300000011921
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 1076.300000011921,
+        "min": 1069.6000000238419,
+        "q1": 1069.800000011921,
+        "q3": 1078.1000000238419,
+        "max": 1081.0999999642372
+      },
+      "fontWindowMs": {
+        "median": 884.7950000199489,
+        "min": 877.6650000363588,
+        "q1": 878.5360000329092,
+        "q3": 885.7080000452697,
+        "max": 889.7199999773875
+      },
+      "fontFirstRequestMs": {
+        "median": 798.3130000066012,
+        "min": 756.6559999831952,
+        "q1": 797.6539999945089,
+        "q3": 804.67799998587,
+        "max": 806.2149999896064
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 5,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 621.1999999880791,
+        "min": 585,
+        "q1": 590.3000000119209,
+        "q3": 626.9000000357628,
+        "max": 645.8999999761581
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 38.30000001192093,
+        "min": 36.69999998807907,
+        "q1": 37.40000003576279,
+        "q3": 39.19999998807907,
+        "max": 39.69999998807907
+      },
+      "fontWindowMs": {
+        "median": 0.7429999532178044,
+        "min": 0.17100002150982618,
+        "q1": 0.5710000405088067,
+        "q3": 0.92299998505041,
+        "max": 1.2129999813623726
+      },
+      "fontFirstRequestMs": {
+        "median": 600.7960000424646,
+        "min": 557.9709999728948,
+        "q1": 564.6139999735169,
+        "q3": 608.2389999646693,
+        "max": 632.0530000375584
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "cache": "cold",
+      "samples": 5,
+      "fontCount": 2,
+      "fontPayloadBytes": 740216,
+      "fontTransferBytes": {
+        "median": 741807,
+        "min": 741807,
+        "q1": 741807,
+        "q3": 741807,
+        "max": 741807
+      },
+      "fontReadyMs": {
+        "median": 2970.100000023842,
+        "min": 2959.900000035763,
+        "q1": 2968.399999976158,
+        "q3": 2993.5,
+        "max": 3066.7999999523163
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 2334.5,
+        "min": 2333.400000035763,
+        "q1": 2334.199999988079,
+        "q3": 2338.199999988079,
+        "max": 2342.199999988079
+      },
+      "fontWindowMs": {
+        "median": 2123.9849999547005,
+        "min": 2116.6230000089854,
+        "q1": 2123.8139999913983,
+        "q3": 2124.675999977626,
+        "max": 2127.794999978505
+      },
+      "fontFirstRequestMs": {
+        "median": 827.4400000227615,
+        "min": 818.3600000338629,
+        "q1": 823.647000011988,
+        "q3": 852.2380000213161,
+        "max": 931.4009999507107
+      }
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "cache": "warm",
+      "samples": 5,
+      "fontCount": 2,
+      "fontPayloadBytes": 0,
+      "fontTransferBytes": {
+        "median": 0,
+        "min": 0,
+        "q1": 0,
+        "q3": 0,
+        "max": 0
+      },
+      "fontReadyMs": {
+        "median": 606.8999999761581,
+        "min": 572.2999999523163,
+        "q1": 585.1999999880791,
+        "q3": 642.8999999761581,
+        "max": 704.3000000119209
+      },
+      "fontReadyAfterHtmlMs": {
+        "median": 48.799999952316284,
+        "min": 42.60000002384186,
+        "q1": 46.19999998807907,
+        "q3": 52.19999998807907,
+        "max": 52.30000001192093
+      },
+      "fontWindowMs": {
+        "median": 0.23900001542642713,
+        "min": 0.07000000914558768,
+        "q1": 0.08600001456215978,
+        "q3": 0.4230000195093453,
+        "max": 0.7239999831654131
+      },
+      "fontFirstRequestMs": {
+        "median": 571.349999983795,
+        "min": 538.261000008788,
+        "q1": 547.2569999983534,
+        "q3": 604.4279999914579,
+        "max": 684.5469999825582
+      }
+    }
+  ],
+  "samples": [
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 269632,
+      "fontReadyAfterHtmlMs": 132.69999998807907,
+      "fontWindowMs": 84.21299996552989,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 26.80000001192093,
+      "fontWindowMs": 0.4540000227279961,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 173.5,
+      "fontWindowMs": 83.92199996160343,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 15.100000023841858,
+      "fontWindowMs": 0.04999997327104211,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 255998,
+      "fontReadyAfterHtmlMs": 146.89999997615814,
+      "fontWindowMs": 85.583999985829,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 22.69999998807907,
+      "fontWindowMs": 0.417000032030046,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 189.79999995231628,
+      "fontWindowMs": 102.29800001252443,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 21.100000023841858,
+      "fontWindowMs": 0.10300002759322524,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 150,
+      "fontWindowMs": 80.64800000283867,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 11.800000011920929,
+      "fontWindowMs": 0.04700000863522291,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 269618,
+      "fontReadyAfterHtmlMs": 189.80000001192093,
+      "fontWindowMs": 67.01599998632446,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 14,
+      "fontWindowMs": 0.2109999768435955,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 410.5999999642372,
+      "fontWindowMs": 319.3609999725595,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 11.199999988079071,
+      "fontWindowMs": 0.09700004011392593,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 255993,
+      "fontReadyAfterHtmlMs": 116.5,
+      "fontWindowMs": 66.82200002251193,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 18.30000001192093,
+      "fontWindowMs": 0.408999971114099,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 269627,
+      "fontReadyAfterHtmlMs": 129.5,
+      "fontWindowMs": 75.82699996419251,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 19.19999998807907,
+      "fontWindowMs": 0.2300000051036477,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 158.19999998807907,
+      "fontWindowMs": 73.14599998062477,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 35.10000002384186,
+      "fontWindowMs": 0.04600000102072954,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 255987,
+      "fontReadyAfterHtmlMs": 144.10000002384186,
+      "fontWindowMs": 91.91800002008677,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 12.699999988079071,
+      "fontWindowMs": 0.2610000083222985,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 227.80000001192093,
+      "fontWindowMs": 90.23700002580881,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 20.600000023841858,
+      "fontWindowMs": 0.1509999856352806,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 237.10000002384186,
+      "fontWindowMs": 151.54900000197813,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 20.69999998807907,
+      "fontWindowMs": 0.031999952625483274,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 269626,
+      "fontReadyAfterHtmlMs": 149,
+      "fontWindowMs": 94.37000000616536,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 21.399999976158142,
+      "fontWindowMs": 0.31999999191612005,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 171.4000000357628,
+      "fontWindowMs": 87.9589999676682,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 25.69999998807907,
+      "fontWindowMs": 0.1449999981559813,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 256006,
+      "fontReadyAfterHtmlMs": 177.10000002384186,
+      "fontWindowMs": 123.17700003040954,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 23.30000001192093,
+      "fontWindowMs": 0.5039999959990382,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 269617,
+      "fontReadyAfterHtmlMs": 123.90000003576279,
+      "fontWindowMs": 75.33399999374524,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 22.899999976158142,
+      "fontWindowMs": 0.3730000462383032,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 183.89999997615814,
+      "fontWindowMs": 91.83500002836809,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 31.399999976158142,
+      "fontWindowMs": 0.07100001676008105,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 255992,
+      "fontReadyAfterHtmlMs": 128.89999997615814,
+      "fontWindowMs": 80.72899997932836,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 11.300000011920929,
+      "fontWindowMs": 0.24200003826990724,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 190.9000000357628,
+      "fontWindowMs": 113.84299997007474,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "desktop",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 23.69999998807907,
+      "fontWindowMs": 0.172999978531152,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 269626,
+      "fontReadyAfterHtmlMs": 1339.5,
+      "fontWindowMs": 1143.09799997136,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 40.60000002384186,
+      "fontWindowMs": 0.20300003234297037,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 1574.300000011921,
+      "fontWindowMs": 1355.612999992445,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 49.39999997615814,
+      "fontWindowMs": 0.05100003909319639,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 256001,
+      "fontReadyAfterHtmlMs": 1078.1000000238419,
+      "fontWindowMs": 877.6650000363588,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 39.69999998807907,
+      "fontWindowMs": 0.5710000405088067,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 2334.5,
+      "fontWindowMs": 2124.675999977626,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 1,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 48.799999952316284,
+      "fontWindowMs": 0.08600001456215978,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 1571.6000000238419,
+      "fontWindowMs": 1351.6259999596514,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 55.40000003576279,
+      "fontWindowMs": 0.2959999837912619,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 269614,
+      "fontReadyAfterHtmlMs": 1323.699999988079,
+      "fontWindowMs": 1131.6430000006221,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 44.799999952316284,
+      "fontWindowMs": 0.7639999967068434,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 2334.199999988079,
+      "fontWindowMs": 2127.794999978505,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 46.19999998807907,
+      "fontWindowMs": 0.23900001542642713,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "cold",
+      "fontTransferBytes": 255998,
+      "fontReadyAfterHtmlMs": 1076.300000011921,
+      "fontWindowMs": 889.7199999773875,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 2,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 38.30000001192093,
+      "fontWindowMs": 0.7429999532178044,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 269614,
+      "fontReadyAfterHtmlMs": 1333.7000000476837,
+      "fontWindowMs": 1133.4979999810457,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 35.09999996423721,
+      "fontWindowMs": 0.18700002692639828,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 1573.5,
+      "fontWindowMs": 1351.9630000228062,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 57.30000001192093,
+      "fontWindowMs": 0.026999972760677338,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 255992,
+      "fontReadyAfterHtmlMs": 1069.800000011921,
+      "fontWindowMs": 884.7950000199489,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 37.40000003576279,
+      "fontWindowMs": 0.17100002150982618,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 2338.199999988079,
+      "fontWindowMs": 2123.8139999913983,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 3,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 42.60000002384186,
+      "fontWindowMs": 0.7239999831654131,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 1571.699999988079,
+      "fontWindowMs": 1356.08699999284,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 52.89999997615814,
+      "fontWindowMs": 0.034999975468963385,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 269634,
+      "fontReadyAfterHtmlMs": 1346.199999988079,
+      "fontWindowMs": 1143.8119999947958,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 46.90000003576279,
+      "fontWindowMs": 0.5249999812804163,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 2333.400000035763,
+      "fontWindowMs": 2123.9849999547005,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 52.30000001192093,
+      "fontWindowMs": 0.4230000195093453,
+      "cachedFonts": 2
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "cold",
+      "fontTransferBytes": 256010,
+      "fontReadyAfterHtmlMs": 1069.6000000238419,
+      "fontWindowMs": 878.5360000329092,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 4,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 36.69999998807907,
+      "fontWindowMs": 1.2129999813623726,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 269629,
+      "fontReadyAfterHtmlMs": 1328,
+      "fontWindowMs": 1138.491999998223,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 44.19999998807907,
+      "fontWindowMs": 0.1700000138953328,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 353013,
+      "fontReadyAfterHtmlMs": 1582,
+      "fontWindowMs": 1355.7930000242777,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 61.799999952316284,
+      "fontWindowMs": 0.05199998850002885,
+      "cachedFonts": 1
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 255983,
+      "fontReadyAfterHtmlMs": 1081.0999999642372,
+      "fontWindowMs": 885.7080000452697,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "helvetica",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 39.19999998807907,
+      "fontWindowMs": 0.92299998505041,
+      "cachedFonts": 5
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "cold",
+      "fontTransferBytes": 741807,
+      "fontReadyAfterHtmlMs": 2342.199999988079,
+      "fontWindowMs": 2116.6230000089854,
+      "cachedFonts": 0
+    },
+    {
+      "preset": "4g",
+      "route": "/recipe-search-engine",
+      "profile": "inter",
+      "replicate": 5,
+      "cache": "warm",
+      "fontTransferBytes": 0,
+      "fontReadyAfterHtmlMs": 52.19999998807907,
+      "fontWindowMs": 0.07000000914558768,
+      "cachedFonts": 2
+    }
+  ]
+}
