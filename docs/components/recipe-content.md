@@ -18,6 +18,8 @@ source:
   - bentilden.com/templates/_matrix/text.twig
   - bentilden.com/templates/_partials/entry/captionedImage.twig
   - bentilden.com/modules/recipes/Rules.php
+  - bentilden.com/modules/recipes/Quantity.php
+  - bentilden.com/modules/recipes/RecipeVariable.php
   - bentilden.com/modules/recipes/IngredientReference.php
   - bentilden.com/modules/recipes/Schema.php
   - bentilden.com-css/src/recipe.js
@@ -88,7 +90,7 @@ Local refinement, 2026-10-20: the two-column ingredient table separates quantity
 
 Below `sm` (640 px), quantity and unit stack with a 2 px gap. The preferred measure-column width is 80 px including 16 px right padding, replacing the earlier 112 px column and leaving more room for names. Quantities/names are 16 px with 28 px line-height; units are 12 px with 18 px line-height. From `sm`, quantity and unit sit on a shared baseline with an 8 px gap, in a 144 px preferred column with 24 px right padding; units are 14 px/20 px. Quantity/name type grows to 18 px/32 px at `md`.
 
-Rows use 12 px vertical padding on phones and 14 px from `md`, with quiet dividing rules. Unitless counts omit the unit line; quantity-free ingredients leave the measure cell empty and keep the name aligned with other rows. Quantities use the existing formatter and pluralization; no unit abbreviations, conversions or replacement fraction policy were introduced. Native `ingredient.quantity`, `ingredient.unit` and `ingredient.ingredient` remain visible in the table's Twig. Step-reference formatting retains its existing compact inline treatment.
+Rows use 12 px vertical padding on phones and 14 px from `md`, with quiet dividing rules. Unitless counts omit the unit line; quantity-free ingredients leave the measure cell empty and keep the name aligned with other rows. Quantities use the shared [quantity formatting](#quantity-formatting) policy; no unit abbreviations or conversions are introduced. Native `ingredient.quantity`, `ingredient.unit` and `ingredient.ingredient` remain visible in the table's Twig. Step-reference formatting retains its existing compact inline treatment.
 
 ## Step Anatomy And Authoring
 
@@ -145,7 +147,13 @@ Print reveals all authored sections, hides section navigation and action control
 
 ## Quantity Formatting
 
-The existing Twig quarter-rounding formatter is retained in `quantity.twig` for both the master list and step references. Stored thirds/eighths can still display imprecisely. A more appropriate quantity policy requires separate editorial research; this interface change does not establish one.
+Accepted and implemented on local dev, 2026-10-20, in runtime `38782f8`: `quantity` and `stepIngredientQuantity` are single-line Plain Text fields, accepting whole numbers, decimals, fractions and mixed numbers. Examples are `2`, `1.5`, `1/3`, and `1 1/2`. Pasted common fraction characters normalize to slash notation during validation. Units remain in their existing field; no independently authored numeric/display pair exists.
+
+The shared PHP `Quantity` parser derives exact rational values using the existing Brick Math library. Explicit fractions remain distinct from authored decimals: `1/3` displays as `⅓`, while `0.333` displays as `0.333`. Twig `quantity.twig` reduces explicit fractions for presentation, uses common Unicode fraction characters and compact mixed numbers such as `1½`, and falls back to a legible slash fraction such as `1/16`. Whole-number results display as whole numbers. Decimal notation, including authored trailing decimal zeroes, is retained. No rounding or conversion by unit occurs.
+
+The same formatter and unit grammar serve the ingredient list and step references. Positive amounts up to one use a singular unit; amounts above one and zero use plural units, avoiding the former “1 1/2 tablespoon” error. A blank ingredient quantity omits its measure. A blank step amount inherits the recipe quantity; an explicit step amount must be positive and no greater than the recipe amount, compared exactly. Malformed expressions, negative quantities, zero denominators, units in the quantity input and ranges are rejected by server validation. Mixed-number fractional parts must be proper. Inputs are limited to 64 characters; arithmetic expressions are not evaluated.
+
+Verification at runtime `38782f8` and frontend `de9e961`: 43 exact parser checks, 34 native model/CP-input/Twig checks and the recipe browser suite pass; required local release QA also passes. This replaces the quarter-only display policy on dev. No production deployment is included. Ranges, compound measures, paired weight/volume fields and interactive scaling remain separate future work. Direct publisher research observed thirds/eighths at [King Arthur](https://www.kingarthurbaking.com/recipes/classic-birthday-cake-recipe), and fractional measures alongside decimal weights at [Serious Eats](https://www.seriouseats.com/honey-semifreddo-frozen-italian-dessert). NYT Cooking blocked the research tool, so its current interface remains unverified. Unicode copying and native text output are preserved; a screen-reader pronunciation audit is outstanding.
 
 ## Compatibility And Verification
 
