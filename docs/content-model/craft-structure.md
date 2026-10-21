@@ -50,7 +50,7 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `story` | Prose-led article composed from Matrix blocks. |
 | `gallery` | Image-led entry that can render dense gallery layouts. |
 | `featuredImage` | Single-image entry with text alongside media. |
-| `recipe` | Cooking entry with shared introduction and locally implemented Overview/Ingredients/Steps/Notes/Nutrition sections. |
+| `recipe` | Cooking entry with shared introduction and Overview/Ingredients/Steps/Notes/Nutrition sections deployed on October 20. |
 | `about` | Static about page content. |
 | `areaOfInterest` | Topic identity, label, URL, and optional Lucide icon. |
 | `siteSettings` | Shared site description, avatar, signatures, and footer wording. |
@@ -58,7 +58,7 @@ Use Areas of Interest for broad lanes such as Blog, Cooking, Design, and Places 
 | `homePhotography`, `homeWork`, `homeCooking`, `homeRecent` | Nested homepage sections, at most one of each kind. |
 | `homeFeature` | Selected post and overrides scoped to a homepage placement. |
 | `text`, `button`, `html`, `heading`, `callout` | Nested Matrix block entries. |
-| `ingredient`, `step`, `stepIngredient` | Native recipe rows, steps and linked per-step ingredient usages (local addition, October 20). |
+| `ingredient`, `step`, `stepIngredient` | Native recipe rows, steps and linked per-step ingredient usages (production addition, October 20). |
 
 ## Matrix Fields
 
@@ -171,3 +171,5 @@ Commit update, 2026-10-18: runtime `325a94f` contains the entrification implemen
 ### Recipe model update, October 20
 
 Uncommitted local Project Config and `modules/recipes/` above runtime `73e495d` add `stepHeading`, `stepIngredients`, `recipeIngredient` and `stepIngredientQuantity`. The existing optional `story` field is labeled Overview only in the Recipe layout. Step's existing contextual `text` (`text2` globally) gains native CKEditor Captioned image entries; `image` (`image2` globally) remains a legacy fallback. [Recipe Content](../components/recipe-content.md#step-anatomy-and-authoring) documents ownership constraints, quantities, authoring order and rendering. The existing Recipe requirements remain. This is a dev implementation; no production application is claimed.
+
+Recipe production application, 2026-10-20: runtime `fa04576` applies the Step heading, linked ingredient usage fields/type, optional Overview label and native inline-image authoring configuration. Fresh-process verification found no pending Project Config; existing content was preserved. See [Recipe Content](../components/recipe-content.md#production-release-verification) for renderer checks and limits.

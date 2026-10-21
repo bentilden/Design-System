@@ -47,7 +47,7 @@ Source: uncommitted `_components/global-header*.twig` and `modules/identityicons
 
 Local extraction, 2026-10-17: `_components/segmented-control.twig` owns the link-based segmented control used by [Places](../patterns/places.md#navigation-and-views). Pass an accessible `label`, ordered `options` with `value`, `label`, and `url`, and a `currentValue`. Each option remains a native link; the selected link receives `aria-current="page"`. Use it for navigation between views with real destinations.
 
-Local reuse, 2026-10-20: [Recipe content](recipe-content.md) uses this same component for navigation within one article. Its optional `compact: true` setting reduces label padding below `md` (6 px per side below 375 px; 8 px from 375 px), retains 20 px desktop padding, and keeps labels on one line. Defaults for Places are unchanged. Caller-provided Alpine actions and `aria-current` bindings manage local section state; real link destinations remain usable without JavaScript. This is uncommitted dev work, not a production release.
+Production recipe reuse, 2026-10-20 (runtime `fa04576`, frontend `cae5e6f`): [Recipe content](recipe-content.md) uses this same component for navigation within one article. Its optional `compact: true` setting reduces label padding below `md` (6 px per side below 375 px; 8 px from 375 px), retains 20 px desktop padding, and keeps labels on one line. Defaults for Places are unchanged. Caller-provided Alpine actions and `aria-current` bindings manage local section state; real link destinations remain usable without JavaScript. This recipe control reuse is deployed; historical local trials below describe earlier states.
 
 
 ```twig

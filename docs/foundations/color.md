@@ -84,7 +84,7 @@ Within a component, use the same standard color for its outer border and interna
 
 Use the existing Tailwind Neutral tokens explicitly in markup; do not hard-code the hex values or introduce duplicate color tokens. The stylesheet's existing base border fallback remains Neutral 200, so an unqualified `border` does not implement the standard component role. These rules do not change selected fills, text, icons, or semantic states. Existing header rules at Neutral 300/70 remain a scoped treatment; avoid creating further opacity variants without a component-specific reason. Unrelated existing components have not been migrated wholesale.
 
-Evidence: local runtime `174f9f9` and frontend `0e18382`, 2026-10-20. The segmented control supplies the reference; Nutrition and introduction facts adopt it. This establishes a reusable border rule within the current palette, not a production release or a final decision on the entire Neutral palette.
+Evidence: recipe borders deployed in runtime `fa04576` with frontend `cae5e6f`, 2026-10-20. The segmented control supplies the reference; Nutrition and introduction facts adopt it. This establishes a reusable border rule within the current palette; the recipe implementation is deployed, while a final decision on the entire Neutral palette remains separate.
 
 ## Map Palette
 

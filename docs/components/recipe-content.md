@@ -2,7 +2,7 @@
 title: Recipe Content
 type: component
 status: observed
-source_of_truth: observed dev code
+source_of_truth: observed production code
 audience:
   - design
   - development
@@ -38,7 +38,7 @@ review_status: needs audit
 
 ## Current Interface
 
-Local implementation, 2026-10-20: a recipe has a shared title, date, introduction with a recipe-facts box, and main image, followed by navigation within its content. This replaces the separate introduction/story/detail experience in the local checkout. The older code remains historical evidence, not the current dev interface. No production release is established by this review.
+Production release, 2026-10-20: a recipe has a shared title, date, introduction with a recipe-facts box, and main image, followed by navigation within its content. This replaces the separate introduction/story/detail experience. The older code remains historical evidence. Runtime `fa04576` is deployed with the additive recipe authoring fields applied; production currently has no saved Recipe entries, so interface verification used unsaved native elements without publishing development examples.
 
 The [shared segmented control](navigation.md#reusable-segmented-control) selects one section at a time:
 
@@ -66,7 +66,7 @@ Recipe titles use 36 px on phones, 40 px at `md` and 48 px at `lg`, with smaller
 
 The segmented control and the content column beneath it are horizontally centered at every width, while text remains left-aligned. All panels, including Nutrition, share a 42 rem maximum reading width. Intro, Overview, Steps and Notes use a consistent 16 px/28 px reading scale on phones and 18 px/32 px from `md`. Section headings are 24/28 px; optional step headings are 22/24 px. Following the owner's latest October 20 refinement, recipe `h2` and `h3` headings both use Bold (700), superseding the earlier h2 800 treatment. This applies to panel titles and authored rich-text headings in Overview, Notes and Step instructions, preserving their existing HTML levels. Step action headings remain `h3` at 700. Nutrition uses the label’s internal Nutrition facts title as its `h2` at 700, without a duplicate heading above the label. These explicit weights replace the display utility's 950 default. The main recipe title retains its existing treatment. The first step starts without an extra dividing rule; subsequent steps retain their separators. Existing authored Overview block types and embedded photos remain supported.
 
-Evidence: uncommitted Twig and generated CSS, native dev rendering at 390/768/1440 px, and the focused recipe browser checks at 320/375/768/1440 px. This is a local refinement, not a release or a screen-reader/print-pagination audit.
+Evidence: uncommitted Twig and generated CSS, native dev rendering at 390/768/1440 px, and the focused recipe browser checks at 320/375/768/1440 px. The original local refinement did not establish a release or a screen-reader/print-pagination audit; production rollout evidence is recorded below.
 
 ## Navigation And Accessibility
 
@@ -121,7 +121,7 @@ Local Notes refinement, 2026-10-20: Notes & tips retains the shared panel headin
 
 An 8 px gap connects a heading to its following text or list. Topic headings have 32 px above them on phones and 40 px from `md`; consecutive paragraphs have 16 px between them. Paragraphs retain the shared 16/28 px and 18/32 px reading scale. Lists have 16 px outer spacing and 4 px item margins. A flow-root with first/last child margin resets makes the panel's edge spacing predictable, including when Notes begins with a paragraph. Links remain underlined, with a small underline offset, and long words can wrap within the column.
 
-The treatment is scoped to the native `entry.notes` output. Notes remains optional; its content, CMS model, emphasis and link destinations are unchanged. Chromium review covers both authored Notes examples at 320/390/768/1440 px, exact rich-text preservation, measured spacing/type, print visibility and absent-Notes fallback. This is an uncommitted local refinement, not a production release or a full print/accessibility audit.
+The treatment is scoped to the native `entry.notes` output. Notes remains optional; its content, CMS model, emphasis and link destinations are unchanged. Chromium review covers both authored Notes examples at 320/390/768/1440 px, exact rich-text preservation, measured spacing/type, print visibility and absent-Notes fallback. Production verification is recorded below; this does not establish a full print/accessibility audit.
 
 ## Nutrition
 
@@ -160,6 +160,13 @@ Evidence: local runtime `174f9f9` and frontend `0e18382`, 2026-10-20; the source
 - [Accessibility](../accessibility/index.md) defines the review bar.
 - [Content QA](../operations/content-qa.md) covers general authoring checks.
 
-Scoped commit handoff, 2026-10-20: runtime `174f9f9` and frontend `0e18382` preserve the unified interface and the final refinements described here. The generated assets were built from recipe-only staged sources; unrelated working edits were excluded. All 44 recipe section/viewport checks plus history, keyboard, print, no-JavaScript, inline-image and legacy-route checks passed against these assets. Shared root/story/photo browser checks and 13 native recipe model checks passed. These commits remain local; no production publication is implied.
+Scoped commit handoff, 2026-10-20: runtime `174f9f9` and frontend `0e18382` preserve the unified interface and the final refinements described here. The generated assets were built from recipe-only staged sources; unrelated working edits were excluded. All 44 recipe section/viewport checks plus history, keyboard, print, no-JavaScript, inline-image and legacy-route checks passed against these assets. Shared root/story/photo browser checks and 13 native recipe model checks passed. These commits remained local at that handoff; the production rollout is recorded below.
 
-Nutrition follow-up committed locally on 2026-10-20 in runtime `fa04576`: the label follows the article background and its internal Nutrition facts h2 is the sole section heading. Responsive, print, no-JavaScript and accessible-name checks passed; no production publication is implied.
+Nutrition follow-up committed locally on 2026-10-20 in runtime `fa04576`: the label follows the article background and its internal Nutrition facts h2 is the sole section heading. Responsive, print, no-JavaScript and accessible-name checks passed before rollout; production verification is recorded below.
+
+
+## Production Release Verification
+
+Released 2026-10-20: runtime `fa04576836d72c0ff1f229b304f55877266d7674`, frontend `cae5e6f1f1eeefe051bb7618b27fa3a37d640e27`, Envoyer release `20261021001444`. All 33 changed runtime files match the release commit. A fresh Craft process confirms the four new fields, Step ingredient type/reference class, expected Step layout, optional Overview label and native inline-image configuration, with no pending Project Config. Existing production content fingerprints are unchanged.
+
+Production has no Recipe entries. Unsaved native full/minimal fixtures were rendered by production Twig and exercised with the actual public CSS/JavaScript through browser-local routes at 320/390/768/1440 px. Section navigation/history, metadata/Print separation, divided step references, absent-section fallback, all twelve nutrients including a zero, the single internal heading, transparent surface, print and no-JavaScript behavior pass. These are renderer/asset checks, not tests of a published recipe URL or an interactive CMS save. Root/story/photo browser checks and deployed content/asset/route/header QA pass. Safari, screen readers and physical print pagination remain outside this review.
