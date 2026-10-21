@@ -74,6 +74,8 @@ These hooks should be considered part of the current documentation backlog:
 
 Scoped table inventory, 2026-10-21: the preceding recipe-table class family is legacy evidence. Current segmented recipe tables are semantic markup with inline Tailwind styling in `_entry-content/recipe/page.twig`, identified by `data-ingredient-table`, `data-step-ingredient-table`, `data-nutrition-table` and the Overview wrapper. [Tables](../components/tables.md) records the current roles and inspected runtime `8d5eb6b`; this does not establish that all legacy selectors are unused elsewhere.
 
+Article adoption follow-up, 2026-10-21, committed locally in runtime `4f5f7fb`: `_matrix/text.twig` now owns Editorial styling for ordinary article and recipe Overview rich text, marked `data-editorial-tables`. `_entry-content/recipe/page.twig` retains specialized Measurement/Reference/Nutrition styling. The native scroll template/controller remains `_components/story-table.twig` / frontend `src/story-tables.js`.
+
 ## Craft Content Model
 
 | Area | Handles |

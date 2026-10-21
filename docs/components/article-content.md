@@ -99,6 +99,8 @@ Local verification, 2026-10-18: all eight compositions passed at 320/390/768/144
 
 ## Prose Blocks
 
+Editorial table adoption, 2026-10-21, committed locally in runtime `4f5f7fb`: regular article Text tables now use the approved [Editorial style](tables.md#editorial), shared with recipe Overview through `_matrix/text.twig`. Body cells use 16/24 px type and 10 px vertical padding, column headings use 14/20 px, row labels use medium weight, open tables omit their closing rule, and a preceding heading has a 20 px external gap. The renderer preserves authored columns, merged cells, captions and horizontal scrolling. Ordinary paragraphs, lists, drop caps and media rendering retain their existing treatment; structured ingredient/reference/nutrition tables remain in their specialized recipe renderer. Native before/after comparisons and required local release QA pass. This is a local adoption, not a production release.
+
 The Text renderer retains one `bt-text` prose wrapper and its existing table controller/template. Inside that wrapper, the Captioned image implementation renders markup and nested entries deliberately:
 
 ```twig

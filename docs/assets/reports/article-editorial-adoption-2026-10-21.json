@@ -1,0 +1,304 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "runtimeBaseline": "5e0901f",
+    "frontend": "2f80ae5",
+    "runtimeCommit": "4f5f7fb",
+    "verifiedFiles": [
+      "templates/_matrix/text.twig",
+      "templates/_entry-content/recipe/page.twig",
+      "web/assets/css/bentilden.css"
+    ]
+  },
+  "environment": "Local dev, Chromium",
+  "articleFixture": "Native editor-update Text fixture temporarily inserted into the normal Story wrapper in the browser; no CMS entry saved",
+  "checks": [
+    {
+      "viewport": 320,
+      "context": "article",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 320,
+      "context": "fixture",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 320,
+      "context": "ordinary",
+      "tableCount": 0,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 320,
+      "context": "overview",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": true
+    },
+    {
+      "viewport": 320,
+      "context": "ingredients",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 320,
+      "context": "steps",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 320,
+      "context": "nutrition",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 390,
+      "context": "article",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 390,
+      "context": "fixture",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 390,
+      "context": "ordinary",
+      "tableCount": 0,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 390,
+      "context": "overview",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": true
+    },
+    {
+      "viewport": 390,
+      "context": "ingredients",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 390,
+      "context": "steps",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 390,
+      "context": "nutrition",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 768,
+      "context": "article",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 768,
+      "context": "fixture",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 768,
+      "context": "ordinary",
+      "tableCount": 0,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 768,
+      "context": "overview",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": true
+    },
+    {
+      "viewport": 768,
+      "context": "ingredients",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 768,
+      "context": "steps",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 768,
+      "context": "nutrition",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 1440,
+      "context": "article",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 1440,
+      "context": "fixture",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 1440,
+      "context": "ordinary",
+      "tableCount": 0,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 1440,
+      "context": "overview",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": true,
+      "specializedStylesPreserved": null,
+      "overviewStylesPreserved": true
+    },
+    {
+      "viewport": 1440,
+      "context": "ingredients",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 1440,
+      "context": "steps",
+      "tableCount": 3,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    },
+    {
+      "viewport": 1440,
+      "context": "nutrition",
+      "tableCount": 1,
+      "pageOverflow": false,
+      "tableMarkupPreserved": true,
+      "nonTableProsePreserved": null,
+      "specializedStylesPreserved": true,
+      "overviewStylesPreserved": null
+    }
+  ],
+  "additionalChecks": [
+    "Keyboard horizontal scrolling",
+    "Caption stays outside the horizontal scroller",
+    "Fitting tables have no extra tab stop after resize",
+    "Table visible in print",
+    "Required local release QA"
+  ]
+}

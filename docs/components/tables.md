@@ -29,7 +29,7 @@ Approved by the site owner on 2026-10-21: Editorial, Measurement and Reference a
 
 | Style | Use when the reader needs to… | Current example | Defining treatment |
 | --- | --- | --- | --- |
-| [Editorial](#editorial) | Compare descriptive information while reading | Overview's preparation and baking cues | Open edges, column headings, medium-weight row labels, moderate spacing |
+| [Editorial](#editorial) | Compare descriptive information while reading | Article rich-text tables and Overview's preparation/baking cues | Open edges, column headings, medium-weight row labels, moderate spacing |
 | [Measurement](#measurement) | Read a complete list of amounts and named items | Main Ingredients | Open edges, larger reading type, aligned quantities and units |
 | [Reference](#reference) | Consult a small supporting set while performing a task | Ingredients for one Step | Compact rows, short caption, rounded subtle frame |
 | [Nutrition label](#nutrition-label) | Scan energy and a hierarchy of nutrients | Nutrition | A complete label composition with its own summary and table |
@@ -54,12 +54,12 @@ Select a style through its content context. The approved context assignments are
 
 | Context | Selected treatment | Authoring responsibility |
 | --- | --- | --- |
-| Overview rich-text table | Editorial | Author columns, headings, content and any caption; the renderer supplies the approved visual treatment. |
+| Regular article or Overview rich-text table | Editorial | Author columns, headings, content and any caption; the shared Text renderer supplies the approved visual treatment. |
 | Recipe's master ingredient rows | Measurement | Author native quantities, units and names; the renderer supplies aligned tracks and reading density. |
 | One Step's ingredient references | Reference | Select native ingredient references and step quantities; the renderer supplies the compact captioned frame. |
 | Recipe nutrition fields | Nutrition label | Author available per-serving values; the component supplies labels, units and hierarchy. |
 
-No new style picker is introduced by these definitions. A new content context should have an explicit style choice in its design specification. Extending Editorial to ordinary articles remains a separate decision; existing recipe context choices are the implemented reference.
+No new style picker is introduced by these definitions. The owner authorized ordinary article adoption on 2026-10-21; their Text tables and recipe Overview now share the Editorial renderer. A new content context should have an explicit style choice in its design specification.
 
 ## Shared Principles
 
@@ -81,7 +81,7 @@ Editorial tables retain their authored columns and content-driven or authored wi
 
 Cell padding controls spacing within the table. Heading-to-table separation belongs to the surrounding content layout: a 0 px top inset in the editorial heading cells does not itself supply that separation. Evaluate the table beneath an immediately preceding heading as well as after prose when applying the style.
 
-Recipe Overview refinement, 2026-10-21, committed locally in runtime `5e0901f`: a heading immediately followed by an authored table figure has an explicit **20 px bottom gap** at every width. Other heading/content pairs retain their existing spacing. This restores contextual separation while keeping the approved 10 px body-cell padding and 0 px top padding inside the column headings.
+The shared Text renderer gives a heading immediately followed by an authored table figure an explicit **20 px bottom gap** at every width. Other heading/content pairs retain their existing spacing. This restores contextual separation while keeping the approved 10 px body-cell padding and 0 px top padding inside the column headings. Introduced for recipe Overview in runtime `5e0901f`; extended to ordinary article Text in runtime `4f5f7fb`, as recorded below.
 
 ### Content And Narrow Screens
 
@@ -91,7 +91,7 @@ Allow descriptive text to wrap. Keep numeric measures and their units readable. 
 
 ## Editorial
 
-Use for comparisons or descriptive relationships within prose. The approved baseline is the **tighter Refined** treatment now applied to recipe Overview rich text.
+Use for comparisons or descriptive relationships within prose. The approved baseline is the **tighter Refined** treatment, applied through shared Text rendering to ordinary articles and recipe Overview.
 
 ![Editorial table with descriptive row labels and open edges](../assets/images/table-editorial.png)
 
@@ -104,9 +104,9 @@ Use for comparisons or descriptive relationships within prose. The approved base
 | Column gutter | 24 px after each nonfinal column; 18 px through 480 px |
 | Rules | 1 px Neutral 300 below column headings; 1 px Neutral 200 between body rows; no closing rule |
 | Layout | Full available text-column width, native column sizing, first-baseline cell alignment |
-| Immediately preceding heading | 20 px external gap in recipe Overview; owned by its content layout |
+| Immediately preceding heading | 20 px external gap in shared Text rendering |
 
-This treatment supplies a clear comparison without giving it the visual weight of another major recipe panel. Caption and surrounding prose/photo spacing remain owned by the content renderer. The approved implementation is scoped to Overview; ordinary article tables still retain their preceding prose styles.
+This treatment supplies a clear comparison within the reading flow. Caption and surrounding prose/photo spacing remain owned by the content renderer. The shared Text wrapper owns Editorial table styling in both contexts; specialized recipe tables remain outside that scope.
 
 ## Measurement
 
@@ -168,8 +168,10 @@ Use this composition for nutritional information. Its hierarchy and emphasis dep
 
 ## Implementation And Review
 
-The current styles use semantic tables and inline Tailwind utilities in `templates/_entry-content/recipe/page.twig`. The names on this page are design roles, not shipped CSS classes, CMS options or Twig component variants. Preserve native field handles and existing content ownership when reusing them; follow [Contributing](../contributing.md).
+Editorial uses semantic tables and inline Tailwind utilities on the `bt-text` wrapper in `templates/_matrix/text.twig`, marked `data-editorial-tables`. Structured Measurement/Reference tables and the Nutrition label retain their existing markup/styling in `_entry-content/recipe/page.twig`. The names on this page are design roles, not shipped CSS classes, CMS options or Twig component variants. Preserve native field handles and existing content ownership when reusing them; follow [Contributing](../contributing.md).
 
 Source and rendered review, 2026-10-21: runtime `8d5eb6b`, frontend `2f80ae5`. Overview, Ingredients, Steps and Nutrition were inspected on local dev at 390/1440 px. Screenshots above show sample data. The [retained style inventory](../assets/reports/table-styles-2026-10-21.json) records computed styles and page fit. The editorial implementation also passed checks at 320/390/640/768/1440 px, contained keyboard horizontal scrolling, and required local release QA before commit.
 
-The owner approved the definitions and context-selection rules on 2026-10-21. Approval establishes the design standard; no additional website restyling accompanies this finalization. The local implementation evidence above does not establish a production release, broader content migration, or a completed screen-reader/cross-browser audit.
+Article adoption, 2026-10-21, committed locally in runtime `4f5f7fb` / frontend `2f80ae5`: moved the Editorial utilities from Overview to shared Text, including the 20 px external gap and 10 px body-cell padding. Table paragraph edges are reset within cells so padding controls their inset; ordinary prose remains unchanged. Existing captions, authored column/merged-cell structure, horizontal scroll enhancements and specialized recipe styles are preserved. Twenty-eight before/after route/viewport checks at 320/390/768/1440 px pass, using the native editor fixture within a normal article wrapper, the fixture route, an unchanged article and all four recipe views. Keyboard scrolling, stationary captions, fitting-table focus behavior, print visibility and required local release QA pass. See the [adoption receipt](../assets/reports/article-editorial-adoption-2026-10-21.json).
+
+The owner approved the definitions and context-selection rules on 2026-10-21. The evidence distinguishes that decision, the original recipe implementation and the subsequent article adoption. Local checks do not establish a production release or a completed screen-reader/cross-browser audit.
