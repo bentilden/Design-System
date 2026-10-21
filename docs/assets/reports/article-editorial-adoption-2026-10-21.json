@@ -300,5 +300,27 @@
     "Fitting tables have no extra tab stop after resize",
     "Table visible in print",
     "Required local release QA"
-  ]
+  ],
+  "productionFollowUp": {
+    "date": "2026-10-21",
+    "runtimeCommit": "4f5f7fb8c99e39decbbe1c90258a6e27738e2bc4",
+    "immutableFilesVerified": 4794,
+    "publicCssMatchesCommit": true,
+    "deployedServerQaPassed": true,
+    "publicBrowserQaPassed": true,
+    "productionCssNativeDevFixtureComparisons": 28,
+    "viewports": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "keyboardCaptionResizePrintPassed": true,
+    "productionFixturesReturn404": true,
+    "productionRecipesAdded": false,
+    "limitations": [
+      "Native table fixtures run on dev with publicly fetched production CSS",
+      "No screen-reader or cross-browser audit"
+    ]
+  }
 }
