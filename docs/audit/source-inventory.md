@@ -72,6 +72,8 @@ These hooks should be considered part of the current documentation backlog:
 | `bt-recipe-*`, `bt-infoBar`, `bt-servings`, `bt-times` | Recipe detail hooks. |
 | `bt-cell-*`, `bt-table-ingredients`, `bt-control-nutritionInformation__table` | Recipe table hooks. |
 
+Scoped table inventory, 2026-10-21: the preceding recipe-table class family is legacy evidence. Current segmented recipe tables are semantic markup with inline Tailwind styling in `_entry-content/recipe/page.twig`, identified by `data-ingredient-table`, `data-step-ingredient-table`, `data-nutrition-table` and the Overview wrapper. [Tables](../components/tables.md) records the current roles and inspected runtime `8d5eb6b`; this does not establish that all legacy selectors are unused elsewhere.
+
 ## Craft Content Model
 
 | Area | Handles |

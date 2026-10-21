@@ -63,6 +63,7 @@ nav:
       - Navigation: components/navigation.md
       - Icons: components/icons.md
       - Article Content: components/article-content.md
+      - Tables: components/tables.md
       - Matrix Blocks: components/matrix-blocks.md
       - Captioned Image: components/captioned-image.md
       - Galleries: components/galleries.md

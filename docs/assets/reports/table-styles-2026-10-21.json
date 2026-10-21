@@ -1,0 +1,291 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "runtime": "8d5eb6b",
+    "frontend": "2f80ae5"
+  },
+  "environment": "Local dev, Chromium",
+  "scope": "Rendered inventory of four recipe table roles at 390/1440 px; no content saved",
+  "observations": [
+    {
+      "viewport": 390,
+      "role": "editorial",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "16px",
+        "line": "24px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "14px",
+          "line": "20px",
+          "weight": "600",
+          "padding": "0px 18px 10px 0px",
+          "color": "oklch(0.439 0 0)",
+          "align": "left"
+        },
+        {
+          "size": "14px",
+          "line": "20px",
+          "weight": "600",
+          "padding": "0px 0px 10px",
+          "color": "oklch(0.439 0 0)",
+          "align": "left"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.922 0 0)"
+    },
+    {
+      "viewport": 390,
+      "role": "measurement",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "16px",
+        "line": "28px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "16px",
+          "line": "28px",
+          "weight": "400",
+          "padding": "12px 0px",
+          "color": "rgb(0, 0, 0)",
+          "align": "right"
+        },
+        {
+          "size": "16px",
+          "line": "28px",
+          "weight": "400",
+          "padding": "12px 16px 12px 4px",
+          "color": "rgb(0, 0, 0)",
+          "align": "start"
+        },
+        {
+          "size": "16px",
+          "line": "28px",
+          "weight": "400",
+          "padding": "12px 0px",
+          "color": "oklch(0.269 0 0)",
+          "align": "start"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.922 0 0)"
+    },
+    {
+      "viewport": 390,
+      "role": "reference",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "14px",
+        "line": "24px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "6px 0px",
+          "color": "oklch(0.371 0 0)",
+          "align": "right"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "6px 12px 6px 4px",
+          "color": "oklch(0.371 0 0)",
+          "align": "start"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "6px 0px",
+          "color": "oklch(0.371 0 0)",
+          "align": "start"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.922 0 0)"
+    },
+    {
+      "viewport": 390,
+      "role": "nutrition",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "14px",
+        "line": "24px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "500",
+          "padding": "8px 16px 8px 0px",
+          "color": "oklch(0.269 0 0)",
+          "align": "left"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "8px 0px",
+          "color": "oklch(0.145 0 0)",
+          "align": "right"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "8px 0px 8px 4px",
+          "color": "oklch(0.145 0 0)",
+          "align": "left"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.87 0 0)"
+    },
+    {
+      "viewport": 1440,
+      "role": "editorial",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "16px",
+        "line": "24px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "14px",
+          "line": "20px",
+          "weight": "600",
+          "padding": "0px 24px 10px 0px",
+          "color": "oklch(0.439 0 0)",
+          "align": "left"
+        },
+        {
+          "size": "14px",
+          "line": "20px",
+          "weight": "600",
+          "padding": "0px 0px 10px",
+          "color": "oklch(0.439 0 0)",
+          "align": "left"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.922 0 0)"
+    },
+    {
+      "viewport": 1440,
+      "role": "measurement",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "18px",
+        "line": "32px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "18px",
+          "line": "32px",
+          "weight": "400",
+          "padding": "14px 0px",
+          "color": "rgb(0, 0, 0)",
+          "align": "right"
+        },
+        {
+          "size": "18px",
+          "line": "32px",
+          "weight": "400",
+          "padding": "14px 24px 14px 4px",
+          "color": "rgb(0, 0, 0)",
+          "align": "start"
+        },
+        {
+          "size": "18px",
+          "line": "32px",
+          "weight": "400",
+          "padding": "14px 0px",
+          "color": "oklch(0.269 0 0)",
+          "align": "start"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.922 0 0)"
+    },
+    {
+      "viewport": 1440,
+      "role": "reference",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "14px",
+        "line": "24px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "6px 0px",
+          "color": "oklch(0.371 0 0)",
+          "align": "right"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "6px 16px 6px 4px",
+          "color": "oklch(0.371 0 0)",
+          "align": "start"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "6px 0px",
+          "color": "oklch(0.371 0 0)",
+          "align": "start"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.922 0 0)"
+    },
+    {
+      "viewport": 1440,
+      "role": "nutrition",
+      "pageOverflow": false,
+      "tableType": {
+        "size": "14px",
+        "line": "24px",
+        "weight": "400"
+      },
+      "firstCells": [
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "500",
+          "padding": "8px 16px 8px 0px",
+          "color": "oklch(0.269 0 0)",
+          "align": "left"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "8px 0px",
+          "color": "oklch(0.145 0 0)",
+          "align": "right"
+        },
+        {
+          "size": "14px",
+          "line": "24px",
+          "weight": "400",
+          "padding": "8px 0px 8px 4px",
+          "color": "oklch(0.145 0 0)",
+          "align": "left"
+        }
+      ],
+      "lastRowBorderBottom": "0px solid oklch(0.87 0 0)"
+    }
+  ]
+}

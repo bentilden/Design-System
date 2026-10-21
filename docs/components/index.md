@@ -16,6 +16,8 @@ review_status: needs audit
 
 Components document reusable interface and content building blocks.
 
+[Tables](tables.md) catalogs Editorial, Measurement and Reference treatments, plus the specialized Nutrition label. It separates shared alignment and edge rules from the density and framing appropriate to each content role.
+
 The current site mixes Tailwind utility composition with existing named `bt-*` classes. The implementation rule accepted on 2026-09-28 governs new work:
 
 - Implement new styling with inline Tailwind utilities and new behavior with Alpine.js; ask the site owner before introducing an exception.

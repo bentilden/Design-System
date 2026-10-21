@@ -88,6 +88,8 @@ Evidence: local runtime `174f9f9` and frontend `0e18382`, 2026-10-20. The segmen
 
 Owner preference, 2026-10-21: open tables without side or top borders should not end with a bottom rule. Use dividers between rows and omit the final rule. The main recipe ingredient list adopts this locally; framed tables retain their enclosing border. Other open-table implementations have not been migrated wholesale.
 
+The [table catalog](../components/tables.md) applies these roles intentionally: Editorial uses a Neutral 300 heading rule and Neutral 200 body separators; Measurement uses Neutral 200 between rows; Reference uses Neutral 200 for frame and rows; Nutrition retains its documented softer-outline/stronger-internal-rule treatment. The approved Overview implementation also omits its final rule.
+
 ## Map Palette
 
 The [Places map](../patterns/places.md) reads its Neutral shades from compiled CSS through `readMapPalette()`. The browser converts those tokens to RGB for MapLibre, so map styling and interface styling use the same source. `themeMapStyle()` changes known color paint values while retaining provider layer filters, geometry, alpha, label rules, and zoom expressions. Unknown future provider colors remain available for deliberate review.
