@@ -42,6 +42,8 @@ review_status: needs audit
 
 ## Current Interface
 
+Production follow-up, 2026-10-21: runtime `b266d3c` / frontend `2f80ae5` deploy the step ingredient tables, Nutrition refinements and shared [Scroll Separation](../patterns/scroll-separation.md) treatment. Earlier local-only records below retain their original review scope. Deployed source/public asset hashes match, and production assets pass native recipe fixtures at six widths. Demo recipes remain on dev; no production recipe entries or schema changes were introduced.
+
 Local implementation, 2026-10-20: a recipe has a shared title, date, introduction with a recipe-facts box, and main image, followed by navigation within its content. This replaces the separate introduction/story/detail experience in the local checkout. The older code remains historical evidence, not the current dev interface. No production release is established by this review.
 
 The [shared segmented control](navigation.md#reusable-segmented-control) selects one section at a time:

@@ -28,7 +28,7 @@ review_status: active
 
 Use this treatment to distinguish sticky segmented navigation from content scrolling beneath it. It combines a fine horizontal divider, an opaque page-matching cover and a subtle shadow following the divider and the control's rounded lower edge.
 
-Approved for reuse locally on 2026-10-21, after refinement in [Recipes](../components/recipe-content.md). The shared implementation is committed locally at runtime `b073772` and frontend `2f80ae5`; it has not been deployed to production. Opt in through the shared wrapper. The ordinary [segmented control](../components/navigation.md#reusable-segmented-control) retains its existing appearance.
+Approved for reuse locally on 2026-10-21, after refinement in [Recipes](../components/recipe-content.md). The shared implementation was deployed to production on 2026-10-21 in runtime `b266d3c`, using frontend `2f80ae5`. Opt in through the shared wrapper. The ordinary [segmented control](../components/navigation.md#reusable-segmented-control) retains its existing appearance.
 
 ## Appearance And States
 
@@ -138,3 +138,6 @@ The observer detects content crossing the navigation midpoint. Its lower boundar
 ## Verification
 
 Local source and Chromium review, 2026-10-21, above runtime `f47d90c` and frontend `de9e961` with uncommitted shared-component/helper changes: extraction preserves recipe navigation/control/content geometry at 320/375/390/640/768/1440 px. Phone and desktop screenshots are byte-identical to the preceding approved contour treatment. Recipe navigation, history, keyboard, native fallback, print and image viewing checks pass. A separate unsaved Collection views example uses different labels and a different Alpine state expression, checks both states on phone/desktop, and verifies observer cleanup. The previews above come from that neutral example. Cross-browser and screen-reader review remain outstanding; no production deployment is claimed.
+
+
+Production follow-up, 2026-10-21: deployed source hashes match the published commit, the shared component renders natively on production, and production CSS/JavaScript pass native dev recipe fixtures at six widths. No sample recipes were added to production. The server/public browser checks pass; cross-browser and screen-reader review remain separate.

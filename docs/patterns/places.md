@@ -42,6 +42,8 @@ review_status: active
 
 # Places
 
+Production follow-up, 2026-10-21: runtime `b266d3c` / frontend `2f80ae5` publish the mobile colored-dot overview, zoom-first stack behavior, geographic anchoring, hierarchy-aware destinations, distinct-photo labels and smooth regrouping described in the October 21 local records. The combined website assets include the recipe changes as well. Source/public asset hashes and focused live browser checks pass; earlier local-only statements are historical.
+
 Places combines a photo map with a synchronized gallery. The first release was accepted on 2026-09-28 and is deployed to production and staging. The later Mosaic release below adds the third view and interface refinements. Dated trial paragraphs preserve their original evidence and are superseded by the recorded release state.
 
 Mosaic production release, 2026-09-28: website `acacd8adf66f2651b086411d63588b7a9e3ee962` and frontend `8fae64919e3e29f3f1b68bd6e1576f3c9fd7d78d` are deployed in release `20260928151023`. Places offers **Map | Mosaic | Posts**, retaining Map as the default. Both color-ordered Mosaic layouts, the shared header/toolbar, map overlay controls, and final chip visibility/dividers/padding are included. Release-file hashes, server checks, public assets, and 27 navigation/23 Places/10 chip browser cases passed. Generic checks passed on all four release routes, including 48 fonts per route and no missing image dimensions. The final 23-case Mosaic run also passed, completing 83 production browser cases with no runtime errors or road-shield warnings. Desktop Square and mobile Justified were visually reviewed. The [Mosaic section](#mosaic) describes the interface; historical local/two-view results below retain their original scope.
