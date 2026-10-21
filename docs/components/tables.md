@@ -1,8 +1,8 @@
 ---
 title: Tables
 type: component
-status: draft
-source_of_truth: observed dev code
+status: approved
+source_of_truth: design system decision
 audience:
   - design
   - development
@@ -23,7 +23,7 @@ review_status: active
 
 Choose a table treatment by the reader's task. The current recipes establish three reusable roles—**Editorial**, **Measurement** and **Reference**—plus a specialized **Nutrition label**. Their different density, framing and hierarchy serve different purposes.
 
-The names and guidance on reuse are a working taxonomy. The visual treatments below describe existing implementations, including the owner-approved tighter Refined editorial table. Extending a treatment to a new context is a separate implementation decision. Current recipe rendering is the reference; this page does not establish a site-wide migration or a single table-rendering component.
+Approved by the site owner on 2026-10-21: Editorial, Measurement and Reference are the site's table styles; Nutrition remains a specialized label component. These definitions include the shared rules, style-specific defaults, content-owned structure and context-based selection below. The current recipe implementations supply the visual reference. Applying a style in an additional context remains a separate implementation task.
 
 ## Choose A Style
 
@@ -35,6 +35,31 @@ The names and guidance on reuse are a working taxonomy. The visual treatments be
 | [Nutrition label](#nutrition-label) | Scan energy and a hierarchy of nutrients | Nutrition | A complete label composition with its own summary and table |
 
 The introduction's icon-led recipe facts inset is a separate [metadata component](recipe-content.md#spacing-and-type). Its large numerals and grouped timing layout are not a table variant. Print is a separate action.
+
+## Definition Boundaries
+
+Use three levels of decisions when specifying or reusing these styles:
+
+| Level | Defines | How to apply it |
+| --- | --- | --- |
+| Shared rules | Border palette, open-table ending, first-baseline alignment, aligned numeric figures, 4 px quantity/unit boundary where values and units are modeled separately, deliberate external spacing | Carry these principles across styles. |
+| Style defaults | Type scale, row padding, frame thickness/radius, heading or caption hierarchy | Use the selected style's complete baseline. A compact Reference table keeps its denser spacing and frame; a primary Measurement list keeps its reading scale and open edges. |
+| Content structure | Number and meaning of columns, authored widths, header relationships, units, caption wording, missing values | Follow the content model or authored table. Preserve native structure and meaningful relationships. |
+
+Measurement and Reference share the recipe's quantity/unit/item arrangement, but have different roles in the page hierarchy. Their shared alignment is a reusable rule; their different density and framing remain part of their respective definitions. Editorial tables support authored column structures. Nutrition's energy summary and nutrient hierarchy stay owned by that specialized component.
+
+### Selection By Context
+
+Select a style through its content context. The approved context assignments are:
+
+| Context | Selected treatment | Authoring responsibility |
+| --- | --- | --- |
+| Overview rich-text table | Editorial | Author columns, headings, content and any caption; the renderer supplies the approved visual treatment. |
+| Recipe's master ingredient rows | Measurement | Author native quantities, units and names; the renderer supplies aligned tracks and reading density. |
+| One Step's ingredient references | Reference | Select native ingredient references and step quantities; the renderer supplies the compact captioned frame. |
+| Recipe nutrition fields | Nutrition label | Author available per-serving values; the component supplies labels, units and hierarchy. |
+
+No new style picker is introduced by these definitions. A new content context should have an explicit style choice in its design specification. Extending Editorial to ordinary articles remains a separate decision; existing recipe context choices are the implemented reference.
 
 ## Shared Principles
 
@@ -147,4 +172,4 @@ The current styles use semantic tables and inline Tailwind utilities in `templat
 
 Source and rendered review, 2026-10-21: runtime `8d5eb6b`, frontend `2f80ae5`. Overview, Ingredients, Steps and Nutrition were inspected on local dev at 390/1440 px. Screenshots above show sample data. The [retained style inventory](../assets/reports/table-styles-2026-10-21.json) records computed styles and page fit. The editorial implementation also passed checks at 320/390/640/768/1440 px, contained keyboard horizontal scrolling, and required local release QA before commit.
 
-The style taxonomy remains a draft for review. No additional website restyling accompanies this guide. These local observations do not establish a production release, broader content migration, or a completed screen-reader/cross-browser audit.
+The owner approved the definitions and context-selection rules on 2026-10-21. Approval establishes the design standard; no additional website restyling accompanies this finalization. The local implementation evidence above does not establish a production release, broader content migration, or a completed screen-reader/cross-browser audit.

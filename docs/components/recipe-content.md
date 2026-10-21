@@ -43,7 +43,7 @@ review_status: needs audit
 
 ## Current Interface
 
-For the table-style catalog and guidance on reuse, see [Tables](tables.md). Editorial, Measurement and Reference roles preserve the different treatments in Overview, Ingredients and Steps; the Nutrition label remains its own component, and metadata is a separate facts inset.
+For the approved table-style definitions and guidance on reuse, see [Tables](tables.md). Editorial, Measurement and Reference roles preserve the different treatments in Overview, Ingredients and Steps; the Nutrition label remains its own component, and metadata is a separate facts inset. The owner approved these roles, shared rules and context-selection model on 2026-10-21.
 
 Production follow-up, 2026-10-21: runtime `b266d3c` / frontend `2f80ae5` deploy the step ingredient tables, Nutrition refinements and shared [Scroll Separation](../patterns/scroll-separation.md) treatment. Earlier local-only records below retain their original review scope. Deployed source/public asset hashes match, and production assets pass native recipe fixtures at six widths. Demo recipes remain on dev; no production recipe entries or schema changes were introduced.
 

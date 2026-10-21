@@ -16,7 +16,7 @@ review_status: needs audit
 
 Components document reusable interface and content building blocks.
 
-[Tables](tables.md) catalogs Editorial, Measurement and Reference treatments, plus the specialized Nutrition label. It separates shared alignment and edge rules from the density and framing appropriate to each content role.
+[Tables](tables.md), approved on 2026-10-21, defines Editorial, Measurement and Reference treatments, plus the specialized Nutrition label. It separates shared alignment and edge rules from the density and framing appropriate to each content role, and selects styles through their content context.
 
 The current site mixes Tailwind utility composition with existing named `bt-*` classes. The implementation rule accepted on 2026-09-28 governs new work:
 
