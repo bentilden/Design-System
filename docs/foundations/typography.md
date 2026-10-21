@@ -10,6 +10,8 @@ audience:
 source:
   - bentilden.com-css/src/bentilden.css
   - bentilden.com-css/src/elements/type.css
+  - bentilden.com-css/src/fonts/inter/inter.css
+  - bentilden.com/templates/_layout.twig
   - bentilden.com/templates/_components/entry-header.twig
   - bentilden.com/templates/_matrix/text.twig
   - bentilden.com/templates/_matrix/featuredImage2.twig
@@ -30,21 +32,21 @@ review_status: needs audit
 
 # Typography
 
-The site uses Helvetica Now families for text, display, and microcopy.
+Inter is the website typeface for text, display and compact metadata. It was deployed and verified on 2026-10-20, preserving the existing style and lighter homepage statement.
 
 ## Font Families
 
 | Role | Tailwind token | Font family |
 | --- | --- | --- |
-| Body | `font-sans` | `HelveticaNow`, then Helvetica and system sans fallbacks |
-| Display | `font-display` | `HelveticaNowDisplay`, defaulting to Extra Black weight |
-| Metadata | `font-micro` | `HelveticaNowMicro` |
+| Body | `font-sans` | `InterVariable`, then Arial and system sans fallbacks |
+| Display | `font-display` | `InterVariable`, default weight 900 |
+| Metadata | `font-micro` | `InterVariable`, default weight 500 |
 | Code | n/a | System monospace stack |
 
 !!! note "Webfont licensing"
-    The current website and the Interface Field Guide serve licensed Helvetica Now webfont files from `https://cdn.bentilden.com/fonts/helvetica-now/`. The documentation uses Text for prose, Display for headings, and Micro for navigation, metadata, and interface labels.
+    The website self-hosts complete Inter variable fonts under the SIL Open Font License. The Interface Field Guide retains licensed Helvetica Now webfont files from `https://cdn.bentilden.com/fonts/helvetica-now/`. The documentation uses Text for prose, Display for headings, and Micro for navigation, metadata, and interface labels.
 
-## Available Weights
+## Helvetica Baseline Inventory
 
 Scoped source verification, 2026-10-20: `bentilden.com-css/src/elements/type.css` declares all 48 supplied WOFF2 faces, each with its own upright or italic file. The current weight mappings are:
 
@@ -61,7 +63,17 @@ Scoped source verification, 2026-10-20: `bentilden.com-css/src/elements/type.css
 | 900 | Black | Yes | Yes | — |
 | 950 | Extra Black | — | Yes | — |
 
-Every available weight has a matching true italic. There is no supplied 600/Semibold face. The lighter values reflect this site's explicit CSS mappings: `font-hairline` 250, `font-thin` 275, `font-extralight` 300 and `font-light` 325. `font-normal`, `font-medium`, `font-bold`, `font-extrabold` and `font-black` select 400/500/700/800/900; `font-extrablack` selects 950. Pair a family utility with an explicit available weight when overriding the family default (`font-display` sets 950; `font-micro` sets 500). This is a local source inventory, not a change to the font files or runtime typography.
+Every supplied Helvetica weight has a matching true italic. There is no supplied Helvetica 600/Semibold face. The lighter values reflect this site's explicit CSS mappings: `font-hairline` 250, `font-thin` 275, `font-extralight` 300 and `font-light` 325. `font-normal`, `font-medium`, `font-bold`, `font-extrabold` and `font-black` select 400/500/700/800/900; `font-extrablack` and `font-display` select 950 in the development Helvetica comparison and 900 in the current Inter default. `font-micro` sets 500. The baseline inventory describes the retained original files; it does not limit Inter’s continuous weight range.
+
+## Inter Default
+
+Scoped production review, 2026-10-20: runtime `deb1475` and frontend `9abf647` make Inter the default across environments, verified in production release `20261021005556`. The previous dev-only Inter gate is removed. Only the `?typeface=helvetica` comparison requires Craft `dev`; other environments always use the source Inter profile. Production uses the same complete vendor files as the local comparison.
+
+Complete upright and true-italic variable WOFF2 files preserve weight 100–900, optical size 14–32, character variants, stylistic sets, alternate figures, fractions and other original OpenType features. Automatic optical sizing is enabled and synthesis is disabled. Optional features remain available rather than being globally activated; tabular-number utilities continue to apply. Inter has no dedicated Micro drawing. Frontend `src/fonts/inter/` owns the full files and SIL Open Font License; builds copy them unchanged to runtime `web/assets/fonts/inter/`.
+
+The homepage statement uses `font-home-statement`, backed by `--font-weight-home-statement: 100`. This visually matches the finer strokes of the live Helvetica Display Thin 275 more closely than Inter 275. The dev Helvetica comparison restores 275 for this role. Other `font-thin` uses retain 275. Section headings stay 800, post titles 900 and prose 400. Default ExtraBlack is 900. Sizes, leading, tracking, colors and alignment are retained, with natural family-specific wrapping. Viewer/map chrome inherit the selected family.
+
+Local Chromium verified 24 route/width comparisons at 320/390/1440 px, allowing only statement 275 → 100 and ExtraBlack 950 → 900 weight differences. Both full served-font hashes, native intermediate weights/italics, tabular figures and viewer inheritance passed. All 95 homepage checks and generic font/browser checks passed. Desktop/phone specimens were compared with the live Helvetica treatment. Previous trial checks cover navigation, recipes and viewer interactions; those suites were not repeated for the default/statement follow-up. This does not establish improved page speed, universal reading quality or new cross-browser/accessibility coverage. Production verification additionally passed twelve route/width observations, both complete WOFF2 hashes/MIME/cache headers, native variable italics, viewer inheritance, four generic browser routes, and all 99 homepage checks. The whole-page review date is retained.
 
 ## Type Roles
 
@@ -75,7 +87,7 @@ Every available weight has a matching true italic. There is no supplied 600/Semi
 
 Use the display face for entry titles and major editorial headings. Keep line-height tight.
 
-The [post-title weight chosen on 2026-10-17](../components/article-content.md#entry-header) uses `font-black` (900) in the shared entry header; the `font-display` default remains 950. This change is undeployed.
+The [post-title weight chosen on 2026-10-17](../components/article-content.md#entry-header) uses `font-black` (900) in the shared entry header; the current Inter `font-display` default is 900 (950 in the development Helvetica comparison). A 2026-10-20 production browser spot check confirmed 900 on `/recipe-search-engine`; the original undeployed marker no longer describes that sampled route.
 
 ### Metadata
 
