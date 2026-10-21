@@ -19,7 +19,7 @@ This page captures decisions carried forward from the June 2026 audit that shoul
 
 ## Current Questions
 
-- Which patterns should remain intentionally personal/editorial, and which should become reusable system components?
+- Which patterns should remain intentionally personal/editorial, and which should become reusable system components? Scoped decision, 2026-10-21: [Scroll Separation](../patterns/scroll-separation.md) is approved for opt-in reuse through a shared wrapper and observer, with Recipes as the first caller. The broader question remains open for other patterns.
 - How should dev, staging, and prod examples be labeled when content differs but templates match?
 - What is the desired accessibility bar for [lightbox galleries](../components/galleries.md)? The mobile-navigation direction is resolved below; its implementation still needs the [accessibility review bar](../accessibility/index.md#review-bar).
 - Should the design system document v1 and v2 [matrix blocks](../components/matrix-blocks.md) separately, or declare v1 blocks deprecated?

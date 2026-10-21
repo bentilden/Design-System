@@ -16,6 +16,8 @@ source:
   - bentilden.com/templates/_places/index.twig
   - bentilden.com/templates/_places/view-navigation.twig
   - bentilden.com/templates/_components/segmented-control.twig
+  - bentilden.com/templates/_components/scroll-separation.twig
+  - bentilden.com-css/src/scroll-separation.js
   - bentilden.com/templates/category.twig
   - bentilden.com-css/src/places.js
 dependencies:
@@ -74,6 +76,9 @@ Phone-review correction, 2026-10-17: after reviewing the deployed control on a p
 Connected-rule trial, 2026-10-17: the owner requested that the side lines meet the selector. The local Places adapter removes its `px-1.5` surround padding, bringing the existing header rule directly to both shell edges. The shared control, softer selection, and dimensions are unchanged. This is a local preview, not a deployment.
 
 Local mobile-spacing adjustment, 2026-10-18: runtime `138898f` adds `pb-2` to the mobile header only when Places views are present. This gives Map, Mosaic, and Posts 8 px more clearance above the segmented control; its connected side rules move with it. The mobile header becomes 88 px high while the signature/Menu positions, 44 px control targets, and 32 px reserve below remain unchanged. Desktop stays at 96 px with its existing 24 px reserve. Sixteen local Chromium before/after layout samples across 390/767/768/1280 px verified the three Places views and an unchanged About page; all nine focused Places navigation checks passed. Frontend `2ec0082` updates the existing mobile geometry expectation. This is committed locally, with no deployment claimed.
+
+
+Local reusable treatment, 2026-10-21: [Scroll Separation](../patterns/scroll-separation.md) adds an opt-in wrapper around this component for sticky navigation with content scrolling beneath it. It owns the matching cover, horizontal rules and two-layer shadow, with a shared observer for conditional visibility. Recipes are its first caller; ordinary controls and Places retain their existing treatment. Use the wrapper rather than copying recipe shadow markup.
 
 ## Desktop Header
 

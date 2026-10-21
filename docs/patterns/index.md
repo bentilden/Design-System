@@ -20,3 +20,6 @@ Patterns describe how components, content model, and foundations combine into re
 The [Homepage](homepage.md) combines curated Photography, Work, and Cooking features with a compact recent-post list. Its content controls and responsive composition are documented separately from full article streams.
 
 [Places](places.md) documents the map and gallery browser, alongside the chronological [Stream Pages](stream-pages.md) view.
+
+
+[Scroll Separation](scroll-separation.md) defines the opt-in divider and shadow treatment for sticky segmented navigation, including its shared implementation and scroll states.

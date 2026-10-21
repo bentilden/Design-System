@@ -75,6 +75,7 @@ nav:
       - Photography: patterns/photography.md
       - Places: patterns/places.md
       - Stream Pages: patterns/stream-pages.md
+      - Scroll Separation: patterns/scroll-separation.md
   - Content Model:
       - content-model/index.md
       - Craft Structure: content-model/craft-structure.md
