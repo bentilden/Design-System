@@ -219,3 +219,9 @@ Scoped dev addition, 2026-10-20: Recipe Step Instructions (`text2`, exposed as `
 - [Galleries](../components/galleries.md) and [Recipe Content](../components/recipe-content.md) describe how media appears in components.
 - [Captioned Image](../components/captioned-image.md) documents the local nested-image placement and its viewer/feed behavior.
 - [Content QA](../operations/content-qa.md) describes checks for missing alt text, relations, and configuration drift.
+
+## Recovered Source Metadata
+
+Scoped production update, 2026-10-24, runtime `bc73a56`: verified recovered camera/edit sources can fill missing public camera/lens, exposure and calendar-date values. Existing current-image values win; the camera source fills gaps before the recovered edit. Recovered GPS fills a missing GPS index entry while the existing Automatic/custom/Location choices continue to decide the public map position. Author-entered fields and working image files remain unchanged. Publication is performed during reviewed recovery, not on visitor requests; private originals remain protected. The public display indexes retain their existing replacement and archive-retention behavior.
+
+The first reviewed 17-photo batch has complete camera/date/settings/GPS in Map and Mosaic on production. The public [Kyoto viewer](https://www.bentilden.com/kyoto-in-fall) was also inspected at desktop size with Details expanded. This is scoped data/behavior verification, not a new responsive interface review. Sources: runtime `modules/photoarchive/RecoveredMetadata.php`, `console/RecoveryController.php`, and `modules/places/{PhotoInfo,EmbeddedGps,LocationResolver}.php`. No template/frontend source or public metadata allowlist changed.
