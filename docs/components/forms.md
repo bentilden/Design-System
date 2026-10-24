@@ -2,7 +2,7 @@
 title: Forms
 type: component
 status: observed
-source_of_truth: observed production code
+source_of_truth: observed dev code
 audience:
   - design
   - development
@@ -12,10 +12,10 @@ source:
   - bentilden.com-css/src/bentilden.css
 classes:
   - rounded-md
-  - border-slate-500
+  - border-neutral-500
   - shadow-xs
-  - focus:border-slate-700
-  - focus:ring-slate-700
+  - focus:border-neutral-700
+  - focus:ring-neutral-700
 dependencies:
   - Tailwind forms plugin
   - Craft contact form plugin
@@ -34,10 +34,10 @@ The contact page is the current form pattern. It is visually adjacent to the art
 
 ## Current Pattern
 
-Contact fields use explicit labels, Slate borders, subtle shadows, and Slate focus rings:
+Contact fields use explicit labels, Neutral borders, subtle shadows, and Neutral focus rings:
 
 ```html
-class="block w-full max-w-lg rounded-md border-slate-500 shadow-xs focus:border-slate-700 focus:ring-slate-700 sm:text-sm"
+class="block w-full max-w-lg rounded-md border-neutral-500 shadow-xs focus:border-neutral-700 focus:ring-neutral-700 sm:text-sm"
 ```
 
 Scoped first-release review, 2026-09-28: field focus rings at website `b1cf61e` follow the global [Focus Appearance](../accessibility/index.md#focus-appearance) rule: Tab or Shift+Tab enables them, and pointer interaction hides them. The existing focus border treatment remains.
@@ -51,8 +51,18 @@ The submit button remains a local Tailwind composition. Future form variants sho
 Form rows use a three-column grid on small screens and above:
 
 ```html
-sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-slate-200 sm:pt-5
+sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-neutral-200 sm:pt-5
 ```
+
+Scoped local review, 2026-10-24: `contact.twig` at runtime `69a3f2b` removes nested `divide-y` containers and gives the Send area its own subtle separator:
+
+```html
+class="mt-8 border-t border-neutral-200 pt-5 sm:mt-5"
+```
+
+Tailwind 4's `divide-y` draws a bottom border on each non-last child. On the former field-group wrapper, that border touched the message textarea's bottom edge. Keeping the divider on the action area provides clear space before the rule and padding after it. Avoid applying automatic sibling dividers to a group that mixes visible form sections with hidden integration inputs.
+
+The corrected layout was measured locally at 320/390/640/768/1423 px: the textarea-to-divider gap is 32 px below `sm` and 20 px from `sm` upward, with no horizontal overflow. The normal field classes and palette above were checked against current local source; the September Slate measurements remain historical. This fix is committed locally and has not been pushed or deployed. Submission, error-state and assistive-technology audits remain separate.
 
 ## Error Contract
 
