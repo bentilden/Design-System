@@ -62,7 +62,7 @@ class="mt-8 border-t border-neutral-200 pt-5 sm:mt-5"
 
 Tailwind 4's `divide-y` draws a bottom border on each non-last child. On the former field-group wrapper, that border touched the message textarea's bottom edge. Keeping the divider on the action area provides clear space before the rule and padding after it. Avoid applying automatic sibling dividers to a group that mixes visible form sections with hidden integration inputs.
 
-The corrected layout was measured locally at 320/390/640/768/1423 px: the textarea-to-divider gap is 32 px below `sm` and 20 px from `sm` upward, with no horizontal overflow. The normal field classes and palette above were checked against current local source; the September Slate measurements remain historical. This fix is committed locally and has not been pushed or deployed. Submission, error-state and assistive-technology audits remain separate.
+The corrected layout was measured locally at 320/390/640/768/1423 px: the textarea-to-divider gap is 32 px below `sm` and 20 px from `sm` upward, with no horizontal overflow. The normal field classes and palette above were checked against current local source; the September Slate measurements remain historical. Production verification, 2026-10-24 at runtime `69a3f2b`: Chromium checks at 320/390/768/1440 px confirm the same spacing, a single 1 px action separator, 20 px padding below it, no field-group bottom border and no overflow or application exceptions. Active font checks pass; the strict generic browser suite still flags the existing Google reCAPTCHA `requestStorageAccess` console warning. No message was submitted. Submission, error-state and assistive-technology audits remain separate.
 
 ## Error Contract
 
