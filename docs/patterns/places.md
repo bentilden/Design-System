@@ -128,7 +128,15 @@ Later hover correction, 2026-09-28: the user explicitly chose Slate 200 for inac
 | `/photography?view=posts` | Full chronological Places post stream. |
 | Paginated category URLs | Posts by default; pagination links retain `view=posts`. |
 
-Posts includes unlocated content and is independent of the map viewport. Alpine switches views through browser history and preserves the camera, selected place/group, expansion state, and each view's page position for return navigation in the same browser session. A fresh navigation to Places begins with the default Map view.
+Posts includes unlocated content and is independent of the map viewport. Alpine switches views through browser history and preserves the camera, selected place/group, expansion state, and each view's page position for return navigation in the same browser session. A fresh navigation to Places without map parameters begins with the default Map view.
+
+### Shareable Map Views
+
+Implemented 2026-10-25: clicking a location pill produces a location-only link. Opening it frames that named Location for the recipient’s screen, retaining existing parent drill-down and leaf-filter behavior. Manual panning or zooming switches to sharing the visible map area; thumbnail selections preserve their current photo filter and area. These map interactions replace the current history entry. Switching Map / Mosaic / Posts still adds an entry, and Back/Forward restores each map entry's URL state. There is no additional sharing control.
+
+Area links carry geographic bounds rather than a device-specific zoom; pill links carry only the stable Location identity, so they follow its current published photos. A different screen shape fits that area and may reveal additional surroundings; an explicit photo selection stays the same. The original requested bounds remain in the URL through initial fitting and layout changes, preventing repeated sharing from progressively expanding the area. New map interaction updates the address to the resulting area. Existing viewer Location links still reveal their target.
+
+Source: frontend `0d8ad65`, `src/places.js` and `src/places-url.js`, with generated runtime JavaScript `450aaa0`. Local Chromium verification passed 20 dedicated URL/history cases, including mobile location framing, pill-versus-thumbnail semantics, manual-pan conversion, reload and Back/Forward. The earlier area-sharing implementation passed 66 overview checks at 320/390/768/1440 px. Production release `20261025221931` serves the matching generated JavaScript and passed all 20 live URL/history browser checks plus server release, route and header QA. Both source/runtime CI runs succeeded. Physical-device and Safari coverage remains open.
 
 ## Map And Gallery
 
