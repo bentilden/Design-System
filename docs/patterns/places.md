@@ -132,6 +132,8 @@ Posts includes unlocated content and is independent of the map viewport. Alpine 
 
 ### Shareable Map Views
 
+Local follow-up, 2026-10-25: the initial overview and **All places** now use the default `/photography` URL, omitting bounds, location/filter IDs and the redundant `view=map`/`overview` parameters. Unrelated parameters and fragments remain intact. Manual map exploration resumes area sharing; older overview links remain readable. This small refinement is committed locally in frontend `b60b36a` / runtime `ea2d02b`; it has not been pushed or deployed.
+
 Implemented 2026-10-25: clicking a location pill produces a location-only link. Opening it frames that named Location for the recipient’s screen, retaining existing parent drill-down and leaf-filter behavior. Manual panning or zooming switches to sharing the visible map area; thumbnail selections preserve their current photo filter and area. These map interactions replace the current history entry. Switching Map / Mosaic / Posts still adds an entry, and Back/Forward restores each map entry's URL state. There is no additional sharing control.
 
 Area links carry geographic bounds rather than a device-specific zoom; pill links carry only the stable Location identity, so they follow its current published photos. A different screen shape fits that area and may reveal additional surroundings; an explicit photo selection stays the same. The original requested bounds remain in the URL through initial fitting and layout changes, preventing repeated sharing from progressively expanding the area. New map interaction updates the address to the resulting area. Existing viewer Location links still reveal their target.
