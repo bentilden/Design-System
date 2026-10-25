@@ -58,7 +58,7 @@ Captioned image inserts one editorial image into [Story Text](matrix-blocks.md#e
 
 Editor cards derive their title and thumbnail from the asset. Editor uploads default to `rich-text/story/`; the native toolbar library modal uploads into its selected Content Images folder. The full Content Images library remains available. Native asset Alternative Text remains the accessibility source, with the existing asset-title/file-name fallback. Alt text never becomes a visible caption.
 
-Caption and credit are placement metadata: editing them does not alter the asset or another use of it. The two hide switches work independently in article, viewer, and RSS output. Hiding both omits `figcaption` while retaining the image and native alt text. Shared asset edits still affect every use. There are no placement crop, alignment, arbitrary width, or location controls.
+Caption and credit are placement metadata: editing them does not alter the asset or another use of it. The two hide switches work independently in article, viewer, and RSS output. Hiding both text fields retains Date taken independently when available; `figcaption` is omitted only when caption, date and details are all absent. The image and native alt text remain. Shared asset edits still affect every use. There are no placement crop, alignment, arbitrary width, or location controls.
 
 ## Rendering Contract
 
@@ -98,3 +98,11 @@ The four-route browser/font run loaded all 48 declared Helvetica Now faces per r
 - [Article Content](article-content.md) supplies the surrounding prose and media presentation.
 - [Galleries](galleries.md#unified-photo-viewer) documents the shared viewer.
 - [Places](../patterns/places.md#which-photos-appear) documents collection eligibility and location behavior.
+
+
+## Local Date Taken Refinement
+
+Scoped local update, 2026-10-25, uncommitted: article and feed captions reuse `_components/photo-caption.twig`. Caption is followed by a smaller line containing resolved Date taken and remaining credit/details, separated by a middle dot when both exist. Dates use the same native asset fields and metadata fallback as the viewer, preserving exact, month/year, year-only or approximate precision. Approximate wording has no fabricated datetime. Placement hide-caption and hide-credit continue to suppress only their respective text; they do not hide Date taken. With both text fields hidden, a date-only figcaption remains if a date is available. No caption wrapper appears when all three are absent. Existing override, escaping and authored line-break rules are unchanged. The existing 48 content-image checks and 14 focused caption checks pass locally; production is unchanged.
+
+
+Production confirmation, 2026-10-25: the Date taken refinement is deployed in runtime `12176aa` with frontend `97c89cf`. Native production configuration and 12 live browser cases at 390px/1440px passed, including date precision, agreement with viewer information, caption wrapping and unchanged dense grids. This supersedes the local-only deployment status above.
