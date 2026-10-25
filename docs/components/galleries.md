@@ -15,6 +15,9 @@ source:
   - bentilden.com/templates/_components/photo-viewer-item.twig
   - bentilden.com/templates/_components/photo-viewer.twig
   - bentilden.com/modules/places/PhotoViewerMedia.php
+  - bentilden.com/modules/photoarchive/MetadataSources.php
+  - bentilden.com/modules/places/PhotoInfo.php
+  - bentilden.com/modules/places/EmbeddedGps.php
   - bentilden.com-css/src/photo-viewer.js
   - bentilden.com-css/src/bentilden.js
   - bentilden.com-css/src/bentilden.css
@@ -92,6 +95,8 @@ Local follow-up verification, 2026-09-28: all 18 shared-viewer Chromium checks p
 Editorial captions and details come only from their real asset fields, as plain text. The Photo info strip below adds a separate allowlisted technical display index. Alt text supplies the image description; it is never used as a visible caption fallback. No camera metadata is synthesized from these free-text fields.
 
 Every entry point requests the same `largeImage` rendition, currently 1800 px wide, and its actual transformed dimensions. Existing optimized media remains a fallback. Missing large renditions are generated only when requested by the viewer; rendering a collection does not synchronously process its full archive or enqueue a transform for every photo. Original dimensions remain available for Mosaic layout.
+
+Metadata-source follow-up, 2026-10-25 (runtime `1df0d78`): verified camera-file metadata can fill missing Details values without preserving the source image on the website. Existing valid metadata and authored dates/locations win. The Details layout, controls and public field allowlist are unchanged; bulk queries read the stored metadata, and visitor requests never download or parse the local camera/RAW files. Source inspection: `modules/photoarchive/MetadataSources.php`, `modules/places/PhotoInfo.php` and `EmbeddedGps.php`.
 
 ## Photo Info Caption Strip
 
