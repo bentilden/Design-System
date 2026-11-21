@@ -51,7 +51,7 @@ All icons are decorative SVGs with `aria-hidden="true"` and `focusable="false"`.
 | Mosaic layout choices | `grid-2x2`, `layout-dashboard` |
 | Photo viewer | `minus`, `plus`, `x`, `chevron-left`, `chevron-right`, `chevron-down`, `arrow-right` |
 | Navigation and article topic identities | CMS-selected `identityIcon`: initially `house`, `map`, `cooking-pot`, `pen-tool`, and `notebook-pen` |
-| Recipe metadata and actions | `utensils`, `clock-3`, `slash`, `heart-pulse`, `printer`; the facts box uses one `chef-hat` for Difficulty |
+| Recipe metadata and actions | `soup` for Servings, `clock-3`, `slash`, `heart-pulse`, `printer`; the facts box uses one `chef-hat` for Difficulty |
 | Nutrition dialog / story-to-recipe link | `x`, `cooking-pot` |
 | Homepage browse links, feature actions, recent rows | `arrow-right` |
 | Story table scroll hint | `arrow-right` |
