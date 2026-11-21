@@ -54,12 +54,14 @@ The [shared segmented control](navigation.md#reusable-segmented-control) selects
 | Section | Availability | Native content |
 | --- | --- | --- |
 | Overview | Only when authored | Existing optional `story` blocks, labeled Overview in the Recipe editor. |
-| Ingredients | Always | Ordered `ingredients` rows with quantity, unit and ingredient text. |
+| Ingredients | Always | Ordered `ingredients` rows with quantity, unit and ingredient text. Optional group headings label related ingredients. |
 | Steps | Always | Ordered `steps`, optional headings, linked ingredients, instructions and inline photos. |
 | Notes | Only when authored | `notes`, headed Notes & tips in the panel. |
 | Nutrition | At least one authored value | Per-serving nutrition fields; authored zero values remain visible. |
 
 Ingredients is the default. Keep short introductions in the shared header; use Overview for optional background, context and technique. A listing renders a teaser linking to the unified recipe rather than embedding its section controls.
+
+Ingredient grouping shipped on 2026-11-20 in runtime `e34faba`. A heading spans the three measurement-table columns and labels the ingredients that follow it. Headings use semibold Neutral 600 at 16/28 px on phones and 18/32 px from `md`. Heading rows use the same Neutral 200 bottom divider, vertical padding, and line height as ingredient rows. The last ingredient in a group omits its bottom divider, leaving a clear start for the next heading. Ingredient rows retain their column alignment across groups. `templates/_entry-content/recipe/ingredients.twig` uses native table row groups and row-group headings.
 
 Cooking-list introduction refinement, 2026-10-20: the teaser renders native `entry.introduction` inside a block wrapper, allowing authored rich-text paragraphs to inherit their intended styling instead of being moved outside an invalid nested paragraph. It uses normal-weight Neutral 700 text at 16/28 px on phones and 18/32 px from `md`, with 12 px between successive paragraphs and no extra first/last child margins. This matches the recipe introduction’s reading rhythm; teaser titles, dates, image layout and View recipe link retain their existing treatment. Evidence: local uncommitted `teaser.twig` and generated CSS.
 
@@ -104,6 +106,8 @@ The approved mobile facts layout, released on 2026-11-20 in runtime `057a213`, u
 Desktop baseline refinement, released on 2026-11-20 in runtime `b4c9a26`. When Difficulty has its own desktop column alongside servings or a time, its 24 px value shares the first text baseline of the 36 px numerals. The labels stay aligned above their values. Chromium verified the shared baseline in six two- and three-column cases, including a wrapping Difficulty value.
 
 On phones, the recipe introduction is followed by the hero photo when present, then the facts and **Print recipe**. From `md`, the title and introduction sit above the facts in the left column and the hero sits on the right. The grid ends 32 px before the recipe navigation on phones and 40 px from `md`. The control-to-heading gap remains 32/40 px. The shared control's own styling and target sizes stay unchanged. The recipe navigation has no full-height fill or backdrop blur; its upper-half cover matches the page canvas as described below. Two decorative 1 px Neutral 300 rules meet the centered control and extend to the article container's left/right content edges. The row retains its existing sticky position and print hiding. When all five segments are present, recipe-only label padding tightens below 400 px (1 px below 375 px, 6 px from 375–399 px) so both rules and the control fit within the article gutter; text remains 12 px and phone targets remain 44 px high. Recipes with fewer segments keep the shared component's normal compact padding.
+
+The photo-free recipe layout shipped on 2026-11-20 in runtime `e34faba`. When `mainImage` is empty, the title, date, introduction, facts, and **Print recipe** share a centered column from `md`, with the same 42 rem maximum width as the recipe body. The content stays left-aligned inside the column. Chromium verified both layouts at seven viewport widths.
 
 Local scroll correction, 2026-10-21, uncommitted above runtime `f47d90c` and frontend `de9e961`: a CSS cover fills the sticky navigation's upper half, ending at the horizontal rules' midpoint through the segmented control. Content scrolls behind this cover, while the complete control and rules remain above it. Recipe articles now use a uniform Neutral 50 canvas, matching the cover and site header, in place of the inherited white-to-Neutral-100 gradient. This avoids a visibly different navigation band. The lower half remains transparent, and reading content has its own lower stacking context so embedded elements cannot paint above the cover. Covered content cannot intercept clicks; the control and content below the rule retain their pointer targets.
 
@@ -174,7 +178,7 @@ The header has 20 px below it. Local refinement, 2026-10-21, uncommitted above r
 
 Process photos remain full-column and appear in authored order between paragraphs, with 24 px around a figure. An 8 px image-to-caption gap, 14 px/20 px captions and 12 px/20 px credits distinguish image metadata from the method. Credit follows caption by 4 px. Native Captioned image placements expose `data-image-caption` and `data-image-credit` for this scoped treatment; Overview now shares this caption/credit scale; other article captions retain their existing treatment. The legacy trailing Step image uses the same photo spacing and metadata scale. Image links and the shared viewer retain their existing behavior.
 
-The Recipe's existing required title, summary, Area of Interest, introduction and main image remain. At least one ingredient and one step are required. Servings, times, Overview, notes and nutrition are optional. Use the blank unit for unitless counts or quantity-free serving suggestions.
+Recipe requires a title, summary, Area of Interest, introduction, at least one ingredient, and at least one step. Main Image is optional. Servings, times, Overview, notes and nutrition are optional. Use the blank unit for unitless counts or quantity-free serving suggestions.
 
 ## Notes
 
