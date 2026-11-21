@@ -47,12 +47,14 @@ The [shared segmented control](navigation.md#reusable-segmented-control) selects
 | Section | Availability | Native content |
 | --- | --- | --- |
 | Overview | Only when authored | Existing optional `story` blocks, labeled Overview in the Recipe editor. |
-| Ingredients | Always | Ordered `ingredients` rows with quantity, unit and ingredient text. |
+| Ingredients | Always | Ordered `ingredients` rows with quantity, unit, ingredient text, and optional group headings. |
 | Steps | Always | Ordered `steps`, optional headings, linked ingredients, instructions and inline photos. |
 | Notes | Only when authored | `notes`, headed Notes & tips in the panel. |
 | Nutrition | At least one authored value | Per-serving nutrition fields; authored zero values remain visible. |
 
 Ingredients is the default. Keep short introductions in the shared header; use Overview for optional background, context and technique. A listing renders a teaser linking to the unified recipe rather than embedding its section controls.
+
+Ingredient grouping shipped on 2026-11-20 in runtime `e34faba`. `templates/_entry-content/recipe/ingredients.twig` uses native table row groups. A heading spans the three measurement columns and labels the ingredients that follow it. Headings use semibold Neutral 600 at 16/28 px on phones and 18/32 px from `md`. They share the ingredient rows’ padding and line height and have a Neutral 200 bottom divider. The last ingredient of each group omits its divider, giving the next heading a clear top edge.
 
 Cooking-list introduction refinement, 2026-10-20: the teaser renders native `entry.introduction` inside a block wrapper, allowing authored rich-text paragraphs to inherit their intended styling instead of being moved outside an invalid nested paragraph. It uses normal-weight Neutral 700 text at 16/28 px on phones and 18/32 px from `md`, with 12 px between successive paragraphs and no extra first/last child margins. This matches the recipe introduction’s reading rhythm; teaser titles, dates, image layout and View recipe link retain their existing treatment. Evidence: local uncommitted `teaser.twig` and generated CSS.
 
@@ -69,6 +71,8 @@ Responsive facts, 2026-11-20, runtime `057a213`. Below 768 px the facts inset us
 Desktop baseline, runtime `b4c9a26`. When Difficulty has its own desktop column alongside servings or a time, its 24 px value shares the first text baseline of the 36 px numerals. The labels align above their values. Chromium checked the baseline in six two- and three-column cases.
 
 On phones, the introduction is followed by the hero photo when present, then the facts and **Print recipe**. From `md`, the facts sit below the introduction in the left column and the hero sits on the right. The intro/photo grid has 32 px below it before the recipe navigation row on phones and 40 px from `md`. The control-to-heading gap remains 32/40 px. The shared control's own styling and target sizes stay unchanged. Following the October 20 control correction, the recipe navigation row has no separate fill or backdrop blur, letting the article gradient show through. Two decorative 1 px Neutral 300 rules meet the centered control and extend to the article container's left/right content edges. The row retains its existing sticky position and print hiding. When all five segments are present, recipe-only label padding tightens below 400 px (1 px below 375 px, 6 px from 375–399 px) so both rules and the control fit within the article gutter; text remains 12 px and phone targets remain 44 px high. Recipes with fewer segments keep the shared component's normal compact padding.
+
+The photo-free layout shipped on 2026-11-20 in runtime `e34faba`. When `mainImage` is empty, `templates/_entry-content/recipe/page.twig` places the title, date, introduction, facts, and **Print recipe** in a centered column from `md`. It shares the recipe body’s 42 rem maximum width and keeps text left-aligned. Local Chromium checks covered both layouts at seven widths from 320 to 1440 px.
 
 Recipe titles use 36 px on phones, 40 px at `md` and 48 px at `lg`, with smaller date text and a 24 px gap before the introduction. Tablet intro/image columns share the available width equally; the existing five/seven split starts at `lg`. Other entry headers retain their defaults through optional `titleClass` and `dateClass` arguments.
 
@@ -123,7 +127,7 @@ The header has 20 px below it. Optional ingredient references use 14 px/24 px ty
 
 Process photos remain full-column and appear in authored order between paragraphs, with 24 px around a figure. An 8 px image-to-caption gap, 14 px/20 px captions and 12 px/20 px credits distinguish image metadata from the method. Credit follows caption by 4 px. Native Captioned image placements expose `data-image-caption` and `data-image-credit` for this scoped treatment; Overview now shares this caption/credit scale; other article captions retain their existing treatment. The legacy trailing Step image uses the same photo spacing and metadata scale. Image links and the shared viewer retain their existing behavior.
 
-The Recipe's existing required title, summary, Area of Interest, introduction and main image remain. At least one ingredient and one step are required. Servings, times, Overview, notes and nutrition are optional. Use the blank unit for unitless counts or quantity-free serving suggestions.
+Recipe requires a title, summary, Area of Interest, introduction, at least one ingredient, and at least one step. Main Image, servings, times, Overview, notes, and nutrition are optional. Use the blank unit for unitless counts or quantity-free serving suggestions.
 
 ## Notes
 
