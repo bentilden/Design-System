@@ -10,6 +10,7 @@ audience:
 source:
   - bentilden.com/templates/_entry-content/default.twig
   - bentilden.com/templates/_components/entry-header.twig
+  - bentilden.com/templates/_components/posted-date.twig
   - bentilden.com/scripts/post-header-layout-qa.php
   - bentilden.com/templates/dev-test/topic-layouts.twig
   - bentilden.com-css/scripts/qa-topic-layouts-browser.mjs
@@ -73,6 +74,10 @@ The shared `_components/entry-header.twig` component defaults to centering the t
 Listing refinement, 2026-11-22, runtime `d05d26c`. Topic streams and Archive use the recipe detail page’s compact posting date in `_components/entry-header.twig`. The body face is 14/20 px in Neutral 500, with 16 px above and 24 px below. The text reads “Posted” followed by the date in a semantic `time` element. Recipe teasers and detail pages include a “Recipe” eyebrow above the title. [Recipe content](recipe-content.md#current-interface)
 
 Released 2026-11-22 in runtime `897d4c3`. The shared header applies the recipe detail scale to full post titles on detail pages and in topic streams and Archive. Display Black 900 is 36 px below 768 px, 40 px from 768 px, and 48 px from 1024 px. Line-height is 1.05 at each size. `overflow-wrap: anywhere` lets a long word break when it exceeds its column.
+
+Local date trial, 2026-11-22, committed in runtime `ef7ec48`: `_components/posted-date.twig` now places **Posted** on its own line in Neutral 600/400 weight, followed by the date in Neutral 950/500 weight with a 2 px gap. Preserve the US `M d, Y` display format and semantic ISO `datetime`. Callers retain their margins, alignment and 16/24 px body or 14/20 px compact scale. The shared entry header and Work detail headers use this partial; the earlier single-line/uniform-color descriptions above are historical. This is a local trial, not a deployment. Build/content/asset/font/eight-route browser checks and the existing eight-layout header fixture at 320/390/768/1440 px passed; interactive checks covered Work, Story, Gallery, recipe detail and Cooking listing at phone/desktop sizes.
+
+The entry’s `summary` field supplies preview/feed/SEO descriptions; omit it from the actual entry page body. Native Story/Introduction fields supply authored body text. Local Work renderers were corrected to follow this boundary; card/homepage/RSS/SEO uses remain. This rule concerns the field’s role, not identical words that an author may intentionally include in body content.
 
 Title and date placement follows the entry template and its native settings.
 
