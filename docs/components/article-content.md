@@ -68,7 +68,11 @@ Local refinement, 2026-10-18: the owner restored the previous title/date present
 
 `_components/entry-header.twig` supplies a Display Black 900 title at 48 px with line-height 1 and the former inherited letter spacing, followed by the owner-edited normal body date (`Posted` plus `M d, Y`) in Neutral 600 with 20 px above and 40 px below. The later manual edits supersede the restored Micro date styling, while placement remains entry-specific. It keeps a semantic `time` and keyboard focus treatment. The earlier 60/72 px title sizing, tightened tracking, and normal-case 16/18 px date experiment are superseded. No reading time is added.
 
-Every post title and date is centered below 768 px through the shared `_components/entry-header.twig` component. At `md` and above, `text-align: inherit` preserves each template’s existing alignment. This applies to standalone posts, archives, category/Places streams, and the layout fixture; body text retains its layout’s alignment. Placement belongs to the entry template and its native settings:
+The shared `_components/entry-header.twig` component defaults to centering the title and date below 768 px. At `md` and above, `text-align: inherit` follows each template’s alignment. Photo-free Cooking teasers pass a left-alignment override for their centered column. Body text follows its own layout.
+
+Listing refinement, 2026-11-22, runtime `d05d26c`. Topic streams and Archive use the recipe detail page’s compact posting date in `_components/entry-header.twig`. The body face is 14/20 px in Neutral 500, with 16 px above and 24 px below. The text reads “Posted” followed by the date in a semantic `time` element. Recipe teasers and detail pages include a “Recipe” eyebrow above the title. [Recipe content](recipe-content.md#current-interface)
+
+Title and date placement follows the entry template and its native settings.
 
 | Entry view | Title/date placement |
 | --- | --- |
