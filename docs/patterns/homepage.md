@@ -46,7 +46,7 @@ Recently Added selects 1–12 published posts, newest first, with optional area 
 | Photography fallback | Other counts, missing images, or longer copy use a natural grid that retains every feature. Rich copy gets one column below `sm`; short titles can use two. |
 | Work | The paired layout uses a large lead and compact image/text rows for later imaged projects. Artwork keeps its full proportions. |
 | Cooking | Choose a lead feature with resource links or equal cards. Missing images leave text content without placeholder media. |
-| Recently Added | Compact rows with optional dates. The archive browse link appears after the list below `md` and beside the heading from `md`. |
+| Recently Added | Compact rows with optional dates at 14/20 px in Neutral 500. The archive browse link appears after the list below `md` and beside the heading from `md`. |
 
 Mobile follows the authored section order. Pairing never moves sections past intervening content. Longer photo copy switches to natural height instead of truncating text to preserve the mosaic.
 
