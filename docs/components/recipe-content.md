@@ -9,6 +9,7 @@ audience:
   - content
 source:
   - bentilden.com/templates/_entry-content/recipe/page.twig
+  - bentilden.com/templates/_entry-content/recipe/print.twig
   - bentilden.com/templates/_entry-content/recipe/teaser.twig
   - bentilden.com/templates/_entry-content/recipe/quantity.twig
   - bentilden.com/templates/_components/segmented-control.twig
@@ -123,7 +124,7 @@ The extraction preserves navigation/control/content bounds at six widths and pro
 
 Local commit handoff, 2026-10-21: runtime `b073772` and frontend `2f80ae5` capture the step-table/Nutrition refinements and shared Scroll Separation pattern. Recipe-only generated assets were built against the preceding published frontend baseline to exclude independent Places work. Existing recipe and general root/story/photo browser checks pass with those assets. These commits are local and have not been deployed.
 
-Recipe titles use 36 px on phones, 40 px at `md` and 48 px at `lg`, with smaller date text and a 24 px gap before the introduction. Tablet intro/image columns share the available width equally; the existing five/seven split starts at `lg`. The shared header uses `titleClass` for the detail title scale and `eyebrow` for the “Recipe” label in detail and listing views. Recipe dates use the same compact treatment as other listings. [Entry header](article-content.md#entry-header)
+Recipe detail and listing titles use the shared full-post title scale of 36 px on phones, 40 px at `md`, and 48 px at `lg`, with 1.05 line-height and a long-word wrapping fallback. The shared header supplies the “Recipe” eyebrow and compact date. The detail introduction follows the date by 24 px. Tablet intro/image columns share the available width equally, with a five/seven split from `lg`. [Entry header](article-content.md#entry-header)
 
 The segmented control and the content column beneath it are horizontally centered at every width, while text remains left-aligned. All panels, including Nutrition, share a 42 rem maximum reading width. Intro, Overview, Steps and Notes use a consistent 16 px/28 px reading scale on phones and 18 px/32 px from `md`. Section headings are 24/28 px; optional step headings are 22/24 px. Following the owner's latest October 20 refinement, recipe `h2` and `h3` headings both use Bold (700), superseding the earlier h2 800 treatment. This applies to panel titles and authored rich-text headings in Overview, Notes and Step instructions, preserving their existing HTML levels. Step action headings remain `h3` at 700. Nutrition uses the label’s internal Nutrition facts title as its `h2` at 700, without a duplicate heading above the label. These explicit weights replace the display utility's 950 default. The main recipe title retains its existing treatment. The first step starts without an extra dividing rule; subsequent steps retain their separators. Existing authored Overview block types and embedded photos remain supported.
 
@@ -133,7 +134,7 @@ Evidence: uncommitted Twig and generated CSS, native dev rendering at 390/768/14
 
 Each segment is an ordinary link with `recipeView` and a content anchor. The server renders the requested section, so direct links and navigation work without JavaScript. Alpine switches panels in place, updates `aria-current`, preserves other URL parameters, and supports browser Back/Forward. Modified clicks retain normal browser behavior. These are navigation links, not an ARIA tab widget.
 
-Panels have associated headings. Hidden panels are excluded from normal screen interaction. On an in-place switch, the control remains usable and the reader's previous position within a section is retained where possible. Every section becomes visible for printing, including when JavaScript is disabled.
+Panels have associated headings. Hidden panels are excluded from normal screen interaction. On an in-place switch, the control remains usable and the reader's previous position within a section is retained where possible. The print layout works independently of the selected section and is available through browser printing with JavaScript disabled.
 
 ## Overview
 
@@ -212,7 +213,9 @@ Scoped October 21 verification: three recipes across 320/375/390/640/768/1440 px
 
 The introduction facts box retains servings and prep/active/total times. Print recipe is a separate action beneath the box, outside the facts definition list and border. Facts remain visible when printing; the action is hidden. Without JavaScript the authored facts still render, while browser printing remains available through the browser command. Nutrition is reached through the segmented control. Main images use the shared responsive-image component and priority loading; step images remain lazy. Captions and credits stay with their images.
 
-Print reveals all authored sections, hides section navigation and action controls, and omits the hero and process photos. A complete print typography/pagination audit remains outstanding. Browser printing remains available without JavaScript; the enhanced Print button appears after Alpine initializes.
+Released 2026-11-22 in runtime `897d4c3`. The recipe print template uses a compact facts line under the title, grouped ingredient checkboxes and notes in the left column, and 11 pt numbered steps and per-serving nutrition in the wider right column. Ingredient quantities and units use regular weight. It retains per-step ingredient references and prints authored overview headings, body text, and callouts after the cooking content. The print composition omits the site navigation, footer, introduction, and photography.
+
+Paper size and margins follow the browser's print settings. Content flows to additional pages at the same type sizes. Chromium Letter proofs with half-inch margins fit the black-eyed pea soup on one page and the longer pork braise on two pages. The print button appears after Alpine initializes.
 
 ## Quantity Formatting
 
