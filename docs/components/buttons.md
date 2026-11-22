@@ -61,6 +61,14 @@ Scoped first-release review, 2026-09-28: the global layout at website `b1cf61e` 
 - Preserve visible focus styling.
 - Do not introduce decorative color variants until there is a repeated content need.
 
+## Work Hide Text Switch
+
+Scoped review, 2026-11-22: all Work detail pages use a **Hide text** switch with an exposed checked state and a 44 px minimum target. Off shows explanatory text; on shows images only, including hiding image captions. The switch adopts the segmented controls’ neutral surfaces, border and rounded corners. Content fades out, swaps layout at zero opacity, then fades in; reduced motion changes immediately. On mobile the switch shares the posted-date row and aligns with the right content edge. The same alignment works on wider screens.
+
+Explicit on/off choices persist in browser storage. The saved layout restores without a transition, with text visible for a new visitor. If storage is unavailable, the control remains usable for that visit. The preference belongs to the current browser and site origin and is shared across Work entries. Native images in mixed Story content remain visible in both modes.
+
+Source: frontend `38e4780`, `src/work-project-view.js`; runtime `686aaff`, `_work/project.twig`, `_work/controls/text-switch.twig`, `_work/media.twig` and generated assets. The Brand refresh-only template is superseded by this shared renderer. Fourteen controller tests and 81 native Work checks pass; local 320/390/1280 px review confirmed metadata alignment and shared preference. Production verification confirmed all three Work pages, both saved choices across reloads and between projects, and the mobile right-edge/date alignment at 390 px. Desktop Brand refresh remains side by side at 1280 px. Public CSS/JavaScript hashes match the committed build; four-route asset/font and route/header checks passed. Runtime CI/deployment trigger [45080920748](https://github.com/bentilden/bentilden.com/actions/runs/45080920748) succeeded. This does not establish physical-device, other-engine or screen-reader coverage.
+
 ## Related Pages
 
 - [Matrix Blocks](matrix-blocks.md) describes authored button content.
