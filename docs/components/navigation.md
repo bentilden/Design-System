@@ -37,7 +37,7 @@ Global navigation pairs a compact signature with ordinary links and stable heade
 
 ## Control Target Follow-Up
 
-Local only, 2026-11-23, runtime `ae3f1a2`: pagination puts padding on each native link, with 44 px targets, visible focus, semantic current-page output and a wrapping list. Its existing destinations, page range and Places `view=posts` parameters remain. Mobile footer destinations/RSS also gain 44 px targets with separation; desktop footer spacing remains compact. See [control sizes and alignment](buttons.md#control-sizes-and-alignment).
+Deployed 2026-11-23, runtime `ae3f1a2`: pagination puts padding on each native link, with 44 px targets, visible focus, semantic current-page output and a wrapping list. Its existing destinations, page range and Places `view=posts` parameters remain. Mobile footer destinations/RSS also gain 44 px targets with separation; desktop footer spacing remains compact. See [control sizes and alignment](buttons.md#control-sizes-and-alignment).
 
 The expanded **no-JavaScript mobile header scrolls with the page**, so it cannot cover pagination or leave too little space for a full target in landscape. Alpine retains sticky positioning for the enhanced mobile menu; desktop remains sticky in either mode. The existing 30 navigation cases pass, and the native Places pagination case passes at 390 × 844, 667 × 375 and 1280 × 900. No enhanced navigation destinations or menu behavior changed.
 

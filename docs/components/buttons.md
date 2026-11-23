@@ -26,7 +26,7 @@ Buttons are compact, quiet, and utility-driven.
 
 ## Control Sizes And Alignment
 
-Applied locally, 2026-11-23: runtime `ae3f1a2`, frontend verification `cf522fd`. These changes are not deployed.
+Deployed 2026-11-23: runtime `ae3f1a2`, frontend `cf522fd`. [Production workflow](https://github.com/bentilden/bentilden.com/actions/runs/45265205053).
 
 - Use at least 44 × 44 px targets for standalone mobile controls and navigation below 768 px. A smaller visible track, chip or icon can sit inside that target. Do not extend hit areas into neighboring controls or instructional text.
 - Align visible surfaces and labels, rather than invisible target edges. Peer controls share a center; the Work switch deliberately aligns its visible bottom with the posted date on mobile and centers with it on desktop.
@@ -37,6 +37,8 @@ Applied locally, 2026-11-23: runtime `ae3f1a2`, frontend verification `cf522fd`.
 The same pass aligns Mosaic's Size label/rail with the layout labels while retaining its 2 px rail, 12 px thumb and count. Mobile Contact inputs and Send, footer destinations/RSS, viewer View post and Places chip/filter/range controls now follow the mobile target default. Keyboard semantics and native links remain intact. Focus outlines use Neutral 700 on light surfaces; the dark footer uses a light Neutral 300 outline. See [Navigation](navigation.md#control-target-follow-up), [Places](../patterns/places.md#control-target-follow-up) and [Forms](forms.md#control-target-follow-up).
 
 Verification: 22 focused local Chromium cases at 320/390/768/1280 px plus a short 667 × 375 no-JavaScript case, 30 navigation cases, 23 Mosaic cases and 23 viewer cases passed. The Places run passed 22 cases; its remaining native-pagination case passed after the mobile fallback header correction. Local release checks passed content, assets, build, fonts and four routes. These are emulated/browser checks, not physical-device, Safari or screen-reader coverage.
+
+Production verification, 2026-11-23: all 22 target/alignment, 10 hover/touch/reduced-motion and two segmented-control cases passed on the public site after activation. Public CSS and JavaScript match the release build; route/header smoke passed. Mobile Mosaic was visually reviewed, and the temporary viewport was reset. This supplements the local checks above; the same physical-device and assistive-technology limits apply.
 
 ## Primary Button
 

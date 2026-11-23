@@ -47,7 +47,7 @@ Desktop zoom follow-up, 2026-09-28: the zoom treatment below was saved in websit
 
 ## Viewer Control Target Follow-Up
 
-Local only, 2026-11-23, runtime `ae3f1a2`: View post now has a 44 px mobile target. Desktop Fit matches the other 44 px zoom controls; the symmetric header side columns grow by 4 px to accommodate it without overlap. Existing title truncation, metadata, Close, image fitting and focus behavior remain. All 23 viewer cases and the focused 320/390/768/1280 px header-target checks pass. See [control sizes and alignment](buttons.md#control-sizes-and-alignment).
+Deployed 2026-11-23, runtime `ae3f1a2`: View post now has a 44 px mobile target. Desktop Fit matches the other 44 px zoom controls; the symmetric header side columns grow by 4 px to accommodate it without overlap. Existing title truncation, metadata, Close, image fitting and focus behavior remain. All 23 viewer cases and the focused 320/390/768/1280 px header-target checks pass. See [control sizes and alignment](buttons.md#control-sizes-and-alignment).
 
 ## Image Hover Feedback
 

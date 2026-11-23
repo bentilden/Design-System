@@ -48,7 +48,7 @@ Mosaic production release, 2026-09-28: website `acacd8adf66f2651b086411d63588b7a
 
 ## Control Target Follow-Up
 
-Local only, 2026-11-23, runtime `ae3f1a2`: chip and filter controls now have 44 px mobile targets around their existing 30/32 px surfaces, with 32 px desktop targets from 768 px. Their target edges remain reachable without growing the desktop shared 56 px row. Narrow filter summaries can grow for wrapped copy, preventing hit-area overlap with instructions. Mosaic's range becomes 44 px on mobile and stays 32 px on desktop; its visible rail aligns with Square/Justified labels, and the count remains below it on narrow screens. Existing thumb, rail, label typography, layout semantics and native keyboard input are retained. This supersedes the earlier 32 px mobile slider/filter observations below. See the shared [control sizing rule and verification](../components/buttons.md#control-sizes-and-alignment).
+Deployed 2026-11-23, runtime `ae3f1a2`: chip and filter controls now have 44 px mobile targets around their existing 30/32 px surfaces, with 32 px desktop targets from 768 px. Their target edges remain reachable without growing the desktop shared 56 px row. Narrow filter summaries can grow for wrapped copy, preventing hit-area overlap with instructions. Mosaic's range becomes 44 px on mobile and stays 32 px on desktop; its visible rail aligns with Square/Justified labels, and the count remains below it on narrow screens. Existing thumb, rail, label typography, layout semantics and native keyboard input are retained. This supersedes the earlier 32 px mobile slider/filter observations below. See the shared [control sizing rule and verification](../components/buttons.md#control-sizes-and-alignment).
 
 ## Animated Thumbnail Stacks
 

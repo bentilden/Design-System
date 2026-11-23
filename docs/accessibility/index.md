@@ -48,14 +48,16 @@ Scoped first-release review, 2026-09-28: `bentilden.com/templates/_layout.twig` 
 
 ## Interaction Feedback
 
-Scoped consistency pass, 2026-11-23, **local only**: frontend `d9323ec` removes the unconditional hover override, restoring Tailwind's native `(hover: hover)` gate for ordinary hover utilities. Runtime `66c5709` retains the stricter `(hover: hover) and (pointer: fine)` gate for Work/Gallery/Featured Image borders and shadows. These commits are separate from the deployed typography release.
+Deployed consistency pass, 2026-11-23, frontend `cf522fd` (including `d9323ec`) removes the unconditional hover override, restoring Tailwind's native `(hover: hover)` gate for ordinary hover utilities. Runtime `ae3f1a2` (including `66c5709`) retains the stricter `(hover: hover) and (pointer: fine)` gate for Work/Gallery/Featured Image borders and shadows. This is the interaction release following the earlier typography deployment.
 
 - Hover is optional feedback on a hover-capable device. Touch activation must not leave a decorative hover treatment behind.
 - Keyboard focus remains visible independently of hover.
 - Current, checked, pressed and expanded states follow their semantic attributes; hover must not obscure the durable selected state. Shared segments keep Neutral 200 selection distinct from Neutral 100 inactive hover.
 - Reduced-motion preferences suppress the shared segment and gallery/featured-image transitions; Places thumbnail zoom runs only on motion-safe hover. Work retains its existing reduced-motion handling.
 
-Ten focused Chromium cases passed locally across mouse, actual touch taps, keyboard focus, saved Work preference, ordinary/reduced motion, gallery feedback and Places thumbnail scaling. Two existing segment cases at 320/390 px additionally passed selection, hover, keyboard and full-target checks. Local content/asset/build/font/five-route release checks passed. This is not physical-device, Safari, or screen-reader evidence. The subsequent local [control-target pass](../components/buttons.md#control-sizes-and-alignment) applies mobile sizing and visible alignment while retaining explicit compact desktop roles. Intentional shape and shadow differences remain separate.
+Ten focused Chromium cases passed locally across mouse, actual touch taps, keyboard focus, saved Work preference, ordinary/reduced motion, gallery feedback and Places thumbnail scaling. Two existing segment cases at 320/390 px additionally passed selection, hover, keyboard and full-target checks. Local content/asset/build/font/five-route release checks passed. This is not physical-device, Safari, or screen-reader evidence. The subsequently deployed [control-target pass](../components/buttons.md#control-sizes-and-alignment) applies mobile sizing and visible alignment while retaining explicit compact desktop roles. Intentional shape and shadow differences remain separate.
+
+Production follow-up, 2026-11-23: the same ten interaction cases and both segment cases pass live in runtime `ae3f1a2`, together with the 22 control-target cases. The served code assets match the committed release. See [control sizes and alignment](../components/buttons.md#control-sizes-and-alignment) for the release evidence and limits.
 
 ## Color And Contrast
 
