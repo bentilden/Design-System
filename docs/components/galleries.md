@@ -45,6 +45,10 @@ Scope: reviewed on 2026-09-28 in website `fcfbf500678f6c156155234846eac75e3c1bb2
 
 Desktop zoom follow-up, 2026-09-28: the zoom treatment below was saved in website `b8af3d11a26eb6293591eb5e41fd429d6465cee7` and frontend `3443b68d9fd53629112cff7b96779a23667b45f1`, covering `src/photo-viewer.js` and `_components/photo-viewer.twig`. It replaces the single zoom/fit toggle and is now deployed in website `48f6249f626c0ef78d32a6cdbf0a4a339df6661e` / frontend `6f981f56bdac73fe90b39dceed832bb5a4fadf62`. Runtime template and generated-asset hashes, plus publicly served CSS/JavaScript hashes, match the released source; the local interaction checks below remain separately scoped.
 
+## Viewer Control Target Follow-Up
+
+Local only, 2026-11-23, runtime `ae3f1a2`: View post now has a 44 px mobile target. Desktop Fit matches the other 44 px zoom controls; the symmetric header side columns grow by 4 px to accommodate it without overlap. Existing title truncation, metadata, Close, image fitting and focus behavior remain. All 23 viewer cases and the focused 320/390/768/1280 px header-target checks pass. See [control sizes and alignment](buttons.md#control-sizes-and-alignment).
+
 ## Image Hover Feedback
 
 Owner-requested correction, 2026-11-22, deployed in runtime `0a48408`: Gallery and Featured Image border/shadow feedback requires both hover capability and a fine pointer. Touch does not activate or retain this decoration. Both legacy block aliases inherit the same templates. Work index covers use the same gate across the whole project link; keyboard focus uses the link outline without lifting the image. Native gallery links, image geometry and viewer activation remain intact.

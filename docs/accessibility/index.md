@@ -55,7 +55,7 @@ Scoped consistency pass, 2026-11-23, **local only**: frontend `d9323ec` removes 
 - Current, checked, pressed and expanded states follow their semantic attributes; hover must not obscure the durable selected state. Shared segments keep Neutral 200 selection distinct from Neutral 100 inactive hover.
 - Reduced-motion preferences suppress the shared segment and gallery/featured-image transitions; Places thumbnail zoom runs only on motion-safe hover. Work retains its existing reduced-motion handling.
 
-Ten focused Chromium cases passed locally across mouse, actual touch taps, keyboard focus, saved Work preference, ordinary/reduced motion, gallery feedback and Places thumbnail scaling. Two existing segment cases at 320/390 px additionally passed selection, hover, keyboard and full-target checks. Local content/asset/build/font/five-route release checks passed. This is not physical-device, Safari, or screen-reader evidence. The next pass covers remaining control targets and alignment; it does not automatically normalize intentional shape or shadow differences.
+Ten focused Chromium cases passed locally across mouse, actual touch taps, keyboard focus, saved Work preference, ordinary/reduced motion, gallery feedback and Places thumbnail scaling. Two existing segment cases at 320/390 px additionally passed selection, hover, keyboard and full-target checks. Local content/asset/build/font/five-route release checks passed. This is not physical-device, Safari, or screen-reader evidence. The subsequent local [control-target pass](../components/buttons.md#control-sizes-and-alignment) applies mobile sizing and visible alignment while retaining explicit compact desktop roles. Intentional shape and shadow differences remain separate.
 
 ## Color And Contrast
 

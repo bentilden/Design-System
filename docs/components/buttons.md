@@ -24,6 +24,20 @@ review_status: needs audit
 
 Buttons are compact, quiet, and utility-driven.
 
+## Control Sizes And Alignment
+
+Applied locally, 2026-11-23: runtime `ae3f1a2`, frontend verification `cf522fd`. These changes are not deployed.
+
+- Use at least 44 × 44 px targets for standalone mobile controls and navigation below 768 px. A smaller visible track, chip or icon can sit inside that target. Do not extend hit areas into neighboring controls or instructional text.
+- Align visible surfaces and labels, rather than invisible target edges. Peer controls share a center; the Work switch deliberately aligns its visible bottom with the posted date on mobile and centers with it on desktop.
+- Keep the existing compact desktop roles: shared segments, Places chip/filter targets and the Mosaic slider can be 32 px high from 768 px. Contact retains its existing desktop field/button sizing, and footer links retain their text-led desktop spacing. Inline prose links follow reading typography rather than a standalone-control box.
+- Preserve surface geometry separately: Places chips remain 30 px, filter surfaces 32 px, and the Work track 28 px. Shared toolbar rows remain 56 px; a mobile filter summary may grow when its copy wraps.
+- Put padding on the actual link/button. Pagination uses whole 44 px links and wraps rather than overflowing; footer links retain separation between enlarged targets. Viewer Fit and Close have matching 44 px targets.
+
+The same pass aligns Mosaic's Size label/rail with the layout labels while retaining its 2 px rail, 12 px thumb and count. Mobile Contact inputs and Send, footer destinations/RSS, viewer View post and Places chip/filter/range controls now follow the mobile target default. Keyboard semantics and native links remain intact. Focus outlines use Neutral 700 on light surfaces; the dark footer uses a light Neutral 300 outline. See [Navigation](navigation.md#control-target-follow-up), [Places](../patterns/places.md#control-target-follow-up) and [Forms](forms.md#control-target-follow-up).
+
+Verification: 22 focused local Chromium cases at 320/390/768/1280 px plus a short 667 × 375 no-JavaScript case, 30 navigation cases, 23 Mosaic cases and 23 viewer cases passed. The Places run passed 22 cases; its remaining native-pagination case passed after the mobile fallback header correction. Local release checks passed content, assets, build, fonts and four routes. These are emulated/browser checks, not physical-device, Safari or screen-reader coverage.
+
 ## Primary Button
 
 <div class="bt-example" markdown>

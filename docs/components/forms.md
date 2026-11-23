@@ -32,6 +32,10 @@ review_status: needs audit
 
 The contact page is the current form pattern. It is visually adjacent to the article system, but it remains a bespoke page rather than a `bt-article` component.
 
+## Control Target Follow-Up
+
+Local only, 2026-11-23, runtime `ae3f1a2`: Contact inputs and Send now have a 44 px minimum height below 768 px; the existing desktop sizing, labels, validation, colors and corners remain. The textarea already exceeds the minimum. Field focus and Send hit testing pass at 320/390/768/1280 px; the form was not submitted. This resolves target sizing only; separate styling/validation audit items below retain their status. Follow the shared [control sizes and alignment](buttons.md#control-sizes-and-alignment).
+
 ## Current Pattern
 
 Contact fields use explicit labels, Slate borders, subtle shadows, and Slate focus rings:
