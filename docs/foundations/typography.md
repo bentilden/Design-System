@@ -46,6 +46,22 @@ Inter is the website typeface for text, display and compact metadata. It was dep
 !!! note "Webfont licensing"
     The website self-hosts complete Inter variable fonts under the SIL Open Font License. The Interface Field Guide retains licensed Helvetica Now webfont files from `https://cdn.bentilden.com/fonts/helvetica-now/`. The documentation uses Text for prose, Display for headings, and Micro for navigation, metadata, and interface labels.
 
+## Current Typography Rules
+
+Owner decisions, 2026-11-22/23; deployed 2026-11-23 in runtime `c79f3a7`:
+
+| Role | Standard | Scope / intentional exception |
+| --- | --- | --- |
+| Entry and ordinary page H1 | Inter 900, normal tracking, 1.05 leading; 36 px below 768 px, 40 px from 768 px, 48 px from 1024 px. | Shared `_components/entry-title.twig`; standard entry header, Work index/detail and Contact. Caller controls placement, spacing and links. |
+| Uppercase label | Inter 500, 12 px, 0.1em tracking (`font-micro text-xs uppercase tracking-widest`). | Entry/homepage eyebrows, Next project and headed recipe Step labels. Sentence-case control text retains normal tracking. |
+| Compact photo-info label | Inter 500, 11 px, 0.05em tracking. | Explicit dense-viewer exception in `_components/photo-viewer.twig`. |
+| Print label | 8.5 pt, bold, 0.14em tracking. | Separate print-output exception; it does not set the screen-label style. |
+| Homepage statement | Inter 100, 44/66/88 px, 1.06 leading, −0.0125em tracking. | Owner-confirmed editorial exception, preserved. |
+
+Owner acceptance, 2026-11-23: use the existing **16 px page photo caption**, Inter regular, snug 1.375 line height (22 px) and Neutral 600. The shared `_components/photo-caption.twig` owns this role. Work markup removes its former 14 px override, and embedded recipe photos inherit the same component size. Recipe table captions, secondary credits/date information and the compact full-screen viewer remain separate roles. No authored Work captions were added. The guarded comparison retains the previous 14 px option as a labeled reference. These changes are included in the same production release.
+
+Verification, 2026-11-23: 14 local browser cases passed, including title styles on Contact, Work index/detail and a standard photo entry at 390/800/1280 px, plus shared and embedded recipe captions at 16 px. All 12 corresponding production title/caption cases passed after activation. Public CSS matched the committed build and route/header smoke passed; the guarded comparison returns 404 in production. Local release content/asset/build/font/route checks also passed. Source: `_components/entry-title.twig`, `_components/entry-header.twig`, `_work/index.twig`, `_work/project.twig`, `contact.twig`, `_home/{photography,work,cooking}.twig`, `_entry-content/recipe/page.twig`, and `dev-test/caption-typography.twig`. [Release workflow](https://github.com/bentilden/bentilden.com/actions/runs/45257835258). This scoped addition does not refresh the whole-page review date; historical sections below retain their original evidence.
+
 ## Helvetica Baseline Inventory
 
 Scoped source verification, 2026-10-20: `bentilden.com-css/src/elements/type.css` declares all 48 supplied WOFF2 faces, each with its own upright or italic file. The current weight mappings are:

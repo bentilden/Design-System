@@ -46,6 +46,17 @@ Accessibility is a component contract, not a separate polish pass. These are the
 
 Scoped first-release review, 2026-09-28: `bentilden.com/templates/_layout.twig` at released website `b1cf61e` tracks input mode in the existing body Alpine state. With Alpine active, focus outlines and Tailwind rings are suppressed until Tab or Shift+Tab is pressed; pointer interaction suppresses them again. Keyboard mode permits the existing native/component focus treatment rather than replacing it. The suppression selector requires the Alpine-bound attribute, so existing focus styling remains when JavaScript or Alpine is unavailable. Focus itself, navigation order, and focus return are unchanged. This is an implementation observation, not a completed assistive-technology audit.
 
+## Interaction Feedback
+
+Scoped consistency pass, 2026-11-23, **local only**: frontend `d9323ec` removes the unconditional hover override, restoring Tailwind's native `(hover: hover)` gate for ordinary hover utilities. Runtime `66c5709` retains the stricter `(hover: hover) and (pointer: fine)` gate for Work/Gallery/Featured Image borders and shadows. These commits are separate from the deployed typography release.
+
+- Hover is optional feedback on a hover-capable device. Touch activation must not leave a decorative hover treatment behind.
+- Keyboard focus remains visible independently of hover.
+- Current, checked, pressed and expanded states follow their semantic attributes; hover must not obscure the durable selected state. Shared segments keep Neutral 200 selection distinct from Neutral 100 inactive hover.
+- Reduced-motion preferences suppress the shared segment and gallery/featured-image transitions; Places thumbnail zoom runs only on motion-safe hover. Work retains its existing reduced-motion handling.
+
+Ten focused Chromium cases passed locally across mouse, actual touch taps, keyboard focus, saved Work preference, ordinary/reduced motion, gallery feedback and Places thumbnail scaling. Two existing segment cases at 320/390 px additionally passed selection, hover, keyboard and full-target checks. Local content/asset/build/font/five-route release checks passed. This is not physical-device, Safari, or screen-reader evidence. The next pass covers remaining control targets and alignment; it does not automatically normalize intentional shape or shadow differences.
+
 ## Color And Contrast
 
 The contrast follow-up approved on 2026-09-28 uses Slate 600 for small text on light surfaces, 12 px Micro type for editorial dates/image details, and Slate 400 copyright text on the dark footer. Counts inherit their parent text color without reduced opacity. The historical filled category icons used solid Slate 500 with Slate 700 hover; large drop caps use Slate 500. The current local [Neutral trial](../foundations/color.md) uses thin Neutral 950 topic linework and the 20 px Neutral 400 label after the smaller-identity refinement with a 10 px gap. Before the white-to-Neutral-100 post gradient was restored, the label measured about 2.48:1 against flat Neutral 50, below the earlier large-text target. That measurement is historical; label contrast across the current gradient remains a review item. That result is reported separately from rendering/layout checks; conformance is not claimed. Post dates use the owner's normal 16 px body Text in Neutral 600. Historical Slate measurements below refer to their inspected revisions.
