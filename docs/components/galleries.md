@@ -55,7 +55,7 @@ Owner-requested correction, 2026-11-22, deployed in runtime `0a48408`: Gallery a
 
 Sources: `_matrix/gallery.twig`, `_matrix/featuredImage.twig`, `_work/card.twig`, and generated CSS from frontend `38e4780`. Eight local and eight production mouse/touch checks passed across Work and three real photo entries, including whole-card hover and Work keyboard focus. Public CSS matches the release; route/header smoke passed. Touch was emulated in Chromium; physical-device and other-engine coverage is not established. The sitewide state-family audit is separate; this correction does not change every existing control hover treatment.
 
-Approved local follow-up, 2026-11-23, runtime `4be5be1`: Work and Gallery shadow opacity becomes 50%, matching Featured Image. Viewer painted hover controls use 8 px corners; small focus-only link boundaries are unchanged. Border geometry, native links, targets and the hover/reduced-motion behavior above are retained. See [shape, surface and shadow roles](buttons.md#shape-surface-and-shadow-roles). Not deployed.
+Approved and deployed follow-up, 2026-11-23, runtime `4be5be1`: Work and Gallery shadow opacity becomes 50%, matching Featured Image. Viewer painted hover controls use 8 px corners; small focus-only link boundaries are unchanged. Border geometry, native links, targets and the hover/reduced-motion behavior above are retained. See [shape, surface and shadow roles](buttons.md#shape-surface-and-shadow-roles).
 
 ## Page Layout
 
@@ -142,3 +142,23 @@ The earlier 2026-09-28 caption/detail refinement remains the page-media treatmen
 - [Accessibility](../accessibility/index.md) and the [Render Audit](../audit/render-audit.md) identify broader verification needs.
 
 Combined disclosure verification, local 2026-10-20: all 19 shared-viewer Chromium cases passed, including editorial and technical details together, metadata-only/empty photos, bounded footers, image fitting, collection updates, post entry points, focus, desktop zoom and emulated mobile gestures. Desktop 1440 px and mobile 390/320 px metadata layouts were visually reviewed. Map/Mosaic release QA and strict documentation builds passed. These changes remain uncommitted and undeployed; physical-device/Safari coverage is not established by these checks.
+
+
+## Image Purpose And Native Links
+
+Scoped consistency review, 2026-11-23, runtime `7e7361f` / frontend `ac8cc3c` (deployed). Preserve these existing roles rather than normalizing every image to one ratio:
+
+| Purpose | Presentation | Destination |
+| --- | --- | --- |
+| Work/homepage design artifact | Contain the complete artwork; project media keeps its natural proportions. | One native project link for a preview; shared viewer for project media. |
+| Photographic browsing preview | Places grid/Square Mosaic may crop; Justified Mosaic preserves proportions/order. Homepage photography uses its authored crop position; cooking previews use 4:3 crops. | Native photo/post destination appropriate to that collection. |
+| Article photograph | Featured Image and inline/single Gallery media preserve proportions; multi-image grid previews may use cropped thumbnail transforms. | Native full-image link enhanced by the shared viewer. |
+| Next-project peek | Deliberately clipped at the footer, with enlargement limited by available source size. | Entire region is one native `rel="next"` link; the last entry wraps to the first. |
+
+Use the shared responsive-image renderer for dimensions, source sets, loading priority and alt behavior. Cropped preview media is not a reason to crop the full article image. Page captions retain the accepted 16/22 px shared role; compact viewer metadata is separate.
+
+Native photo links and recipe teaser image/action links now use the same 2 px Neutral 700 keyboard outline with 4 px offset as other light-surface destination links. Their small focus-boundary radius does not mask the image. Enter opens the viewer and Escape returns focus to the originating photo link. Native hrefs remain available for modified clicks and without JavaScript.
+
+Single-destination cards use one anchor around their preview region, with whole-card feedback and no nested links. Keep distinct destinations separate. Recipe teasers deliberately retain separate image/title/action links because the introduction is authored rich text and may contain links of its own; do not wrap that text in a competing anchor.
+
+Sources: `_components/{photo-viewer-item,responsive-image}.twig`, `_home/{work,photography,cooking}.twig`, `_work/{cover,media,card,next-project}.twig`, `_matrix/{gallery,featuredImage}.twig`, `_entry-content/recipe/teaser.twig` and `_places/mosaic.twig`. Browser checks cover photo focus/return, native card destinations and peek limits at 390/1280 px; this is not a whole-site alt-text or assistive-technology audit.

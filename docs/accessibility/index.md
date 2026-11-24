@@ -110,3 +110,20 @@ A component can move from `observed` to `approved` only after these checks are k
 - [Navigation](../components/navigation.md), [Galleries](../components/galleries.md), [Forms](../components/forms.md), and [Recipe Content](../components/recipe-content.md) record component-specific requirements and open checks.
 - [Render Audit](../audit/render-audit.md) contains historical browser findings; its missing temporary artifacts limit what can be verified from that pass.
 - [Content QA](../operations/content-qa.md) covers authored content checks that complement interaction testing.
+
+
+## Motion And Remembered Views
+
+Scoped consistency review, 2026-11-23, frontend `ac8cc3c` / runtime `7e7361f` (deployed). Quiet control feedback and content fades are the default. Keep spatial motion when it explains map/stack relationships or viewer navigation; its duration belongs to that purpose, rather than a universal site duration. Work fades around the layout swap, rather than sliding content around. Reduced motion removes decorative transitions and makes requested view changes immediate. Respond to preference changes during a visit as well as at initial load; settle/cancel in-flight work. The Places controller now updates its own motion setting and stops the current map/gallery movement when reduction is enabled. Its listener is removed on destruction. MapLibre already checks the current system preference for nonessential camera easing; the corrected application-level cache previously prevented ordinary durations from returning when reduction was turned off.
+
+Remember explicit display choices in the current browser/site origin, put shareable destinations in URLs, and keep transient camera/scroll restoration separate:
+
+| Feature | Default and memory | Precedence/fallback |
+| --- | --- | --- |
+| Work Hide text | Off/text visible; `work-hide-text` local storage remembers explicit on/off. | Restore before the initial fade; invalid/blocked storage leaves readable text and a usable switch. |
+| Viewer Details | Closed; `photo-viewer-details-open` local storage remembers explicit show/hide. | Photos without details do not erase the preference; blocked storage still permits in-page toggling/reopening. |
+| Mosaic layout/size | `places-mosaic-preferences` local storage remembers valid choices. | Explicit valid URL settings override saved defaults; invalid settings use valid saved/default values. |
+| Places camera/selection/scroll | Session storage scoped by the history entry's `placesBrowserId`. | Restore session position, then honor explicit map URL destinations. Storage failure keeps browsing available. |
+| Recipe section | Native `recipeView` URL destination. | History follows the URL; it is not a cross-recipe saved display default. |
+
+Sources: frontend `src/{work-project-view,photo-viewer,mosaic-layout,places,recipe}.js`; existing component guidance retains its feature-specific details. Work controller and Mosaic layout/preference tests, plus Mosaic browser storage/URL/history checks, verify these existing contracts. The pass does not introduce new preferences or change stored keys.

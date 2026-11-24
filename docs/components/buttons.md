@@ -42,7 +42,7 @@ Production verification, 2026-11-23: all 22 target/alignment, 10 hover/touch/red
 
 ## Shape, Surface And Shadow Roles
 
-Owner-approved 2026-11-23; implemented **locally**, runtime `4be5be1`, frontend `f7ae8e6`. Production remains `ae3f1a2`; these visual changes are not deployed.
+Owner-approved and deployed 2026-11-23: runtime `4be5be1`, frontend styling `f7ae8e6` (source release `8c0d3ee`). Public assets match the release build; all 32 production interaction/target cases pass.
 
 - Outer utility controls use 8 px corners: Contact fields/Send/form feedback and viewer hover controls now match the existing segments, switch track and map controls. Small focus-only link outlines and nested 7/5/2 px corners retain their separate geometry.
 - Ordinary fields/buttons are flat. Contact and the legacy shared primary button lose their tiny shadows while retaining borders, targets and focus behavior. No new custom CSS is introduced; the legacy source change only removes its shadow utility.
@@ -53,13 +53,9 @@ Owner-approved 2026-11-23; implemented **locally**, runtime `4be5be1`, frontend 
 
 ## Primary Button
 
-<div class="bt-example" markdown>
-<span class="bt-button-demo">Read more</span>
-</div>
-
 ```css
 .bt-button {
-  @apply inline-flex items-center rounded-lg border border-transparent bg-slate-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-slate-700 focus:outline-hidden focus:ring-2 focus:ring-slate-500 focus:ring-offset-2;
+  @apply inline-flex items-center rounded-lg border border-transparent bg-neutral-600 px-6 py-3 text-base font-medium text-white hover:bg-neutral-700 focus:outline-hidden focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2;
 }
 ```
 
@@ -75,9 +71,9 @@ Use primary buttons for explicit content actions in matrix blocks. Avoid using t
 
 | State | Treatment |
 | --- | --- |
-| Default | `bg-slate-600`, white text, `shadow-xs` |
-| Hover | `bg-slate-700` |
-| Focus | `focus:outline-hidden`, Slate focus ring with offset |
+| Default | `bg-neutral-600`, white text, flat surface |
+| Hover | `bg-neutral-700` |
+| Focus | `focus:outline-hidden`, Neutral focus ring with offset |
 
 Scoped first-release review, 2026-09-28: the global layout at website `b1cf61e` displays these outlines/rings after Tab or Shift+Tab and hides them after pointer interaction. See [Focus Appearance](../accessibility/index.md#focus-appearance) for the input-mode rule and no-Alpine fallback.
 
@@ -99,5 +95,5 @@ Source: frontend `38e4780`, `src/work-project-view.js`; runtime `686aaff` with m
 ## Related Pages
 
 - [Matrix Blocks](matrix-blocks.md) describes authored button content.
-- [Forms](forms.md) documents the separate submit-button treatment and its open design decision.
+- [Forms](forms.md) documents the submit-button and field treatment.
 - [Accessibility](../accessibility/index.md) supplies the interaction review bar.

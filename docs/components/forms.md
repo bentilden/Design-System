@@ -11,11 +11,10 @@ source:
   - bentilden.com/templates/contact.twig
   - bentilden.com-css/src/bentilden.css
 classes:
-  - rounded-md
-  - border-slate-500
-  - shadow-xs
-  - focus:border-slate-700
-  - focus:ring-slate-700
+  - rounded-lg
+  - border-neutral-500
+  - focus:border-neutral-700
+  - focus:ring-neutral-700
 dependencies:
   - Tailwind forms plugin
   - Craft contact form plugin
@@ -36,16 +35,16 @@ The contact page is the current form pattern. It is visually adjacent to the art
 
 Deployed 2026-11-23, runtime `ae3f1a2`: Contact inputs and Send now have a 44 px minimum height below 768 px; the existing desktop sizing, labels, validation, colors and corners remain. The textarea already exceeds the minimum. Field focus and Send hit testing pass at 320/390/768/1280 px; the form was not submitted. This resolves target sizing only; separate styling/validation audit items below retain their status. Follow the shared [control sizes and alignment](buttons.md#control-sizes-and-alignment).
 
-## Approved Local Surface Follow-Up
+## Approved Surface Follow-Up
 
-Owner-approved 2026-11-23, local runtime `4be5be1`: fields, Send and form feedback use 8 px corners; ordinary field/Send shadows are removed. Field borders, focus, validation and target sizes remain. Follow [shape, surface and shadow roles](buttons.md#shape-surface-and-shadow-roles). This is not deployed; the current production baseline below retains its earlier appearance.
+Owner-approved and deployed 2026-11-23, runtime `4be5be1`: fields, Send and form feedback use 8 px corners; ordinary field/Send shadows are removed. Field borders, focus, validation and target sizes remain. Follow [shape, surface and shadow roles](buttons.md#shape-surface-and-shadow-roles).
 
 ## Current Production Pattern
 
-Contact fields use explicit labels, Slate borders, subtle shadows, and Slate focus rings:
+Contact fields use explicit labels, Neutral borders, flat surfaces, and Neutral focus rings:
 
 ```html
-class="block w-full max-w-lg rounded-md border-slate-500 shadow-xs focus:border-slate-700 focus:ring-slate-700 sm:text-sm"
+class="block w-full max-w-lg rounded-lg border-neutral-500 focus:border-neutral-700 focus:ring-neutral-700 sm:text-sm"
 ```
 
 Scoped first-release review, 2026-09-28: field focus rings at website `b1cf61e` follow the global [Focus Appearance](../accessibility/index.md#focus-appearance) rule: Tab or Shift+Tab enables them, and pointer interaction hides them. The existing focus border treatment remains.
