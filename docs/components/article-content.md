@@ -89,10 +89,13 @@ Title and date placement follows the entry template and its native settings.
 | Recipe landing/detail | In the existing five-column introduction/header area beside the image |
 | Default | Within its body header |
 | About | Retains its own separate heading |
+| Work detail | Centered shared section identity, project title and Posted date; Hide text centered below the date. |
 
-Gallery headers render once in source order before photos and story text. Responsive grid placement preserves authored desktop columns; centered and inline desktop layouts retain their existing flow. Gallery-to-story spacing is 32 px on mobile, with the previous desktop margins retained. Recipe detail title links preserve their recipe URL. Category selection, body layouts, and authored alignment values remain native Craft fields.
+Gallery headers render once in source order before photos and story text. Responsive grid placement preserves authored desktop columns; centered and inline desktop layouts retain their existing flow. Gallery-to-story spacing follows the [current spacing roles](../foundations/layout.md#spacing-and-layout-rhythm): 32 px below 768 and 48 px for stacked views above it; sidebars start at 1024. Recipe detail title links preserve their recipe URL. Category selection, body layouts, and authored alignment values remain native Craft fields.
 
 ## Article Icons
+
+Work header follow-up, 2026-11-23, runtime `33e6292` (deployed): Work detail now includes this same component above its centered project title/date, using the project's native `areaOfInterest` Work relation and that section's `identityIcon`, title and URL. The icon/label remains one native link back to Work. No new identity style or Craft field is introduced. See [Work Hide text](buttons.md#work-hide-text-switch) for the centered below-date control. The Work index keeps its existing title/grid layout.
 
 `_components/topic-identity.twig` sits above the entry-specific content layout and receives the native related category's `identityIcon`, title, and URL. The icon is 24 px mobile / 28 px desktop inside a 48/56 px Neutral 200 circle. Its Neutral 950 linework uses a fixed 1.5 px visual stroke via non-scaling geometry. The 20 px Neutral 400 label begins 10 px below the circle. The group is centered, with 40/48 px below it before the entry-specific content layout.
 

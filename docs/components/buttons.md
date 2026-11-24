@@ -29,7 +29,7 @@ Buttons are compact, quiet, and utility-driven.
 Deployed 2026-11-23: runtime `ae3f1a2`, frontend `cf522fd`. [Production workflow](https://github.com/bentilden/bentilden.com/actions/runs/45265205053).
 
 - Use at least 44 × 44 px targets for standalone mobile controls and navigation below 768 px. A smaller visible track, chip or icon can sit inside that target. Do not extend hit areas into neighboring controls or instructional text.
-- Align visible surfaces and labels, rather than invisible target edges. Peer controls share a center; the Work switch deliberately aligns its visible bottom with the posted date on mobile and centers with it on desktop.
+- Align visible surfaces and labels, rather than invisible target edges. Peer controls share a center. Work's current header placement is documented in [Work Hide Text Switch](#work-hide-text-switch); the earlier date-side alignment is superseded by the below-date layout.
 - Keep the existing compact desktop roles: shared segments, Places chip/filter targets and the Mosaic slider can be 32 px high from 768 px. Contact retains its existing desktop field/button sizing, and footer links retain their text-led desktop spacing. Inline prose links follow reading typography rather than a standalone-control box.
 - Preserve surface geometry separately: Places chips remain 30 px, filter surfaces 32 px, and the Work track 28 px. Shared toolbar rows remain 56 px; a mobile filter summary may grow when its copy wraps.
 - Put padding on the actual link/button. Pagination uses whole 44 px links and wraps rather than overflowing; footer links retain separation between enlarged targets. Viewer Fit and Close have matching 44 px targets.
@@ -86,7 +86,9 @@ Scoped first-release review, 2026-09-28: the global layout at website `b1cf61e` 
 
 ## Work Hide Text Switch
 
-Scoped review, 2026-11-22: all Work detail pages use a **Hide text** switch with an exposed checked state and a 44 px minimum target. Off shows explanatory text; on shows images only, including hiding image captions. The switch adopts the segmented controls’ neutral surfaces, border and rounded corners. Content fades out, swaps layout at zero opacity, then fades in; reduced motion changes immediately. On mobile the switch shares the posted-date row: its visible track aligns with the bottom of the date block and the right content edge. Its 44 px target is preserved. From 768 px the row uses the existing centered alignment.
+Owner-approved header update, 2026-11-23: runtime `33e6292`, frontend QA `a8b1077`. Deployed; public assets and header markup match the release build. This updates placement while preserving the existing switch behavior below.
+
+Scoped review, 2026-11-22: all Work detail pages use a **Hide text** switch with an exposed checked state and a 44 px minimum target. Off shows explanatory text; on shows images only, including hiding image captions. The switch adopts the segmented controls’ neutral surfaces, border and rounded corners. Content fades out, swaps layout at zero opacity, then fades in; reduced motion changes immediately. The original date-side placement described in the release evidence below is superseded by the owner-approved header update: the title and posted date are centered, with Hide text centered directly below the date inside the header, before its divider. The control row has 12 px top spacing; its target remains at least 44 px, with the existing 28 px track. The whole row is hidden without JavaScript.
 
 Explicit on/off choices persist in browser storage. The saved layout restores without a transition, with text visible for a new visitor. If storage is unavailable, the control remains usable for that visit. The preference belongs to the current browser and site origin and is shared across Work entries. Native images in mixed Story content remain visible in both modes.
 
