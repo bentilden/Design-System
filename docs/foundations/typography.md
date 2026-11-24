@@ -66,7 +66,7 @@ Owner-approved index refinement, 2026-11-23, runtime `2842975` (deployed): the W
 
 ## Preview Title And Summary Sets
 
-Owner-approved implementation, 2026-11-24, runtime `c3b955d`; production deployment is blocked by the dependency audit. The owner requested two or three reusable sets chosen by context:
+Owner-approved implementation, 2026-11-24, runtime `c3b955d`, deployed in combined release `417ae70` after the dependency fix. The owner requested two or three reusable sets chosen by context:
 
 | Set | Title size / line height | Summary size / line height | Title-to-summary gap | Context |
 | --- | --- | --- | --- | --- |
@@ -81,6 +81,8 @@ All three use Inter: titles 500 and Neutral 950; summaries 400 and Neutral 600; 
 `templates/_components/preview-type.twig` owns the inline Tailwind title/summary utilities. Callers retain native content fields and their contextual layout. Ordinary stacked image/title cards use a 12 px attachment; image/text rows retain their horizontal layout. Title-only photography captions and Recently Added links remain separate roles; photography with descriptions uses Compact. Entry titles, page photo captions, section headings and Next project are separate roles too.
 
 Source: `_work/card.twig`, `_home/{work,cooking,photography}.twig`. Local checks cover 80 title/summary comparisons across current routes and unsaved native homepage variants at 320/390/768/1280 px, including exact sizes, line heights, weights, tracking, gaps, family and no page overflow. All 96 existing responsive homepage checks and two-route release content/asset/build/font/browser QA pass. The mobile Work section capture was visually reviewed. Final local follow-up passes 24 current-page comparisons at the same widths with the approved 4 px gaps and pretty wrapping. These observations establish local Chromium behavior, not production or physical-device coverage; the whole-page review date is unchanged.
+
+Production closeout, 2026-11-24: the combined release `417ae70` includes all three sets, 4 px Compact/Standard gaps, 12 px Featured gap and pretty-wrapped summaries. Public CSS/JS match that commit, and all twelve live homepage/Work comparisons pass at 390/1280 px. [Homepage](https://www.bentilden.com/) and [Work index](https://www.bentilden.com/design) use the documented sets. [Production CI](https://github.com/bentilden/bentilden.com/actions/runs/45451316864) and the combined release verification passed; the earlier dependency blocker is resolved.
 
 ## Link Underlines
 
