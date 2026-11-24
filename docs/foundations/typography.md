@@ -64,6 +64,14 @@ Verification, 2026-11-23: 14 local browser cases passed, including title styles 
 
 Owner-approved index refinement, 2026-11-23, runtime `2842975` (deployed): the Work index replaces its large page-title style with the shared centered section icon/label above the grid. The native category title remains screen-reader-only for the named region. Work detail titles retain the standard H1 role above. Source: `_work/index.twig` and shared `_components/topic-identity.twig`.
 
+## Link Underlines
+
+Owner instruction, 2026-11-23; deployed in runtime `2ac664b`: use a fixed **1.5 px underline at every font size**. The shared `_layout.twig` applies inline Tailwind decoration-thickness utilities to anchors and their descendants, including nested linked headings. Navigation and next-project templates remove their former 1 px / 2 px overrides. Existing underline visibility, offsets, colors and interaction states are retained.
+
+Local Chromium verification passed 17 route/state/viewport checks at 390 and 1280 px, including the mobile menu, active navigation, prose contexts, Work card hover and large next-project title hover. All inspected link labels compute to 1.5 px, with text sizes spanning 12–48 px. Six-route local release QA also passed content/assets/build/font/browser checks. This scoped rule does not refresh the whole-page review date.
+
+Production verification, 2026-11-23: all 17 corresponding mobile/desktop route/state checks pass without runtime errors. The normal public page contains the shared rule; public CSS/JS hashes match runtime `2ac664b`. Work index/detail browser/font checks and public route/header smoke also pass. [Release workflow](https://github.com/bentilden/bentilden.com/actions/runs/45332891124) succeeded.
+
 ## Helvetica Baseline Inventory
 
 Scoped source verification, 2026-10-20: `bentilden.com-css/src/elements/type.css` declares all 48 supplied WOFF2 faces, each with its own upright or italic file. The current weight mappings are:
