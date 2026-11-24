@@ -27,6 +27,23 @@ review_status: needs audit
 
 The site combines Tailwind containers with custom `bt-*` layout utilities.
 
+## Local Spacing And Rhythm Review
+
+Owner-approved and committed locally, 2026-11-23: runtime `87f773d`, frontend `cc3ef50`, on `codex/spacing-layout-rhythm`. Not pushed or deployed. The following roles are applied locally:
+
+| Relationship | Local rule |
+| --- | --- |
+| Ordinary page shell | Fluid below 768 px, 24 px side padding; `md:container` with 32 px padding from 768, matching the desktop header. Inner reading widths are separate. |
+| Ordinary page opening | 48 px; the legacy `.bt-article` padding definition is removed and callers explicitly own their padding. Homepage keeps its 64 px desktop editorial opening; Places remains flush. |
+| Image attachments | 12 px plain image-to-card-title and page photo-caption spacing; 8 px title-to-summary. Caption type stays 16/22 px; table captions retain their own compact spacing. |
+| Gallery to story | Layout owns one trailing 32 px gap below 768, 48 px when stacked from 768. Inner Gallery margins do not accumulate with it. Final optional caption is included in the content edge. |
+| Contact | Available width capped at 48 rem / 768 px. Prose `max-w-prose`, Recipe 42 rem panels and wide artwork retain distinct roles. |
+| Gallery sidebars | Stack below 1024; preserve authored left/right/center arrangement from 1024. Centered galleries keep their existing proportioned media/reading widths. |
+
+The same shell reaches ordinary entry/listing fallbacks, Contact confirmation, image fallback and 404 content. Work's continuation footer shares the shell while retaining its crop/peek and oval. Full-bleed mobile photos use matching negative gutters, with captions inset to the text edge. Homepage no longer acquires a smaller container/32 px inset at 640; it stays fluid until the desktop header breakpoint. No Craft content, hierarchy, title typography, navigation behavior, recipe panel design or Places explorer geometry changes.
+
+Sources: `_entry-content/{default,gallery/default,recipe/page}.twig`, `_home/preview.twig`, `_work/{index,project,card,media,next-project}.twig`, `_components/photo-caption.twig`, `_matrix/{text,featuredImage}.twig`, `contact.twig` and frontend `src/components/site.css`. The existing gallery browser suite checks reading order, no overflow, exact stacked gaps and authored desktop columns across nine widths. Earlier snippets below describe the previous baseline; this scoped section does not advance the whole page's review date.
+
 ## Page Container
 
 ```css
@@ -55,9 +72,9 @@ Use page gutters to keep content away from mobile edges and preserve a calm read
 | `xl` | 12 | `gap-8` | 1248px |
 | `2xl` | 12 | `gap-8` | 1504px |
 
-## Article Frame
+## Earlier Article Frame
 
-Articles use a vertical gradient and a conventional container:
+The previous article frame used a vertical gradient and a conventional container:
 
 ```html
 <article class="pt-12 pb-14 bg-gradient-to-b from-slate-50 to-slate-200 bt-article">
