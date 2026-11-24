@@ -64,6 +64,24 @@ Verification, 2026-11-23: 14 local browser cases passed, including title styles 
 
 Owner-approved index refinement, 2026-11-23, runtime `2842975` (deployed): the Work index replaces its large page-title style with the shared centered section icon/label above the grid. The native category title remains screen-reader-only for the named region. Work detail titles retain the standard H1 role above. Source: `_work/index.twig` and shared `_components/topic-identity.twig`.
 
+## Preview Title And Summary Sets
+
+Owner-approved implementation, 2026-11-24, runtime `c3b955d`; production deployment is blocked by the dependency audit. The owner requested two or three reusable sets chosen by context:
+
+| Set | Title size / line height | Summary size / line height | Title-to-summary gap | Context |
+| --- | --- | --- | --- | --- |
+| Compact | 18 / 24.75 px | 14 / 22.75 px | 4 px | Supporting homepage Work rows, secondary Food links, and photo previews with descriptions. |
+| Standard | 20 / 27.5 px | 16 / 26 px | 4 px | Work index, lead and ordinary homepage Work cards, and equal Food cards. |
+| Featured | 24 / 30 px | 16 / 26 px | 12 px | The lead Food item in the feature/list layout; reserve for an editorial lead. |
+
+Owner refinement, 2026-11-24: Compact and Standard now use 4 px after the initial 8 px and intermediate 6 px title-to-summary gap trials; Featured retains 12 px. The final 4 px spacing is included in runtime `c3b955d`.
+
+All three use Inter: titles 500 and Neutral 950; summaries 400 and Neutral 600; normal tracking, natural wrapping with long-word containment, and a 65ch maximum summary measure. All three summary sets use `text-pretty` for more considered line breaks where supported. These sizes remain stable across breakpoints; choose a set by the item's role rather than the viewport or HTML heading level. A smaller set is not a workaround for long copy. Omit absent summaries without retaining their gap.
+
+`templates/_components/preview-type.twig` owns the inline Tailwind title/summary utilities. Callers retain native content fields and their contextual layout. Ordinary stacked image/title cards use a 12 px attachment; image/text rows retain their horizontal layout. Title-only photography captions and Recently Added links remain separate roles; photography with descriptions uses Compact. Entry titles, page photo captions, section headings and Next project are separate roles too.
+
+Source: `_work/card.twig`, `_home/{work,cooking,photography}.twig`. Local checks cover 80 title/summary comparisons across current routes and unsaved native homepage variants at 320/390/768/1280 px, including exact sizes, line heights, weights, tracking, gaps, family and no page overflow. All 96 existing responsive homepage checks and two-route release content/asset/build/font/browser QA pass. The mobile Work section capture was visually reviewed. Final local follow-up passes 24 current-page comparisons at the same widths with the approved 4 px gaps and pretty wrapping. These observations establish local Chromium behavior, not production or physical-device coverage; the whole-page review date is unchanged.
+
 ## Link Underlines
 
 Owner instruction, 2026-11-23; deployed in runtime `2ac664b`: use a fixed **1.5 px underline at every font size**. The shared `_layout.twig` applies inline Tailwind decoration-thickness utilities to anchors and their descendants, including nested linked headings. Navigation and next-project templates remove their former 1 px / 2 px overrides. Existing underline visibility, offsets, colors and interaction states are retained.
