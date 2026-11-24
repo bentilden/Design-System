@@ -63,6 +63,14 @@ Article classes include Area of Interest and entry type hooks:
 - `bt-article-schema-featuredImage`
 - `bt-article-schema-recipe`
 
+## Browser And Social Titles
+
+Production correction, 2026-11-24, runtime `d27dd2e`. `_components/page-seo-title.twig` sets SEOmatic's head, Open Graph and Twitter title fields. SEOmatic retains configured site-name prefixing and escaping: head/Twitter use `Ben Tilden | …`, while Open Graph uses the page title. Work/Food/Places use their navigation names; Contact, contact confirmation and 404 use their page-role names. Authored entry SEO behavior remains separate.
+
+Pagination is a shared section rule: the first page has no suffix; valid later pages use `— Page N`. Category listings and Archive supply native `pageInfo.currentPage` to the same helper. Food inherits this behavior when it has a second page; the currently unpaginated Work grid remains a single index. Future category sections fall back to their native title. Existing canonical/robots policy is preserved.
+
+Seventeen public production title/social-title cases pass on Craft 5.12.3, including a real 404, first/later collection pages and existing entry-title preservation. Eighteen route/status cases and seventeen before/after metadata comparisons pass. Local Dev Mode's diagnostic 404 is distinct from the production custom template. This partial review does not refresh the whole-page review date.
+
 ## Entry Header
 
 Local refinement, 2026-10-18: the owner restored the previous title/date presentation and placement. Desktop title/date placement remains entry-specific. A subsequent mobile refinement centers every post title/date below 768 px, independently of its entry type or listing context.
