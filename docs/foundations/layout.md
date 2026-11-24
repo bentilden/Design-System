@@ -27,11 +27,11 @@ review_status: needs audit
 
 The site combines Tailwind containers with custom `bt-*` layout utilities.
 
-## Local Spacing And Rhythm Review
+## Spacing And Layout Rhythm
 
-Owner-approved and committed locally, 2026-11-23: runtime `87f773d`, frontend `cc3ef50`, on `codex/spacing-layout-rhythm`. Not pushed or deployed. The following roles are applied locally:
+Owner-approved and deployed, 2026-11-23: runtime `87f773d`, frontend `cc3ef50`. Public CSS and JavaScript match the release build. The following roles are active:
 
-| Relationship | Local rule |
+| Relationship | Rule |
 | --- | --- |
 | Ordinary page shell | Fluid below 768 px, 24 px side padding; `md:container` with 32 px padding from 768, matching the desktop header. Inner reading widths are separate. |
 | Ordinary page opening | 48 px; the legacy `.bt-article` padding definition is removed and callers explicitly own their padding. Homepage keeps its 64 px desktop editorial opening; Places remains flush. |

@@ -89,6 +89,6 @@ The current source includes:
 - [Open Questions](../audit/open-questions.md) tracks the decision about integrating form styling.
 
 
-## Local width follow-up
+## Width Follow-Up
 
-2026-11-23: Contact now uses available page width capped at 768 px, with shared 24 px mobile/32 px desktop shell padding. Targets, labels, field validation and Send behavior are retained. Committed locally in runtime `87f773d` / frontend `cc3ef50`; not pushed or deployed. See [local spacing and rhythm rules](../foundations/layout.md#local-spacing-and-rhythm-review).
+2026-11-23: Contact now uses available page width capped at 768 px, with shared 24 px mobile/32 px desktop shell padding. Targets, labels, field validation and Send behavior are retained. Deployed in runtime `87f773d` / frontend `cc3ef50`. See [spacing and rhythm rules](../foundations/layout.md#spacing-and-layout-rhythm).

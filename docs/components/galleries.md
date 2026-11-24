@@ -164,6 +164,6 @@ Single-destination cards use one anchor around their preview region, with whole-
 Sources: `_components/{photo-viewer-item,responsive-image}.twig`, `_home/{work,photography,cooking}.twig`, `_work/{cover,media,card,next-project}.twig`, `_matrix/{gallery,featuredImage}.twig`, `_entry-content/recipe/teaser.twig` and `_places/mosaic.twig`. Browser checks cover photo focus/return, native card destinations and peek limits at 390/1280 px; this is not a whole-site alt-text or assistive-technology audit.
 
 
-## Local spacing follow-up
+## Spacing Follow-Up
 
-2026-11-23: Gallery sidebars now stay stacked below 1024 px; the layout owns the photo/caption-to-story gap at 32 px below 768 and 48 px when stacked above it. Shared page photo captions use 12 px attachment spacing. Committed locally in runtime `87f773d` / frontend `cc3ef50`; not pushed or deployed. See [local spacing and rhythm rules](../foundations/layout.md#local-spacing-and-rhythm-review).
+2026-11-23: Gallery sidebars now stay stacked below 1024 px; the layout owns the photo/caption-to-story gap at 32 px below 768 and 48 px when stacked above it. Shared page photo captions use 12 px attachment spacing. Deployed in runtime `87f773d` / frontend `cc3ef50`. See [spacing and rhythm rules](../foundations/layout.md#spacing-and-layout-rhythm).
