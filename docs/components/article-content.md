@@ -95,13 +95,15 @@ Gallery headers render once in source order before photos and story text. Respon
 
 ## Article Icons
 
-Work header follow-up, 2026-11-23, runtime `33e6292` (deployed): Work detail now includes this same component above its centered project title/date, using the project's native `areaOfInterest` Work relation and that section's `identityIcon`, title and URL. The icon/label remains one native link back to Work. No new identity style or Craft field is introduced. See [Work Hide text](buttons.md#work-hide-text-switch) for the centered below-date control. The Work index keeps its existing title/grid layout.
+Work header follow-up, 2026-11-23, runtime `33e6292` (deployed): Work detail now includes this same component above its centered project title/date, using the project's native `areaOfInterest` Work relation and that section's `identityIcon`, title and URL. The icon/label remains one native link back to Work. No new identity style or Craft field is introduced. See [Work Hide text](buttons.md#work-hide-text-switch) for the centered below-date control. The subsequent Work index identity refinement is recorded below.
 
 `_components/topic-identity.twig` sits above the entry-specific content layout and receives the native related category's `identityIcon`, title, and URL. The icon is 24 px mobile / 28 px desktop inside a 48/56 px Neutral 200 circle. Its Neutral 950 linework uses a fixed 1.5 px visual stroke via non-scaling geometry. The 20 px Neutral 400 label begins 10 px below the circle. The group is centered, with 40/48 px below it before the entry-specific content layout.
 
 Icon and visible label form one topic link with a keyboard focus outline. The SVG is decorative and hidden from assistive technology. Hover darkens the label and changes the circle to Neutral 300; the label moves to Neutral 500. If no icon is selected, the visible topic link still renders. The identity group is hidden for print. The default Places icon is plain `map`, matching the supplied reference.
 
 Local verification, 2026-10-18: photo, gallery, recipe landing, and recipe detail views passed centered topic-identity, one-header/date, 48 px title/owner-edited 16 px body date, 900-weight, and no-overflow checks at 320/390/768/1440 px. Ten native unsaved cases verify entry-specific header placement, including all six left/right/center and inline/grid gallery combinations. The restored desktop Kyoto header was visually reviewed. See [Icons](icons.md#verification-scope) for source and delivery evidence. Broader article/a11y audits below retain their earlier scope.
+
+Owner-approved index/spacing refinement, 2026-11-23, runtime `2842975` (deployed): the Work index uses this shared centered icon/label above its native project grid, with a screen-reader H1 instead of a large visible page title. Work detail uses a tighter 24 px gap below the identity below 768 px and 32 px from 768; the index and other entry sections keep the 40/48 px default. `_components/topic-identity.twig` accepts an optional caller-owned trailing spacing class; `_work/project.twig` supplies the compact exception. Icon sizes, label style, centered title/date and below-date Hide text behavior remain unchanged.
 
 ## Topic Layout Review Fixture
 
