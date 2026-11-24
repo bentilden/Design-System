@@ -40,6 +40,17 @@ Verification: 22 focused local Chromium cases at 320/390/768/1280 px plus a shor
 
 Production verification, 2026-11-23: all 22 target/alignment, 10 hover/touch/reduced-motion and two segmented-control cases passed on the public site after activation. Public CSS and JavaScript match the release build; route/header smoke passed. Mobile Mosaic was visually reviewed, and the temporary viewport was reset. This supplements the local checks above; the same physical-device and assistive-technology limits apply.
 
+## Shape, Surface And Shadow Roles
+
+Owner-approved 2026-11-23; implemented **locally**, runtime `4be5be1`, frontend `f7ae8e6`. Production remains `ae3f1a2`; these visual changes are not deployed.
+
+- Outer utility controls use 8 px corners: Contact fields/Send/form feedback and viewer hover controls now match the existing segments, switch track and map controls. Small focus-only link outlines and nested 7/5/2 px corners retain their separate geometry.
+- Ordinary fields/buttons are flat. Contact and the legacy shared primary button lose their tiny shadows while retaining borders, targets and focus behavior. No new custom CSS is introduced; the legacy source change only removes its shadow utility.
+- Floating map utilities use white surfaces and one quiet `shadow-sm`; controls in document flow remain flat.
+- Content images use square corners, including Places grid thumbnails. Floating map photo frames retain their 6 px frame / 2 px inner image and front/back shadow hierarchy.
+- Work, Gallery and Featured Image hover share the existing 25/50/−12 px geometry at Neutral 500/50%. Hover-capability gates, fades and reduced-motion handling are retained.
+- Keep recipe content variants (facts 18/20 px, Nutrition 16 px/6 px frame, step ingredients 12 px/4 px frame), pill/circle controls and the two-layer sticky-navigation / clipped next-project oval treatments. These are intentional roles, not additional utility-control styles.
+
 ## Primary Button
 
 <div class="bt-example" markdown>

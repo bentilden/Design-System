@@ -50,6 +50,8 @@ Mosaic production release, 2026-09-28: website `acacd8adf66f2651b086411d63588b7a
 
 Deployed 2026-11-23, runtime `ae3f1a2`: chip and filter controls now have 44 px mobile targets around their existing 30/32 px surfaces, with 32 px desktop targets from 768 px. Their target edges remain reachable without growing the desktop shared 56 px row. Narrow filter summaries can grow for wrapped copy, preventing hit-area overlap with instructions. Mosaic's range becomes 44 px on mobile and stays 32 px on desktop; its visible rail aligns with Square/Justified labels, and the count remains below it on narrow screens. Existing thumb, rail, label typography, layout semantics and native keyboard input are retained. This supersedes the earlier 32 px mobile slider/filter observations below. See the shared [control sizing rule and verification](../components/buttons.md#control-sizes-and-alignment).
 
+Approved local surface follow-up, 2026-11-23, runtime `4be5be1`: map-view gallery thumbnails become square, matching Mosaic/editorial imagery. Floating zoom/expand/Close stack/stack-page controls use white surfaces and `shadow-sm`. Location pills, marker-frame radii, backing/front stack depth and all control target geometry remain. See [shape, surface and shadow roles](../components/buttons.md#shape-surface-and-shadow-roles). This is not deployed.
+
 ## Animated Thumbnail Stacks
 
 Released 2026-10-20: frontend `a138344` and runtime `c6d4684` group overlapping map controls into photo stacks that zoom to separate where useful, with animated expansion as a fallback. This is a screen-space presentation layer; canonical Locations, geographic clusters, counts and grid membership remain separate.

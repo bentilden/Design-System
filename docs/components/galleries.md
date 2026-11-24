@@ -55,6 +55,8 @@ Owner-requested correction, 2026-11-22, deployed in runtime `0a48408`: Gallery a
 
 Sources: `_matrix/gallery.twig`, `_matrix/featuredImage.twig`, `_work/card.twig`, and generated CSS from frontend `38e4780`. Eight local and eight production mouse/touch checks passed across Work and three real photo entries, including whole-card hover and Work keyboard focus. Public CSS matches the release; route/header smoke passed. Touch was emulated in Chromium; physical-device and other-engine coverage is not established. The sitewide state-family audit is separate; this correction does not change every existing control hover treatment.
 
+Approved local follow-up, 2026-11-23, runtime `4be5be1`: Work and Gallery shadow opacity becomes 50%, matching Featured Image. Viewer painted hover controls use 8 px corners; small focus-only link boundaries are unchanged. Border geometry, native links, targets and the hover/reduced-motion behavior above are retained. See [shape, surface and shadow roles](buttons.md#shape-surface-and-shadow-roles). Not deployed.
+
 ## Page Layout
 
 Scoped local refinement, 2026-10-18: Gallery posts show topic identity, centered headline/date, photos, then story text below 768 px, in both source and visual order. The shared Gallery entry template renders one headline/date and uses responsive grid placement for side-by-side desktop layouts. From 768 px, native `alignment` and `galleryStyle` retain the previous left/right columns, widths, title/body positions, and centered/inline arrangements. Existing viewer behavior and photo-grid column counts are unchanged.
