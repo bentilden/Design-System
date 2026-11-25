@@ -121,7 +121,11 @@ From `lg`, the shared map/gallery toolbar sticks directly beneath the measured w
 
 ## Footer
 
-The footer uses a Slate 900 band, white signature asset, compact navigation links, Slate 400 copyright, and an RSS link. The user-requested 2026-09-28 refinement removes the Mastodon link. Source inspected in uncommitted `_components/global-footer.twig` above website `b1cf61e`; targeted Chromium samples at 320/390/1280 px confirmed Mastodon absent and RSS retained. Stream-page pagination should meet the footer directly without an intervening pale band; see [Stream Pages](../patterns/stream-pages.md#pagination).
+The footer uses a Neutral 900 band, white signature asset, Neutral 200 navigation links, Neutral 400 copyright, and an RSS link. Stream-page pagination should meet the footer directly without an intervening pale band; see [Stream Pages](../patterns/stream-pages.md#pagination).
+
+Local responsive refinement, 2026-11-24: below 768 px the signature, stacked links and copyright/RSS share a left edge with 24 px side gutters. From 768–1023 px, links form two columns below the centered signature; from 1024 px, the current six destinations form one centered row. The link list retains its authored order. Outer vertical padding is 40 px on mobile and 48 px from tablet, with 24 px between signature, navigation and copyright. Mobile links and RSS retain 44 px targets and visible focus. The signature home link also has a visible focus outline. Copyright and RSS wrap when needed.
+
+Source: runtime `a6d7953` (`_components/global-footer.twig` and generated Tailwind CSS) and frontend `b63b88b` (`scripts/qa-control-targets-browser.mjs`). Local Chromium checks passed footer alignment, responsive rows, nonoverlapping targets and native navigation at 320/390/768/1280 px; screenshots were inspected at 390/768/1280 px. These commits remain local and undeployed. The September removal of Mastodon remains in effect; RSS is retained.
 
 ## Implementation Rule
 
