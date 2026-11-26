@@ -61,6 +61,8 @@ Cooking-list introduction refinement, 2026-10-20: the teaser renders native `ent
 
 Cooking-list photo-free treatment, 2026-11-22, runtime `d05d26c`. When `entry.mainImage` is empty on `/cooking`, the title, date, introduction, and **View recipe** link are left-aligned inside a centered column up to 42 rem wide. A recipe with a photo displays in two columns from `md`. The link uses a decorative 18 px Lucide open cookbook (`book-open-text`), 8 px after the underlined label. Source is `templates/category.twig`, `templates/_entry-content/recipe/teaser.twig`, and `templates/_components/entry-header.twig`.
 
+Production image-order refinement, 2026-11-26, runtime `fc96347`. On screens below `md`, recipe detail and post-stream teasers place the main image and its caption before the Recipe eyebrow and title. At `md` and above, the image remains in the right column. The image is optional. Source is `_entry-content/recipe/page.twig` and `teaser.twig`. Local checks covered real entries, photo-free renderings, print and no-JavaScript navigation; production checks covered real detail and archive pages at 320, 390, 768 and 1280 px.
+
 The recipe navigation stays within its article, below the global site header. `compact: true` reduces the shared control's label padding on small screens while retaining its borders, selected surface, typography, focus treatment and touch-target height. Other callers retain the component's default spacing.
 
 ## Spacing And Type
