@@ -40,6 +40,8 @@ Partial production review, 2026-11-26: runtime `87b6ac9` deploys the presentatio
 
 Paired-section divider refinement, 2026-11-26: from `lg`, Photography/Work and both two-column Kitchen arrangements use the same 8:5 tracks and 40 px gutter from `_home/layout.twig`. A decorative 1 px Neutral 200 vertical rule spans the paired band and is positioned absolutely at the gutter center. It consumes no grid space, so the column edges align with Kitchen whether the rule is present or removed. The rule is hidden for stacked sections and ignored by assistive technology. Authored order is preserved; the leading column remains the wider track. This follow-up is deployed in runtime `3b17851`; the reference-square refinement entered production in `81f477d`.
 
+Browse placement follow-up, 2026-11-26, runtime `8bee65f`: Recently added now uses the same shared header as every other section at all widths. One archive link stays beside/beneath the heading, including when the list is empty; the separate mobile link after the list is removed. The isolated renderer passed 52 fixtures, and 568 local homepage checks passed across 22 widths.
+
 Owner-selected recent-list refinement, 2026-11-26: from `md`, columns read Date → Type → Title. Date and type use compact 8 rem/6 rem tracks with 24 px gaps; type is left aligned rather than placed at the far page edge. With dates hidden, the order is Type → Title. Phones retain date/type above the title. Source: deployed `_home/recent.twig` and generated CSS; desktop coordinates and phone wrapping were reviewed before release.
 
 Responsive follow-up, 2026-11-26: section browse links consistently follow headings below 480 px. The tablet Work/reference arrangements and separate supporting-resource row above are deployed in runtime `881e58e`; the 1024–1535 px compact reference squares and 1536+ large squares remain. Only narrow phones reduce to 64 px, with smaller panel padding and image/text gaps. The Recent table now begins at 768 px. The exact stylesheet referenced by the live homepage matches the committed build. All 590 public-homepage Chromium checks passed at 22 widths from 320 to 1920 px, with no horizontal overflow; phone, tablet and desktop layouts were visually reviewed. The isolated renderer passed 52 fixtures. This remains a partial review, without new physical-device or other-engine coverage.
@@ -64,7 +66,7 @@ Recently Added selects 1–12 published posts, newest first, with optional area 
 | Photography fallback | Other counts, missing images, or longer copy use a natural grid that retains every feature. Rich copy gets one column below `sm`; short titles can use two. |
 | Work | The paired layout uses a large lead and compact image/text rows for later imaged projects. Artwork keeps its full proportions. |
 | Cooking | Choose a lead feature with resource links or equal cards. Missing images leave text content without placeholder media. |
-| Recently Added | Compact rows with optional dates at 14/20 px in Neutral 500. The archive browse link appears after the list below `md` and beside the heading from `md`. |
+| Recently Added | Compact rows with optional dates at 14/20 px in Neutral 500. The single archive browse link uses the shared section header at every width, below the heading under 480 px and alongside when space permits above that. It remains available when the list is empty. |
 
 Mobile follows the authored section order. Pairing never moves sections past intervening content. Longer photo copy switches to natural height instead of truncating text to preserve the mosaic.
 
