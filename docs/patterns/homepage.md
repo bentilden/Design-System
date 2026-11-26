@@ -28,6 +28,20 @@ accessibility:
 
 The homepage at `/` introduces the site's interests through selected Photography, Work, and Cooking features, followed by a compact recent-post list. The complete chronological stream lives at [`/archive`](stream-pages.md). The signature and navigation remain part of the shared [site chrome](../components/navigation.md).
 
+## Homepage Evolution
+
+Partial production review, 2026-11-26: runtime `87b6ac9` deploys the presentation and layout-control configuration below. Production content was preserved: Photo strip and Story and Cheat Sheet collection are available choices, while the saved Mosaic and Feature list selections remain until the owner changes them. The older observations below describe the preceding presentation.
+
+- `homePhotoLayout` adds **Photo strip** (`strip`): three equal images with captions, cropped at 2:3 below `lg` and 1:2 from `lg`, with the same three-image/short-copy eligibility as Mosaic. Other selections retain the natural-grid fallback. Strip does not force shared height with Work. Paired Mosaic shares its heading/media rows with Work and reserves a third row for the discovery links. The owner retained the taller desktop photographs on 2026-11-26 and subsequently restored the secondary Work story to its previous size: later imaged projects use the original 2:3 image/text column split, retaining complete artwork proportions at every width.
+- The photo section exposes Map, Mosaic and Posts through native discovery links. By color keeps the palette icon and uses horizontal spectrum-gradient text. Discovery links have no arrows. Other homepage arrows retain the existing Lucide `arrow-right` geometry.
+- `homeCookingLayout` adds **Story and Cheat Sheet collection** (`editorial`). The first non-Cheat Sheet placement leads; selected Cheat Sheets appear in a black reference collection; remaining placements become resources. Each group retains authored order. Only the lead resolves an image. Missing/empty groups collapse naturally. The same native field overrides, draft-preview behavior and publication/stream rules remain in force; no unpublished-content placeholders are rendered.
+- Individual photo, project, food, reference and recent-post links have no arrows. Arrows are reserved for section browse/explore links, including Explore cheat sheets. Photo, Work and lead Food image surfaces use a transparent 2 px border, changing to white with the established neutral shadow on fine-pointer hover. Reduced motion sets `transition-property: none`.
+- The statement is 44/56/72 px with 21 px opening padding. Recent rows add content-format labels. The RSS icon and Follow along via RSS link replace the existing shared footer link; they do not appear below the recent list. Site Settings retains control of the RSS label.
+
+Owner-selected recent-list refinement, 2026-11-26: from `sm`, columns read Date → Type → Title. Date and type use compact 8 rem/6 rem tracks with 24 px gaps; type is left aligned rather than placed at the far page edge. With dates hidden, the order is Type → Title. Phones retain date/type above the title. Source: deployed `_home/recent.twig` and generated CSS; desktop coordinates and phone wrapping were reviewed before release.
+
+Source: `_home/preview.twig`, `photography.twig`, `paired.twig`, `work.twig`, `cooking.twig`, new `editorial.twig`/`editorial-item.twig`, `recent.twig`, native dropdown configuration and `modules/homepage/Schema.php`. The renderer guide in `templates/_home/README.md` maps native field handles to output. Local fixtures cover old/new presets and mixed/reference-only/no-image compositions; browser checks cover responsive rendering, focus, no-JavaScript navigation and hover/reduced-motion behavior. This is not a full accessibility audit.
+
 ## Content Controls
 
 The existing Homepage single in Craft owns the statement, introduction, and section list. Authors can order, enable, or remove Photography, Work, Cooking, and Recently Added sections. Each kind can appear once, including disabled sections. The Sections tab also controls whether adjacent Photography and Work sections pair on desktop; their authored order is preserved.
