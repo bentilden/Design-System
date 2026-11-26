@@ -360,3 +360,13 @@ Stack labels now display their location/photo-group count without the decorative
 Production verification, 2026-10-20, runtime `019144c` / frontend `9b380fa`: all 104 live hierarchy assertions passed at 1440/390 px. The canonical authored hierarchy, photo coordinates and memberships are unchanged.
 
 All 51 live stack checks also passed at 1440/390/320 px, including expansion, zoom separation, paging, keyboard handling and reduced motion.
+
+Local refinement, 2026-11-26 (not committed or deployed): the selected Mosaic photo rotates 5 degrees counterclockwise while enlarged, then returns to level with the existing 300 ms settling transition. Both Square and Justified use inline Tailwind rotation utilities driven by the existing Alpine lift state. Center origin, 110% enlargement, hold duration, white frame/shadow and target-color exclusion remain unchanged; reduced motion skips the lift and rotation.
+
+Local refinement, 2026-11-26: removed the Mosaic photo-count label above the thumbnail field. The photos now follow the controls with the existing 12 px mobile / 20 px desktop top inset. This supersedes the earlier matching Map/Mosaic count presentation; Map retains its filtering summary. Not committed or deployed.
+
+Local motion refinement, 2026-11-26 (not committed or deployed): the target enlargement and 5° counterclockwise rotation now begin together with the outward ripple after scrolling settles. The progressive color wash still begins during scrolling, with the target remaining untinted. Target geometry is measured before raising it; the 250 ms entrance is followed by a 900 ms hold and 300 ms return. Cancellation and reduced-motion behavior remain in place. This supersedes the earlier immediate enlargement during travel.
+
+Owner timing adjustment, 2026-11-26 (local only): enlargement and 5° counterclockwise rotation now begin 100 ms before the outward ripple. The entrance starts after scroll settlement; delayed Web Animations preserve the travel tint during that tenth of a second. Tint cleanup includes the delay, and existing interruption cleanup cancels queued animations. The 900 ms post-entrance hold and 300 ms return are unchanged. This supersedes the simultaneous-start trial.
+
+Local refinement, 2026-11-26: each selected Mosaic photo now receives a fresh random rotation with a magnitude between 2° and 4°, independently choosing clockwise or counterclockwise. Alpine samples once per highlight and passes the stable angle through a CSS variable to the existing Tailwind raised-state rotation. The 100 ms lead before the ripple, scale, hold, settling and reduced-motion behavior are unchanged. This replaces the fixed 5° counterclockwise tilt; not committed or deployed.
