@@ -51,6 +51,18 @@ Owner-approved and deployed 2026-11-23: runtime `4be5be1`, frontend styling `f7a
 - Work, Gallery and Featured Image hover share the existing 25/50/−12 px geometry at Neutral 500/50%. Hover-capability gates, fades and reduced-motion handling are retained.
 - Keep recipe content variants (facts 18/20 px, Nutrition 16 px/6 px frame, step ingredients 12 px/4 px frame), pill/circle controls and the two-layer sticky-navigation / clipped next-project oval treatments. These are intentional roles, not additional utility-control styles.
 
+## Icon And Text Link Pattern
+
+Owner-approved reference, 2026-11-26: retain this pattern for future uses. It was prototyped on Dev and deliberately removed from the homepage; it is not a production component or the selected Photography header treatment.
+
+- Use one native link with two visual segments inside an outer `rounded-md` (6 px) shape.
+- The left segment is a 36 px square (`size-9`) with `bg-neutral-800`, centering the existing 18 px icon.
+- The right segment uses `bg-neutral-950`, light 14/20 px text, `px-2.5 py-2` (10 px horizontal / 8 px vertical), and a width determined by its label.
+- Separate adjacent controls by 8 px. Keep the group flat, with no arrows or shadow unless the use calls for them.
+- Preserve native link semantics and visible keyboard focus. When reusing on mobile, keep the standard 44 px target outside the smaller visible surface without overlapping neighboring controls. The 36 px prototype surface is not an exception to the target guidance above.
+
+The trial retained a lighter spectrum gradient for the color-browsing label to keep it readable on the dark surface. Use this split when an icon needs its own visual segment; ordinary inline links retain their text-led role.
+
 ## Primary Button
 
 ```css
