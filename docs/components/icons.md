@@ -42,6 +42,12 @@ The helper owns the 24-unit view box, 1.5 stroke, round line caps/joins, `fill="
 
 All icons are decorative SVGs with `aria-hidden="true"` and `focusable="false"`. Put the accessible name on the button/link or visible adjacent text. Preserve labels, hit targets, focus outlines, selected states, and event handlers when changing an icon.
 
+### Directional Arrows In Links
+
+Owner-approved guidance, 2026-11-26: place a trailing directional arrow **4 px** from its link label using `gap-1`. Keep the arrow beside the label even when the link occupies a wider row. Preserve the full clickable area and existing text-only hover underlines. This applies to text links with directional arrows, including jump links; independent navigation controls retain their own layout.
+
+Production source, 2026-11-26: runtime `b61c3fd` applies this treatment in `templates/_home/heading.twig`, `templates/_home/editorial.twig`, `templates/_food/index.twig`, and `templates/_entry-content/cheatSheet/page.twig`; the photo viewer already used the same gap. The release passed CI, and the active production Twig and CSS match the candidate. Isolated candidate browser checks at 320/390/430/768/1280 px covered the 4 px gap and 44 px targets.
+
 ## Context Mapping
 
 | Context | Icons |

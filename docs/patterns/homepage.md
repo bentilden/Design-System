@@ -94,6 +94,8 @@ Scoped evidence: runtime `cf236e0` updates `templates/_home/preview.twig` and `t
 
 Keep links native, with visible keyboard focus. The first keyboard link skips to homepage content. Browse links have a 44 px minimum height. Underlines belong to text-only spans so arrows remain plain; decorative arrows are hidden from assistive technology. New-tab destinations announce that behavior. The page content and destinations remain available without JavaScript.
 
+Deployed update, 2026-11-26, runtime `b61c3fd`: homepage browse and explore links use a **4 px** label-to-arrow gap. The full-width Explore cheat sheets link keeps its native hit area while the arrow sits beside its label. See [Directional arrows in links](../components/icons.md#directional-arrows-in-links).
+
 ## Where To Edit
 
 Presentation stays in readable Twig partials with literal inline Tailwind utilities. Keep actual Craft handles visible at their output, following the [field traceability rule](../contributing.md#craft-field-traceability). New website behavior follows the [Alpine.js implementation rule](../contributing.md#frontend-implementation-rule).
